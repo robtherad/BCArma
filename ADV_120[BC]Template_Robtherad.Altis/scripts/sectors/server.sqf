@@ -1,0 +1,165 @@
+/*
+Use this script by placing down triggers in the editor. The size of the trigger will be the size of the sectors. The trigger text will be the name of the sector. Place the trigger's name in the array on line 18 called _triggerArray. Finally, place two markers somewhere near the mission AO and name them opPointsMark and bluPointsMark. Don't put them too close together or when you zoom out they will overlap.
+
+Make sure the triggers have the following parameters set: 
+
+Type - None
+Activation - Anybody Repeatedly Present
+Condition - this
+Timer - Min, Mid, Max all set to 0.
+Triggers can be any size, shape and be on any angle.
+
+Call this script in initServer.sqf with the line
+
+[] execVM "scripts\sectors\server.sqf";
+*/
+if (!isServer) exitWith {};
+
+_triggerArray = [cap1,cap2,cap3];
+
+//initialize variables
+iteration = 0;
+westPoints = 0;
+eastPoints = 0;
+playing = 1;
+pointsCounter = 1;
+sectorControl = true;
+
+if (isNil "quickestTime") then {
+	//Time in minutes it would take to win if one team owned all points uncontested
+	quickestTime = ["sc_quickest_ending",25] call BIS_fnc_getParamValue;
+};
+endPoints = quickestTime * 60 * (count _triggerArray);
+
+//Create markers for players to see whats going on
+{//forEach _triggerArray
+	//Get variables for a marker
+	_markerName = str(iteration) + "_mark";
+	_markerSize = triggerArea _x;
+	_markerPos = getPos _x;
+	
+	//Build marker for area
+	_marker = createMarker [_markerName,_markerPos]; 
+	_marker setMarkerSize [_markerSize select 0,_markerSize select 1];
+	_marker setMarkerDir (_markerSize select 2);
+	_marker setMarkerColor "ColorBlack";
+	_marker setMarkerBrush "SolidBorder";
+	//Get marker's shape
+	if(_markerSize select 3) then {
+		_marker setMarkerShape "RECTANGLE";
+	} else {
+		_marker setMarkerShape "ELLIPSE";
+	};
+	
+	//Build marker for text
+	_markerName = str(iteration) + "_markText";
+	_marker = createMarker [_markerName,_markerPos]; 
+	_marker setMarkerShape "ICON";
+	_marker setMarkerType "hd_dot";
+	_marker setMarkerText (triggerText _x + " - Neutral");
+	
+	//Set sector status to neutral for later
+	_x setVariable ["curOwner",3];
+	_x setVariable ["lastOwner",3];
+	iteration = iteration + 1;
+} forEach _triggerArray;
+sleep 1;
+
+//main loop
+while{playing == 1} do {
+	iteration = 0;
+	{//forEach _triggerArray	
+		//Get owner of the cap from the last time it was checked
+		_sidePastOwned = _x getVariable "curOwner";
+		_sideLastOwned = _x getVariable "lastOwner";
+		
+		//Get marker names
+		_textMarkerName = str(iteration) + "_markText";
+		_bgMarkerName = str(iteration) + "_mark";
+		
+		//Figure out who dominates the sector - Use faction so TK's don't mess things up
+		_westCount = {(alive _x) && (faction _x == "BLU_F")} count list _x;
+		_eastCount = {(alive _x) && (faction _x == "OPF_F")} count list _x;
+		
+		//Western Controlled - 0
+		if(_westCount > _eastCount) then {
+			sideCurOwned = 0;
+			if (sideCurOwned == _sidePastOwned) then {
+				westPoints = westPoints + (1*(count _triggerArray));
+			} else {
+				_textMarkerName setMarkerText (triggerText _x + " - BLUFOR Controlled");
+				_bgMarkerName setMarkerColor "ColorBLUFOR";
+				_x setVariable ["lastOwner",sideCurOwned];
+			};
+		};
+		
+		//Eastern Controlled - 1
+		if(_eastCount > _westCount) then {
+			sideCurOwned = 1;
+			if (sideCurOwned == _sidePastOwned) then {
+				eastPoints = eastPoints + (1*(count _triggerArray));
+			} else {
+				_textMarkerName setMarkerText (triggerText _x + " - OPFOR Controlled");
+				_bgMarkerName setMarkerColor "ColorOPFOR";
+				_x setVariable ["lastOwner",sideCurOwned];
+			};
+		};
+		
+		//Contested Objective - 2
+		if((_westCount == _eastCount) && (_westCount != 0)) then {
+			sideCurOwned = 2;
+			_textMarkerName setMarkerText (triggerText _x + " - CONTESTED");
+			_bgMarkerName setMarkerColor "ColorBlack";
+			_x setVariable ["lastOwner",sideCurOwned];
+		};
+		
+		//Neutral Objective - 3
+		if((_westCount == _eastCount) && (_westCount == 0)) then {
+			sideCurOwned = 3;
+			//For objectives that a side controls but no longer occupies
+			if (_sideLastOwned == 0) then {
+				westPoints = westPoints + (1*(count _triggerArray));
+			};
+			if (_sideLastOwned == 1) then {
+				eastPoints = eastPoints + (1*(count _triggerArray));
+			};
+		};
+		
+		//Set current owner
+		_x setVariable ["curOwner",sideCurOwned];
+		
+		//Sector has changed sides
+		if ((sideCurOwned != _sideLastOwned) && (sideCurOwned != 3)) then {
+			[[[sideCurOwned, _x], "scripts\sectors\client.sqf"], "BIS_fnc_execVM"] call BIS_fnc_MP;
+		};
+		//++ for marker names
+		iteration = iteration + 1;
+		sleep 1;
+	} forEach _triggerArray;
+	
+	//Update score markers in upper right
+	_opfPercent = round (((eastPoints / endPoints)*100)*100) / 100;
+	_bluPercent = round (((westPoints / endPoints)*100)*100) / 100;
+	_bluText = "BLUFOR - " + str(westPoints) + " / " + str(endPoints) + " - (" + str(_bluPercent) + "%)";
+	_opfText = "OPFOR - " + str(eastPoints) + " / " + str(endPoints) + " - (" + str(_opfPercent) + "%)";	
+	"bluPointsMark" setMarkerText _bluText;
+	"opPointsMark" setMarkerText _opfText;
+	
+	//Throw a reminder hint at key point values
+	if ((westPoints >= ((endPoints / 4) * pointsCounter)) || (eastPoints >= ((endPoints / 8) * pointsCounter))) then {
+		sideCurOwned = 4;
+		[[[sideCurOwned,pointsCounter,westPoints,eastPoints,endPoints], "scripts\sectors\client.sqf"], "BIS_fnc_execVM"] call BIS_fnc_MP;
+		pointsCounter = pointsCounter + 1;
+	};
+	//Ending conditions
+	if (westPoints >= endPoints) then {
+		sideCurOwned = 5;
+		[[[sideCurOwned,pointsCounter,westPoints,eastPoints,endPoints], "scripts\sectors\client.sqf"], "BIS_fnc_execVM"] call BIS_fnc_MP;
+		playing = 0;
+	};
+	if (eastPoints >= endPoints) then {
+		sideCurOwned = 6;
+		[[[sideCurOwned,pointsCounter,westPoints,eastPoints,endPoints], "scripts\sectors\client.sqf"], "BIS_fnc_execVM"] call BIS_fnc_MP;
+		playing = 0;
+	};
+};

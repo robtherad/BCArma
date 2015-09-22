@@ -1,0 +1,1 @@
+To enable the kill display script only the file kd_addeventhandler.sqf needs to be called. This file should be called only on the server. Instructions for doing so are found within that file in the comment section at the top of it.
