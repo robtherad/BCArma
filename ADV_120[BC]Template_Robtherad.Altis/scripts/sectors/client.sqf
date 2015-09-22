@@ -1,4 +1,6 @@
 /*
+Do not call this script. It runs on clients when certain conditions are met in the server.sqf file in the sector control script.
+
 passed arguments:
 
 _this select 0: _sideCurOwned - Side that now controls the area

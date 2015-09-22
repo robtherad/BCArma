@@ -5,11 +5,11 @@ For this script to be effective you will need at least three markers. One marker
 
 This file receives the randomly selected marker's name from the server and then grabs his position relative to a marker called 'placemark' and places him in the same position relative to the randomly selected marker.
 
-Call this file from initPlayerLocal.sqf using the command below.
+Call this file on ALL CLIENTS from initPlayerLocal.sqf or init.sqf using the command below.
 
 [] execVM "scripts\randomstart\client.sqf";
 */
-
+if (isDedicated) exitWith {};
 //Set team to be placed at the randomly selected marker.
 _ranTeam = west;
 //Get the position of the placement marker. Place this nearby the team that is being moved.

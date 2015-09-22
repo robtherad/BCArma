@@ -20,14 +20,14 @@ If you want the vehicle to have a custom name instead of something weird looking
 
 this setVariable ["bc_MarkerName", "GPS Marker Text Goes Here"];
 
-Call this script in initPlayerLocal.sqf by using the following line:
+Call this script on ALL CLIENTS in bc_init.sqf by using the following line:
 
-[] execVM "scripts\gpsmarkers\client.sqf";
+[] execVM "scripts\bc_scripts\gpsmarkers\client.sqf";
 
 */
-//Local script, server not needed
+//Local script, dedicated server not needed
 if (isDedicated) exitWith {};
-//Check to see if mission parameters have markers enabled
+//Check to see if mission parameters have markers enabled - Default OFF
 _useMarkers = ["s_gps_markers",0] call BIS_fnc_getParamValue;
 if (_useMarkers == 0) exitWith {};
 

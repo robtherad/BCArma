@@ -1,5 +1,7 @@
 //init.sqf - Executed when mission is started (before briefing screen)
 
+[] execVM "briefing.sqf";
+
 // set the group IDs
 [] call compile preprocessFileLineNumbers "f\setGroupID\f_setGroupIDs.sqf";
 
@@ -9,9 +11,5 @@
 //Call the safeStart
 [] execVM "f\safeStart\f_safeStart.sqf";
 
-waitUntil {!(isNull player) && time > 1}; 
-player setspeaker "NoVoice";
-showSubtitles false; 
-enableSentences false;
-enableRadio false;
-player disableConversation true;
+//Call scripts in BC Template
+[] execVM "scripts\bc_scripts\bc_init.sqf";

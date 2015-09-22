@@ -9,7 +9,7 @@ Condition - this
 Timer - Min, Mid, Max all set to 0.
 Triggers can be any size, shape and be on any angle.
 
-Call this script in initServer.sqf with the line
+Call this script on THE SERVER in initServer.sqf with the line
 
 [] execVM "scripts\sectors\server.sqf";
 */

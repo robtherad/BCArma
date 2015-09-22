@@ -5,16 +5,16 @@ It will also use the mission time limit set during the slotting screen as a time
 
 If you want this mission to work with different teams than OPFOR and BLUFOR just comment out the teams you don't want and uncomment the teams you do want.
 
-Call this file from initServer.sqf using the command below.
+Call this file on THE SERVER from bc_init.sqf using the command below.
 
-[] execVM "scripts\endconditions\loop.sqf";
+[] execVM "scripts\bc_scripts\endconditions\loop.sqf";
 */
 if (!isServer) exitWith {};
-
-//Needs to be a sleep or the script tries to check the trigger during the briefing screen
 sleep 5;
-_missionSafeTime = ["f_param_mission_timer",0] call BIS_fnc_getParamValue;
-_missionRunTimeMins = ["mission_runtime",45] call BIS_fnc_getParamValue;
+
+//Get parameters from slotting screen.
+_missionSafeTime = ["f_param_mission_timer",0] call BIS_fnc_getParamValue; //Default - 0 minute safestart
+_missionRunTimeMins = ["mission_runtime",45] call BIS_fnc_getParamValue; //Default - 45 minute battle phase
 _missionRuntimeMins = _missionRuntimeMins + _missionSafeTime;
 _alertOver = 1; // Time elapsed warning
 _alertEnd = 0; // Time elapsed warning
@@ -26,6 +26,7 @@ if (isNil "sectorControl") then {
 	sectorControl = false;
 };
 
+//Function that adds the current point totals to hint popups when the sector control script is running.
 fnc_sectorControl = {
 	if (sectorControl) then {
 		_opfPercent = round ((((eastPoints) / (endPoints))*100)*100) / 100;
@@ -72,7 +73,6 @@ while {true} do {
 	};
 	if (_missionRuntimeMins <= (time/60) && (_alertEnd <= 4)) then {
 		_hintStr = "The mission time limit of " + str(paramsArray select 3) + " minutes has been reached.";
-		//Check to see if the sector control script is running and if it is then add information from that script to the message
 		call fnc_sectorControl;
 		[_hintStr,"hint",true,true] call BIS_fnc_MP;
 		_alertEnd = _alertEnd + 1;
