@@ -1,0 +1,1 @@
+this addAction ["Spectator", {[player] execVM "scripts\spectator\specta.sqf";}];

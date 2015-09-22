@@ -1,0 +1,1 @@
+To enable the sector control script you only need to call the server.sqf file. All instructions for stuff in the editor and the line for calling the server.sqf file are found at the top in the comments within that file.
