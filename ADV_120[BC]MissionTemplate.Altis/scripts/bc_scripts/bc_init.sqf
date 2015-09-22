@@ -5,14 +5,14 @@ This file will start all scripts part of the default BC template. Call this file
 */
 
 //These scripts only execute on clients
-if (!isServer) then {
+if (!isDedicated) then {
 	[] execVM "scripts\bc_scripts\nametag\tags.sqf";
 	[] execVM "scripts\bc_scripts\gpsmarkers\client.sqf";
 	[] execVM "scripts\bc_scripts\loadout\setLoadout.sqf";
 };
 
 //These scripts only execute on the server and only run once
-if (isServer && isNil serverInit) then {
+if (isServer && isNil "serverInit") then {
 	[] execVM "scripts\bc_scripts\endconditions\loop.sqf";
 	[] execVM "scripts\bc_scripts\killdisplay\kd_addeventhandler.sqf";
 	serverInit = true; //Set this to that the server stuff only runs once

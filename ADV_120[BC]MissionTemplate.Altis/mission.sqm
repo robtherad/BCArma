@@ -2503,7 +2503,7 @@ class Mission
 		items=3;
 		class Item0
 		{
-			position[]={6768.145,-0.013332263,4335.7051};
+			position[]={656.56494,0.0037991237,3982.3135};
 			azimut=-1.07058;
 			id=130;
 			side="EMPTY";
@@ -2514,7 +2514,7 @@ class Mission
 		};
 		class Item1
 		{
-			position[]={6772.4805,0.0019029379,5918.1426};
+			position[]={660.90039,-0.0017993769,5564.751};
 			azimut=-1.07058;
 			id=131;
 			side="EMPTY";
@@ -2525,7 +2525,7 @@ class Mission
 		};
 		class Item2
 		{
-			position[]={6794.1851,-0.096930802,7024.7852};
+			position[]={682.60498,-0.0007214995,6671.3936};
 			azimut=-1.07058;
 			id=132;
 			side="EMPTY";
@@ -2548,281 +2548,10 @@ class Mission
 	};
 	class Markers
 	{
-		items=49;
+		items=22;
 		class Item0
 		{
-			position[]={1420.171,0.038276631,852.4646};
-			name="1";
-			markerType="RECTANGLE";
-			type="Empty";
-			a=750;
-			b=20;
-			angle=-89.997704;
-		};
-		class Item1
-		{
-			position[]={2379.0879,0.010743991,852.10132};
-			name="1_1";
-			markerType="RECTANGLE";
-			type="Empty";
-			a=750;
-			b=20;
-			angle=-89.997704;
-		};
-		class Item2
-		{
-			position[]={1899.0499,0.023805469,121.13354};
-			name="1_1_1";
-			markerType="RECTANGLE";
-			type="Empty";
-			a=500;
-			b=20;
-			angle=-0.025151974;
-		};
-		class Item3
-		{
-			position[]={1900.0304,-0.059864901,1482.4629};
-			name="1_1_1_1";
-			markerType="RECTANGLE";
-			type="Empty";
-			a=500;
-			b=20;
-			angle=-0.025151974;
-		};
-		class Item4
-		{
-			position[]={1901.2062,-0.033904351,1550.993};
-			name="Blufor";
-			markerType="RECTANGLE";
-			type="Empty";
-			colorName="ColorWEST";
-			fillName="DiagGrid";
-			a=500;
-			b=50;
-		};
-		class Item5
-		{
-			position[]={1898.6349,-0.054819331,750.89954};
-			name="Opfor";
-			markerType="RECTANGLE";
-			type="Empty";
-			colorName="ColorEAST";
-			fillName="DiagGrid";
-			a=500;
-			b=50;
-		};
-		class Item6
-		{
-			position[]={319.78949,0.032485802,498.9281};
-			name="1_2";
-			markerType="RECTANGLE";
-			type="Empty";
-			a=400;
-			b=20;
-			angle=-89.997704;
-		};
-		class Item7
-		{
-			position[]={1278.7046,-0.049980629,498.56482};
-			name="1_1_2";
-			markerType="RECTANGLE";
-			type="Empty";
-			a=400;
-			b=20;
-			angle=-89.997704;
-		};
-		class Item8
-		{
-			position[]={798.6377,0.0060953833,117.6344};
-			name="1_1_1_2";
-			markerType="RECTANGLE";
-			type="Empty";
-			a=500;
-			b=20;
-			angle=-0.025151974;
-		};
-		class Item9
-		{
-			position[]={800.05176,0.0047043301,820.04199};
-			name="1_1_1_1_1";
-			markerType="RECTANGLE";
-			type="Empty";
-			a=500;
-			b=20;
-			angle=-0.025151974;
-		};
-		class Item10
-		{
-			position[]={799.74243,-8.50223e-005,851.44397};
-			name="Blufor_1";
-			markerType="RECTANGLE";
-			type="Empty";
-			colorName="ColorWEST";
-			fillName="DiagGrid";
-			a=500;
-			b=50;
-		};
-		class Item11
-		{
-			position[]={2378.9727,0,2099.7896};
-			name="1_3";
-			markerType="RECTANGLE";
-			type="Empty";
-			a=400;
-			b=20;
-			angle=90.020447;
-		};
-		class Item12
-		{
-			position[]={1420.0691,0,2100.4541};
-			name="1_1_3";
-			markerType="RECTANGLE";
-			type="Empty";
-			a=400;
-			b=20;
-			angle=90.020447;
-		};
-		class Item13
-		{
-			position[]={1899.0664,0,2418.1411};
-			name="1_1_1_3";
-			markerType="RECTANGLE";
-			type="Empty";
-			a=500;
-			b=20;
-			angle=179.99286;
-		};
-		class Item14
-		{
-			position[]={1898.615,0,1778.8253};
-			name="1_1_1_1_2";
-			markerType="RECTANGLE";
-			type="Empty";
-			a=500;
-			b=20;
-			angle=179.99286;
-		};
-		class Item15
-		{
-			position[]={1898.915,0,1747.4232};
-			name="Blufor_2";
-			markerType="RECTANGLE";
-			type="Empty";
-			colorName="ColorWEST";
-			fillName="DiagGrid";
-			a=500;
-			b=50;
-			angle=180.01802;
-		};
-		class Item16
-		{
-			position[]={1899.3486,0,2448.4707};
-			name="Opfor_1";
-			markerType="RECTANGLE";
-			type="Empty";
-			colorName="ColorEAST";
-			fillName="DiagGrid";
-			a=500;
-			b=50;
-			angle=180.01802;
-		};
-		class Item17
-		{
-			position[]={1899.2754,0,2098.2158};
-			name="obj";
-			text="Objective";
-			type="mil_objective";
-			angle=180.01802;
-		};
-		class Item18
-		{
-			position[]={1279.1235,0,1749.7733};
-			name="1_2_1";
-			markerType="RECTANGLE";
-			type="Empty";
-			a=750;
-			b=20;
-			angle=90.020447;
-		};
-		class Item19
-		{
-			position[]={320.21417,0,1750.4398};
-			name="1_1_2_1";
-			markerType="RECTANGLE";
-			type="Empty";
-			a=750;
-			b=20;
-			angle=90.020447;
-		};
-		class Item20
-		{
-			position[]={797.48737,0,2417.397};
-			name="1_1_1_2_1";
-			markerType="RECTANGLE";
-			type="Empty";
-			a=500;
-			b=20;
-			angle=179.99286;
-		};
-		class Item21
-		{
-			position[]={799.06439,0,1119.9271};
-			name="1_1_1_1_1_1";
-			markerType="RECTANGLE";
-			type="Empty";
-			a=500;
-			b=20;
-			angle=179.99286;
-		};
-		class Item22
-		{
-			position[]={797.86615,0,1051.3965};
-			name="Blufor_1_1";
-			markerType="RECTANGLE";
-			type="Empty";
-			colorName="ColorWEST";
-			fillName="DiagGrid";
-			a=500;
-			b=50;
-			angle=180.01802;
-		};
-		class Item23
-		{
-			position[]={799.39752,0,2448.5234};
-			name="Opfor_1";
-			markerType="RECTANGLE";
-			type="Empty";
-			colorName="ColorEAST";
-			fillName="DiagGrid";
-			a=500;
-			b=50;
-			angle=180.01802;
-		};
-		class Item24
-		{
-			position[]={801.47388,0,1755.9718};
-			name="obj_1";
-			text="Objective";
-			type="mil_objective";
-			angle=180.01802;
-		};
-		class Item25
-		{
-			position[]={2647.906,0,2046.839};
-			name="no_1";
-			text="Neutral Objective Play Areas";
-			type="mil_warning";
-		};
-		class Item26
-		{
-			position[]={2649.6145,0,446.47705};
-			name="ad_1";
-			text="Attack/Defend Play Areas";
-			type="mil_warning";
-		};
-		class Item27
-		{
-			position[]={7387.3315,-0.027229793,1542.9852};
+			position[]={1275.7515,-0.0046154982,1189.5953};
 			name="border_3";
 			markerType="RECTANGLE";
 			type="Empty";
@@ -2830,18 +2559,18 @@ class Mission
 			b=50;
 			angle=90;
 		};
-		class Item28
+		class Item1
 		{
-			position[]={8236.5449,0.0076176375,794.46069};
+			position[]={2124.9648,0.004221586,441.0708};
 			name="border_3_1";
 			markerType="RECTANGLE";
 			type="Empty";
 			a=800;
 			b=50;
 		};
-		class Item29
+		class Item2
 		{
-			position[]={9086.2031,0.1118124,1545.1093};
+			position[]={2974.624,-0.0028886241,1191.7194};
 			name="border_3_2";
 			markerType="RECTANGLE";
 			type="Empty";
@@ -2849,26 +2578,26 @@ class Mission
 			b=50;
 			angle=90;
 		};
-		class Item30
+		class Item3
 		{
-			position[]={8234.4199,0.08280614,2295.5935};
+			position[]={2122.8398,0.0016249351,1942.2032};
 			name="border_3_1_1";
 			markerType="RECTANGLE";
 			type="Empty";
 			a=800;
 			b=50;
 		};
-		class Item31
+		class Item4
 		{
-			position[]={6768.6636,0.1724036,4404.3252};
+			position[]={657.0835,-0.00015549548,4050.9336};
 			name="obj_1mark";
 			text="Objective #1";
 			type="mil_objective";
 			colorName="ColorRed";
 		};
-		class Item32
+		class Item5
 		{
-			position[]={8234.5967,0.079262935,2194.3984};
+			position[]={2123.0166,0.0043478585,1841.0087};
 			name="Blufor_3";
 			markerType="RECTANGLE";
 			type="Empty";
@@ -2877,9 +2606,9 @@ class Mission
 			a=800;
 			b=50;
 		};
-		class Item33
+		class Item6
 		{
-			position[]={8234.5977,-0.22266248,892.328};
+			position[]={2123.0176,0.0017759607,538.93811};
 			name="Opfor_3";
 			markerType="RECTANGLE";
 			type="Empty";
@@ -2888,101 +2617,101 @@ class Mission
 			a=800;
 			b=50;
 		};
-		class Item34
+		class Item7
 		{
-			position[]={8239.7588,0.07111387,1546.582};
+			position[]={2128.1787,0.0015364824,1193.1921};
 			name="rob";
 			text="Mission area with restricted borders. Will warn then kill when people exit.";
 			type="mil_warning";
 		};
-		class Item35
+		class Item8
 		{
-			position[]={6764.0303,-0.0023103058,3974.229};
+			position[]={652.4502,-0.00087998871,3620.8384};
 			name="rob_1";
 			text="Objective trigger. Will display hint and change marker name when objective is destroyed.";
 			type="mil_warning";
 		};
-		class Item36
+		class Item9
 		{
-			position[]={6772.1348,0.031077199,5954.1514};
+			position[]={660.55469,0.00057751604,5600.7598};
 			name="obj_2mark";
 			text="Objective #2";
 			type="mil_objective";
 			colorName="ColorRed";
 		};
-		class Item37
+		class Item10
 		{
-			position[]={6764.0303,0.16006491,5679.0381};
+			position[]={652.4502,-0.0044945218,5325.6465};
 			name="rob_2";
 			text="Objective WITHOUT trigger. Does the same as below but is only destroyable by satchels. Doesn't work with all objects.";
 			type="mil_warning";
 		};
-		class Item38
+		class Item11
 		{
-			position[]={6794.2349,-0.044596888,7054.8154};
+			position[]={682.65479,-0.00061209314,6701.4238};
 			name="obj_3mark";
 			text="Objective #3";
 			type="mil_objective";
 			colorName="ColorRed";
 		};
-		class Item39
+		class Item12
 		{
-			position[]={6800.0669,0.22003433,6890.1138};
+			position[]={688.48682,0.0032288176,6536.7227};
 			name="rob_3";
 			text="Same as Objective #1 except this will spawn where it is placed or at any of the markers that are grouped with it.";
 			type="mil_warning";
 		};
-		class Item40
+		class Item13
 		{
-			position[]={6780.2764,-0.014387112,7036.9844};
+			position[]={668.69629,-0.0017138382,6683.5928};
 			name="rand";
 			type="Empty";
 		};
-		class Item41
+		class Item14
 		{
-			position[]={6794.2075,0.13386783,7036.8037};
+			position[]={682.62744,0.0027525581,6683.4121};
 			name="rand_1";
 			type="Empty";
 		};
-		class Item42
+		class Item15
 		{
-			position[]={6807.3032,-0.12474775,7036.6621};
+			position[]={695.72314,-0.0026058212,6683.2705};
 			name="rand_2";
 			type="Empty";
 		};
-		class Item43
+		class Item16
 		{
-			position[]={6780.6196,-0.022039365,7024.7676};
+			position[]={669.03955,-0.00052969856,6671.376};
 			name="rand_3";
 			type="Empty";
 		};
-		class Item44
+		class Item17
 		{
-			position[]={6807.248,0.046208352,7025.0952};
+			position[]={695.66797,5.1100738e-005,6671.7041};
 			name="rand_4";
 			type="Empty";
 		};
-		class Item45
+		class Item18
 		{
-			position[]={6781.3735,0.092782699,7013.2646};
+			position[]={669.79346,0.0015919001,6659.873};
 			name="rand_5";
 			type="Empty";
 		};
-		class Item46
+		class Item19
 		{
-			position[]={6794.5527,-0.11175895,7011.5747};
+			position[]={682.97266,-0.0037687006,6658.1836};
 			name="rand_6";
 			type="Empty";
 		};
-		class Item47
+		class Item20
 		{
-			position[]={6808.3999,-0.12281775,7013.4385};
+			position[]={696.81982,0.00081338442,6660.0469};
 			name="rand_7";
 			type="Empty";
 		};
-		class Item48
+		class Item21
 		{
-			position[]={6800.0703,-0.12039402,6603.6929};
+			position[]={688.49023,0.0023828112,6250.3018};
 			name="rob_3_1";
 			text="It's marker will follow it due to the code in the objective's init field.";
 			type="mil_warning";
@@ -2990,7 +2719,7 @@ class Mission
 	};
 	class Sensors
 	{
-		items=13;
+		items=5;
 		class Item0
 		{
 			position[]={149.92882,-0.0035849721,150.13953};
@@ -3004,151 +2733,7 @@ class Mission
 		};
 		class Item1
 		{
-			position[]={1900.5537,0.0036149134,852.55481};
-			a=750;
-			b=500;
-			angle=-89.999489;
-			rectangular=1;
-			activationBy="WEST";
-			activationType="NOT PRESENT";
-			timeoutMin=10;
-			timeoutMid=10;
-			timeoutMax=10;
-			age="UNKNOWN";
-			expActiv="hint ""Blue Team Eliminated. \nGood Game!""";
-			class Effects
-			{
-			};
-		};
-		class Item2
-		{
-			position[]={1900.1923,0.0081038354,852.44153};
-			a=750;
-			b=500;
-			angle=-90.036652;
-			rectangular=1;
-			activationBy="EAST";
-			activationType="NOT PRESENT";
-			timeoutMin=5;
-			timeoutMid=5;
-			timeoutMax=5;
-			age="UNKNOWN";
-			expActiv="hint ""Red Team Eliminated. \nGood Game!""";
-			class Effects
-			{
-			};
-		};
-		class Item3
-		{
-			position[]={798.27112,-0.014159411,1748.7902};
-			a=750;
-			b=500;
-			angle=-89.999489;
-			rectangular=1;
-			activationBy="WEST";
-			activationType="NOT PRESENT";
-			timeoutMin=10;
-			timeoutMid=10;
-			timeoutMax=10;
-			age="UNKNOWN";
-			expActiv="hint ""Blue Team Eliminated. \nGood Game!""";
-			class Effects
-			{
-			};
-		};
-		class Item4
-		{
-			position[]={797.90967,-0.011029743,1748.6769};
-			a=750;
-			b=500;
-			angle=-90.036652;
-			rectangular=1;
-			activationBy="EAST";
-			activationType="NOT PRESENT";
-			timeoutMin=5;
-			timeoutMid=5;
-			timeoutMax=5;
-			age="UNKNOWN";
-			expActiv="hint ""Red Team Eliminated. \nGood Game!""";
-			class Effects
-			{
-			};
-		};
-		class Item5
-		{
-			position[]={1899.8673,0.024282023,2096.6082};
-			a=400;
-			b=500;
-			angle=-89.999496;
-			rectangular=1;
-			activationBy="WEST";
-			activationType="NOT PRESENT";
-			timeoutMin=10;
-			timeoutMid=10;
-			timeoutMax=10;
-			age="UNKNOWN";
-			expActiv="hint ""Blue Team Eliminated. \nGood Game!""";
-			class Effects
-			{
-			};
-		};
-		class Item6
-		{
-			position[]={1899.5055,0.024065722,2096.4949};
-			a=400;
-			b=500;
-			angle=-90.036697;
-			rectangular=1;
-			activationBy="EAST";
-			activationType="NOT PRESENT";
-			timeoutMin=5;
-			timeoutMid=5;
-			timeoutMax=5;
-			age="UNKNOWN";
-			expActiv="hint ""Red Team Eliminated. \nGood Game!""";
-			class Effects
-			{
-			};
-		};
-		class Item7
-		{
-			position[]={801.29333,-0.002874583,497.87805};
-			a=400;
-			b=500;
-			angle=-89.999496;
-			rectangular=1;
-			activationBy="WEST";
-			activationType="NOT PRESENT";
-			timeoutMin=10;
-			timeoutMid=10;
-			timeoutMax=10;
-			age="UNKNOWN";
-			expActiv="hint ""Blue Team Eliminated. \nGood Game!""";
-			class Effects
-			{
-			};
-		};
-		class Item8
-		{
-			position[]={800.93176,-0.0037772059,497.76477};
-			a=400;
-			b=500;
-			angle=-90.036697;
-			rectangular=1;
-			activationBy="EAST";
-			activationType="NOT PRESENT";
-			timeoutMin=5;
-			timeoutMid=5;
-			timeoutMax=5;
-			age="UNKNOWN";
-			expActiv="hint ""Red Team Eliminated. \nGood Game!""";
-			class Effects
-			{
-			};
-		};
-		class Item9
-		{
-			position[]={6866.855,-0.15862386,4346.7588};
+			position[]={755.2749,-0.0042263353,3993.3672};
 			interruptable=1;
 			age="UNKNOWN";
 			name="obj1trig";
@@ -3158,9 +2743,9 @@ class Mission
 			{
 			};
 		};
-		class Item10
+		class Item2
 		{
-			position[]={8236.6846,0.076109126,1541.9757};
+			position[]={2125.1045,0.004580481,1188.5858};
 			a=900;
 			b=800;
 			rectangular=1;
@@ -3177,9 +2762,9 @@ class Mission
 			{
 			};
 		};
-		class Item11
+		class Item3
 		{
-			position[]={8236.7021,0.081191093,1543.0627};
+			position[]={2125.1221,0.0042631277,1189.6729};
 			a=800;
 			b=700;
 			rectangular=1;
@@ -3197,9 +2782,9 @@ class Mission
 			{
 			};
 		};
-		class Item12
+		class Item4
 		{
-			position[]={6896.6572,0.059912242,7035.0859};
+			position[]={785.07715,-0.0043809405,6681.6943};
 			interruptable=1;
 			age="UNKNOWN";
 			name="obj3trig";
