@@ -5,11 +5,11 @@ For this script to be effective you will need at least three markers. One marker
 
 This file is run on the server to randomly select a marker from an array of markers. Once a marker is randomly selected the name of the marker is broadcast to all clients.
 
-Call this file from initServer.sqf using the command below.
+Call this file on THE SERVER from initServer.sqf using the command below.
 
 [] execVM "scripts\randomstart\server.sqf";
 */
-
+if (!isServer) exitWith {};
 //Fill this array with the names of all markers you want to be considered for the randomized start.
 _markerArray = ["randomstart", "randomstart_1", "randomstart_2", "randomstart_3", "randomstart_4", "randomstart_5", "randomstart_6", "randomstart_7"];
 

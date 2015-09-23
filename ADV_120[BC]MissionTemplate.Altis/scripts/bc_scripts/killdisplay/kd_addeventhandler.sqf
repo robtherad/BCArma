@@ -5,13 +5,13 @@ This script adds event handlers to all units in the game.
 
 MPKilled - Triggered when the unit is killed. EH can be added on any machine and EH code will trigger globally on every connected client and server.
 
-Call this file from initServer.sqf using the command below.
+Call this file on THE SERVER from bc_init.sqf using the command below.
 
-[] execVM "scripts\killdisplay\kd_addeventhandler.sqf";
+[] execVM "scripts\bc_scripts\killdisplay\kd_addeventhandler.sqf";
 */
 //No reason for everyone to run this script since addMPEventHandler is global.
 if (!isServer) exitWith {};
 
 {
-	_x addMPEventHandler ["MPKilled",{_this execVM "scripts\killdisplay\kd_mpkilled.sqf";}]
+	_x addMPEventHandler ["MPKilled",{_this execVM "scripts\bc_scripts\killdisplay\kd_mpkilled.sqf";}]
 } forEach playableUnits;

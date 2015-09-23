@@ -14,7 +14,11 @@ There are some modifications that you may have to make in order to get certain s
 
 ##### Adding Vehicle Markers
 
+<<<<<<< HEAD
+To add GPS markers to vehicles in your mission you will need to name the vehicles in the editor and decide which sides should be able to see those markers on the map. Open the script located at `\scripts\bc_scripts\gpsmarkers\client.sqf` within your mission folder. If you want to have the vehicle visible to only BLUFOR add the name of the vehicle to _westVehArray on line 35 of that file. When your done line 35 should look like this:
+=======
 To add GPS markers to vehicles in your mission you will need to name the vehicles in the editor and decide which sides should be able to see those markers on the map. Open the script located at `\scripts\gpsmarkers\client.sqf` within your mission folder. If you want to have the vehicle visible to only BLUFOR add the name of the vehicle to _westVehArray on line 35 of that file. When your done line 35 should look like this:
+>>>>>>> master
 
 `_westVehArray = [myVehicle];`
 
@@ -33,7 +37,11 @@ If you followed the above example and added a vehicle to your mission it's marke
 
 This will make the marker for the vehicle display as `My Custom Vehicle Text` on the map. Go ahead and change that to whatever callsign you want. 
 
+<<<<<<< HEAD
+#### Vehicle TFAR Radios
+=======
 ###### Vehicle TFAR Radios
+>>>>>>> master
 
 Every vehicle has a radio for whichever side it is assigned to when it is crewed. This is a problem for vehicles like the armed Offroad truck with a .50 cal since that truck only comes in a BLUFOR version. If you want players to use a vehicle from a different side you should either remove the other side's radio from that vehicle or replace it with the radio of the correct side.
 
@@ -49,7 +57,11 @@ Replace the word side in the above with either `west`, `east`, or `guer` dependi
 
 #### Adding TFAR Backpack Radios
 
+<<<<<<< HEAD
+If you would like for certain people to have backpack radios instead of just the invisible radios that they would get by default you will have to edit the loadout files in `scripts\bc_scripts\loadout\units\`. You will have to do this for each unit you want to have a backpack radio.
+=======
 If you would like for certain people to have backpack radios instead of just the invisible radios that they would get by default you will have to edit the loadout files in `scripts\loadout\units\`. You will have to do this for each unit you want to have a backpack radio.
+>>>>>>> master
 
 By default there is a parameter in the slotting screen (defined in `description.ext`) which lets an admin choose which units get radios or not. If this variable is not present in the `description.ext` then it will default to `0`. The possible values for this variable are:
 
@@ -77,3 +89,15 @@ If your unit is a Team Leader he will only meet the requirements for a radio whe
 	};
 	
 Keep in mind that the TFAR backpack radios are a lot heavier than standard backpacks so you may wish to edit the unit's gear depending on which backpack they are getting.
+<<<<<<< HEAD
+
+
+### Using Non-Default Scripts
+
+There are modules included with the template that do not run by default. This section will tell you how to use them in your mission if that is what you would like to do.
+
+#### WIP
+
+For now just read the headers of the files and that should be enough to tell you how to use them. Eventually this section of the readme will be filled out.
+=======
+>>>>>>> master
