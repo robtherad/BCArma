@@ -1,6 +1,6 @@
 # Bravo Company Mission Template
 
-The master branch will always be the most up to date and stable version of the template. If you intend to make a mission, use the master version.
+The master branch will always be the most up to date and stable version of the template. If you intend to make a mission, use the master version. This readme file has a lot of information but if you want to be able to navigate it easier then the [github wiki](https://github.com/robtherad/BCArma/wiki) might help.
 
 # Using the Template
 
