@@ -8,15 +8,6 @@ if (!isNil "loadout_assigned") exitWith {};
 loadout_assigned = false;
 
 switch (_char) do {
-//Green - AAF/GUER - IND_F
- case "I_Soldier_AR_F": {[] call compile preprocessFileLineNumbers "scripts\bc_scripts\loadout\units\Green_AR.sqf"};
- case "I_medic_F": {[] call compile preprocessFileLineNumbers "scripts\bc_scripts\loadout\units\Green_CLS.sqf"};
- case "I_Soldier_A_F": {[] call compile preprocessFileLineNumbers "scripts\bc_scripts\loadout\units\Green_AAR.sqf"};
- case "I_Soldier_SL_F": {[] call compile preprocessFileLineNumbers "scripts\bc_scripts\loadout\units\Green_PLSL.sqf"};
- case "I_soldier_F": {[] call compile preprocessFileLineNumbers "scripts\bc_scripts\loadout\units\Green_R.sqf"};
- case "I_Soldier_TL_F": {[] call compile preprocessFileLineNumbers "scripts\bc_scripts\loadout\units\Green_TL.sqf"};
- case "I_soldier_UAV_F": {[] call compile preprocessFileLineNumbers "scripts\bc_scripts\loadout\units\Green_UAVOP.sqf"};
- case "I_engineer_F": {[] call compile preprocessFileLineNumbers "scripts\bc_scripts\loadout\units\Green_CE.sqf"};
  //Red - CSAT/EAST - OPF_F
  case "O_Soldier_AR_F": {[] call compile preprocessFileLineNumbers "scripts\bc_scripts\loadout\units\Red_AR.sqf"};
  case "O_medic_F": {[] call compile preprocessFileLineNumbers "scripts\bc_scripts\loadout\units\Red_CLS.sqf"};

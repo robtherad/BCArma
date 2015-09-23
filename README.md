@@ -22,7 +22,13 @@ The default loadout that comes with the template uses vanilla weapons as well as
 
 If you need a starting point there are premade loadouts included with the template in the `Premade Loadouts` folder. Within that folder are other folders named after the mods which the loadouts are dependant upon. Within THAT folder should be more folders which will be named along the lines of `Camouflage 1 v Camouflage 2`. The name on the left is the camouflage type that the BLUFOR forces wear and the name on the right is the camouflage that the OPFOR forces wear. If you would like to use one of these loadouts in your mission you can just open the folder and use the `loadout` folder within to overwrite the `loadout` folder located at `scripts\bc_scripts\loadout\`. You can use them as is or customize them however you'd like. It's your mission.
 
-##### Adding Vehicle Markers
+##### Giving MG Teams a Leader
+
+If you would like for MG Teams in your mission to have access to GPS as well as radios (when radios are restricted to Team Leaders++) an easy way to do it is to replace the Assistant Gunner in the MG teams with a Team Leader. All of the premade loadouts contain a file named `SIDE_MGTL.sqf` located at `scripts\bc_scripts\loadouts\units\` which has a loadout already made for an MG Team Leader. You will need to open `setLoadout.sqf` in the `scripts\bc_scripts\loadouts` folder and edit the line for `case "O_Soldier_lite_F":` (or `case "B_Soldier_lite_F":` depending on which side you are editing) and change the file name from `Red_AG.sqf` to `Red_MGTL.sqf` but leave the rest of the file path alone.
+
+Once that's done, head into the editor and replace the `Heavy Gunner` classes with `Rifleman (Light)` classes and vice versa. If you just switch their ranks to change the `Rifleman (Light)` class to become the group leader they will be out of order in the slotting screen. Make sure you change the unit's description to Team Leader or Machine Gunner depending on what they are going to be. The description is what people will see in the slotting screen.
+
+#### Adding Vehicle Markers
 
 To add GPS markers to vehicles in your mission you will need to name the vehicles in the editor and decide which sides should be able to see those markers on the map. Open the script located at `\scripts\bc_scripts\gpsmarkers\client.sqf` within your mission folder. If you want to have the vehicle visible to only BLUFOR add the name of the vehicle to `_westVehArray` on line 35 of that file. When your done line 35 should look like this:
 
