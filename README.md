@@ -10,7 +10,7 @@ Now you should be able to open the 2D editor in Arma 3 and open the mission. Dra
 
 ## Common Modifications
 
-There are some modifications that you may have to make in order to get certain scripts to work correctly with the type of mission you are making.
+There are some modifications that you may have to make in order to get certain scripts to work correctly with the type of mission you are making. If you are trying to change something and the stuff below doesn't make sense, try looking at the comments in the header of the file you are working on. 
 
 ##### Adding Vehicle Markers
 
