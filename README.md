@@ -2,13 +2,13 @@
 
 The master branch will always be the most up to date and stable version of the template. If you intend to make a mission, use the master version.
 
-## Using the Template
+# Using the Template
 
 Download as zip from GitHub using the button on the bottom right. Drop the main folder named `ADV_120[BC]Template_Robtherad.Altis` in your Arma 3 mission folder which should be a path similar to `C:\Users\Rob\Documents\Arma 3 - Other Profiles\robtherad\missions`. If you would like to make a mission on an island other than Altis then change the suffix on the folder from `.Altis` to the suffix used by whichever map you intend to use. 
 
 Now you should be able to open the 2D editor in Arma 3 and open the mission. Drag the playable units as well as the triggers and markers for the AO to the area you wish the mission to be played in. Then save the mission and test it.
 
-### Common Modifications
+## Common Modifications
 
 There are some modifications that you may have to make in order to get certain scripts to work correctly with the type of mission you are making.
 
@@ -78,8 +78,9 @@ If your unit is a Team Leader he will only meet the requirements for a radio whe
 	
 Keep in mind that the TFAR backpack radios are a lot heavier than standard backpacks so you may wish to edit the unit's gear depending on which backpack they are getting.
 
+---
 
-### Using Non-Default Scripts
+# Using Non-Default Scripts
 
 There are modules included with the template that do not run by default. This section will tell you how to use them in your mission if that is what you would like to do.
 
