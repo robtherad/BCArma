@@ -82,9 +82,9 @@ Keep in mind that the TFAR backpack radios are a lot heavier than standard backp
 
 # Using Non-Default Scripts
 
-There are modules included with the template that do not run by default. This section will tell you how to use them in your mission if that is what you would like to do. If the instructions below do not help you then try reading the comments in the header of the file you are working with.
+There are scripts included with the template that do not run by default. This section will tell you how to use them in your mission if that is what you would like to do. If the instructions below do not help you then try reading the comments in the header of the file you are working with.
 
-### randomstart
+## randomstart
 
 This script has two parts. The first part is `server.sqf` which has the server randomly select a marker from a list of markers that exist in the editor. Either run it from `init.sqf` or `initServer.sqf` with the following command:
 
@@ -107,7 +107,7 @@ The second part is `client.sqf` which actually places a player at the spot rando
 That's it! Test it out a few times to make sure it works.
 
 
-### sectors
+## sectors
 
 This script has two parts but only one part needs to be called. Call only `server.sqf` to run on the server using the following command in the `init.sqf` or `initServer.sqf` files:
 
