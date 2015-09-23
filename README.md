@@ -12,6 +12,10 @@ Now you should be able to open the 2D editor in Arma 3 and open the mission. Dra
 
 There are some modifications that you may have to make in order to get certain scripts to work correctly with the type of mission you are making. If you are trying to change something and the stuff below doesn't make sense, try looking at the comments in the header of the file you are working on. 
 
+#### Loading Screen Information
+
+If you want to change the information displayed during the loading screen you can edit it in the `description.ext` file. The lines you want to edit are lines 8-10. Go ahead and replace the author name with your own name, the `onLoadName` with a name for your mission, and `OnLoadMission` with a brief description of what your mission is about. 
+
 ##### Adding Vehicle Markers
 
 To add GPS markers to vehicles in your mission you will need to name the vehicles in the editor and decide which sides should be able to see those markers on the map. Open the script located at `\scripts\bc_scripts\gpsmarkers\client.sqf` within your mission folder. If you want to have the vehicle visible to only BLUFOR add the name of the vehicle to `_westVehArray` on line 35 of that file. When your done line 35 should look like this:
