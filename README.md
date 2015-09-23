@@ -16,9 +16,9 @@ There are some modifications that you may have to make in order to get certain s
 
 If you want to change the information displayed during the loading screen you can edit it in the `description.ext` file. The lines you want to edit are lines 8-10. Go ahead and replace the author name with your own name, the `onLoadName` with a name for your mission, and `OnLoadMission` with a brief description of what your mission is about. 
 
-#### Customizing Loadouts
+#### Customizing Loadouts & Using Premade Loadouts
 
-The default loadout that comes with the template uses vanilla weapons as well as uniforms from `@KMNP`. If you would like to use something different then you will have to edit each loadout file to meet your needs. 
+The default loadout that comes with the template uses vanilla weapons as well as uniforms from `@KMNP`. If you would like to use something different then you will have to edit each loadout file to meet your needs. Don't forget that if you change a unit's weapon you will probably need to change the ammunition given to the unit as well. Make sure not to overload units with too many items or they will get fatigued too quickly. If your changes are as simple as changing the uniforms, vests and backpacks it is fairly easy to use `Notepad++` and open all of the loadouts at once to quickly replace the class names with the new ones.
 
 If you need a starting point there are premade loadouts included with the template in the `Premade Loadouts` folder. Within that folder are other folders named after the mods which the loadouts are dependant upon. Within THAT folder should be more folders which will be named along the lines of `Camouflage 1 v Camouflage 2`. The name on the left is the camouflage type that the BLUFOR forces wear and the name on the right is the camouflage that the OPFOR forces wear. If you would like to use one of these loadouts in your mission you can just open the folder and use the `loadout` folder within to overwrite the `loadout` folder located at `scripts\bc_scripts\loadout\`. You can use them as is or customize them however you'd like. It's your mission.
 
