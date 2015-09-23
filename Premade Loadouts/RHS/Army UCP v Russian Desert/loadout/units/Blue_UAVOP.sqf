@@ -16,7 +16,7 @@ for "_i" from 1 to 2 do {player addItemToVest "rhs_mag_m67";};
 player addBackpack "B_UAV_01_backpack_F";
 player addHeadgear "rhsusf_ach_helmet_ucp";
 player addWeapon "rhs_weap_m4a1_carryhandle";
-player addPrimaryWeaponItem "acc_flashlight";
+ 
 if (s_loadout_map == 0) then {
 	player linkItem "ItemMap";
 };

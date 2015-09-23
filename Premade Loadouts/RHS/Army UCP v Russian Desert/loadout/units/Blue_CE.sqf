@@ -17,7 +17,7 @@ player addBackpack "rhsusf_assault_eagleaiii_ucp";
 for "_i" from 1 to 2 do {player addItemToBackpack "SatchelCharge_Remote_Mag";};
 player addHeadgear "rhsusf_ach_helmet_ucp";
 player addWeapon "rhs_weap_m4a1_carryhandle";
-player addPrimaryWeaponItem "acc_flashlight";
+ 
 if (s_loadout_map == 0) then {
 	player linkItem "ItemMap";
 };

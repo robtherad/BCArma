@@ -17,7 +17,7 @@ player addBackpack "rhsusf_assault_eagleaiii_ucp";
 for "_i" from 1 to 4 do {player addItemToBackpack "rhs_mag_30Rnd_556x45_M855A1_Stanag";};
 player addHeadgear "rhsusf_ach_helmet_ucp";
 player addWeapon "rhs_weap_m4a1_carryhandle";
-player addPrimaryWeaponItem "acc_flashlight";
+ 
 player addWeapon "rhs_weap_M136";
 if (s_loadout_map == 0) then {
 	player linkItem "ItemMap";

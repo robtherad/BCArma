@@ -15,8 +15,8 @@ for "_i" from 1 to 9 do {player addItemToVest "rhs_mag_30Rnd_556x45_M855A1_Stana
 for "_i" from 1 to 2 do {player addItemToVest "rhs_mag_m67";};
 player addBackpack "B_UAV_01_backpack_F";
 player addHeadgear "rhsusf_lwh_helmet_marpatwd";
-player addWeapon "rhs_weap_m4a1_carryhandle";
-player addPrimaryWeaponItem "acc_flashlight";
+player addWeapon "rhs_weap_m16a4_carryhandle";
+ 
 if (s_loadout_map == 0) then {
 	player linkItem "ItemMap";
 };

@@ -16,8 +16,8 @@ for "_i" from 1 to 2 do {player addItemToVest "rhs_mag_m67";};
 player addBackpack "rhsusf_assault_eagleaiii_coy";
 for "_i" from 1 to 2 do {player addItemToBackpack "SatchelCharge_Remote_Mag";};
 player addHeadgear "rhsusf_lwh_helmet_marpatwd";
-player addWeapon "rhs_weap_m4a1_carryhandle";
-player addPrimaryWeaponItem "acc_flashlight";
+player addWeapon "rhs_weap_m16a4_carryhandle";
+ 
 if (s_loadout_map == 0) then {
 	player linkItem "ItemMap";
 };

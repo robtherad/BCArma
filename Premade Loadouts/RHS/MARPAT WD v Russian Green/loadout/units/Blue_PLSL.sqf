@@ -16,7 +16,7 @@ for "_i" from 1 to 5 do {player addItemToVest "rhs_mag_30Rnd_556x45_M855A1_Stana
 for "_i" from 1 to 4 do {player addItemToVest "rhs_mag_m18_red";};
 
 player addWeapon "rhs_weap_m4a1_carryhandle";
-player addPrimaryWeaponItem "acc_flashlight";
+ 
 
 if (s_loadout_radio != 3) then {
 	player addBackpack "tf_rt1523g_big_bwmod";

@@ -18,8 +18,8 @@ for "_i" from 1 to 4 do {player addItemToVest "rhs_mag_M441_HE";};
 for "_i" from 1 to 4 do {player addItemToVest "rhs_mag_m713_Red";};
 for "_i" from 1 to 4 do {player addItemToVest "rhs_mag_m714_White";};
 
-player addWeapon "rhs_weap_m4a1_carryhandle_m203";
-player addPrimaryWeaponItem "acc_flashlight";
+player addWeapon "rhs_weap_m16a4_carryhandle_M203";
+ 
 
 if ((s_loadout_radio == 0) or (s_loadout_radio == 1)) then {
 	player addBackpack "tf_rt1523g_big_bwmod_tropen";

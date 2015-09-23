@@ -23,7 +23,7 @@ if ((s_loadout_radio == 0) or (s_loadout_radio == 1)) then {
 };
 player addHeadgear "rhsusf_ach_helmet_ocp";
 player addWeapon "rhs_weap_m4a1_carryhandle";
-player addPrimaryWeaponItem "acc_flashlight";
+ 
 for "_i" from 1 to 4 do {player addItemToVest "rhs_mag_30Rnd_556x45_M855A1_Stanag";};
 
 player addWeapon "Binocular";
