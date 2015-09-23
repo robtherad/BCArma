@@ -14,7 +14,7 @@ There are some modifications that you may have to make in order to get certain s
 
 ##### Adding Vehicle Markers
 
-To add GPS markers to vehicles in your mission you will need to name the vehicles in the editor and decide which sides should be able to see those markers on the map. Open the script located at `\scripts\bc_scripts\gpsmarkers\client.sqf` within your mission folder. If you want to have the vehicle visible to only BLUFOR add the name of the vehicle to _westVehArray on line 35 of that file. When your done line 35 should look like this:
+To add GPS markers to vehicles in your mission you will need to name the vehicles in the editor and decide which sides should be able to see those markers on the map. Open the script located at `\scripts\bc_scripts\gpsmarkers\client.sqf` within your mission folder. If you want to have the vehicle visible to only BLUFOR add the name of the vehicle to `_westVehArray` on line 35 of that file. When your done line 35 should look like this:
 
 `_westVehArray = [myVehicle];`
 
@@ -22,12 +22,12 @@ If you want to add multiple vehicles to be visible to BLUFOR then it would look 
 
 `_westVehArray = [myFirstVehicle,mySecondVehicle];`
 
-If you want the vehicle(s) to be visible to OPFOR instead then add the names to _eastVehArray on line 36 in the same fashion. 
+If you want the vehicle(s) to be visible to OPFOR instead then add the names to `_eastVehArray` on line 36 in the same fashion. 
 
 
 ###### Prettier Vehicle Names
 
-If you followed the above example and added a vehicle to your mission it's marker would display as myVehicle. Since that looks silly you are able to add a custom name for your vehicle by adding the following line to it's initialization field in the editor:
+If you followed the above example and added a vehicle to your mission it's marker would display as `myVehicle`. Since that looks silly you are able to add a custom name for your vehicle by adding the following line to it's initialization field in the editor:
 
 `this setVariable ["bc_MarkerName", "My Custom Vehicle Text"];`
 
