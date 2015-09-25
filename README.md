@@ -145,17 +145,17 @@ This script will create sectors based on triggers that are placed in the editor.
 
 3. The `endPoints` variable is calculated by taking the number of sectors in the mission and multiplying them by `quickestTime` multiplied by 60. The `quickestTime` variable is the time in minutes that it would take for one side to win the match assuming they controlled all sectors at once from the start of the mission until the mission ends. Anticipate the average scenario being that one team controls the majority of cap points (2/3, 3/5, 4/7, etc.) and calculate the quickest scenario time based off that. Since we mainly use a 45 minute battle phase during Friday Night Fights try to balance it so that if a team holds the majority of points they will win on points within or just after that time. To change the value of `quickestTime` edit the value in the following code from `25` to whatever you want. You can find the code somewhere around line 30 in `server.sqf`:
 
-	quickestTime = ["sc_quickest_ending",25] call BIS_fnc_getParamValue;
+		quickestTime = ["sc_quickest_ending",25] call BIS_fnc_getParamValue;
 
 4. To add variable choices in the slotting screen for the `quickestTime` variable you will need to add the following code to `class Params` in the missions `description.ext` file:
 
-	class sc_quickest_ending
-	{
-		title = "Quickest Sector Control Victory Time:"
-		values[] = {25,27,30};
-		texts[] = {"25 minutes (default)","27 minutes","30 minutes"};
-		default = 25;
-	};
+		class sc_quickest_ending
+		{
+			title = "Quickest Sector Control Victory Time:"
+			values[] = {25,27,30};
+			texts[] = {"25 minutes (default)","27 minutes","30 minutes"};
+			default = 25;
+		};
 
 
 
