@@ -20,14 +20,15 @@ for "_i" from 1 to 4 do {player addItemToVest "rhs_mag_m714_White";};
 
 player addWeapon "rhs_weap_m4a1_carryhandle_m203";
  
-
 if ((s_loadout_radio == 0) or (s_loadout_radio == 1)) then {
 	player addBackpack "tf_rt1523g_big_bwmod_tropen";
 	for "_i" from 1 to 4 do {player addItemToBackPack "rhs_mag_30Rnd_556x45_M855A1_Stanag";};
+	player linkItem "ItemRadio";
 } else {
 	player addBackpack "rhsusf_assault_eagleaiii_ucp";
 	for "_i" from 1 to 12 do {player addItemToBackpack "rhs_mag_30Rnd_556x45_M855A1_Stanag";};
 };
+
 player addHeadgear "rhsusf_ach_helmet_ucp";
 player addWeapon "Binocular";
 if ((s_loadout_map == 0) or (s_loadout_map == 1)) then {
@@ -36,6 +37,3 @@ if ((s_loadout_map == 0) or (s_loadout_map == 1)) then {
 };
 player linkItem "ItemCompass";
 player linkItem "ItemWatch";
-if ((s_loadout_radio == 0) or (s_loadout_radio == 1)) then {
-	//player linkItem "ItemRadio";
-};

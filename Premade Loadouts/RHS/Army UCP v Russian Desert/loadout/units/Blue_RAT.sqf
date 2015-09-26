@@ -14,7 +14,7 @@ player addVest "rhsusf_iotv_ucp_Rifleman";
 for "_i" from 1 to 9 do {player addItemToVest "rhs_mag_30Rnd_556x45_M855A1_Stanag";};
 for "_i" from 1 to 2 do {player addItemToVest "rhs_mag_m67";};
 player addBackpack "rhsusf_assault_eagleaiii_ucp";
-for "_i" from 1 to 4 do {player addItemToBackpack "rhs_mag_30Rnd_556x45_M855A1_Stanag";};
+for "_i" from 1 to 6 do {player addItemToBackpack "rhs_mag_30Rnd_556x45_M855A1_Stanag";};
 player addHeadgear "rhsusf_ach_helmet_ucp";
 player addWeapon "rhs_weap_m4a1_carryhandle";
  
