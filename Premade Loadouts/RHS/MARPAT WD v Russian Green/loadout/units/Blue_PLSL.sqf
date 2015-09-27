@@ -19,7 +19,7 @@ player addWeapon "rhs_weap_m4a1_carryhandle";
  
 
 if (s_loadout_radio != 3) then {
-	player addBackpack "tf_rt1523g_big_bwmod_tropen";
+	player addBackpack "tf_rt1523g_big_bwmod";
 	player linkItem "ItemRadio";
 } else {
 	player addBackpack "rhsusf_assault_eagleaiii_coy";

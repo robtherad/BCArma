@@ -16,7 +16,7 @@ for "_i" from 1 to 5 do {player addItemToVest "rhs_mag_30Rnd_556x45_M855A1_Stana
 for "_i" from 1 to 4 do {player addItemToVest "rhs_mag_m18_red";};
 
 if ((s_loadout_radio == 0) or (s_loadout_radio == 1)) then {
-	player addBackpack "tf_rt1523g_big_bwmod_tropen";
+	player addBackpack "tf_rt1523g_big_bwmod";
 	player addItemToBackpack "rhsusf_100Rnd_762x51";
 	player linkItem "ItemRadio";
 } else {
