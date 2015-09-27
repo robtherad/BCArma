@@ -28,9 +28,8 @@ Call this script on ALL CLIENTS in bc_init.sqf by using the following line:
 //Local script, dedicated server not needed
 if (isDedicated) exitWith {};
 //Check to see if mission parameters have markers enabled - Default OFF
-_useMarkers = ["s_gps_markers",0] call BIS_fnc_getParamValue;
+_useMarkers = ["s_gps_markers",1] call BIS_fnc_getParamValue;
 if (_useMarkers == 0) exitWith {};
-
 
 _westVehArray = nil;
 _eastVehArray = nil;
@@ -46,7 +45,8 @@ iteration = 0;
 	_markerFaction = switch (faction player) do {
 		case "BLU_F": { ["ColorBLUFOR","b_inf","b_hq"] };
 		case "OPF_F": { ["ColorOPFOR","o_inf","o_hq"] };
-		case "IND_F": { ["ColorINDFOR","n_inf","n_hq"] };
+		case "IND_F": { ["ColorGUER","n_inf","n_hq"] };
+		default { ["ColorCivilian","mil_box","mil_triangle"] };
 	};
 	_marker = createMarkerLocal [_markerName,_markerPos];
 	_marker setMarkerShapeLocal "ICON";
@@ -71,6 +71,7 @@ if (!isNil "_westVehArray") then {
 			case "BLU_F": { ["ColorBLUFOR","b_armor"] };
 			case "OPF_F": { ["ColorOPFOR","o_armor"] };
 			case "IND_F": { ["ColorINDFOR","n_armor"] };
+			default { ["ColorCivilian","hd_dot"] };
 		};
 		_marker = createMarkerLocal [_markerName,_markerPos];
 		_marker setMarkerShapeLocal "ICON";
@@ -95,6 +96,7 @@ if (!isNil "_eastVehArray") then {
 			case "BLU_F": { ["ColorBLUFOR","b_armor"] };
 			case "OPF_F": { ["ColorOPFOR","o_armor"] };
 			case "IND_F": { ["ColorINDFOR","n_armor"] };
+			default { ["ColorCivilian","hd_dot"] };
 		};
 		_marker = createMarkerLocal [_markerName,_markerPos];
 		_marker setMarkerShapeLocal "ICON";

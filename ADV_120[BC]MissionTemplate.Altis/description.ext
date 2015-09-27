@@ -74,8 +74,8 @@ class Params
 	{
 		title = "GPS Map Markers:";
 		values[] = {0,1};
-		texts[] = {"Disabled (default)","Enabled"};
-		default = 0;
+		texts[] = {"Disabled","Enabled (default)"};
+		default = 1;
 	};
 };
 
