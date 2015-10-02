@@ -38,3 +38,6 @@ showSubtitles false;
 enableSentences false;
 enableRadio false;
 player disableConversation true;
+
+//Experimental Command
+disableRemoteSensors true;
