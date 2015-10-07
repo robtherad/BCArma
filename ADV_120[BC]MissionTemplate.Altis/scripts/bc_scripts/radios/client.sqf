@@ -7,8 +7,8 @@ waitUntil { !isNil "bluforBaseChannel"; };
 //Figure out which side the player is on. 
 _side = side player;
 switch (_side) do {
-    case east: { playerBaseChannel = opforBaseChannel; titleText [format["opforBaseChannel = %1\nbluforBaseChannel = %2",opforBaseChannel,bluforBaseChannel], "plain"]; };
-    case west: { playerBaseChannel = bluforBaseChannel; titleText [format["opforBaseChannel = %1\nbluforBaseChannel = %2",opforBaseChannel,bluforBaseChannel], "plain"]; };
+    case east: { playerBaseChannel = opforBaseChannel; };
+    case west: { playerBaseChannel = bluforBaseChannel; };
 };
 //Error message
 if(isNil "playerBaseChannel") exitWith {hint "Error! Default radio channels will not be set!"};
