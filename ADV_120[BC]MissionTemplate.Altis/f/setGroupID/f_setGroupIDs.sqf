@@ -11,47 +11,47 @@ _groups = [
 // GROUP IDs: BLUFOR > NATO
 // Automatically assigns intelligible names to groups
 // GrpBlue_HQ
-["Blue_HQ","Command"],
+["Blue_HQ","HQ"],
 
-["Blue_A","Alpha"],
-["Blue_A1","Alpha - One"],
-["Blue_A2","Alpha - Two"],
+["Blue_A","A SL"],
+["Blue_A1","A1"],
+["Blue_A2","A2"],
 
-["Blue_B","Bravo"],
-["Blue_B1","Bravo - One"],
-["Blue_B2","Bravo - Two"],
+["Blue_B","B SL"],
+["Blue_B1","B1"],
+["Blue_B2","B2"],
 
-["Blue_C","Charlie"],
-["Blue_C1","Charlie - One"],
-["Blue_C2","Charlie - Two"],
+["Blue_C","C SL"],
+["Blue_C1","C1"],
+["Blue_C2","C2"],
 
-["Blue_D","Delta"],
-["Blue_D1","Delta - One"],
-["Blue_D2","Delta - Two"],
-["Blue_D3","Delta - Three"],
-["Blue_D4","Delta - Four"],
+["Blue_D","MMG SL"],
+["Blue_D1","MMG1"],
+["Blue_D2","MMG2"],
+["Blue_D3","MMG3"],
+["Blue_D4","MMG4"],
 
 // Red team's turn
 
-["Red_HQ","Command"],
+["Red_HQ","HQ"],
 
-["Red_E","Echo"],
-["Red_E1","Echo - One"],
-["Red_E2","Echo - Two"],
+["Red_E","E"],
+["Red_E1","E1"],
+["Red_E2","E2"],
 
-["Red_F","Foxtrot"],
-["Red_F1","Foxtrot - One"],
-["Red_F2","Foxtrot - Two"],
+["Red_F","F"],
+["Red_F1","F1"],
+["Red_F2","F2"],
 
-["Red_G","Golf"],
-["Red_G1","Golf - One"],
-["Red_G2","Golf - Two"],
+["Red_G","G"],
+["Red_G1","G1"],
+["Red_G2","G2"],
 
-["Red_H","Hotel"],
-["Red_H1","Hotel - One"],
-["Red_H2","Hotel - Two"],
-["Red_H3","Hotel - Three"],
-["Red_H4","Hotel - Four"]
+["Red_H","MMG"],
+["Red_H1","MMG1"],
+["Red_H2","MMG2"],
+["Red_H3","MMG3"],
+["Red_H4","MMG4"]
 
 // Always make sure there's no comma after the last entry!
 
