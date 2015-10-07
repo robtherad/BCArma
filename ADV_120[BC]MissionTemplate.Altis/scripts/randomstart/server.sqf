@@ -1,13 +1,17 @@
 /*
 This script will allow a team to be randomly placed at one of any predetermined markers. 
 
-For this script to be effective you will need at least three markers. One marker must be called 'placemark' and must be placed near the team that you wish to be moved. The other two markers can be called anything you want but they must be defined in the server.sqf file in the _markerArray on line 14. If you wish to change the team being moved, change the _ranTeam variable on line 14 in the client.sqf file.
+For this script to be effective you will need at least three markers. One marker must be called 'placemark' and must be placed near the team that you wish to be moved. The other two markers can be called anything you want but they must be defined in the server.sqf file in the _markerArray on line 18. If you wish to change the team being moved, change the _ranTeam variable on line 18 in the client.sqf file.
 
 This file is run on the server to randomly select a marker from an array of markers. Once a marker is randomly selected the name of the marker is broadcast to all clients.
 
-Call this file on THE SERVER from initServer.sqf using the command below.
+Call this file on THE SERVER from init.sqf using the command below.
 
 [] execVM "scripts\randomstart\server.sqf";
+
+DO NOT FORGET TO CALL THE CLIENT SIDE OF THIS SCRIPT FROM INIT.SQF!
+
+[] execVM "scripts\randomstart\client.sqf";
 */
 if (!isServer) exitWith {};
 //Fill this array with the names of all markers you want to be considered for the randomized start.
