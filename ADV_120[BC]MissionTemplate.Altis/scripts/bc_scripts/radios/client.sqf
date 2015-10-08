@@ -109,8 +109,6 @@ if (_hasSW) then {
 	curSettings = (call TFAR_fnc_activeSwRadio) call TFAR_fnc_getSwSettings;
 	//Set default channel
 	curSettings set [0,curChan];
-	//Set volume
-	curSettings set [1,0.7];
 	//Setup frequencies for channels 1-9
 	chanSettings = curSettings select 2;
 	if (!isNil "ch1") then {chanSettings set [0,str(ch1)];};
