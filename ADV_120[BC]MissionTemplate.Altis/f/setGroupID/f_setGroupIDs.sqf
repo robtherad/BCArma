@@ -35,19 +35,19 @@ _groups = [
 
 ["Red_HQ","HQ"],
 
-["Red_E","E"],
+["Red_E","E SL"],
 ["Red_E1","E1"],
 ["Red_E2","E2"],
 
-["Red_F","F"],
+["Red_F","F SL"],
 ["Red_F1","F1"],
 ["Red_F2","F2"],
 
-["Red_G","G"],
+["Red_G","G SL"],
 ["Red_G1","G1"],
 ["Red_G2","G2"],
 
-["Red_H","MMG"],
+["Red_H","MMG SL"],
 ["Red_H1","MMG1"],
 ["Red_H2","MMG2"],
 ["Red_H3","MMG3"],
