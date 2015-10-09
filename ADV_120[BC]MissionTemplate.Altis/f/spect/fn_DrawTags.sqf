@@ -10,9 +10,12 @@ if(!f_cam_toggleTags || f_cam_mapMode == 2 ) exitWith{};
 	{
 		_distToCam = (call f_cam_GetCurrentCam) distance _x;
 		if(isPlayer _x) then {_isPlayerGroup = true};
-		if(_distToCam < 200) then
+		if(_distToCam < 250) then
 		{
 			_drawUnits pushBack _x;
+			if (_distToCam < 200) then {
+				_drawGroup = true;
+			};
 		}
 		else
 		{
@@ -40,7 +43,7 @@ if(!f_cam_toggleTags || f_cam_mapMode == 2 ) exitWith{};
 			_str = (toString(toArray(groupID (_x)) - [45]));
 			_x setVariable ["f_cam_nicename",_str];
 		};
-		drawIcon3D ["\A3\ui_f\data\map\markers\nato\b_inf.paa", _color,[_visPos select 0,_visPos select 1,(_visPos select 2) +30], 1, 1, 0,_str, 2, 0.02];
+		drawIcon3D ["\A3\ui_f\data\map\markers\nato\b_inf.paa", _color,[_visPos select 0,_visPos select 1,(_visPos select 2) +30], 1, 1, 0,_str, 2, 0.03, "TahomaB"];
 	};
 
 	{
@@ -48,14 +51,14 @@ if(!f_cam_toggleTags || f_cam_mapMode == 2 ) exitWith{};
 		{
 			_visPos = getPosATLVisual _x;
 			if(surfaceIsWater _visPos) then  {_visPos = getPosASLVisual _x;};
-			_color set [3,0.6];
+			_color set [3,0.9];
 			_str = "";
 			_icon = "\A3\ui_f\data\map\markers\military\dot_CA.paa";
 			if(isPlayer _x) then
 			{
 				_str = name _x;
 			};
-			drawIcon3D [_icon, _color,[_visPos select 0,_visPos select 1,(_visPos select 2) +3], 0.7, 0.7, 0,_str, 1, 0.02];
+			drawIcon3D [_icon, _color,[_visPos select 0,_visPos select 1,(_visPos select 2) +3], 0.7, 0.7, 0,_str, 2, 0.03, "TahomaB"];
 		};
 	} foreach _drawUnits;
 
