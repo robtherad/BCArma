@@ -1,5 +1,6 @@
 // F3 - ORBAT Notes
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// This script has been modified from it's original form.
 // ====================================================================================
 
 // This script will automatically generate an ORBAT page.
@@ -12,6 +13,24 @@ _orbatText = "<br />NOTE: The ORBAT below is only accurate at mission start.<br 
 <font size='18'>GROUP LEADERS + MEDICS</font><br /><br />";
 _groups = [];
 
+waitUntil { !isNil "opforBaseChannel"; };
+waitUntil { !isNil "bluforBaseChannel"; };
+
+_groupIDs = [
+// BLUFOR
+["Blue_HQ",bluforBaseChannel],
+["Blue_A",bluforBaseChannel+1],["Blue_A1",bluforBaseChannel+1.1],["Blue_A2",bluforBaseChannel+1.2],
+["Blue_B",bluforBaseChannel+2],["Blue_B1",bluforBaseChannel+2.1],["Blue_B2",bluforBaseChannel+2.2],
+["Blue_C",bluforBaseChannel+3],["Blue_C1",bluforBaseChannel+3.1],["Blue_C2",bluforBaseChannel+3.2],
+["Blue_D",bluforBaseChannel+4],["Blue_D1",bluforBaseChannel+4.1],["Blue_D2",bluforBaseChannel+4.2],["Blue_D3",bluforBaseChannel+4.3],["Blue_D4",bluforBaseChannel+4.4],
+
+// REDFOR
+["Red_HQ",bluforBaseChannel],
+["Red_E",bluforBaseChannel+1],["Red_E1",bluforBaseChannel+1.1],["Red_E2",bluforBaseChannel+1.2],
+["Red_F",bluforBaseChannel+2],["Red_F1",bluforBaseChannel+2.1],["Red_F2",bluforBaseChannel+2.2],
+["Red_G",bluforBaseChannel+3],["Red_G1",bluforBaseChannel+3.1],["Red_G2",bluforBaseChannel+3.2],
+["Red_H",bluforBaseChannel+4],["Red_H1",bluforBaseChannel+4.1],["Red_H2",bluforBaseChannel+4.2],["Red_H3",bluforBaseChannel+4.3],["Red_H4",bluforBaseChannel+4.4]
+];
 {
 	// Add to ORBAT if side matches, group isn't already listed, and group has players
 	if ((side _x == _side) && !(_x in _groups) && ({_x in playableUnits} count units _x) > 0) then {
@@ -33,8 +52,18 @@ _groups = [];
  		};
 	};
 
-	_orbatText = _orbatText + format ["<font color='%3'>(%4 men) <b>%1</b> -- %2</font>", groupId _x, name leader _x,_color,count (units _x)] + "<br />";
-
+	_wrkGroup = _x;
+	{
+		_grp = missionNamespace getVariable[(_x select 0),grpNull];
+		if (_grp == _wrkGroup) exitWith {freq = _x select 1;};
+	} forEach _groupIDs;
+	//Use BC_LongName but default to groupID if it's not defined
+	_longName = _x getVariable ["BC_LongName",groupID _x];
+	if (isNil "freq") then {
+		_orbatText = _orbatText + format ["<font color='%3'>(%4 men) <b>%1</b> -- %2</font>", _longName, name leader _x,_color,count (units _x)] + "<br />";
+	} else {
+		_orbatText = _orbatText + format ["<font color='%3'>(%4 men) <b>%5 MHz -- %1</b> -- %2</font>", _longName, name leader _x,_color,count (units _x),freq] + "<br />";
+	};
 	// List medics too.
 	{
 		if (getNumber (configFile >> "CfgVehicles" >> typeOf _x >> "attendant") == 1 && {_x != leader group _x}) then {

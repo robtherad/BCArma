@@ -1,5 +1,6 @@
 // F3 Set Group IDs
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// This script has been modified from it's original form.
 // ====================================================================================
 
 // OPEN THE ARRAY CONTAING ALL GROUPS
@@ -7,51 +8,52 @@
 _groups = [
 
 // ====================================================================================
-
-// GROUP IDs: BLUFOR > NATO
 // Automatically assigns intelligible names to groups
-// GrpBlue_HQ
-["Blue_HQ","HQ"],
+// format: [group,groupID,BC_LongName]
 
-["Blue_A","A SL"],
-["Blue_A1","A1"],
-["Blue_A2","A2"],
 
-["Blue_B","B SL"],
-["Blue_B1","B1"],
-["Blue_B2","B2"],
+// BLUFOR
+["Blue_HQ","HQ","Headquarters"],
 
-["Blue_C","C SL"],
-["Blue_C1","C1"],
-["Blue_C2","C2"],
+["Blue_A","A SL","Alpha Squad"],
+["Blue_A1","A1","Alpha One"],
+["Blue_A2","A2","Alpha Two"],
 
-["Blue_D","MMG SL"],
-["Blue_D1","MMG1"],
-["Blue_D2","MMG2"],
-["Blue_D3","MMG3"],
-["Blue_D4","MMG4"],
+["Blue_B","B SL","Bravo Squad"],
+["Blue_B1","B1","Bravo One"],
+["Blue_B2","B2","Bravo Two"],
 
-// Red team's turn
+["Blue_C","C SL","Charlie Squad"],
+["Blue_C1","C1","Charlie One"],
+["Blue_C2","C2","Charlie Two"],
 
-["Red_HQ","HQ"],
+["Blue_D","D SL","Delta Squad"],
+["Blue_D1","D1","Delta One"],
+["Blue_D2","D2","Delta Two"],
+["Blue_D3","D3","Delta Three"],
+["Blue_D4","D4","Delta Four"],
 
-["Red_E","E SL"],
-["Red_E1","E1"],
-["Red_E2","E2"],
 
-["Red_F","F SL"],
-["Red_F1","F1"],
-["Red_F2","F2"],
+// REDFOR
+["Red_HQ","HQ","Headquarters"],
 
-["Red_G","G SL"],
-["Red_G1","G1"],
-["Red_G2","G2"],
+["Red_E","E SL","Echo Squad"],
+["Red_E1","E1","Echo One"],
+["Red_E2","E2","Echo Two"],
 
-["Red_H","MMG SL"],
-["Red_H1","MMG1"],
-["Red_H2","MMG2"],
-["Red_H3","MMG3"],
-["Red_H4","MMG4"]
+["Red_F","F SL","Foxtrot Squad"],
+["Red_F1","F1","Foxtrot One"],
+["Red_F2","F2","Foxtrot Two"],
+
+["Red_G","G SL","Golf Squad"],
+["Red_G1","G1","Golf One"],
+["Red_G2","G2","Golf Two"],
+
+["Red_H","H SL","Hotel Squad"],
+["Red_H1","H1","Hotel One"],
+["Red_H2","H2","Hotel Two"],
+["Red_H3","H3","Hotel Three"],
+["Red_H4","H4","Hotel Four"]
 
 // Always make sure there's no comma after the last entry!
 
@@ -71,5 +73,6 @@ private ["_grp"];
     _grp = missionNamespace getVariable[(_x select 0),grpNull];
     if(!isNull _grp) then {
         _grp setGroupId [(_x select 1),"GroupColor0"];
+		_grp setVariable ["BC_LongName",_x select 2];
     };
 } forEach _groups;
