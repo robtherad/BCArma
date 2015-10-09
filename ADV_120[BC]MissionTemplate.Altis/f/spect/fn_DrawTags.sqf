@@ -13,7 +13,7 @@ if(!f_cam_toggleTags || f_cam_mapMode == 2 ) exitWith{};
 		if(_distToCam < 250) then
 		{
 			_drawUnits pushBack _x;
-			if (_distToCam < 200) then {
+			if (_distToCam > 200) then {
 				_drawGroup = true;
 			};
 		}
