@@ -40,7 +40,7 @@ if(!f_cam_toggleTags || f_cam_mapMode == 2 ) exitWith{};
 		};
 		_str = _x getVariable ["f_cam_nicename",""];
 		if(_str == "") then {
-			_str = (toString(toArray(groupID (_x)) - [45]));
+			_str = (toString(toArray(_x getVariable ["BC_LongName",(groupID _x)]) - [45]));
 			_x setVariable ["f_cam_nicename",_str];
 		};
 		drawIcon3D ["\A3\ui_f\data\map\markers\nato\b_inf.paa", _color,[_visPos select 0,_visPos select 1,(_visPos select 2) +30], 1, 1, 0,_str, 2, 0.03, "TahomaB"];
