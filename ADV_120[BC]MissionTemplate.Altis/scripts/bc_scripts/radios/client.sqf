@@ -5,7 +5,7 @@ if(isDedicated) exitWith {};
 bcRadioScriptRunning = true;
 waitUntil { !isNil "opforBaseChannel"; };
 waitUntil { !isNil "bluforBaseChannel"; };
-
+titleText ["Radio channels should be set up in 5 seconds. Please be patient.","PLAIN DOWN"];
 //Figure out which side the player is on. 
 _side = side player;
 switch (_side) do {
@@ -85,8 +85,12 @@ player createDiaryRecord ["diary", ["[BC] Radio Settings", radioNoteString]];
 
 
 //sleep because none of the TFAR functions will work until radios are assigned by the server
-if(!isMultiplayer) exitWith {hint "Default radio script only works in multiplayer. Exiting."};
+if(!isMultiplayer) exitWith {
+hint "Default radio script only works in multiplayer. Exiting.";
+titleText ["Default radio script only works in multiplayer. Exiting.","PLAIN DOWN",0.5];
+};
 sleep 5;
+titleText ["Radio channels should have been set. Good luck!","PLAIN DOWN",0.5];
 hint "Radio channels should have been set. Good luck!";
 
 //See which radio types the player has
