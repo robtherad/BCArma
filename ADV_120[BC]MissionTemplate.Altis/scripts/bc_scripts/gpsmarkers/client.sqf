@@ -33,7 +33,7 @@ if (_useMarkers == 0) exitWith {};
 
 _westVehArray = nil;
 _eastVehArray = nil;
-_hqArray = ["Command","Alpha","Bravo","Charlie","Delta","Echo","Foxtrot","Golf","Hotel"];
+_hqArray = ["HQ","A SL","B SL","C SL","D SL","E SL","F SL","G SL","H SL"];
 iteration = 0;
 
 //CREATE NEW MARKERS

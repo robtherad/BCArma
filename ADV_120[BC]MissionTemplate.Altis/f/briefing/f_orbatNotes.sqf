@@ -25,11 +25,11 @@ _groupIDs = [
 ["Blue_D",bluforBaseChannel+4],["Blue_D1",bluforBaseChannel+4.1],["Blue_D2",bluforBaseChannel+4.2],["Blue_D3",bluforBaseChannel+4.3],["Blue_D4",bluforBaseChannel+4.4],
 
 // REDFOR
-["Red_HQ",bluforBaseChannel],
-["Red_E",bluforBaseChannel+1],["Red_E1",bluforBaseChannel+1.1],["Red_E2",bluforBaseChannel+1.2],
-["Red_F",bluforBaseChannel+2],["Red_F1",bluforBaseChannel+2.1],["Red_F2",bluforBaseChannel+2.2],
-["Red_G",bluforBaseChannel+3],["Red_G1",bluforBaseChannel+3.1],["Red_G2",bluforBaseChannel+3.2],
-["Red_H",bluforBaseChannel+4],["Red_H1",bluforBaseChannel+4.1],["Red_H2",bluforBaseChannel+4.2],["Red_H3",bluforBaseChannel+4.3],["Red_H4",bluforBaseChannel+4.4]
+["Red_HQ",opforBaseChannel],
+["Red_E",opforBaseChannel+1],["Red_E1",opforBaseChannel+1.1],["Red_E2",opforBaseChannel+1.2],
+["Red_F",opforBaseChannel+2],["Red_F1",opforBaseChannel+2.1],["Red_F2",opforBaseChannel+2.2],
+["Red_G",opforBaseChannel+3],["Red_G1",opforBaseChannel+3.1],["Red_G2",opforBaseChannel+3.2],
+["Red_H",opforBaseChannel+4],["Red_H1",opforBaseChannel+4.1],["Red_H2",opforBaseChannel+4.2],["Red_H3",opforBaseChannel+4.3],["Red_H4",opforBaseChannel+4.4]
 ];
 {
 	// Add to ORBAT if side matches, group isn't already listed, and group has players
