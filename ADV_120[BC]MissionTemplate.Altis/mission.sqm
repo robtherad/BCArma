@@ -143,7 +143,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					init="_this = [objNull,objNull,0,0,true] execVM ""f\spect\fn_CamInit.sqf"";";
+					init="_this = [this,objNull,0,0,true] execVM ""f\spect\fn_CamInit.sqf"";";
 				};
 			};
 		};
@@ -164,7 +164,7 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					init="_this = [objNull,objNull,0,0,true] execVM ""f\spect\fn_CamInit.sqf"";";
+					init="_this = [this,objNull,0,0,true] execVM ""f\spect\fn_CamInit.sqf"";";
 				};
 			};
 		};
