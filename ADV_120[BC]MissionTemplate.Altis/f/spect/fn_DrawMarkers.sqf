@@ -32,9 +32,9 @@ if (!isNil "sectorControl") then {
 			_color = switch (_owner) do {
 				case 0: {f_cam_blufor_color};
 				case 1: {f_cam_opfor_color};
-				case 2: {[0.75,0.75,0.75,1]};
-				case 3: {[0.75,0.75,0.75,1]};
-				default {[0.75,0.75,0.75,1]};
+				case 2: {f_cam_gray_color};
+				case 3: {f_cam_gray_color};
+				default {f_cam_gray_color};
 			};
 			_color set [3,1];
 			iconName = triggerText _x;
