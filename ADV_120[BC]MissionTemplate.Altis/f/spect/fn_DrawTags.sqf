@@ -43,7 +43,7 @@ if(!f_cam_toggleTags || f_cam_mapMode == 2 ) exitWith{};
 			_str = (toString(toArray(_x getVariable ["BC_LongName",(groupID _x)]) - [45]));
 			_x setVariable ["f_cam_nicename",_str];
 		};
-		drawIcon3D ["\A3\ui_f\data\map\markers\nato\b_inf.paa", _color,[_visPos select 0,_visPos select 1,(_visPos select 2) +30], 1, 1, 0,_str, 2, 0.03, "TahomaB"];
+		drawIcon3D ["\A3\ui_f\data\map\markers\nato\b_inf.paa", _color,[_visPos select 0,_visPos select 1,(_visPos select 2) +30], 1, 1, 0,_str, 2, 0.025, "TahomaB"];
 	};
 
 	{
@@ -58,9 +58,33 @@ if(!f_cam_toggleTags || f_cam_mapMode == 2 ) exitWith{};
 			{
 				_str = name _x;
 			};
-			drawIcon3D [_icon, _color,[_visPos select 0,_visPos select 1,(_visPos select 2) +3], 0.7, 0.7, 0,_str, 2, 0.03, "TahomaB"];
+			drawIcon3D [_icon, _color,[_visPos select 0,_visPos select 1,(_visPos select 2) +3], 0.7, 0.7, 0,_str, 2, 0.025, "TahomaB"];
 		};
 	} foreach _drawUnits;
 
 
 } forEach allGroups;
+if (!isNil "sectorControl") then {
+	if (sectorControl) then {
+		{ //forEach triggerArray;
+			_owner = _x getVariable "curOwner";
+			_color = switch (_owner) do {
+				case 0: {f_cam_blufor_color};
+				case 1: {f_cam_opfor_color};
+				case 2: {[0.75,0.75,0.75,1]};
+				case 3: {[0.75,0.75,0.75,1]};
+				default {[0.75,0.75,0.75,1]};
+			};
+			_color set [3,1];
+			iconName = triggerText _x;
+			switch (_owner) do {
+				case 0: {iconName = str(iconName) + " - BLUFOR";};
+				case 1: {iconName = str(iconName) + " - OPFOR";};
+				case 2: {iconName = str(iconName) + " - CONTESTED";};
+				case 3: {iconName = str(iconName) + " - Neutral";};
+				default {iconName = str(iconName) + " - ERROR";};
+			};
+			drawIcon3D ["\A3\ui_f\data\map\markers\military\flag_ca.paa",_color,getpos _x ,1,1,0,iconName,2,0.03,"TahomaB"];
+		} forEach triggerArray;
+	};
+};
