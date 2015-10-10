@@ -67,7 +67,7 @@ if(!f_cam_toggleTags || f_cam_mapMode == 2 ) exitWith{};
 if (!isNil "sectorControl") then {
 	if (sectorControl) then {
 		{ //forEach triggerArray;
-			_owner = _x getVariable "curOwner";
+			_owner = _x getVariable "lastOwner";
 			_color = switch (_owner) do {
 				case 0: {f_cam_blufor_color};
 				case 1: {f_cam_opfor_color};

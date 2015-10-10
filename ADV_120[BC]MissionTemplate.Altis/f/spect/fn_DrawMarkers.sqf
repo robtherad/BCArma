@@ -28,7 +28,7 @@ _fullmapWindow drawIcon ["\A3\ui_f\data\GUI\Rsc\RscDisplayMissionEditor\iconCame
 if (!isNil "sectorControl") then {
 	if (sectorControl) then {
 		{ //forEach triggerArray;
-			_owner = _x getVariable "curOwner";
+			_owner = _x getVariable "lastOwner";
 			_color = switch (_owner) do {
 				case 0: {f_cam_blufor_color};
 				case 1: {f_cam_opfor_color};
