@@ -26,6 +26,7 @@ playing = 1;
 pointsCounter = 1;
 sectorControl = true;
 publicVariable "sectorControl";
+[[[], "scripts\sectors\clientListen.sqf"], "BIS_fnc_execVM"] call BIS_fnc_MP;
 
 if (isNil "quickestTime") then {
 	//Time in minutes it would take to win if one team owned all points uncontested
