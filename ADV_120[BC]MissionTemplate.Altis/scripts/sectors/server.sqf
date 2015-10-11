@@ -15,8 +15,9 @@ Call this script on THE SERVER in initServer.sqf with the line
 */
 if (!isServer) exitWith {};
 
+
 triggerArray = [cap1,cap2,cap3];
-publicVariable "triggerArray";
+publicVariable "triggerArray"; //Used in f\spect\fn_DrawTags.sqf and fn_DrawMarkers.sqf
 
 //initialize variables
 iteration = 0;
@@ -25,7 +26,7 @@ eastPoints = 0;
 playing = 1;
 pointsCounter = 1;
 sectorControl = true;
-publicVariable "sectorControl";
+publicVariable "sectorControl"; //Used to check if sector control module is running or not
 [[[], "scripts\sectors\clientListen.sqf"], "BIS_fnc_execVM"] call BIS_fnc_MP;
 
 if (isNil "quickestTime") then {
@@ -147,8 +148,8 @@ while{playing == 1} do {
 	opfText = "OPFOR - " + str(eastPoints) + " / " + str(endPoints) + " - (" + str(_opfPercent) + "%)";	
 	"bluPointsMark" setMarkerText bluText;
 	"opPointsMark" setMarkerText opfText;
-	publicVariable "bluText";
-	publicVariable "opfText";
+	publicVariable "bluText"; //Used in sectors\clientListen.sqf
+	publicVariable "opfText"; //Used in sectors\clientListen.sqf
 	
 	//Throw a reminder hint at key point values
 	if ((westPoints >= ((endPoints / 4) * pointsCounter)) || (eastPoints >= ((endPoints / 8) * pointsCounter))) then {

@@ -20,16 +20,16 @@ ch1 = playerBaseChannel; //All players will be able to switch to channel 1 to ge
 //Use player's groupID to find out what element he's in. Use that to set up his default radio channels.
 switch (groupID (group player)) do {
 	case "HQ": {ch2 = playerBaseChannel + 1;  ch3 = playerBaseChannel + 2; ch4 = playerBaseChannel + 3; ch5 = playerBaseChannel + 4; ch6 = playerBaseChannel + .1; curChan = 1; altChan = 6;};
-	case "A SL": { ch2 = playerBaseChannel + 1; ch3 = playerBaseChannel + 1.1; ch4 = playerBaseChannel + 1.2; curChan = 2; altChan = 1;};
+	case "A": { ch2 = playerBaseChannel + 1; ch3 = playerBaseChannel + 1.1; ch4 = playerBaseChannel + 1.2; curChan = 2; altChan = 1;};
 	case "A1": { ch2 = playerBaseChannel + 1; ch3 = playerBaseChannel + 1.1; ch4 = playerBaseChannel + 1.2; curChan = 3; altChan = 2;};
 	case "A2": { ch2 = playerBaseChannel + 1; ch3 = playerBaseChannel + 1.1; ch4 = playerBaseChannel + 1.2; curChan = 4; altChan = 2;};
-	case "B SL": {ch2 = playerBaseChannel + 2; ch3 = playerBaseChannel + 2.1; ch4 = playerBaseChannel + 2.2; curChan = 2; altChan = 1;};
+	case "B": {ch2 = playerBaseChannel + 2; ch3 = playerBaseChannel + 2.1; ch4 = playerBaseChannel + 2.2; curChan = 2; altChan = 1;};
 	case "B1": { ch2 = playerBaseChannel + 2; ch3 = playerBaseChannel + 2.1; ch4 = playerBaseChannel + 2.2; curChan = 3; altChan = 2;};
 	case "B2": { ch2 = playerBaseChannel + 2; ch3 = playerBaseChannel + 2.1; ch4 = playerBaseChannel + 2.2; curChan = 4; altChan = 2;};
-	case "C SL": { ch2 = playerBaseChannel + 3; ch3 = playerBaseChannel + 3.1; ch4 = playerBaseChannel + 3.2; curChan = 2; altChan = 1;};
+	case "C": { ch2 = playerBaseChannel + 3; ch3 = playerBaseChannel + 3.1; ch4 = playerBaseChannel + 3.2; curChan = 2; altChan = 1;};
 	case "C1": { ch2 = playerBaseChannel + 3; ch3 = playerBaseChannel + 3.1; ch4 = playerBaseChannel + 3.2; curChan = 3; altChan = 2;};
 	case "C2": { ch2 = playerBaseChannel + 3; ch3 = playerBaseChannel + 3.1; ch4 = playerBaseChannel + 3.2; curChan = 4; altChan = 2;};
-	case "D SL": { ch2 = playerBaseChannel + 4; ch3 = playerBaseChannel + 4.1; ch4 = playerBaseChannel + 4.2; curChan = 2; altChan = 1;};
+	case "D": { ch2 = playerBaseChannel + 4; ch3 = playerBaseChannel + 4.1; ch4 = playerBaseChannel + 4.2; curChan = 2; altChan = 1;};
 	case "D1": { ch2 = playerBaseChannel + 4; ch3 = playerBaseChannel + 4.1;curChan = 3; altChan = 2;};
 	case "D2": { ch2 = playerBaseChannel + 4; ch3 = playerBaseChannel + 4.2;curChan = 3; altChan = 2;};
 	case "D3": { ch2 = playerBaseChannel + 4; ch3 = playerBaseChannel + 4.3;curChan = 3; altChan = 2;};
@@ -37,16 +37,16 @@ switch (groupID (group player)) do {
 	
 	
 	case "HQ": {ch2 = playerBaseChannel + 1;  ch3 = playerBaseChannel + 2; ch4 = playerBaseChannel + 3; ch5 = playerBaseChannel + 4; ch6 = playerBaseChannel + .1; curChan = 1; altChan = 6;};
-	case "E SL": { ch2 = playerBaseChannel + 1; ch3 = playerBaseChannel + 1.1; ch4 = playerBaseChannel + 1.2; curChan = 2; altChan = 1;};
+	case "E": { ch2 = playerBaseChannel + 1; ch3 = playerBaseChannel + 1.1; ch4 = playerBaseChannel + 1.2; curChan = 2; altChan = 1;};
 	case "E1": { ch2 = playerBaseChannel + 1; ch3 = playerBaseChannel + 1.1; ch4 = playerBaseChannel + 1.2; curChan = 3; altChan = 2;};
 	case "E2": { ch2 = playerBaseChannel + 1; ch3 = playerBaseChannel + 1.1; ch4 = playerBaseChannel + 1.2; curChan = 4; altChan = 2;};
-	case "F SL": {ch2 = playerBaseChannel + 2; ch3 = playerBaseChannel + 2.1; ch4 = playerBaseChannel + 2.2; curChan = 2; altChan = 1;};
+	case "F": {ch2 = playerBaseChannel + 2; ch3 = playerBaseChannel + 2.1; ch4 = playerBaseChannel + 2.2; curChan = 2; altChan = 1;};
 	case "F1": { ch2 = playerBaseChannel + 2; ch3 = playerBaseChannel + 2.1; ch4 = playerBaseChannel + 2.2; curChan = 3; altChan = 2;};
 	case "F2": { ch2 = playerBaseChannel + 2; ch3 = playerBaseChannel + 2.1; ch4 = playerBaseChannel + 2.2; curChan = 4; altChan = 2;};
-	case "G SL": { ch2 = playerBaseChannel + 3; ch3 = playerBaseChannel + 3.1; ch4 = playerBaseChannel + 3.2; curChan = 2; altChan = 1;};
+	case "G": { ch2 = playerBaseChannel + 3; ch3 = playerBaseChannel + 3.1; ch4 = playerBaseChannel + 3.2; curChan = 2; altChan = 1;};
 	case "G1": { ch2 = playerBaseChannel + 3; ch3 = playerBaseChannel + 3.1; ch4 = playerBaseChannel + 3.2; curChan = 3; altChan = 2;};
 	case "G2": { ch2 = playerBaseChannel + 3; ch3 = playerBaseChannel + 3.1; ch4 = playerBaseChannel + 3.2; curChan = 4; altChan = 2;};
-	case "H SL": { ch2 = playerBaseChannel + 4; ch3 = playerBaseChannel + 4.1; ch4 = playerBaseChannel + 4.2; curChan = 2; altChan = 1;};
+	case "H": { ch2 = playerBaseChannel + 4; ch3 = playerBaseChannel + 4.1; ch4 = playerBaseChannel + 4.2; curChan = 2; altChan = 1;};
 	case "H1": { ch2 = playerBaseChannel + 4; ch3 = playerBaseChannel + 4.1;curChan = 3; altChan = 2;};
 	case "H2": { ch2 = playerBaseChannel + 4; ch3 = playerBaseChannel + 4.2;curChan = 3; altChan = 2;};
 	case "H3": { ch2 = playerBaseChannel + 4; ch3 = playerBaseChannel + 4.3;curChan = 3; altChan = 2;};
