@@ -25,6 +25,7 @@ _fullmapWindow drawIcon ["\A3\ui_f\data\GUI\Rsc\RscDisplayMissionEditor\iconCame
 	};
 
 } foreach allunits;
+sectorControl = missionNamespace getVariable "sectorControlActive";
 if (!isNil "sectorControl") then {
 	if (sectorControl) then {
 		{ //forEach triggerArray;

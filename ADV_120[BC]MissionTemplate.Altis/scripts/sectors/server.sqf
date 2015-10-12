@@ -26,7 +26,7 @@ eastPoints = 0;
 playing = 1;
 pointsCounter = 1;
 sectorControl = true;
-publicVariable "sectorControl"; //Used to check if sector control module is running or not
+missionNamespace setVariable ["sectorControlActive", true, true]; //Used to check if sector control module is running or not
 [[[], "scripts\sectors\clientListen.sqf"], "BIS_fnc_execVM"] call BIS_fnc_MP;
 
 if (isNil "quickestTime") then {
@@ -64,7 +64,7 @@ endPoints = quickestTime * 60 * (count triggerArray);
 	
 	//Set sector status to neutral for later
 	_x setVariable ["curOwner",3];
-	_x setVariable ["lastOwner",3];
+	_x setVariable ["lastOwner",3,true];
 	iteration = iteration + 1;
 } forEach triggerArray;
 sleep 1;
@@ -93,7 +93,7 @@ while{playing == 1} do {
 			} else {
 				_textMarkerName setMarkerText (triggerText _x + " - BLUFOR Controlled");
 				_bgMarkerName setMarkerColor "ColorBLUFOR";
-				_x setVariable ["lastOwner",sideCurOwned];
+				_x setVariable ["lastOwner",sideCurOwned,true];
 			};
 		};
 		
@@ -105,7 +105,7 @@ while{playing == 1} do {
 			} else {
 				_textMarkerName setMarkerText (triggerText _x + " - OPFOR Controlled");
 				_bgMarkerName setMarkerColor "ColorOPFOR";
-				_x setVariable ["lastOwner",sideCurOwned];
+				_x setVariable ["lastOwner",sideCurOwned,true];
 			};
 		};
 		
@@ -114,7 +114,7 @@ while{playing == 1} do {
 			sideCurOwned = 2;
 			_textMarkerName setMarkerText (triggerText _x + " - CONTESTED");
 			_bgMarkerName setMarkerColor "ColorBlack";
-			_x setVariable ["lastOwner",sideCurOwned];
+			_x setVariable ["lastOwner",sideCurOwned,true];
 		};
 		
 		//Neutral Objective - 3

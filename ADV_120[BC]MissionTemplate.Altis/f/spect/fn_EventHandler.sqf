@@ -346,7 +346,7 @@ case "KeyDown":
             [] spawn f_fnc_HandleCamera;
              _handled = true;
         };
-        case 25:
+        case 25: // P
 		{
             f_cam_muteSpectators = !f_cam_muteSpectators;
             [player, f_cam_muteSpectators] call TFAR_fnc_forceSpectator;

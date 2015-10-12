@@ -64,6 +64,7 @@ if(!f_cam_toggleTags || f_cam_mapMode == 2 ) exitWith{};
 
 
 } forEach allGroups;
+sectorControl = missionNamespace getVariable "sectorControlActive";
 if (!isNil "sectorControl") then {
 	if (sectorControl) then {
 		{ //forEach triggerArray;
