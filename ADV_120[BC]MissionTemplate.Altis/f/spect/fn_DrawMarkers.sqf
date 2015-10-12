@@ -46,7 +46,7 @@ if (!isNil "sectorControl") then {
 				case 3: {iconName = str(iconName) + " - Neutral";};
 				default {iconName = str(iconName) + " - ERROR";};
 			};
-			_fullmapWindow drawIcon ["\A3\ui_f\data\map\markers\military\flag_ca.paa",_color,getpos _x ,20,20,0,iconName,2,0.075,"TahomaB"];
+			_fullmapWindow drawIcon ["\A3\ui_f\data\map\markers\military\flag_ca.paa",_color,getpos _x ,20,20,0,iconName,2];
 		} forEach triggerArray;
 	};
 };
