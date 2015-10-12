@@ -64,6 +64,23 @@ if(!f_cam_toggleTags || f_cam_mapMode == 2 ) exitWith{};
 
 
 } forEach allGroups;
+//UPDATE PLAYER POS SO HE CAN LISTEN TO PLAYERS
+if (!f_cam_muteSpectators) then {
+	if (f_cam_freecamOn) then {
+		player setPos (getPos f_cam_freecamera);
+	} else {
+		player setPos (getPos f_cam_camera);
+	};
+	//hint format ["POS = %1",getPos player];
+	player setVariable ["tf_voiceVolume", 0.0, true];
+} else {
+	player setVariable ["tf_voiceVolume", 1.0, true];
+	if (player distance2D [0,0,0] > 10) then {
+		player setPos [0,0,5];
+		
+	};
+	//hint format ["POS = %1",getPos player];
+};
 sectorControl = missionNamespace getVariable "sectorControlActive";
 if (!isNil "sectorControl") then {
 	if (sectorControl) then {
