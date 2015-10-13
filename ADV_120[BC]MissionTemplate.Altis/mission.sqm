@@ -2758,7 +2758,7 @@ class Mission
 			timeoutMax=5;
 			interruptable=1;
 			age="UNKNOWN";
-			expCond="!((vehicle player) in thisList) && ((typeof player != ""seagull"") || (typeof player != ""VirtualCurator_F"")) && (((getPos player) select 0 >= 20) && ((getPos player) select 1 >= 20)) && (alive player)";
+			expCond="!((vehicle player) in thisList) && ((typeof player != ""seagull"") || (typeof player != ""VirtualCurator_F"")) && (((getPos player) select 0 >= 20) && ((getPos player) select 1 >= 20)) && (alive player) && (isNil ""f_cam_VirtualCreated"")";
 			expActiv="player setDamage 1;  titletext [""You have been punished for leaving the play area."", ""PLAIN""];";
 			class Effects
 			{
@@ -2778,7 +2778,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			name="missionarea";
-			expCond="!((vehicle player) in thisList) && ((typeof player != ""seagull"") || (typeof player != ""VirtualCurator_F"")) && (((getPos player) select 0 >= 20) && ((getPos player) select 1 >= 20)) && (alive player)";
+			expCond="!((vehicle player) in thisList) && ((typeof player != ""seagull"") || (typeof player != ""VirtualCurator_F"")) && (((getPos player) select 0 >= 20) && ((getPos player) select 1 >= 20)) && (alive player) && (isNil ""f_cam_VirtualCreated"")";
 			expActiv="titleText [""You are leaving the play area. Turn back now.\n\nIf you continue on you WILL BE KILLED."", ""PLAIN""];";
 			class Effects
 			{
