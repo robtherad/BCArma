@@ -18,8 +18,10 @@ showSubtitles false; //Apparently when you get a team kill it changes this varia
 
 //Make sure variable 'kills' isn't empty. If so, initialize.
 if (isNil {kills}) then {
-	kills = "You killed: \n";
+	kills = "-    You killed: \n";
 	killCount = 0;
+	kills_struct = [kills, "\n", "<br/>"] call CBA_fnc_replace;
+	missionNamespace setVariable ["bc_kills",kills_struct];
 };
 
 //Player has killed.
@@ -36,16 +38,29 @@ if (vehicle player == _killer) then {
 	killDist = ceil (_killer distance _unit);
 	killCount = killCount + 1;
 	//Build string for use in readout.
-	kills = kills + str(killCount) + ". " + (name _unit) + " (" + str(killDist) + "m)" + friendly + "\n";
+	spacerString = "-    ";
+	kills = kills + spacerString + str(killCount) + ". " + (name _unit) + " (" + str(killDist) + "m)" + friendly + "\n";
+	kills_struct = [kills, "\n", "<br/>"] call CBA_fnc_replace;
+	missionNamespace setVariable ["bc_kills",kills_struct];
 };
 
 //Player has died.
 if (player == _unit) then {
+	//Check for friendly fire
+	if (faction player == faction _killer) then {
+		friendly = " - [FRIENDLY]";
+		if (player == _killer) then {
+			friendly = " - [SELF]";
+		};
+	} else {
+		friendly = "";
+	};
 	//Commence Readout
 	sleep 5; // wait until death stuff is done
-	//hint format ["You were killed by - %1 (%2m)\n\n%3",(name _killer),ceil (_killer distance _unit),kills];
-	systemChat format ["You were killed by - %1 (%2m)",(name _killer),ceil (_killer distance _unit)];
-	systemChat " ";
+	hint "You can check your chat log to see who you were killed by and who you killed. Press your Chat Key so that the chat box at the bottom opens and then you can press PAGE-UP and PAGE-DOWN to scroll through the chat.";	
+	kills = spacerString + "You were killed by - " + (name _unit) + " (" + str(killDist) + "m)" + friendly + "\n-\n" + kills;
+	kills_struct = [kills, "\n", "<br/>"] call CBA_fnc_replace;
+	missionNamespace setVariable ["bc_kills",kills_struct];
 	kills2 = [kills, "\n"] call CBA_fnc_split;
 	{
 		systemChat format ["%1",_x];
