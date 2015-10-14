@@ -57,29 +57,7 @@ if(!f_cam_toggleTags || f_cam_mapMode == 2 ) exitWith{};
 			{
 				_str = name _x;
 			};
-			_textSize = 0.3;
-			_iconSize = 0.75;
-			//PLAYER TAG SCALING - GET SMALLER THE FURTHER AWAY THE TAG IS
-			_distToCam = (call f_cam_GetCurrentCam) distance _x;
-			_maxDist = 250;
-			_minDist = 50;
-			if (((_maxDist-_minDist)/(_distToCam*2)) <= .75) then {
-				_iconSize = ((_maxDist-_minDist)/(_distToCam*2));
-				if (_iconSize <= .35) then {
-					_iconSize = .35;
-				};
-			} else {
-				_iconSize = .75;
-			};
-			if (((_maxDist-_minDist)/(_distToCam*2))*.03 <= .03) then {
-				_textSize = ((_maxDist-_minDist)/(_distToCam*2))*.03;
-				if (((_maxDist-_minDist)/(_distToCam*2))*.03 <= .018) then {
-					_textSize = .018;
-				};
-			} else {
-				_textSize = .03;
-			};
-			drawIcon3D [_icon, _color,[_visPos select 0,_visPos select 1,(_visPos select 2) +3],_iconSize,_iconSize, 0,_str, 2,_textSize, "TahomaB"];
+			drawIcon3D [_icon, _color,[_visPos select 0,_visPos select 1,(_visPos select 2) +3],0.7,0.7, 0,_str, 2,0.025, "TahomaB"];
 		};
 	} foreach _drawUnits;
 

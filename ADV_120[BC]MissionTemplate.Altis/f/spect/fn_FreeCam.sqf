@@ -169,6 +169,13 @@ if (!f_cam_muteSpectators) then {
 		player setVelocity [0, 0, 0];
 	};
 };
+		//hint format ["Simming - %1\nHidden - %2",simulationEnabled player,isObjectHidden player];
+		if (simulationEnabled player) then {
+			//player enableSimulationGlobal false;
+		};
+		if (isObjectHidden player) then {
+			//player hideObjectGlobal true;
+		};
 cameraEffectEnableHUD true;
 showCinemaBorder false;
 // =======================================================================================================================================
