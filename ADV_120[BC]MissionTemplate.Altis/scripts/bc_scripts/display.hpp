@@ -21,10 +21,10 @@ class RscTitles
                 idc = 1001;
                 style = 0x00;
                 lineSpacing = 1;
-				x = safeZoneX + safeZoneW - 0.44 * 3 / 4; 
+				x = safeZoneX + safeZoneW - 0.5 * 3 / 4; 
 				y = safeZoneY + safeZoneH - 0.063;
 				h = 0.03;
-				w = 0.44 * 3 / 4; //w == h
+				w = 0.5 * 3 / 4; //w == h
                 size = 0.020;
                 colorBackground[] = {0,0,0,0.85};
                 colorText[] = {1,1,1,1};
@@ -64,10 +64,10 @@ class RscTitles
                 idc = 1002;
                 style = 0x00;
                 lineSpacing = 1;
-				x = safeZoneX + safeZoneW - 0.44 * 3 / 4; 
+				x = safeZoneX + safeZoneW - 0.5 * 3 / 4; 
 				y = safeZoneY + safeZoneH - 0.033;
 				h = 0.033;
-				w = 0.44 * 3 / 4; //w == h
+				w = 0.5 * 3 / 4; //w == h
                 size = 0.020;
                 colorBackground[] = {0,0,0,0.85};
                 colorText[] = {1,1,1,1};

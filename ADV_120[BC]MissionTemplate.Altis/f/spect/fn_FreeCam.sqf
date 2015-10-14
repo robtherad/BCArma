@@ -157,14 +157,16 @@ if(f_cam_mode == 3) then
 //UPDATE SPECTATOR POS SO HE CAN LISTEN TO PLAYERS
 if (!f_cam_muteSpectators) then {
 	if (f_cam_freecamOn) then {
-		player setPos (getPos f_cam_freecamera);
+		player setPos [(getPos f_cam_freecamera select 0),(getPos f_cam_freecamera select 1),(getPos f_cam_freecamera select 2)+10];
+		player setVelocity [0, 0, 0];
 	} else {
-		player setPos (getPos f_cam_camera);
+		player setPos [(getPos f_cam_camera select 0),(getPos f_cam_camera select 1),(getPos f_cam_camera select 2)+500];
+		player setVelocity [0, 0, 0];
 	};
 } else {
 	if (player distance2D [0,0,0] > 20) then {
 		player setPos [0,0,5];
-		
+		player setVelocity [0, 0, 0];
 	};
 };
 cameraEffectEnableHUD true;

@@ -47,8 +47,7 @@ if(!f_cam_toggleTags || f_cam_mapMode == 2 ) exitWith{};
 	};
 
 	{
-		if(vehicle _x == _x && alive _x || vehicle _x != _x && (crew vehicle _x) select 0 == _x && alive _x) then
-		{
+		if(vehicle _x == _x && alive _x || vehicle _x != _x && (crew vehicle _x) select 0 == _x && alive _x) then {
 			_visPos = getPosATLVisual _x;
 			if(surfaceIsWater _visPos) then  {_visPos = getPosASLVisual _x;};
 			_color set [3,0.9];
@@ -58,7 +57,29 @@ if(!f_cam_toggleTags || f_cam_mapMode == 2 ) exitWith{};
 			{
 				_str = name _x;
 			};
-			drawIcon3D [_icon, _color,[_visPos select 0,_visPos select 1,(_visPos select 2) +3], 0.7, 0.7, 0,_str, 2, 0.025, "TahomaB"];
+			_textSize = 0.3;
+			_iconSize = 0.75;
+			//PLAYER TAG SCALING - GET SMALLER THE FURTHER AWAY THE TAG IS
+			_distToCam = (call f_cam_GetCurrentCam) distance _x;
+			_maxDist = 250;
+			_minDist = 50;
+			if (((_maxDist-_minDist)/(_distToCam*2)) <= .75) then {
+				_iconSize = ((_maxDist-_minDist)/(_distToCam*2));
+				if (_iconSize <= .35) then {
+					_iconSize = .35;
+				};
+			} else {
+				_iconSize = .75;
+			};
+			if (((_maxDist-_minDist)/(_distToCam*2))*.03 <= .03) then {
+				_textSize = ((_maxDist-_minDist)/(_distToCam*2))*.03;
+				if (((_maxDist-_minDist)/(_distToCam*2))*.03 <= .018) then {
+					_textSize = .018;
+				};
+			} else {
+				_textSize = .03;
+			};
+			drawIcon3D [_icon, _color,[_visPos select 0,_visPos select 1,(_visPos select 2) +3],_iconSize,_iconSize, 0,_str, 2,_textSize, "TahomaB"];
 		};
 	} foreach _drawUnits;
 
@@ -68,7 +89,10 @@ if(!f_cam_toggleTags || f_cam_mapMode == 2 ) exitWith{};
 sectorControl = missionNamespace getVariable "sectorControlActive";
 if (!isNil "sectorControl") then {
 	if (sectorControl) then {
+		_iconSize = 0.5;
+		_textSize = 0.03;
 		{ //forEach triggerArray;
+			_distToCam = (call f_cam_GetCurrentCam) distance _x;
 			_owner = _x getVariable "lastOwner";
 			_color = switch (_owner) do {
 				case 0: {f_cam_blufor_color};
@@ -86,7 +110,34 @@ if (!isNil "sectorControl") then {
 				case 3: {iconName = str(iconName) + " - Neutral";};
 				default {iconName = str(iconName) + " - ERROR";};
 			};
-			drawIcon3D ["\A3\ui_f\data\map\markers\military\flag_ca.paa",_color,getpos _x ,1,1,0,iconName,2,0.03,"TahomaB"];
+			//SECTOR TAG SCALING - GET BIGGER THE FURTHER AWAY THE CAMERA IS FROM THE TAG
+			_maxDist = 700;
+			_minDist = 200;
+			if (((_distToCam - _minDist)/(_maxDist-_minDist)) >= .5) then {
+				if (((_distToCam - _minDist)/(_maxDist-_minDist)) <= .75) then {
+					_iconSize = ((_distToCam - _minDist)/(_maxDist-_minDist));
+				} else {
+					_iconSize = .75;
+				};
+			} else {
+				_iconSize = .5;
+			};
+			if (((_distToCam - _minDist)/(_maxDist-_minDist))*.025 >= .02) then {
+				if (((_distToCam - _minDist)/(_maxDist-_minDist))*.025 <= .025) then {
+					_textSize = ((_distToCam - _minDist)/(_maxDist-_minDist))*.025;
+				} else {
+					_textSize = .025;
+				};
+			} else {
+				_textSize = .02;
+			};	
+			//hint format ["_distToCam = %3\n_iconSize = %1\n_textSize = %2",_iconSize,_textSize,_distToCam];
+			if (_distToCam > _maxDist) then {
+				drawIcon3D ["\A3\ui_f\data\map\markers\military\flag_ca.paa",_color,getpos _x ,.75,.75,0,iconName,2,0.025,"TahomaB"];
+			};
+			if (_distToCam < _maxDist) then {
+				drawIcon3D ["\A3\ui_f\data\map\markers\military\flag_ca.paa",_color,getpos _x ,_iconSize,_iconSize,0,iconName,2,_textSize,"TahomaB"];
+			};
 		} forEach triggerArray;
 	};
 };
