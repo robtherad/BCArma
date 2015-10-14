@@ -18,7 +18,7 @@ showSubtitles false; //Apparently when you get a team kill it changes this varia
 
 //Make sure variable 'kills' isn't empty. If so, initialize.
 if (isNil {kills}) then {
-	kills = "-    You killed: \n";
+	kills = "You killed: \n";
 	killCount = 0;
 	kills_struct = [kills, "\n", "<br/>"] call CBA_fnc_replace;
 	missionNamespace setVariable ["bc_kills",kills_struct];
@@ -38,8 +38,7 @@ if (vehicle player == _killer) then {
 	killDist = ceil (_killer distance _unit);
 	killCount = killCount + 1;
 	//Build string for use in readout.
-	spacerString = "-    ";
-	kills = kills + spacerString + str(killCount) + ". " + (name _unit) + " (" + str(killDist) + "m)" + friendly + "\n";
+	kills = kills + str(killCount) + ". " + (name _unit) + " (" + str(killDist) + "m)" + friendly + "\n";
 	kills_struct = [kills, "\n", "<br/>"] call CBA_fnc_replace;
 	missionNamespace setVariable ["bc_kills",kills_struct];
 };
@@ -57,8 +56,8 @@ if (player == _unit) then {
 	};
 	//Commence Readout
 	sleep 5; // wait until death stuff is done
-	hint "You can check your chat log to see who you were killed by and who you killed. Press your Chat Key so that the chat box at the bottom opens and then you can press PAGE-UP and PAGE-DOWN to scroll through the chat.";	
-	kills = spacerString + "You were killed by - " + (name _unit) + " (" + str(killDist) + "m)" + friendly + "\n-\n" + kills;
+	hint "You can check your chat log to see who you were killed by and who you killed.\n\nPress your Chat Key so that the chat box at the bottom opens and then you can press PAGE-UP and PAGE-DOWN to scroll through the chat.";	
+	kills = "You were killed by - " + (name _killer) + " (" + str(killDist) + "m)" + friendly + "\n-\n" + kills;
 	kills_struct = [kills, "\n", "<br/>"] call CBA_fnc_replace;
 	missionNamespace setVariable ["bc_kills",kills_struct];
 	kills2 = [kills, "\n"] call CBA_fnc_split;
