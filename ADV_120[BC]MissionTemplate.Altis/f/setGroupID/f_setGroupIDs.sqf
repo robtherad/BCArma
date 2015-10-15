@@ -15,19 +15,19 @@ _groups = [
 // BLUFOR
 ["Blue_HQ","HQ","Headquarters"],
 
-["Blue_A","A SL","Alpha Squad"],
+["Blue_A","A","Alpha Squad"],
 ["Blue_A1","A1","Alpha One"],
 ["Blue_A2","A2","Alpha Two"],
 
-["Blue_B","B SL","Bravo Squad"],
+["Blue_B","B","Bravo Squad"],
 ["Blue_B1","B1","Bravo One"],
 ["Blue_B2","B2","Bravo Two"],
 
-["Blue_C","C SL","Charlie Squad"],
+["Blue_C","C","Charlie Squad"],
 ["Blue_C1","C1","Charlie One"],
 ["Blue_C2","C2","Charlie Two"],
 
-["Blue_D","D SL","Delta Squad"],
+["Blue_D","D","Delta Squad"],
 ["Blue_D1","D1","Delta One"],
 ["Blue_D2","D2","Delta Two"],
 ["Blue_D3","D3","Delta Three"],
@@ -37,19 +37,19 @@ _groups = [
 // REDFOR
 ["Red_HQ","HQ","Headquarters"],
 
-["Red_E","E SL","Echo Squad"],
+["Red_E","E","Echo Squad"],
 ["Red_E1","E1","Echo One"],
 ["Red_E2","E2","Echo Two"],
 
-["Red_F","F SL","Foxtrot Squad"],
+["Red_F","F","Foxtrot Squad"],
 ["Red_F1","F1","Foxtrot One"],
 ["Red_F2","F2","Foxtrot Two"],
 
-["Red_G","G SL","Golf Squad"],
+["Red_G","G","Golf Squad"],
 ["Red_G1","G1","Golf One"],
 ["Red_G2","G2","Golf Two"],
 
-["Red_H","H SL","Hotel Squad"],
+["Red_H","H","Hotel Squad"],
 ["Red_H1","H1","Hotel One"],
 ["Red_H2","H2","Hotel Two"],
 ["Red_H3","H3","Hotel Three"],

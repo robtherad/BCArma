@@ -120,6 +120,7 @@ f_cam_opfor_color = [OPFOR] call bis_fnc_sideColor;
 f_cam_indep_color = [independent] call bis_fnc_sideColor;
 f_cam_civ_color = [civilian] call bis_fnc_sideColor;
 f_cam_empty_color = [sideUnknown] call bis_fnc_sideColor;
+f_cam_gray_color = [0.75,0.75,0.75,1];
 
 // ================================
 // Camera

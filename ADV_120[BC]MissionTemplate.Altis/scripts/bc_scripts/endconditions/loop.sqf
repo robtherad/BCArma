@@ -21,8 +21,8 @@ _alertEnd = 0; // Time elapsed warning
 _alertSoon = 0; // 15 minute warning
 
 sleep 1;
-if (isNil "sectorControl") then {
-	//Check to see if the sector control script is running.
+sectorControl = missionNamespace getVariable "sectorControlActive";
+if (isNil "sectorControl") then {	//Check to see if the sector control script is running.
 	sectorControl = false;
 };
 

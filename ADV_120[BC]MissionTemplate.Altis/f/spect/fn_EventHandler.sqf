@@ -346,10 +346,16 @@ case "KeyDown":
             [] spawn f_fnc_HandleCamera;
              _handled = true;
         };
-        case 25:
+        case 25: // P
 		{
             f_cam_muteSpectators = !f_cam_muteSpectators;
             [player, f_cam_muteSpectators] call TFAR_fnc_forceSpectator;
+			hint format ["Spectators Unmuted = %1",f_cam_muteSpectators];
+			if (f_cam_muteSpectators) then {
+				player setVariable ["tf_voiceVolume", 1.0, true];
+			} else {
+				player setVariable ["tf_voiceVolume", 0.0, true];
+			};
         };
         case 29: // CTRL
         {
