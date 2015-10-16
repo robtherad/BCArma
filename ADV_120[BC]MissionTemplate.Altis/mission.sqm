@@ -19,7 +19,8 @@ class Mission
 		"A3_Missions_F_Curator",
 		"A3_Characters_F_Mark",
 		"A3_Data_F_Curator_Characters",
-		"aia_misc3_config"
+		"aia_misc3_config",
+		"A3_Modules_F_Curator_Misc"
 	};
 	addOnsAuto[]=
 	{
@@ -34,6 +35,7 @@ class Mission
 		"A3_Characters_F_Mark",
 		"A3_Data_F_Curator_Characters",
 		"A3_Characters_F_OPFOR",
+		"A3_Modules_F_Curator_Misc",
 		"aia_misc3_config",
 		"a3_map_altis"
 	};
@@ -60,7 +62,7 @@ class Mission
 	};
 	class Groups
 	{
-		items=37;
+		items=39;
 		class Item0
 		{
 			side="LOGIC";
@@ -143,7 +145,6 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					init="_this = [this,objNull,0,0,true] execVM ""f\spect\fn_CamInit.sqf"";";
 				};
 			};
 		};
@@ -164,7 +165,6 @@ class Mission
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
-					init="_this = [this,objNull,0,0,true] execVM ""f\spect\fn_CamInit.sqf"";";
 				};
 			};
 		};
@@ -396,7 +396,7 @@ class Mission
 					vehicle="LocationArea_F";
 					skill=0.60000002;
 					syncId=3;
-					synchronizations[]={127,2};
+					synchronizations[]={129,2};
 				};
 			};
 		};
@@ -2499,6 +2499,46 @@ class Mission
 				};
 			};
 		};
+		class Item37
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={2129.4202,0.16265191,1188.0079};
+					id=130;
+					side="LOGIC";
+					vehicle="ModuleCoverMap_F";
+					leader=1;
+					lock="UNLOCKED";
+					skill=0.60000002;
+					syncId=127;
+					synchronizations[]={128};
+				};
+			};
+		};
+		class Item38
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={2129.4514,0.13094379,1189.4318};
+					special="NONE";
+					id=131;
+					side="LOGIC";
+					vehicle="LocationArea_F";
+					leader=1;
+					skill=0.60000002;
+					syncId=128;
+					synchronizations[]={127,130};
+				};
+			};
+		};
 	};
 	class Vehicles
 	{
@@ -2507,7 +2547,7 @@ class Mission
 		{
 			position[]={656.56494,0.0037991237,3982.3135};
 			azimut=-1.07058;
-			id=130;
+			id=132;
 			side="EMPTY";
 			vehicle="PowGen_Big";
 			skill=0.60000002;
@@ -2518,7 +2558,7 @@ class Mission
 		{
 			position[]={660.90039,-0.0017993769,5564.751};
 			azimut=-1.07058;
-			id=131;
+			id=133;
 			side="EMPTY";
 			vehicle="PowGen_Big";
 			skill=0.60000002;
@@ -2529,7 +2569,7 @@ class Mission
 		{
 			position[]={682.60498,-0.0007214995,6671.3936};
 			azimut=-1.07058;
-			id=132;
+			id=134;
 			side="EMPTY";
 			vehicle="PowGen_Big";
 			skill=0.60000002;
@@ -2550,46 +2590,8 @@ class Mission
 	};
 	class Markers
 	{
-		items=22;
+		items=20;
 		class Item0
-		{
-			position[]={1275.7515,-0.0046154982,1189.5953};
-			name="border_3";
-			markerType="RECTANGLE";
-			type="Empty";
-			a=800;
-			b=50;
-			angle=90;
-		};
-		class Item1
-		{
-			position[]={2124.9648,0.004221586,441.0708};
-			name="border_3_1";
-			markerType="RECTANGLE";
-			type="Empty";
-			a=800;
-			b=50;
-		};
-		class Item2
-		{
-			position[]={2974.624,-0.0028886241,1191.7194};
-			name="border_3_2";
-			markerType="RECTANGLE";
-			type="Empty";
-			a=800;
-			b=50;
-			angle=90;
-		};
-		class Item3
-		{
-			position[]={2122.8398,0.0016249351,1942.2032};
-			name="border_3_1_1";
-			markerType="RECTANGLE";
-			type="Empty";
-			a=800;
-			b=50;
-		};
-		class Item4
 		{
 			position[]={657.0835,-0.00015549548,4050.9336};
 			name="obj_1mark";
@@ -2597,7 +2599,7 @@ class Mission
 			type="mil_objective";
 			colorName="ColorRed";
 		};
-		class Item5
+		class Item1
 		{
 			position[]={2123.0166,0.0043478585,1841.0087};
 			name="Blufor_3";
@@ -2608,7 +2610,7 @@ class Mission
 			a=800;
 			b=50;
 		};
-		class Item6
+		class Item2
 		{
 			position[]={2123.0176,0.0017759607,538.93811};
 			name="Opfor_3";
@@ -2619,21 +2621,21 @@ class Mission
 			a=800;
 			b=50;
 		};
-		class Item7
+		class Item3
 		{
 			position[]={2128.1787,0.0015364824,1193.1921};
 			name="rob";
 			text="Mission area with restricted borders. Will warn then kill when people exit.";
 			type="mil_warning";
 		};
-		class Item8
+		class Item4
 		{
 			position[]={652.4502,-0.00087998871,3620.8384};
 			name="rob_1";
 			text="Objective trigger. Will display hint and change marker name when objective is destroyed.";
 			type="mil_warning";
 		};
-		class Item9
+		class Item5
 		{
 			position[]={660.55469,0.00057751604,5600.7598};
 			name="obj_2mark";
@@ -2641,14 +2643,14 @@ class Mission
 			type="mil_objective";
 			colorName="ColorRed";
 		};
-		class Item10
+		class Item6
 		{
 			position[]={652.4502,-0.0044945218,5325.6465};
 			name="rob_2";
 			text="Objective WITHOUT trigger. Does the same as below but is only destroyable by satchels. Doesn't work with all objects.";
 			type="mil_warning";
 		};
-		class Item11
+		class Item7
 		{
 			position[]={682.65479,-0.00061209314,6701.4238};
 			name="obj_3mark";
@@ -2656,67 +2658,81 @@ class Mission
 			type="mil_objective";
 			colorName="ColorRed";
 		};
-		class Item12
+		class Item8
 		{
 			position[]={688.48682,0.0032288176,6536.7227};
 			name="rob_3";
 			text="Same as Objective #1 except this will spawn where it is placed or at any of the markers that are grouped with it.";
 			type="mil_warning";
 		};
-		class Item13
+		class Item9
 		{
 			position[]={668.69629,-0.0017138382,6683.5928};
 			name="rand";
 			type="Empty";
 		};
-		class Item14
+		class Item10
 		{
 			position[]={682.62744,0.0027525581,6683.4121};
 			name="rand_1";
 			type="Empty";
 		};
-		class Item15
+		class Item11
 		{
 			position[]={695.72314,-0.0026058212,6683.2705};
 			name="rand_2";
 			type="Empty";
 		};
-		class Item16
+		class Item12
 		{
 			position[]={669.03955,-0.00052969856,6671.376};
 			name="rand_3";
 			type="Empty";
 		};
-		class Item17
+		class Item13
 		{
 			position[]={695.66797,5.1100738e-005,6671.7041};
 			name="rand_4";
 			type="Empty";
 		};
-		class Item18
+		class Item14
 		{
 			position[]={669.79346,0.0015919001,6659.873};
 			name="rand_5";
 			type="Empty";
 		};
-		class Item19
+		class Item15
 		{
 			position[]={682.97266,-0.0037687006,6658.1836};
 			name="rand_6";
 			type="Empty";
 		};
-		class Item20
+		class Item16
 		{
 			position[]={696.81982,0.00081338442,6660.0469};
 			name="rand_7";
 			type="Empty";
 		};
-		class Item21
+		class Item17
 		{
 			position[]={688.49023,0.0023828112,6250.3018};
 			name="rob_3_1";
 			text="It's marker will follow it due to the code in the objective's init field.";
 			type="mil_warning";
+		};
+		class Item18
+		{
+			position[]={2133.3223,0.067286946,1131.9104};
+			name="rob_4";
+			text="If you are using an ellipse shaped AO you should put down a marker to mark the boundary.";
+			type="Empty";
+		};
+		class Item19
+		{
+			position[]={2130.4917,-0.059267372,1063.7128};
+			name="rob_5";
+			text="If you are using a rectangular shaped AO you don't need to add a border. It will be generated for you.";
+			type="Empty";
 		};
 	};
 	class Sensors
@@ -2731,7 +2747,7 @@ class Mission
 			{
 			};
 			synchronizations[]={3};
-			syncId=127;
+			syncId=129;
 		};
 		class Item1
 		{
@@ -2763,6 +2779,8 @@ class Mission
 			class Effects
 			{
 			};
+			synchronizations[]={128};
+			syncId=130;
 		};
 		class Item3
 		{
@@ -2790,7 +2808,7 @@ class Mission
 			interruptable=1;
 			age="UNKNOWN";
 			name="obj3trig";
-			expCond="!alive obj1";
+			expCond="!alive obj3";
 			expActiv="hint ""Objective #3 destroyed!"";""obj_3mark"" setMarkerText ""Objective #3 *DESTROYED*"";";
 			class Effects
 			{
