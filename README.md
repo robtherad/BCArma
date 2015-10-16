@@ -23,6 +23,7 @@ Now you should be able to open the 2D editor in Arma 3 and open the mission. Dra
 * Place ellipse markers to mark the team's starting areas
 * Delete unnecceesary markers, triggers, and objectives
 * In the `description.ext` file edit lines 8-10 to match your mission's info
+* (OPTIONAL) Replace the default loadouts with RHS loadouts. You can use the premade loadouts if you wish.
 * Test your mission!
 
 ## Common Modifications
