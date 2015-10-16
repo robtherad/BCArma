@@ -22,6 +22,7 @@ Now you should be able to open the 2D editor in Arma 3 and open the mission. Dra
 * Place an objective somewhere in your mission for players to fight over (sector, destroyable objective, etc.)
 * Place ellipse markers to mark the team's starting areas
 * Delete unnecceesary markers, triggers, and objectives
+* In the `description.ext` file edit lines 8-10 to match your mission's info
 * Test your mission!
 
 ## Common Modifications
