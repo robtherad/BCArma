@@ -14,6 +14,16 @@ Download as zip from GitHub using the button on the bottom right or the link abo
 
 Now you should be able to open the 2D editor in Arma 3 and open the mission. Drag the playable units as well as the triggers and markers for the AO to the area you wish the mission to be played in. Then save the mission and test it.
 
+##### STEP BY STEP CHECKLIST
+1. Download the template and place the template mission into your mission folder
+* Change the suffix on the template mission to the suffix of whichever island you want your mission on
+* Move the AO to the area you want your mission to take place
+* Move the teams to the areas you want them to start
+* Place an objective somewhere in your mission for players to fight over (sector, destroyable objective, etc.)
+* Place ellipse markers to mark the team's starting areas
+* Delete unnecceesary markers, triggers, and objectives
+* Test your mission!
+
 ## Common Modifications
 
 There are some modifications that you may have to make in order to get certain scripts to work correctly with the type of mission you are making. If you are trying to change something and the stuff below doesn't make sense, try looking at the comments in the header of the file you are working on. 
