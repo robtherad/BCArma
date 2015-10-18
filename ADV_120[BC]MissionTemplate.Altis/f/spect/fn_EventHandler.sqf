@@ -405,6 +405,22 @@ case "KeyDown":
             };
             _handled = true;
         };
+		case 205: //RIGHT ARROW KEY
+        {
+			if (f_cam_tagTextSize < .05) then {
+				f_cam_tagTextSize = f_cam_tagTextSize + .0005;
+			} else {
+				f_cam_tagTextSize = .05;
+			};
+        };
+        case 203: //LEFT ARROW KEY
+        {
+            if (f_cam_tagTextSize >= 0.0005) then {
+				f_cam_tagTextSize = f_cam_tagTextSize - .0005;
+			} else {
+				f_cam_tagTextSize = 0;
+			};
+        };
     };
     _handled
 };
