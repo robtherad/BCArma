@@ -17,7 +17,7 @@ if (!isServer) exitWith {};
 
 
 bc_triggerArray = [cap1,cap2,cap3];
-publicVariable "bc_triggerArray"; //Used in f\spect\fn_DrawTags.sqf and fn_DrawMarkers.sqf
+["bc_triggerArray", bc_triggerArray] call CBA_fnc_publicVariable; //Used in f\spect\fn_DrawTags.sqf and fn_DrawMarkers.sqf
 
 //initialize variables
 bc_sec_iteration = 0;
@@ -148,8 +148,8 @@ while{bc_sec_playing == 1} do {
 	bc_opfText = "OPFOR - " + str(bc_eastPoints) + " / " + str(bc_endPoints) + " - (" + str(_opfPercent) + "%)";	
 	"bluPointsMark" setMarkerText bc_bluText;
 	"opPointsMark" setMarkerText bc_opfText;
-	publicVariable "bc_bluText"; //Used in sectors\clientListen.sqf
-	publicVariable "bc_opfText"; //Used in sectors\clientListen.sqf
+	["bc_bluText", bc_bluText] call CBA_fnc_publicVariable; //Used in sectors\clientListen.sqf
+	["bc_opfText", bc_opfText] call CBA_fnc_publicVariable; //Used in sectors\clientListen.sqf
 	
 	//Throw a reminder hint at key point values
 	if ((bc_westPoints >= ((bc_endPoints / 4) * bc_sec_pointsCounter)) || (bc_eastPoints >= ((bc_endPoints / 8) * bc_sec_pointsCounter))) then {

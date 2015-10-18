@@ -57,7 +57,6 @@ if (player == _unit) then {
 	bc_killDist = ceil (_killer distance _unit);
 	//Commence Readout
 	sleep 5; // wait until death stuff is done
-	hint "You can check your chat log to see who you were killed by and who you killed.\n\nPress your Chat Key so that the chat box at the bottom opens and then you can press PAGE-UP and PAGE-DOWN to scroll through the chat.";	
 	bc_kills = "You were killed by - " + (name _killer) + " (" + str(bc_killDist) + "m)" + bc_friendly + "\n-\n" + bc_kills;
 	bc_killsStruct = [bc_kills, "\n", "<br/>"] call CBA_fnc_replace;
 	missionNamespace setVariable ["bc_kills",bc_killsStruct];

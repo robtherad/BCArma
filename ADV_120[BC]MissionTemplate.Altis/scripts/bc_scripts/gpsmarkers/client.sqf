@@ -6,19 +6,19 @@ If a unit with a GPS marker dies their marker will be transferred to the next pe
 If a player who has a GPS drops it they will no longer be able to see the markers on their map. 
 If a unit without a GPS picks one up they will be able to see all GPS marks on the map.
 
-USAGE: If you have no vehicles in your mission set _westVehArray and _eastVehArray equal to nil as shown below. Those parameters can be found on lines 35 and 36 in this file.
+If you do have vehicles in your mission, make sure they are named and then add that name to the array for the team they are on. Either _westVehArray or _eastVehArray on lines 37 and 38 in this file. 
 
-_westVehArray = nil;
-_eastVehArray = nil;
+	//No vehicles in mission
+	_westVehArray = nil;
+	_eastVehArray = nil;
 
-If you do have vehicles in your mission, make sure they are named and then add that name to the array for the team they are on. Either _westVehArray or _eastVehArray on lines 35 and 36 in this file. 
+	//Vehicles in mission
+	_westVehArray = [bluforTruck1,bluforTruck2]; 
+	_eastVehArray = [opforTruck]; 
 
-_westVehArray = [bluforTruck1,bluforTruck2]; 
-_eastVehArray = [opforTruck1,opforTruck2]; 
+If you want the vehicle to have a custom name instead of something weird looking like 'bluTruck' then add the following line to the vehicles initialization field in the editor to change the GPS marker name to whatever you want:
 
-If you want the vehicle to have a custom name instead of something weird looking like 'bluTruck' then add this to the vehicles initialization field in the editor and change the GPS marker name to whatever you want.
-
-this setVariable ["bc_MarkerName", "GPS Marker Text Goes Here"];
+	this setVariable ["bc_MarkerName", "GPS Marker Text Goes Here"];
 
 Call this script on ALL CLIENTS in bc_init.sqf by using the following line:
 
@@ -27,15 +27,75 @@ Call this script on ALL CLIENTS in bc_init.sqf by using the following line:
 */
 //Local script, dedicated server not needed
 if (isDedicated) exitWith {};
-//Check to see if mission parameters have markers enabled - Default OFF
+waitUntil {!isNull player};
+//Check to see if mission parameters have markers enabled - Default ON
 _useMarkers = ["s_gps_markers",1] call BIS_fnc_getParamValue;
 if (_useMarkers == 0) exitWith {};
 
+
+//------------ DO NOT EDIT ABOVE THIS LINE ------------
 _westVehArray = nil;
 _eastVehArray = nil;
 _hqArray = ["HQ","A SL","B SL","C SL","D SL","E SL","F SL","G SL","H SL"];
+//------------ DO NOT EDIT BELOW THIS LINE ------------
+
+//FUNCTIONS
+fn_bc_createVehMarks={
+	private ["_vehArray","_markerName","_markerPos","_markerFaction","_marker","_markerString"];
+	_vehArray = _this select 0;
+	{ //forEach _vehArray
+		_markerName = str(_x) + "_marker";
+		_markerPos = getPos _x;
+		_markerFaction = switch (faction player) do {
+			case "BLU_F": { ["ColorBLUFOR","b_armor"] };
+			case "OPF_F": { ["ColorOPFOR","o_armor"] };
+			case "IND_F": { ["ColorINDFOR","n_armor"] };
+			default { ["ColorCivilian","hd_dot"] };
+		};
+		_marker = createMarkerLocal [_markerName,_markerPos];
+		_marker setMarkerShapeLocal "ICON";
+		_marker setMarkerColorLocal (_markerFaction select 0);
+		_marker setMarkerTypeLocal (_markerFaction select 1);
+		_markerString = _x getVariable "bc_MarkerName";
+		if (!isNil "_markerString") then {
+			_marker setMarkerTextLocal _markerString;
+		} else {
+			_marker setMarkerTextLocal str(_x);
+			_x setVariable ["bc_MarkerName",str(_x)];
+		};
+		_marker setMarkerSizeLocal [.75,.75];
+		_marker setMarkerAlphaLocal 0;
+	} forEach _vehArray;
+};
+fn_bc_updateVehMarks={
+	private ["_vehArray","_marker","_unitInside","_markerText"];
+	_vehArray = _this select 0;
+	{
+		_marker = str(_x) + "_marker";
+		if("ItemGPS" in (assignedItems player)) then {
+			_unitInside = _x getVariable "bc_UnitInside";
+			//Check to see if any units with markers attached are in a vehicle with a marker. If so attach their name to the vehicle marker.
+			if (!isNil "_unitInside") then {
+				_markerText = (_x getVariable "bc_MarkerName") + " (" + (_x getVariable "bc_UnitInside") + ")";
+				_x setVariable ["bc_UnitInside",nil];
+				_x setVariable ["bc_LastInside",nil];
+				_marker setMarkerTextLocal _markerText;
+			} else {
+				_markerText = (_x getVariable "bc_MarkerName");
+				_marker setMarkerTextLocal _markerText;
+			};
+			_marker setMarkerAlphaLocal 1;
+			_marker setMarkerPosLocal (getPos _x);
+		} else {
+			_marker setMarkerAlphaLocal 0;
+		};
+	} forEach _vehArray;
+};
+
+_hqArray = ["HQ","A","B","C","D","E","F","G","H"];
 bc_gps_iteration = 0;
 
+sleep 5;
 //CREATE NEW MARKERS
 //Infantry
 { //forEach allGroups
@@ -63,81 +123,34 @@ bc_gps_iteration = 0;
 } forEach allGroups;
 
 //Vehicles
-if (!isNil "_westVehArray") then {
-	{ //forEach _westVehArray
-		_markerName = str(_x) + "_marker";
-		_markerPos = getPos _x;
-		_markerFaction = switch (faction player) do {
-			case "BLU_F": { ["ColorBLUFOR","b_armor"] };
-			case "OPF_F": { ["ColorOPFOR","o_armor"] };
-			case "IND_F": { ["ColorINDFOR","n_armor"] };
-			default { ["ColorCivilian","hd_dot"] };
-		};
-		_marker = createMarkerLocal [_markerName,_markerPos];
-		_marker setMarkerShapeLocal "ICON";
-		_marker setMarkerColorLocal (_markerFaction select 0);
-		_marker setMarkerTypeLocal (_markerFaction select 1);
-		_markerString = _x getVariable "bc_MarkerName";
-		if (!isNil "_markerString") then {
-			_marker setMarkerTextLocal _markerString;
-		} else {
-			_marker setMarkerTextLocal str(_x);
-			_x setVariable ["bc_MarkerName",str(_x)];
-		};
-		_marker setMarkerSizeLocal [.75,.75];
-		_marker setMarkerAlphaLocal 0;
-	} forEach _westVehArray;
-};
-if (!isNil "_eastVehArray") then {
-	{ //forEach _eastVehArray
-		_markerName = str(_x) + "_marker";
-		_markerPos = getPos _x;
-		_markerFaction = switch (faction player) do {
-			case "BLU_F": { ["ColorBLUFOR","b_armor"] };
-			case "OPF_F": { ["ColorOPFOR","o_armor"] };
-			case "IND_F": { ["ColorINDFOR","n_armor"] };
-			default { ["ColorCivilian","hd_dot"] };
-		};
-		_marker = createMarkerLocal [_markerName,_markerPos];
-		_marker setMarkerShapeLocal "ICON";
-		_marker setMarkerColorLocal (_markerFaction select 0);
-		_marker setMarkerTypeLocal (_markerFaction select 1);
-		_markerString = _x getVariable "bc_MarkerName";
-		if (!isNil "_markerString") then {
-			_marker setMarkerTextLocal _markerString;
-		} else {
-			_marker setMarkerTextLocal str(_x);
-			_x setVariable ["bc_MarkerName",str(_x)];
-		};
-		_marker setMarkerSizeLocal [.75,.75];
-		_marker setMarkerAlphaLocal 0;
-	} forEach _eastVehArray;
-};
-
+if (!isNil "_westVehArray") then {[_westVehArray] call fn_bc_createVehMarks;};
+if (!isNil "_eastVehArray") then {[_eastVehArray] call fn_bc_createVehMarks;};
+//DONE CREATING MARKERS
 sleep 1;
 
 //UPDATE EXISTING MARKERS
 while{true} do {
-	//Make sure player has GPS, if not there's no reason to run all the code
 	//INFANTRY MARKERS
 	{ //forEach allGroups
 		_group = _x;
 		_marker = _group getVariable "bc_gps_markerName";
-		//If player has GPS then continue on, if not hide group markers.
-		if("ItemGPS" in (assignedItems player)) then {
-			//If player is on same side as group leader check that group for people who have GPS.
-			if ((faction player) == (faction (leader _x))) then {
-				_marker setMarkerAlphaLocal 1;
+		if("ItemGPS" in (assignedItems player)) then { //Check if player has GPS
+			if ((faction player) == (faction (leader _x))) then { //Check if player is on same faction as the group
+				_marker setMarkerAlphaLocal 1; //If player has GPS and same faction, show marker
+				_senior = _group getVariable ["bc_seniorGPS",objNull];
 				{ //forEach allUnits in _group
+					//Check members in group for GPS and update the marker to the position of the most senior member in the group who has GPS
 					_unit = _x;
-					//Check to see if ANY units in the group have a GPS and if they do put a marker on that person.
-					if ("ItemGPS" in (assignedItems _unit)) then {
-						//If unit has GPS but leader has GPS too, set the marker to the leader's position instead.
-						if ((_unit != leader _group) && ("ItemGPS" in (assignedItems (leader _group)))) then {
-							_unit = leader _group;
+					if (!isNull _senior) then { //If _senior is set then...
+						if (!("ItemGPS" in (assignedItems _unit))) then { //Make sure most senior unit still has GPS
+							_group setVariable ["bc_seniorGPS",objNull];
 						};
-						//If the unit being marked isn't on foot hide the marker since he will have a vehicle marker. If not, show the marker.
-						if(vehicle _unit != _unit) then {
+					};
+					if (("ItemGPS" in (assignedItems _unit)) && ((isNull _senior) || (_senior == _unit))) then { //no reason to run this stuff if _unit isn't the most senior member
+						if (isNull _senior) then {
+							_group setVariable ["bc_seniorGPS",_unit]; //no better match than _unit
+						};				
+						if ((vehicle _unit != _unit) && !((vehicle _unit in _westVehArray) || (vehicle _unit in _eastVehArray))) then { //If unit isn't on foot and vehicle doesn't have a marker
 							_unitInside = (vehicle _unit) getVariable "bc_UnitInside";
 							_lastInside = (vehicle _unit) getVariable "bc_LastInside";
 							if (isNil "_lastInside") then {_lastInside = "Nobody"};
@@ -149,65 +162,21 @@ while{true} do {
 								(vehicle _unit) setVariable ["bc_UnitInside",groupID _group];
 								(vehicle _unit) setVariable ["bc_LastInside",groupID _group];
 							};
-							_marker setMarkerAlphaLocal 0;
+							_marker setMarkerAlphaLocal 0; //Hide marker when unit is in a vehicle that has a marker
 						} else {
-							_marker setMarkerAlphaLocal 1;
+							_marker setMarkerAlphaLocal 1; //Show marker when unit is not in a vehicle with a marker
 						};
 						_marker setMarkerPosLocal (getPos _unit);
 					};
 				} forEach units _group;
 			};
 		} else {
-			//NO GPS - Remove all markers from view
-			_marker setMarkerAlphaLocal 0;
+			_marker setMarkerAlphaLocal 0; // Player has no GPS
 		};
 	} forEach allGroups;
 	
 	//VEHICLE MARKERS
-	
-	//WEST
-	if (!(isNil "_westVehArray") && (faction player == "BLU_F")) then {
-		{
-			_marker = str(_x) + "_marker";
-			_unitInside = _x getVariable "bc_UnitInside";
-			if("ItemGPS" in (assignedItems player)) then {
-				if (!isNil "_unitInside") then {
-					_markerText = (_x getVariable "bc_MarkerName") + " (" + (_x getVariable "bc_UnitInside") + ")";
-					_x setVariable ["bc_UnitInside",nil];
-					_x setVariable ["bc_LastInside",nil];
-					_marker setMarkerTextLocal _markerText;
-				} else {
-					_markerText = (_x getVariable "bc_MarkerName");
-					_marker setMarkerTextLocal _markerText;
-				};
-				_marker setMarkerAlphaLocal 1;
-				_marker setMarkerPosLocal (getPos _x);
-			} else {
-				_marker setMarkerAlphaLocal 0;
-			};
-		} forEach _westVehArray;
-	};
-	//EAST
-	if (!(isNil "_eastVehArray") && (faction player == "OPF_F")) then {
-		{
-			_marker = str(_x) + "_marker";
-			_unitInside = _x getVariable "bc_UnitInside";
-			if("ItemGPS" in (assignedItems player)) then {
-				if (!isNil "_unitInside") then {
-					_markerText = (_x getVariable "bc_MarkerName") + " (" + (_x getVariable "bc_UnitInside") + ")";
-					_x setVariable ["bc_UnitInside",nil];
-					_x setVariable ["bc_LastInside",nil];
-					_marker setMarkerTextLocal _markerText;
-				} else {
-					_markerText = (_x getVariable "bc_MarkerName");
-					_marker setMarkerTextLocal _markerText;
-				};
-				_marker setMarkerAlphaLocal 1;
-				_marker setMarkerPosLocal (getPos _x);
-			} else {
-				_marker setMarkerAlphaLocal 0;
-			};
-		} forEach _eastVehArray;
-	};
+	if ((!isNil "_westVehArray") && (faction player == "BLU_F")) then {[_westVehArray] call fn_bc_updateVehMarks;};
+	if ((!isNil "_eastVehArray") && (faction player == "OPF_F")) then {[_eastVehArray] call fn_bc_updateVehMarks;};
 	sleep 2;
 };

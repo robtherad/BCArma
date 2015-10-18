@@ -35,7 +35,6 @@ fnc_sectorControl = {
 		_opfPercentStr = parseText format [" - (%1&#37;)",_opfPercent];
 		_bluPercentStr = parseText format [" - (%1&#37;)",_bluPercent];
 		
-		hint parseText format["<t>%5<br/><br/>Sector Points<br/>BLUFOR - %1 / %2 - (%3&#37;)<br/>OPFOR - %4 / %2 - (%5&#37;)</t>",bc_westPoints,bc_endPoints,_bluPercent,bc_eastPoints,_opfPercent,_hintStr];
 		_hintStr = _hintStr + "\n\n\nSector Points\nBLUFOR - " + str(bc_westPoints) + " / " + str(bc_endPoints) + str(_bluPercentStr) + "\n" + "OPFOR - " + str(bc_eastPoints) + " / " + str(bc_endPoints) + str(_opfPercentStr);
 	};
 };
@@ -68,19 +67,19 @@ while {true} do {
 	if ((_missionRuntimeMins - 15) <= (time/60) && (_alertSoon == 0)) then {
 		_hintStr = "There are only 15 minutes remaining until the time limit of " + str(paramsArray select 3) + " minutes is reached.";
 		call fnc_sectorControl;
-		[_hintStr,"hint",true,true] call BIS_fnc_MP;
+		[_hintStr,"systemChat",true,true] call BIS_fnc_MP;
 		_alertSoon = 1;
 	};
 	if (_missionRuntimeMins <= (time/60) && (_alertEnd <= 4)) then {
 		_hintStr = "The mission time limit of " + str(paramsArray select 3) + " minutes has been reached.";
 		call fnc_sectorControl;
-		[_hintStr,"hint",true,true] call BIS_fnc_MP;
+		[_hintStr,"systemChat",true,true] call BIS_fnc_MP;
 		_alertEnd = _alertEnd + 1;
 	};
 	if ((_missionRuntimeMins + (1*_alertOver)) <= (time/60)) then {
 		_hintStr = "The mission is " + str(1*_alertOver) + " minute(s) past the time limit of " + str(paramsArray select 3) + " minutes.";
 		call fnc_sectorControl;
-		[_hintStr,"hint",true,true] call BIS_fnc_MP;
+		[_hintStr,"systemChat",true,true] call BIS_fnc_MP;
 		_alertOver = _alertOver + 1;
 	};
 	sleep 4;

@@ -1,8 +1,10 @@
 disableSerialization;
 //Make sure the sector control script has been running long enough
-waitUntil {if (!isNil "bc_opfText") then {true};};
-waitUntil {if (!isNil "bc_bluText") then {true};};
+waitUntil {if (!isNil "bc_opfText") then {true} else {sleep 5;};};
+waitUntil {if (!isNil "bc_bluText") then {true} else {sleep 5;};};
 
+//While player isn't a person ingame
+waitUntil {if (!isNil "f_cam_VirtualCreated") then {true} else {sleep 5;};};
 while {true} do {
 	//Create displays in bottom left
 	("bluRsc" call BIS_fnc_rscLayer) cutRsc ["redforStructText", "PLAIN"];

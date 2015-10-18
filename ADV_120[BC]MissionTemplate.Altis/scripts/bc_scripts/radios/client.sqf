@@ -2,6 +2,8 @@
 Gets called from bc_init.sqf on the client. If you are using every piece of the template there is nothing you need to change in this file.
 */
 if(isDedicated) exitWith {};
+waitUntil {!isNull player};
+
 bc_radioScriptRunning = true;
 waitUntil { !isNil "bc_opforBaseChannel"; };
 waitUntil { !isNil "bc_bluforBaseChannel"; };
@@ -11,9 +13,10 @@ _side = side player;
 switch (_side) do {
     case east: { bc_playerBaseChannel = bc_opforBaseChannel; };
     case west: { bc_playerBaseChannel = bc_bluforBaseChannel; };
+	default { titleText ["The game thinks you aren't on OPFOR or BLUFOR!","PLAIN"]; };
 };
 //Error message
-if(isNil "bc_playerBaseChannel") exitWith {hint "Error! Default radio channels will not be set!"};
+if(isNil "bc_playerBaseChannel") exitWith {titleText ["Error! Default radio channels will not be set!","PLAIN DOWN",0.5];};
 
 bc_ch1 = bc_playerBaseChannel; //All players will be able to switch to channel 1 to get on platoon net.
 
@@ -84,14 +87,21 @@ player createDiaryRecord ["diary", ["[BC] Radio Settings", bc_radioNoteString]];
 
 
 
-//sleep because none of the TFAR functions will work until radios are assigned by the server
-if(!isMultiplayer) exitWith {
-hint "Default radio script only works in multiplayer. Exiting.";
-titleText ["Default radio script only works in multiplayer. Exiting.","PLAIN DOWN",0.5];
+//Check if player has an item that will be turned into a TFAR radio. Then waitUntil it has happened before setting the channels
+_LRlist = ["tf_rt1523g","tf_rt1523g_big","tf_rt1523g_black","tf_rt1523g_fabric","tf_rt1523g_green","tf_rt1523g_rhs","tf_rt1523g_sage","tf_anarc210","tf_rt1523g_big_bwmod","tf_rt1523g_big_bwmod_tropen","tf_rt1523g_bwmod","tf_rt1523g_big_rhs","tf_mr3000","tf_mr3000_multicam","tf_mr3000_rhs","tf_mr6000l","tf_mr3000_bwmod","tf_mr3000_bwmod_tropen","tf_anprc155","tf_anprc155_coyote","tf_anarc164"];
+_SWlist = ["ItemRadio","tf_anprc152","tf_anprc148jem","tf_fadak","tf_pnr100a","tf_anprc154","tf_rf7800str"];
+if ((backpack player) in _LRlist) then {
+	titleText [format["BC RADIO SCRIPT\nWAITING FOR LR - Backpack = %1",backpack player],"PLAIN DOWN"];
+	waitUntil {call TFAR_fnc_haveLRRadio;};
 };
-sleep 5;
-titleText ["Radio channels should have been set. Good luck!","PLAIN DOWN",0.5];
-hint "Radio channels should have been set. Good luck!";
+{
+	//titleText [format["WAITING - Radio = %1",(assignedItems player)],"PLAIN DOWN"];
+	if (_x in _SWlist) then {
+		titleText [format["BC RADIO SCRIPT\nWAITING FOR SW - Radio = %1",_x],"PLAIN DOWN"];
+		waitUntil {call TFAR_fnc_haveSWRadio;};
+	};
+} forEach (assignedItems player);
+titleText ["You radio channels should have been set. Good luck!","PLAIN DOWN",0.5];
 
 //See which radio types the player has
 _hasLR = call TFAR_fnc_haveLRRadio;
@@ -106,6 +116,8 @@ if (_hasLR) then {
 	curSettings = (call TFAR_fnc_activeLrRadio) call TFAR_fnc_getLrSettings;
 	//Set default channel
 	curSettings set [0,bc_curChan];
+	//Set default volume
+	curSettings set [1,6];
 	//Setup frequencies for channels 1-9
 	chanSettings = curSettings select 2;
 	if (!isNil "bc_ch1") then {chanSettings set [0,str(bc_ch1)];};
@@ -124,7 +136,6 @@ if (_hasLR) then {
 	curSettings set [5,bc_altChan];
 	//Set stero mode for alternate channel
 	curSettings set [6,2];
-	
 	[(call TFAR_fnc_activeLrRadio) select 0, (call TFAR_fnc_activeLrRadio) select 1, curSettings] call TFAR_fnc_setLrSettings;
 };
 
@@ -133,6 +144,8 @@ if (_hasSW) then {
 	curSettings = (call TFAR_fnc_activeSwRadio) call TFAR_fnc_getSwSettings;
 	//Set default channel
 	curSettings set [0,bc_curChan];
+	//Set default volume
+	curSettings set [1,6];
 	//Setup frequencies for channels 1-9
 	chanSettings = curSettings select 2;
 	if (!isNil "bc_ch1") then {chanSettings set [0,str(bc_ch1)];};
