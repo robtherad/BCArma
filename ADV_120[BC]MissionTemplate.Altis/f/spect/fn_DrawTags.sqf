@@ -53,10 +53,10 @@ if(!f_cam_toggleTags || f_cam_mapMode == 2 ) exitWith{};
 			_color set [3,0.9];
 			_str = "";
 			_icon = "\A3\ui_f\data\map\markers\military\dot_CA.paa";
-			//if(isPlayer _x) then
-			//{
+			if(isPlayer _x) then
+			{
 				_str = name _x;
-			//};
+			};
 			drawIcon3D [_icon, _color,[_visPos select 0,_visPos select 1,(_visPos select 2) +3],0.7,0.7, 0,_str, 2,f_cam_tagTextSize, "TahomaB"];
 		};
 	} foreach _drawUnits;
