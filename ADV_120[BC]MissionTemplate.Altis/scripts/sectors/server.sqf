@@ -1,5 +1,5 @@
 /*
-Use this script by placing down triggers in the editor. The size of the trigger will be the size of the sectors. The trigger text will be the name of the sector. Place the trigger's name in the array on line 18 called triggerArray. Finally, place two markers somewhere near the mission AO and name them opPointsMark and bluPointsMark. Don't put them too close together or when you zoom out they will overlap.
+Use this script by placing down triggers in the editor. The size of the trigger will be the size of the sectors. The trigger text will be the name of the sector. Place the trigger's name in the array on line 18 called bc_triggerArray. Finally, place two markers somewhere near the mission AO and name them opPointsMark and bluPointsMark. Don't put them too close together or when you zoom out they will overlap.
 
 Make sure the triggers have the following parameters set: 
 
@@ -16,29 +16,29 @@ Call this script on THE SERVER in initServer.sqf with the line
 if (!isServer) exitWith {};
 
 
-triggerArray = [cap1,cap2,cap3];
-publicVariable "triggerArray"; //Used in f\spect\fn_DrawTags.sqf and fn_DrawMarkers.sqf
+bc_triggerArray = [cap1,cap2,cap3];
+publicVariable "bc_triggerArray"; //Used in f\spect\fn_DrawTags.sqf and fn_DrawMarkers.sqf
 
 //initialize variables
-iteration = 0;
-westPoints = 0;
-eastPoints = 0;
-playing = 1;
-pointsCounter = 1;
-sectorControl = true;
-missionNamespace setVariable ["sectorControlActive", true, true]; //Used to check if sector control module is running or not
+bc_sec_iteration = 0;
+bc_westPoints = 0;
+bc_eastPoints = 0;
+bc_sec_playing = 1;
+bc_sec_pointsCounter = 1;
+bc_sectorControl = true;
+missionNamespace setVariable ["bc_sectorControlActive", true, true]; //Used to check if sector control module is running or not
 [[[], "scripts\sectors\clientListen.sqf"], "BIS_fnc_execVM"] call BIS_fnc_MP;
 
-if (isNil "quickestTime") then {
+if (isNil "bc_sec_quickestTime") then {
 	//Time in minutes it would take to win if one team owned all points uncontested
-	quickestTime = ["sc_quickest_ending",25] call BIS_fnc_getParamValue;
+	bc_sec_quickestTime = ["sc_quickest_ending",25] call BIS_fnc_getParamValue;
 };
-endPoints = quickestTime * 60 * (count triggerArray);
+bc_endPoints = bc_sec_quickestTime * 60 * (count bc_triggerArray);
 
 //Create markers for players to see whats going on
-{//forEach triggerArray
+{//forEach bc_triggerArray
 	//Get variables for a marker
-	_markerName = str(iteration) + "_mark";
+	_markerName = str(bc_sec_iteration) + "_mark";
 	_markerSize = triggerArea _x;
 	_markerPos = getPos _x;
 	
@@ -56,30 +56,30 @@ endPoints = quickestTime * 60 * (count triggerArray);
 	};
 	
 	//Build marker for text
-	_markerName = str(iteration) + "_markText";
+	_markerName = str(bc_sec_iteration) + "_markText";
 	_marker = createMarker [_markerName,_markerPos]; 
 	_marker setMarkerShape "ICON";
 	_marker setMarkerType "hd_dot";
 	_marker setMarkerText (triggerText _x + " - Neutral");
 	
 	//Set sector status to neutral for later
-	_x setVariable ["curOwner",3];
-	_x setVariable ["lastOwner",3,true];
-	iteration = iteration + 1;
-} forEach triggerArray;
+	_x setVariable ["bc_sec_curOwner",3];
+	_x setVariable ["bc_sec_lastOwner",3,true];
+	bc_sec_iteration = bc_sec_iteration + 1;
+} forEach bc_triggerArray;
 sleep 1;
 
 //main loop
-while{playing == 1} do {
-	iteration = 0;
-	{//forEach triggerArray	
+while{bc_sec_playing == 1} do {
+	bc_sec_iteration = 0;
+	{//forEach bc_triggerArray	
 		//Get owner of the cap from the last time it was checked
-		_sidePastOwned = _x getVariable "curOwner";
-		_sideLastOwned = _x getVariable "lastOwner";
+		_sidePastOwned = _x getVariable "bc_sec_curOwner";
+		_sideLastOwned = _x getVariable "bc_sec_lastOwner";
 		
 		//Get marker names
-		_textMarkerName = str(iteration) + "_markText";
-		_bgMarkerName = str(iteration) + "_mark";
+		_textMarkerName = str(bc_sec_iteration) + "_markText";
+		_bgMarkerName = str(bc_sec_iteration) + "_mark";
 		
 		//Figure out who dominates the sector - Use faction so TK's don't mess things up
 		_westCount = {(alive _x) && (faction _x == "BLU_F")} count list _x;
@@ -87,85 +87,85 @@ while{playing == 1} do {
 		
 		//Western Controlled - 0
 		if(_westCount > _eastCount) then {
-			sideCurOwned = 0;
-			if (sideCurOwned == _sidePastOwned) then {
-				westPoints = westPoints + (1*(count triggerArray));
+			bc_sideCurOwned = 0;
+			if (bc_sideCurOwned == _sidePastOwned) then {
+				bc_westPoints = bc_westPoints + (1*(count bc_triggerArray));
 			} else {
 				_textMarkerName setMarkerText (triggerText _x + " - BLUFOR Controlled");
 				_bgMarkerName setMarkerColor "ColorBLUFOR";
-				_x setVariable ["lastOwner",sideCurOwned,true];
+				_x setVariable ["bc_sec_lastOwner",bc_sideCurOwned,true];
 			};
 		};
 		
 		//Eastern Controlled - 1
 		if(_eastCount > _westCount) then {
-			sideCurOwned = 1;
-			if (sideCurOwned == _sidePastOwned) then {
-				eastPoints = eastPoints + (1*(count triggerArray));
+			bc_sideCurOwned = 1;
+			if (bc_sideCurOwned == _sidePastOwned) then {
+				bc_eastPoints = bc_eastPoints + (1*(count bc_triggerArray));
 			} else {
 				_textMarkerName setMarkerText (triggerText _x + " - OPFOR Controlled");
 				_bgMarkerName setMarkerColor "ColorOPFOR";
-				_x setVariable ["lastOwner",sideCurOwned,true];
+				_x setVariable ["bc_sec_lastOwner",bc_sideCurOwned,true];
 			};
 		};
 		
 		//Contested Objective - 2
 		if((_westCount == _eastCount) && (_westCount != 0)) then {
-			sideCurOwned = 2;
+			bc_sideCurOwned = 2;
 			_textMarkerName setMarkerText (triggerText _x + " - CONTESTED");
 			_bgMarkerName setMarkerColor "ColorBlack";
-			_x setVariable ["lastOwner",sideCurOwned,true];
+			_x setVariable ["bc_sec_lastOwner",bc_sideCurOwned,true];
 		};
 		
 		//Neutral Objective - 3
 		if((_westCount == _eastCount) && (_westCount == 0)) then {
-			sideCurOwned = 3;
+			bc_sideCurOwned = 3;
 			//For objectives that a side controls but no longer occupies
 			if (_sideLastOwned == 0) then {
-				westPoints = westPoints + (1*(count triggerArray));
+				bc_westPoints = bc_westPoints + (1*(count bc_triggerArray));
 			};
 			if (_sideLastOwned == 1) then {
-				eastPoints = eastPoints + (1*(count triggerArray));
+				bc_eastPoints = bc_eastPoints + (1*(count bc_triggerArray));
 			};
 		};
 		
 		//Set current owner
-		_x setVariable ["curOwner",sideCurOwned];
+		_x setVariable ["bc_sec_curOwner",bc_sideCurOwned];
 		
 		//Sector has changed sides
-		if ((sideCurOwned != _sideLastOwned) && (sideCurOwned != 3)) then {
-			[[[sideCurOwned, _x], "scripts\sectors\client.sqf"], "BIS_fnc_execVM"] call BIS_fnc_MP;
+		if ((bc_sideCurOwned != _sideLastOwned) && (bc_sideCurOwned != 3)) then {
+			[[[bc_sideCurOwned, _x], "scripts\sectors\client.sqf"], "BIS_fnc_execVM"] call BIS_fnc_MP;
 		};
 		//++ for marker names
-		iteration = iteration + 1;
+		bc_sec_iteration = bc_sec_iteration + 1;
 		sleep 1;
-	} forEach triggerArray;
+	} forEach bc_triggerArray;
 	
 	//Update score markers in upper right
-	_opfPercent = round (((eastPoints / endPoints)*100)*100) / 100;
-	_bluPercent = round (((westPoints / endPoints)*100)*100) / 100;
-	bluText = "BLUFOR - " + str(westPoints) + " / " + str(endPoints) + " - (" + str(_bluPercent) + "%)";
-	opfText = "OPFOR - " + str(eastPoints) + " / " + str(endPoints) + " - (" + str(_opfPercent) + "%)";	
-	"bluPointsMark" setMarkerText bluText;
-	"opPointsMark" setMarkerText opfText;
-	publicVariable "bluText"; //Used in sectors\clientListen.sqf
-	publicVariable "opfText"; //Used in sectors\clientListen.sqf
+	_opfPercent = round (((bc_eastPoints / bc_endPoints)*100)*100) / 100;
+	_bluPercent = round (((bc_westPoints / bc_endPoints)*100)*100) / 100;
+	bc_bluText = "BLUFOR - " + str(bc_westPoints) + " / " + str(bc_endPoints) + " - (" + str(_bluPercent) + "%)";
+	bc_opfText = "OPFOR - " + str(bc_eastPoints) + " / " + str(bc_endPoints) + " - (" + str(_opfPercent) + "%)";	
+	"bluPointsMark" setMarkerText bc_bluText;
+	"opPointsMark" setMarkerText bc_opfText;
+	publicVariable "bc_bluText"; //Used in sectors\clientListen.sqf
+	publicVariable "bc_opfText"; //Used in sectors\clientListen.sqf
 	
 	//Throw a reminder hint at key point values
-	if ((westPoints >= ((endPoints / 4) * pointsCounter)) || (eastPoints >= ((endPoints / 8) * pointsCounter))) then {
-		sideCurOwned = 4;
-		[[[sideCurOwned,pointsCounter,westPoints,eastPoints,endPoints], "scripts\sectors\client.sqf"], "BIS_fnc_execVM"] call BIS_fnc_MP;
-		pointsCounter = pointsCounter + 1;
+	if ((bc_westPoints >= ((bc_endPoints / 4) * bc_sec_pointsCounter)) || (bc_eastPoints >= ((bc_endPoints / 8) * bc_sec_pointsCounter))) then {
+		bc_sideCurOwned = 4;
+		[[[bc_sideCurOwned,bc_sec_pointsCounter,bc_westPoints,bc_eastPoints,bc_endPoints], "scripts\sectors\client.sqf"], "BIS_fnc_execVM"] call BIS_fnc_MP;
+		bc_sec_pointsCounter = bc_sec_pointsCounter + 1;
 	};
 	//Ending conditions
-	if (westPoints >= endPoints) then {
-		sideCurOwned = 5;
-		[[[sideCurOwned,pointsCounter,westPoints,eastPoints,endPoints], "scripts\sectors\client.sqf"], "BIS_fnc_execVM"] call BIS_fnc_MP;
-		playing = 0;
+	if (bc_westPoints >= bc_endPoints) then {
+		bc_sideCurOwned = 5;
+		[[[bc_sideCurOwned,bc_sec_pointsCounter,bc_westPoints,bc_eastPoints,bc_endPoints], "scripts\sectors\client.sqf"], "BIS_fnc_execVM"] call BIS_fnc_MP;
+		bc_sec_playing = 0;
 	};
-	if (eastPoints >= endPoints) then {
-		sideCurOwned = 6;
-		[[[sideCurOwned,pointsCounter,westPoints,eastPoints,endPoints], "scripts\sectors\client.sqf"], "BIS_fnc_execVM"] call BIS_fnc_MP;
-		playing = 0;
+	if (bc_eastPoints >= bc_endPoints) then {
+		bc_sideCurOwned = 6;
+		[[[bc_sideCurOwned,bc_sec_pointsCounter,bc_westPoints,bc_eastPoints,bc_endPoints], "scripts\sectors\client.sqf"], "BIS_fnc_execVM"] call BIS_fnc_MP;
+		bc_sec_playing = 0;
 	};
 };

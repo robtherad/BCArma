@@ -34,13 +34,13 @@ if (_useMarkers == 0) exitWith {};
 _westVehArray = nil;
 _eastVehArray = nil;
 _hqArray = ["HQ","A SL","B SL","C SL","D SL","E SL","F SL","G SL","H SL"];
-iteration = 0;
+bc_gps_iteration = 0;
 
 //CREATE NEW MARKERS
 //Infantry
 { //forEach allGroups
-	_markerName = str(iteration) + "_marker";
-	_x setVariable ["markerName",_markerName];
+	_markerName = str(bc_gps_iteration) + "_marker";
+	_x setVariable ["bc_gps_markerName",_markerName];
 	_markerPos = getPos (leader _x);
 	_markerFaction = switch (faction player) do {
 		case "BLU_F": { ["ColorBLUFOR","b_inf","b_hq"] };
@@ -59,7 +59,7 @@ iteration = 0;
 	_marker setMarkerTextLocal (groupID _x);
 	_marker setMarkerSizeLocal [.75,.75];
 	_marker setMarkerAlphaLocal 0;
-	iteration = iteration + 1;
+	bc_gps_iteration = bc_gps_iteration + 1;
 } forEach allGroups;
 
 //Vehicles
@@ -122,7 +122,7 @@ while{true} do {
 	//INFANTRY MARKERS
 	{ //forEach allGroups
 		_group = _x;
-		_marker = _group getVariable "markerName";
+		_marker = _group getVariable "bc_gps_markerName";
 		//If player has GPS then continue on, if not hide group markers.
 		if("ItemGPS" in (assignedItems player)) then {
 			//If player is on same side as group leader check that group for people who have GPS.

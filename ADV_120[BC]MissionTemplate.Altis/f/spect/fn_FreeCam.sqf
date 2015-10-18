@@ -160,7 +160,7 @@ if (!f_cam_muteSpectators) then {
 		player setPos [(getPos f_cam_freecamera select 0),(getPos f_cam_freecamera select 1),(getPos f_cam_freecamera select 2)+10];
 		player setVelocity [0, 0, 0];
 	} else {
-		player setPos [(getPos f_cam_camera select 0),(getPos f_cam_camera select 1),(getPos f_cam_camera select 2)+500];
+		player setPos [(getPos f_cam_camera select 0),(getPos f_cam_camera select 1),(getPos f_cam_camera select 2)+10];
 		player setVelocity [0, 0, 0];
 	};
 } else {
@@ -169,13 +169,13 @@ if (!f_cam_muteSpectators) then {
 		player setVelocity [0, 0, 0];
 	};
 };
-		//hint format ["Simming - %1\nHidden - %2",simulationEnabled player,isObjectHidden player];
-		if (simulationEnabled player) then {
-			//player enableSimulationGlobal false;
-		};
-		if (isObjectHidden player) then {
-			//player hideObjectGlobal true;
-		};
+//MAKE SURE PLAYER IS HIDDEN + NOT SIMULATED
+if (simulationEnabled player) then {
+	player enableSimulationGlobal false;
+};
+if (!isObjectHidden player) then {
+	player hideObjectGlobal true;
+};
 cameraEffectEnableHUD true;
 showCinemaBorder false;
 // =======================================================================================================================================

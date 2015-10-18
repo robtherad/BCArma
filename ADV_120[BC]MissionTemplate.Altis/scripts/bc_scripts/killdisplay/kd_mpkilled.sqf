@@ -1,5 +1,5 @@
 /*
-When the player dies they will have a hint pop up and display who they were killed by as well as all kills that they got during the mission.
+When the player dies they will have a hint pop up and display who they were killed by as well as all bc_kills that they got during the mission.
 
 This script is executed every time a unit is killed during the mission. Don't call this script from any init.sqf files.
 
@@ -16,52 +16,53 @@ _killer = _this select 1;
 
 showSubtitles false; //Apparently when you get a team kill it changes this variable?
 
-//Make sure variable 'kills' isn't empty. If so, initialize.
-if (isNil {kills}) then {
-	kills = "You killed: \n";
-	killCount = 0;
-	kills_struct = [kills, "\n", "<br/>"] call CBA_fnc_replace;
-	missionNamespace setVariable ["bc_kills",kills_struct];
+//Make sure variable 'bc_kills' isn't empty. If so, initialize.
+if (isNil {bc_kills}) then {
+	bc_kills = "You killed: \n";
+	bc_killCount = 0;
+	bc_killsStruct = [bc_kills, "\n", "<br/>"] call CBA_fnc_replace;
+	missionNamespace setVariable ["bc_kills",bc_killsStruct];
 };
 
 //Player has killed.
 if (vehicle player == _killer) then {
 	//Check for friendly fire
 	if (faction player == faction _unit) then {
-		friendly = " - [FRIENDLY]";
+		bc_friendly = " - [FRIENDLY]";
 		if (player == _unit) then {
-			friendly = " - [SELF]";
+			bc_friendly = " - [SELF]";
 		};
 	} else {
-		friendly = "";
+		bc_friendly = "";
 	};
-	killDist = ceil (_killer distance _unit);
-	killCount = killCount + 1;
+	bc_killDist = ceil (_killer distance _unit);
+	bc_killCount = bc_killCount + 1;
 	//Build string for use in readout.
-	kills = kills + str(killCount) + ". " + (name _unit) + " (" + str(killDist) + "m)" + friendly + "\n";
-	kills_struct = [kills, "\n", "<br/>"] call CBA_fnc_replace;
-	missionNamespace setVariable ["bc_kills",kills_struct];
+	bc_kills = bc_kills + str(bc_killCount) + ". " + (name _unit) + " (" + str(bc_killDist) + "m)" + bc_friendly + "\n";
+	bc_killsStruct = [bc_kills, "\n", "<br/>"] call CBA_fnc_replace;
+	missionNamespace setVariable ["bc_kills",bc_killsStruct];
 };
 
 //Player has died.
 if (player == _unit) then {
 	//Check for friendly fire
 	if (faction player == faction _killer) then {
-		friendly = " - [FRIENDLY]";
+		bc_friendly = " - [FRIENDLY]";
 		if (player == _killer) then {
-			friendly = " - [SELF]";
+			bc_friendly = " - [SELF]";
 		};
 	} else {
-		friendly = "";
+		bc_friendly = "";
 	};
+	bc_killDist = ceil (_killer distance _unit);
 	//Commence Readout
 	sleep 5; // wait until death stuff is done
 	hint "You can check your chat log to see who you were killed by and who you killed.\n\nPress your Chat Key so that the chat box at the bottom opens and then you can press PAGE-UP and PAGE-DOWN to scroll through the chat.";	
-	kills = "You were killed by - " + (name _killer) + " (" + str(killDist) + "m)" + friendly + "\n-\n" + kills;
-	kills_struct = [kills, "\n", "<br/>"] call CBA_fnc_replace;
-	missionNamespace setVariable ["bc_kills",kills_struct];
-	kills2 = [kills, "\n"] call CBA_fnc_split;
+	bc_kills = "You were killed by - " + (name _killer) + " (" + str(bc_killDist) + "m)" + bc_friendly + "\n-\n" + bc_kills;
+	bc_killsStruct = [bc_kills, "\n", "<br/>"] call CBA_fnc_replace;
+	missionNamespace setVariable ["bc_kills",bc_killsStruct];
+	bc_kills2 = [bc_kills, "\n"] call CBA_fnc_split;
 	{
 		systemChat format ["%1",_x];
-	} forEach kills2;
+	} forEach bc_kills2;
 };

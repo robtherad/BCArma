@@ -1,7 +1,7 @@
 disableSerialization;
 //Make sure the sector control script has been running long enough
-waitUntil {if (!isNil "opfText") then {true};};
-waitUntil {if (!isNil "bluText") then {true};};
+waitUntil {if (!isNil "bc_opfText") then {true};};
+waitUntil {if (!isNil "bc_bluText") then {true};};
 
 while {true} do {
 	//Create displays in bottom left
@@ -14,9 +14,9 @@ while {true} do {
 	//Update text in the displays to match the points markers
 	_display = uiNameSpace getVariable "redforStructText";
 		_setText = _display displayCtrl 1001;
-			_setText ctrlSetStructuredText (parseText format ["%1",opfText]);
+			_setText ctrlSetStructuredText (parseText format ["%1",bc_opfText]);
 	_display2 = uiNameSpace getVariable "bluforStructText";
 		_setText2 = _display2 displayCtrl 1002;
-			_setText2 ctrlSetStructuredText (parseText format ["%1",bluText]);
+			_setText2 ctrlSetStructuredText (parseText format ["%1",bc_bluText]);
 	sleep 3;
 };

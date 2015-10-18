@@ -21,22 +21,22 @@ _alertEnd = 0; // Time elapsed warning
 _alertSoon = 0; // 15 minute warning
 
 sleep 1;
-sectorControl = missionNamespace getVariable "sectorControlActive";
-if (isNil "sectorControl") then {	//Check to see if the sector control script is running.
-	sectorControl = false;
+bc_sectorControl = missionNamespace getVariable "bc_sectorControlActive";
+if (isNil "bc_sectorControl") then {	//Check to see if the sector control script is running.
+	bc_sectorControl = false;
 };
 
 //Function that adds the current point totals to hint popups when the sector control script is running.
 fnc_sectorControl = {
-	if (sectorControl) then {
-		_opfPercent = round ((((eastPoints) / (endPoints))*100)*100) / 100;
-		_bluPercent = round ((((westPoints) / (endPoints))*100)*100) / 100;
+	if (bc_sectorControl) then {
+		_opfPercent = round ((((bc_eastPoints) / (bc_endPoints))*100)*100) / 100;
+		_bluPercent = round ((((bc_westPoints) / (bc_endPoints))*100)*100) / 100;
 		
 		_opfPercentStr = parseText format [" - (%1&#37;)",_opfPercent];
 		_bluPercentStr = parseText format [" - (%1&#37;)",_bluPercent];
 		
-		hint parseText format["<t>%5<br/><br/>Sector Points<br/>BLUFOR - %1 / %2 - (%3&#37;)<br/>OPFOR - %4 / %2 - (%5&#37;)</t>",westPoints,endPoints,_bluPercent,eastPoints,_opfPercent,_hintStr];
-		_hintStr = _hintStr + "\n\n\nSector Points\nBLUFOR - " + str(westPoints) + " / " + str(endPoints) + str(_bluPercentStr) + "\n" + "OPFOR - " + str(eastPoints) + " / " + str(endPoints) + str(_opfPercentStr);
+		hint parseText format["<t>%5<br/><br/>Sector Points<br/>BLUFOR - %1 / %2 - (%3&#37;)<br/>OPFOR - %4 / %2 - (%5&#37;)</t>",bc_westPoints,bc_endPoints,_bluPercent,bc_eastPoints,_opfPercent,_hintStr];
+		_hintStr = _hintStr + "\n\n\nSector Points\nBLUFOR - " + str(bc_westPoints) + " / " + str(bc_endPoints) + str(_bluPercentStr) + "\n" + "OPFOR - " + str(bc_eastPoints) + " / " + str(bc_endPoints) + str(_opfPercentStr);
 	};
 };
 

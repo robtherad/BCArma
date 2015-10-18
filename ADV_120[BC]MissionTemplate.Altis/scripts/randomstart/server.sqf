@@ -18,7 +18,7 @@ if (!isServer) exitWith {};
 _markerArray = ["randomstart", "randomstart_1", "randomstart_2", "randomstart_3", "randomstart_4", "randomstart_5", "randomstart_6", "randomstart_7"];
 
 //Select a marker from the array at random.
-randomMarker = _markerArray call BIS_fnc_selectRandom;
+bc_randomMarker = _markerArray call BIS_fnc_selectRandom;
 
 //Broadcast the selected marker to all clients on the server.
-publicVariable "randomMarker";
+publicVariable "bc_randomMarker";
