@@ -6,5 +6,7 @@ if (!isServer) exitWith {};
 
 bc_opforBaseChannel = floor(random 53) + 30;
 bc_bluforBaseChannel = floor(random 53) + 30;
-["bc_opforBaseChannel", bc_opforBaseChannel] call CBA_fnc_publicVariable;
-["bc_bluforBaseChannel", bc_bluforBaseChannel] call CBA_fnc_publicVariable;
+publicVariable "bc_opforBaseChannel";
+publicVariable "bc_bluforBaseChannel";
+//["bc_opforBaseChannel", bc_opforBaseChannel] call CBA_fnc_publicVariable;
+//["bc_bluforBaseChannel", bc_bluforBaseChannel] call CBA_fnc_publicVariable;
