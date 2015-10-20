@@ -13,23 +13,23 @@ _orbatText = "<br />NOTE: The ORBAT below is only accurate at mission start.<br 
 <font size='18'>GROUP LEADERS + MEDICS</font><br /><br />";
 _groups = [];
 
-waitUntil { !isNil "opforBaseChannel"; };
-waitUntil { !isNil "bluforBaseChannel"; };
+waitUntil { !isNil "bc_opforBaseChannel"; };
+waitUntil { !isNil "bc_bluforBaseChannel"; };
 
 _groupIDs = [
 // BLUFOR
-["Blue_HQ",bluforBaseChannel],
-["Blue_A",bluforBaseChannel+1],["Blue_A1",bluforBaseChannel+1.1],["Blue_A2",bluforBaseChannel+1.2],
-["Blue_B",bluforBaseChannel+2],["Blue_B1",bluforBaseChannel+2.1],["Blue_B2",bluforBaseChannel+2.2],
-["Blue_C",bluforBaseChannel+3],["Blue_C1",bluforBaseChannel+3.1],["Blue_C2",bluforBaseChannel+3.2],
-["Blue_D",bluforBaseChannel+4],["Blue_D1",bluforBaseChannel+4.1],["Blue_D2",bluforBaseChannel+4.2],["Blue_D3",bluforBaseChannel+4.3],["Blue_D4",bluforBaseChannel+4.4],
+["Blue_HQ",bc_bluforBaseChannel],
+["Blue_A",bc_bluforBaseChannel+1],["Blue_A1",bc_bluforBaseChannel+1.1],["Blue_A2",bc_bluforBaseChannel+1.2],
+["Blue_B",bc_bluforBaseChannel+2],["Blue_B1",bc_bluforBaseChannel+2.1],["Blue_B2",bc_bluforBaseChannel+2.2],
+["Blue_C",bc_bluforBaseChannel+3],["Blue_C1",bc_bluforBaseChannel+3.1],["Blue_C2",bc_bluforBaseChannel+3.2],
+["Blue_D",bc_bluforBaseChannel+4],["Blue_D1",bc_bluforBaseChannel+4.1],["Blue_D2",bc_bluforBaseChannel+4.2],["Blue_D3",bc_bluforBaseChannel+4.3],["Blue_D4",bc_bluforBaseChannel+4.4],
 
 // REDFOR
-["Red_HQ",opforBaseChannel],
-["Red_E",opforBaseChannel+1],["Red_E1",opforBaseChannel+1.1],["Red_E2",opforBaseChannel+1.2],
-["Red_F",opforBaseChannel+2],["Red_F1",opforBaseChannel+2.1],["Red_F2",opforBaseChannel+2.2],
-["Red_G",opforBaseChannel+3],["Red_G1",opforBaseChannel+3.1],["Red_G2",opforBaseChannel+3.2],
-["Red_H",opforBaseChannel+4],["Red_H1",opforBaseChannel+4.1],["Red_H2",opforBaseChannel+4.2],["Red_H3",opforBaseChannel+4.3],["Red_H4",opforBaseChannel+4.4]
+["Red_HQ",bc_opforBaseChannel],
+["Red_E",bc_opforBaseChannel+1],["Red_E1",bc_opforBaseChannel+1.1],["Red_E2",bc_opforBaseChannel+1.2],
+["Red_F",bc_opforBaseChannel+2],["Red_F1",bc_opforBaseChannel+2.1],["Red_F2",bc_opforBaseChannel+2.2],
+["Red_G",bc_opforBaseChannel+3],["Red_G1",bc_opforBaseChannel+3.1],["Red_G2",bc_opforBaseChannel+3.2],
+["Red_H",bc_opforBaseChannel+4],["Red_H1",bc_opforBaseChannel+4.1],["Red_H2",bc_opforBaseChannel+4.2],["Red_H3",bc_opforBaseChannel+4.3],["Red_H4",bc_opforBaseChannel+4.4]
 ];
 {
 	// Add to ORBAT if side matches, group isn't already listed, and group has players

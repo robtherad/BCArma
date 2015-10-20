@@ -109,7 +109,7 @@ class CfgDebriefingSections
 	class Kills
 	{
 		title = "Kills";
-		variable = "bc_kills";
+		variable = "bc_killsStruct";
 	};
 };
 #include "scripts\bc_scripts\display.hpp"
