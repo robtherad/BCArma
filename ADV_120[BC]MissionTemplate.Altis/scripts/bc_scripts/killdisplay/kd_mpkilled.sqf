@@ -21,7 +21,7 @@ if (isNil {bc_kills}) then {
 	bc_kills = "You killed: \n";
 	bc_killCount = 0;
 	bc_killsStruct = [bc_kills, "\n", "<br/>"] call CBA_fnc_replace;
-	missionNamespace setVariable ["bc_kills",bc_killsStruct];
+	missionNamespace setVariable ["bc_killsStruct",bc_killsStruct];
 };
 
 //Player has killed.
@@ -40,7 +40,7 @@ if (vehicle player == _killer) then {
 	//Build string for use in readout.
 	bc_kills = bc_kills + str(bc_killCount) + ". " + (name _unit) + " (" + str(bc_killDist) + "m)" + bc_friendly + "\n";
 	bc_killsStruct = [bc_kills, "\n", "<br/>"] call CBA_fnc_replace;
-	missionNamespace setVariable ["bc_kills",bc_killsStruct];
+	missionNamespace setVariable ["bc_killsStruct",bc_killsStruct];
 };
 
 //Player has died.
@@ -58,9 +58,10 @@ if (player == _unit) then {
 	//Commence Readout
 	sleep 5; // wait until death stuff is done
 	bc_kills = "You were killed by - " + (name _killer) + " (" + str(bc_killDist) + "m)" + bc_friendly + "\n-\n" + bc_kills;
+	bc_kills3 = bc_kills;
 	bc_killsStruct = [bc_kills, "\n", "<br/>"] call CBA_fnc_replace;
-	missionNamespace setVariable ["bc_kills",bc_killsStruct];
-	bc_kills2 = [bc_kills, "\n"] call CBA_fnc_split;
+	missionNamespace setVariable ["bc_killsStruct",bc_killsStruct];
+	bc_kills2 = [bc_kills3, "\n"] call CBA_fnc_split;
 	{
 		systemChat format ["%1",_x];
 	} forEach bc_kills2;
