@@ -16,7 +16,7 @@ disabledAI = 1;
 respawn = 1;
 respawndelay = 3;
 respawnOnStart = 0;
-respawnTemplates[] = {"f_spectator"};
+respawnTemplates[] = {"f_spectator", "seagull"};
 
 class cfgNotifications
 {
@@ -81,10 +81,14 @@ class Params
 
 class CfgRespawnTemplates
 {
-	class f_spectator
-	{
+    class f_spectator
+    {
 		onPlayerRespawn = "f_fnc_CamInit";
-	};
+    };
+    class seagull
+    {
+		onPlayerRespawn = "";
+    };
 };
 
 #include "f\spect\config.hpp"
