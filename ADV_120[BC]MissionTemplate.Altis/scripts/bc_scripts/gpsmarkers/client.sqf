@@ -36,9 +36,13 @@ if (_useMarkers == 0) exitWith {};
 //------------ DO NOT EDIT ABOVE THIS LINE ------------
 _westVehArray = nil;
 _eastVehArray = nil;
-_hqArray = ["HQ","A SL","B SL","C SL","D SL","E SL","F SL","G SL","H SL"];
 //------------ DO NOT EDIT BELOW THIS LINE ------------
 
+_sideVehArray = switch (side player) do {
+    case west: { if (!isNil "_westVehArray") then {_westVehArray}; };
+    case east: { if (!isNil "_eastVehArray") then {_eastVehArray}; };
+	default { nil };
+};
 //FUNCTIONS
 fn_bc_createVehMarks={
 	private ["_vehArray","_markerName","_markerPos","_markerFaction","_marker","_markerString"];
@@ -137,10 +141,10 @@ while{true} do {
 		if("ItemGPS" in (assignedItems player)) then { //Check if player has GPS
 			if ((faction player) == (faction (leader _x))) then { //Check if player is on same faction as the group
 				_marker setMarkerAlphaLocal 1; //If player has GPS and same faction, show marker
-				_senior = _group getVariable ["bc_seniorGPS",objNull];
 				{ //forEach allUnits in _group
 					//Check members in group for GPS and update the marker to the position of the most senior member in the group who has GPS
 					_unit = _x;
+					_senior = _group getVariable ["bc_seniorGPS",objNull];
 					if (!isNull _senior) then { //If _senior is set then...
 						if (!("ItemGPS" in (assignedItems _unit))) then { //Make sure most senior unit still has GPS
 							_group setVariable ["bc_seniorGPS",objNull];
@@ -149,8 +153,8 @@ while{true} do {
 					if (("ItemGPS" in (assignedItems _unit)) && ((isNull _senior) || (_senior == _unit))) then { //no reason to run this stuff if _unit isn't the most senior member
 						if (isNull _senior) then {
 							_group setVariable ["bc_seniorGPS",_unit]; //no better match than _unit
-						};				
-						if ((vehicle _unit != _unit) && !((vehicle _unit in _westVehArray) || (vehicle _unit in _eastVehArray))) then { //If unit isn't on foot and vehicle doesn't have a marker
+						};
+						if (vehicle _unit != _unit) then { //If unit isn't on foot and vehicle doesn't have a marker
 							_unitInside = (vehicle _unit) getVariable "bc_UnitInside";
 							_lastInside = (vehicle _unit) getVariable "bc_LastInside";
 							if (isNil "_lastInside") then {_lastInside = "Nobody"};
@@ -162,7 +166,11 @@ while{true} do {
 								(vehicle _unit) setVariable ["bc_UnitInside",groupID _group];
 								(vehicle _unit) setVariable ["bc_LastInside",groupID _group];
 							};
-							_marker setMarkerAlphaLocal 0; //Hide marker when unit is in a vehicle that has a marker
+							if ((!isNil "_sideVehArray") && (vehicle _unit in _sideVehArray)) then {
+								_marker setMarkerAlphaLocal 0; //Hide marker when unit is in a vehicle that has a marker
+							} else {
+								_marker setMarkerAlphaLocal 1; //Vehicle doesn't have a marker, show unit's marker instead
+							};
 						} else {
 							_marker setMarkerAlphaLocal 1; //Show marker when unit is not in a vehicle with a marker
 						};

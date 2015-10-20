@@ -1,6 +1,7 @@
 // F3 - Spectator Script
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 // ====================================================================================
+//_this = [this,objNull,0,0,true] execVM "f\spect\fn_CamInit.sqf";
 // params
 _this spawn {
 _unit = [_this, 0, player,[objNull]] call BIS_fnc_param;
