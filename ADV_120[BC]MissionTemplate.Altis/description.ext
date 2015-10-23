@@ -16,7 +16,7 @@ disabledAI = 1;
 respawn = 1;
 respawndelay = 3;
 respawnOnStart = 0;
-respawnTemplates[] = {"f_spectator", "seagull"};
+respawnTemplates[] = {"f_spectator", "Seagull"};
 
 class cfgNotifications
 {
@@ -85,7 +85,7 @@ class CfgRespawnTemplates
     {
 		onPlayerRespawn = "f_fnc_CamInit";
     };
-    class seagull
+    class Seagull
     {
 		onPlayerRespawn = "";
     };
