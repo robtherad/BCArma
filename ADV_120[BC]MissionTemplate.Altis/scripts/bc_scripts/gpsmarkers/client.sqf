@@ -51,10 +51,10 @@ _eastVehArray = nil;
 _ignoreMarkerArray = []; //if blank set to []
 //------------ DO NOT EDIT BELOW THIS LINE ------------
 
-_sideVehArray = switch (side player) do {
-    case west: { if (!isNil "_westVehArray") then {_westVehArray}; };
-    case east: { if (!isNil "_eastVehArray") then {_eastVehArray}; };
-	default { nil };
+switch (side player) do {
+    case west: { if (!isNil "_westVehArray") then {bc_sideVehArray = _westVehArray;} else {bc_sideVehArray = nil;}; };
+    case east: { if (!isNil "_eastVehArray") then {bc_sideVehArray = _eastVehArray;} else {bc_sideVehArray = nil;}; };
+	default { bc_sideVehArray = nil; };
 };
 //FUNCTIONS
 fn_bc_createVehMarks={
@@ -145,7 +145,7 @@ sleep 2.5; //Wait a few seconds just in case the editor starting position of a g
 } forEach allGroups;
 
 //Vehicles
-if (!isNil "_sideVehArray") then {[_sideVehArray] call fn_bc_createVehMarks;};
+if (!isNil "bc_sideVehArray") then {[bc_sideVehArray] call fn_bc_createVehMarks;};
 //DONE CREATING MARKERS
 
 bc_gps_iteration = nil; //might as well destroy this variable since it's not used again
@@ -188,10 +188,12 @@ while{true} do {
 									(vehicle _unit) setVariable ["bc_UnitInside",groupID _group];
 									(vehicle _unit) setVariable ["bc_LastInside",groupID _group];
 								};
-								if ((!isNil "_sideVehArray") && (vehicle _unit in _sideVehArray)) then {
-									_marker setMarkerAlphaLocal 0; //Hide marker when unit is in a vehicle that has a marker
-								} else {
-									_marker setMarkerAlphaLocal 1; //Vehicle doesn't have a marker, show unit's marker instead
+								if (!isNil "bc_sideVehArray") then {
+									if (vehicle _unit in bc_sideVehArray) then {
+										_marker setMarkerAlphaLocal 0; //Hide marker when unit is in a vehicle that has a marker
+									} else {
+										_marker setMarkerAlphaLocal 1; //Vehicle doesn't have a marker, show unit's marker instead
+									};
 								};
 							} else {
 								_marker setMarkerAlphaLocal 1; //Show marker when unit is not in a vehicle with a marker
@@ -207,6 +209,6 @@ while{true} do {
 	} forEach allGroups;
 	
 	//VEHICLE MARKERS
-	if (!isNil "_sideVehArray") then {[_sideVehArray] call fn_bc_updateVehMarks;};
+	if (!isNil "bc_sideVehArray") then {[bc_sideVehArray] call fn_bc_updateVehMarks;};
 	sleep 2;
 };

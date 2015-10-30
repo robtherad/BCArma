@@ -7,7 +7,25 @@ waitUntil {!isNull player};
 bc_radioScriptRunning = true;
 waitUntil { !isNil "bc_opforBaseChannel"; };
 waitUntil { !isNil "bc_bluforBaseChannel"; };
-titleText ["Radio channels should be set up in 5 seconds. Please be patient.","PLAIN DOWN"];
+bc_hasSWitem = false;
+bc_hasLRitem = false;
+//Get Radios setup
+waitUntil { !isNil "loadout_assigned"; };
+_LRlist = ["tf_rt1523g","tf_rt1523g_big","tf_rt1523g_black","tf_rt1523g_fabric","tf_rt1523g_green","tf_rt1523g_rhs","tf_rt1523g_sage","tf_anarc210","tf_rt1523g_big_bwmod","tf_rt1523g_big_bwmod_tropen","tf_rt1523g_bwmod","tf_rt1523g_big_rhs","tf_mr3000","tf_mr3000_multicam","tf_mr3000_rhs","tf_mr6000l","tf_mr3000_bwmod","tf_mr3000_bwmod_tropen","tf_anprc155","tf_anprc155_coyote","tf_anarc164"];
+_SWlist = ["ItemRadio","tf_anprc152","tf_anprc148jem","tf_fadak","tf_pnr100a","tf_anprc154","tf_rf7800str"];
+
+//Check to see if player has any items matching the lists above.
+if ((backpack player) in _LRlist) then {
+	bc_hasLRitem = true;
+};
+
+{
+	if (_x in _SWlist) then {
+		bc_hasSWitem = true;
+	};
+} forEach (assignedItems player);
+
+
 //Figure out which side the player is on. 
 _side = side player;
 switch (_side) do {
@@ -86,24 +104,7 @@ if (_side == west) then {
 player createDiaryRecord ["diary", ["[BC] Radio Settings", bc_radioNoteString]];
 //End Mission Notes
 
-
-//Check if player has an item that will be turned into a TFAR radio. Save the info for later
-bc_hasSWitem = false;
-bc_hasLRitem = false;
-
-//Lists of items that turn into TFAR radios recognized by TFAR
-_LRlist = ["tf_rt1523g","tf_rt1523g_big","tf_rt1523g_black","tf_rt1523g_fabric","tf_rt1523g_green","tf_rt1523g_rhs","tf_rt1523g_sage","tf_anarc210","tf_rt1523g_big_bwmod","tf_rt1523g_big_bwmod_tropen","tf_rt1523g_bwmod","tf_rt1523g_big_rhs","tf_mr3000","tf_mr3000_multicam","tf_mr3000_rhs","tf_mr6000l","tf_mr3000_bwmod","tf_mr3000_bwmod_tropen","tf_anprc155","tf_anprc155_coyote","tf_anarc164"];
-_SWlist = ["ItemRadio","tf_anprc152","tf_anprc148jem","tf_fadak","tf_pnr100a","tf_anprc154","tf_rf7800str"];
-
-//Check to see if player has any items matching the lists above.
-if ((backpack player) in _LRlist) then {
-	bc_hasLRitem = true;
-};
-{
-	if (_x in _SWlist) then {
-		bc_hasSWitem = true;
-	};
-} forEach (assignedItems player);
+titleText ["Radio channels should be set up in 5 seconds. Please be patient.","PLAIN DOWN"];
 
 //Get initial values from TFAR and see if they match with what the player had on him.
 bc_hasLR = call TFAR_fnc_haveLRRadio;
@@ -112,12 +113,12 @@ bc_hasSW = call TFAR_fnc_haveSWRadio;
 //If the player previously had items that were TFAR items but doesnt have a TFAR radio then wait until everything syncs up.
 while {(bc_hasSWitem) && (!bc_hasSW)} do {
 	bc_hasSW = call TFAR_fnc_haveSWRadio;
-	titleText ["BC RADIO SCRIPT\nWAITING FOR SW TO SYNC","PLAIN DOWN"];
+	titleText ["SW RADIO\nSYNCING...","PLAIN DOWN"];
 	sleep 0.1;
 };
 while {(bc_hasLRitem) && (!bc_hasLR)} do {
 	bc_hasLR = call TFAR_fnc_haveLRRadio;
-	titleText ["BC RADIO SCRIPT\nWAITING FOR LR TO SYNC","PLAIN DOWN"];
+	titleText ["LR RADIO\nSYNCING...","PLAIN DOWN"];
 	sleep 0.1;
 };
 
