@@ -334,6 +334,7 @@ case "KeyDown":
 
         case 35: //  H
         {
+			hint "Extra Keys\n\nPress 'Up Arrow' to see this hint again.\nPress 'U' to hide the spectator UI.\nPress 'V' to hide the remaining time UI.\nPress 'Right Arrow' to make player tags bigger.\nPress 'Left Arrow' to make player tags smaller.\nPress 'F2' to clear hints.\n";
             ctrlShow [1315, !ctrlVisible 1315];
             ctrlShow [1310, !ctrlVisible 1310];
             ctrlShow [1300, !ctrlVisible 1300];
@@ -350,7 +351,7 @@ case "KeyDown":
 		{
             f_cam_muteSpectators = !f_cam_muteSpectators;
             [player, f_cam_muteSpectators] call TFAR_fnc_forceSpectator;
-			hint format ["Spectators Unmuted = %1",f_cam_muteSpectators];
+			systemChat format ["Spectators Muted = %1",!f_cam_muteSpectators];
 			if (f_cam_muteSpectators) then {
 				player setVariable ["tf_voiceVolume", 1.0, true];
 			} else {
@@ -420,6 +421,10 @@ case "KeyDown":
 			} else {
 				f_cam_tagTextSize = 0;
 			};
+        };
+		case default //LEFT ARROW KEY
+        {
+            hint format ["%1",_key];
         };
     };
     _handled

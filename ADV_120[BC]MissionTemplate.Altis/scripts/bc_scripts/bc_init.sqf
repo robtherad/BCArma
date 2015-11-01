@@ -10,6 +10,7 @@ if (!isDedicated) then {
 	[] execVM "scripts\bc_scripts\gpsmarkers\client.sqf";
 	[] execVM "scripts\bc_scripts\loadout\setLoadout.sqf";
 	[] execVM "scripts\bc_scripts\radios\client.sqf";
+	[] execVM "scripts\bc_scripts\endconditions\client.sqf";
 };
 
 //These scripts only execute on the server and only run once
