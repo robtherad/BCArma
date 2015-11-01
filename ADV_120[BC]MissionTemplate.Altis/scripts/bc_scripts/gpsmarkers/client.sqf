@@ -118,29 +118,27 @@ sleep 2.5; //Wait a few seconds just in case the editor starting position of a g
 //Infantry
 { //forEach allGroups
 	if (!((groupID _x) in _ignoreMarkerArray)) then {
-		if ((faction player) == (faction (leader _x))) then {
-			_markerName = str(bc_gps_iteration) + "_marker";
-			_x setVariable ["bc_gps_markerName",_markerName];
-			_markerPos = getPos (leader _x);
-			_markerFaction = switch (faction player) do {
-				case "BLU_F": { ["ColorBLUFOR","b_inf","b_hq"] };
-				case "OPF_F": { ["ColorOPFOR","o_inf","o_hq"] };
-				case "IND_F": { ["ColorGUER","n_inf","n_hq"] };
-				default { ["ColorCivilian","mil_box","mil_triangle"] };
-			};
-			_marker = createMarkerLocal [_markerName,_markerPos];
-			_marker setMarkerShapeLocal "ICON";
-			_marker setMarkerColorLocal (_markerFaction select 0);
-			if (groupID _x in _hqArray) then {
-				_marker setMarkerTypeLocal (_markerFaction select 2);
-			} else {
-				_marker setMarkerTypeLocal (_markerFaction select 1);
-			};
-			_marker setMarkerTextLocal (groupID _x);
-			_marker setMarkerSizeLocal [.75,.75];
-			_marker setMarkerAlphaLocal 0;
-			bc_gps_iteration = bc_gps_iteration + 1;
+		_markerName = str(bc_gps_iteration) + "_marker";
+		_x setVariable ["bc_gps_markerName",_markerName];
+		_markerPos = getPos (leader _x);
+		_markerFaction = switch (faction player) do {
+			case "BLU_F": { ["ColorBLUFOR","b_inf","b_hq"] };
+			case "OPF_F": { ["ColorOPFOR","o_inf","o_hq"] };
+			case "IND_F": { ["ColorGUER","n_inf","n_hq"] };
+			default { ["ColorCivilian","mil_box","mil_triangle"] };
 		};
+		_marker = createMarkerLocal [_markerName,_markerPos];
+		_marker setMarkerShapeLocal "ICON";
+		_marker setMarkerColorLocal (_markerFaction select 0);
+		if (groupID _x in _hqArray) then {
+			_marker setMarkerTypeLocal (_markerFaction select 2);
+		} else {
+			_marker setMarkerTypeLocal (_markerFaction select 1);
+		};
+		_marker setMarkerTextLocal (groupID _x);
+		_marker setMarkerSizeLocal [.75,.75];
+		_marker setMarkerAlphaLocal 0;
+		bc_gps_iteration = bc_gps_iteration + 1;
 	};
 } forEach allGroups;
 
