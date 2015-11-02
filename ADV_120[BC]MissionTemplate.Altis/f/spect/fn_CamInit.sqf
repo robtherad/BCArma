@@ -103,7 +103,6 @@ f_freecam_z_speed = 0;
 f_cam_tagTextSize = 0.025;
 bc_show_timeUI = true;
 
-
 f_cam_timestamp = time;
 f_cam_muteSpectators = true;
 

@@ -8,39 +8,43 @@ _missionTime = _missionRuntimeMins + _missionSafeTime;
 //While player isn't a person ingame
 waitUntil {if (!isNil "f_cam_VirtualCreated") then {true} else {sleep 5;};};
 while {true} do {
-	//Create displays in bottom left
-	("timeRsc" call BIS_fnc_rscLayer) cutRsc ["timeleftStructText", "PLAIN"];
-	//If displays weren't created then exit the script
-	if (uiNameSpace getVariable "timeleftStructText" == displayNull) exitWith {hint "TIMELEFT display not defined in description.ext"};
-	
-	//Update text in the displays to match the points markers
-	_display = uiNameSpace getVariable "timeleftStructText";
-		_setText = _display displayCtrl 1003;
-			if (time <= (_missionTime*60)) then {
-				_mins = (_missionTime - floor(time/60)) -1;
-				_secs = 60-floor(time%60);
-				if ((_secs < 10) || (_secs == 60)) then {
-					if (_secs == 60) then {
+	if (bc_show_timeUI) then {
+		//Create displays in bottom left
+		("timeRsc" call BIS_fnc_rscLayer) cutRsc ["timeleftStructText", "PLAIN"];
+		//If displays weren't created then exit the script
+		if (uiNameSpace getVariable "timeleftStructText" == displayNull) exitWith {hint "TIMELEFT display not defined in description.ext"};
+		
+		//Update text in the displays to match the points markers
+		_display = uiNameSpace getVariable "timeleftStructText";
+			_setText = _display displayCtrl 1003;
+				if (time <= (_missionTime*60)) then {
+					_mins = (_missionTime - floor(time/60)) -1;
+					_secs = 60-floor(time%60);
+					if ((_secs < 10) || (_secs == 60)) then {
 						if (_secs == 60) then {
-							_secs = "00";
-							_mins = (_missionTime - floor(time/60));
+							if (_secs == 60) then {
+								_secs = "00";
+								_mins = (_missionTime - floor(time/60));
+							};
+						} else {
+							_secs = "0" + str(60-floor(time%60));
 						};
-					} else {
-						_secs = "0" + str(60-floor(time%60));
 					};
-				};
-				_setText ctrlSetStructuredText (parseText format ["Approximate Time Remaining: %1:%2",_mins,_secs]);
-			} else {
-				_mins = floor((time-(_missionTime*60))/60);
-				_secs = floor((time-(_missionTime*60))%60);
-				if (_secs < 10) then {
-					if (_secs == 0) then {
-						_secs = "00";
-						_mins = floor((time-(_missionTime*60))/60);
+					_setText ctrlSetStructuredText (parseText format ["Approximate Time Remaining: %1:%2",_mins,_secs]);
+				} else {
+					_mins = floor((time-(_missionTime*60))/60);
+					_secs = floor((time-(_missionTime*60))%60);
+					if (_secs < 10) then {
+						if (_secs == 0) then {
+							_secs = "00";
+							_mins = floor((time-(_missionTime*60))/60);
+						};
+						_secs = "0" + str(floor((time-(_missionTime*60))%60));
 					};
-					_secs = "0" + str(floor((time-(_missionTime*60))%60));
+					_setText ctrlSetStructuredText (parseText format ["Approximate Overtime: + %1:%2",_mins,_secs]);
 				};
-				_setText ctrlSetStructuredText (parseText format ["Approximate Overtime: + %1:%2",_mins,_secs]);
-			};
-	uisleep 0.5;
+	} else {
+		("timeRsc" call BIS_fnc_rscLayer) cutText ["","PLAIN"];
+	};
+	uisleep 0.25;
 };

@@ -334,7 +334,7 @@ case "KeyDown":
 
         case 35: //  H
         {
-			hint "Extra Keys\n\nPress 'Up Arrow' to see this hint again.\nPress 'U' to hide the spectator UI.\nPress 'V' to hide the remaining time UI.\nPress 'Right Arrow' to make player tags bigger.\nPress 'Left Arrow' to make player tags smaller.\nPress 'F2' to clear hints.\n";
+			hint "Extra Keys\n\nPress 'F1' to see this hint again.\nPress 'U' to hide the spectator UI.\nPress 'V' to hide the remaining time UI.\nPress 'Right Arrow' to make player tags bigger.\nPress 'Left Arrow' to make player tags smaller.\nPress 'F2' to clear hints.\n";
             ctrlShow [1315, !ctrlVisible 1315];
             ctrlShow [1310, !ctrlVisible 1310];
             ctrlShow [1300, !ctrlVisible 1300];
@@ -422,9 +422,17 @@ case "KeyDown":
 				f_cam_tagTextSize = 0;
 			};
         };
-		case default //LEFT ARROW KEY
+		case 59: // F1
         {
-            hint format ["%1",_key];
+			hint "Extra Keys\n\nPress 'F1' to see this hint again.\nPress 'U' to hide the spectator UI.\nPress 'V' to hide the remaining time UI.\nPress 'Right Arrow' to make player tags bigger.\nPress 'Left Arrow' to make player tags smaller.\nPress 'F2' to clear hints.\n";
+        };
+		case 60: // F2
+        {
+			hint "";
+        };
+		case 47: // V
+        {
+			bc_show_timeUI = !bc_show_timeUI;
         };
     };
     _handled
