@@ -74,4 +74,3 @@ _groupIDs = [
 
 // Insert final result into subsection ORBAT of section Notes
 player createDiaryRecord ["diary", ["ORBAT", _orbatText]];
-bc_writtenORBAT = true;

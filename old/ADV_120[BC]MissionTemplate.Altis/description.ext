@@ -103,10 +103,6 @@ class CfgFunctions
 		};
 		#include "f\spect\functions.hpp"
 	};
-	class BC 
-	{
-		#include "bc\functions.hpp"
-	};
 };
 class CfgDebriefingSections
 {
@@ -116,6 +112,6 @@ class CfgDebriefingSections
 		variable = "bc_killsStruct";
 	};
 };
-#include "bc\display.hpp"
+#include "scripts\bc_scripts\display.hpp"
 
 disableChannels[]={0,2,3,4,5,6};

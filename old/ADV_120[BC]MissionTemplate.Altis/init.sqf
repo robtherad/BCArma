@@ -1,5 +1,4 @@
 //init.sqf - Executed when mission is started (before briefing screen)
-waitUntil {!isNull player};
 
 [] execVM "briefing.sqf";
 
@@ -10,6 +9,7 @@ waitUntil {!isNull player};
 [] execVM "f\briefing\f_orbatNotes.sqf";
 
 //Call the safeStart
-//[] execVM "f\safeStart\f_safeStart.sqf";
+[] execVM "f\safeStart\f_safeStart.sqf";
 
-call BC_fnc_coreInit;
+//Call scripts in BC Template
+[] execVM "scripts\bc_scripts\bc_init.sqf";
