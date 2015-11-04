@@ -12,4 +12,4 @@ waitUntil {!isNull player};
 //Call the safeStart
 //[] execVM "f\safeStart\f_safeStart.sqf";
 
-call BC_fnc_coreInit;
+call BC_fnc_bcInit;

@@ -7,20 +7,17 @@ removeBackpack player;
 removeHeadgear player;
 removeGoggles player;
 
-player forceAddUniform "MNP_CombatUniform_OD_Rg";
-player addItemToUniform "FirstAidKit";
-player addVest "MNP_Vest_OD_B";
-for "_i" from 1 to 2 do {player addItemToVest "HandGrenade";};
-for "_i" from 1 to 2 do {player addItemToVest "SmokeShell";};
-player addItemToVest "150Rnd_93x64_Mag";
-player addBackpack "B_FieldPack_khk";
-for "_i" from 1 to 2 do {player addItemToBackpack "150Rnd_93x64_Mag";};
-player addItemToBackpack "FirstAidKit";
-player addHeadgear "MNP_Helmet_PAGST_OD";
-player addGoggles "G_Bandanna_khk";
-player addWeapon "MMG_01_tan_F";
-player addPrimaryWeaponItem "acc_flashlight";
-player addPrimaryWeaponItem "bipod_01_F_blk";
+player forceAddUniform "MNP_CombatUniform_RO_Rg";
+for "_i" from 1 to 2 do {player addItemToUniform "FirstAidKit";};
+for "_i" from 1 to 4 do {player addItemToUniform "rhs_mag_an_m8hc";};
+player addVest "MNP_Vest_RU_T";
+for "_i" from 1 to 2 do {player addItemToVest "rhs_mag_m67";};
+player addBackpack "MNP_B_RU2_FP";
+for "_i" from 1 to 3 do {player addItemToBackpack "rhs_100Rnd_762x54mmR";};
+player addHeadgear "MNP_Helmet_RU_LT";
+ 
+player addWeapon "rhs_weap_pkm";
+removeAllPrimaryWeaponItems player;
 if (s_loadout_map == 0) then {
 	player linkItem "ItemMap";
 };

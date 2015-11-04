@@ -1,7 +1,5 @@
-systemChat format["%1 - fn_radio_getChannels",diag_tickTime-bc_startTime];
 //Figure out which side the player is on. 
-_side = side player;
-switch (_side) do {
+switch (side player) do {
     case east: { bc_playerBaseChannel = bc_opforBaseChannel; };
     case west: { bc_playerBaseChannel = bc_bluforBaseChannel; };
 	default { titleText ["The game thinks you aren't on OPFOR or BLUFOR!","PLAIN"]; };

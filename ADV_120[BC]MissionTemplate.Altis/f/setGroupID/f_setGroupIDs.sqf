@@ -13,47 +13,47 @@ _groups = [
 
 
 // BLUFOR
-["Blue_HQ","HQ","Headquarters"],
+["Blue_HQ","HQ","Headquarters",2],
 
-["Blue_A","A","Alpha Squad"],
-["Blue_A1","A1","Alpha One"],
-["Blue_A2","A2","Alpha Two"],
+["Blue_A","A","Alpha Squad",1],
+["Blue_A1","A1","Alpha One",0],
+["Blue_A2","A2","Alpha Two",0],
 
-["Blue_B","B","Bravo Squad"],
-["Blue_B1","B1","Bravo One"],
-["Blue_B2","B2","Bravo Two"],
+["Blue_B","B","Bravo Squad",1],
+["Blue_B1","B1","Bravo One",0],
+["Blue_B2","B2","Bravo Two",0],
 
 ["Blue_C","C","Charlie Squad"],
-["Blue_C1","C1","Charlie One"],
-["Blue_C2","C2","Charlie Two"],
+["Blue_C1","C1","Charlie One",0],
+["Blue_C2","C2","Charlie Two",0],
 
 ["Blue_D","D","Delta Squad"],
-["Blue_D1","D1","Delta One"],
-["Blue_D2","D2","Delta Two"],
-["Blue_D3","D3","Delta Three"],
-["Blue_D4","D4","Delta Four"],
+["Blue_D1","D1","Delta One",0],
+["Blue_D2","D2","Delta Two",0],
+["Blue_D3","D3","Delta Three",0],
+["Blue_D4","D4","Delta Four",0],
 
 
 // REDFOR
-["Red_HQ","HQ","Headquarters"],
+["Red_HQ","HQ","Headquarters",2],
 
-["Red_E","E","Echo Squad"],
-["Red_E1","E1","Echo One"],
-["Red_E2","E2","Echo Two"],
+["Red_E","E","Echo Squad",1],
+["Red_E1","E1","Echo One",0],
+["Red_E2","E2","Echo Two",0],
 
-["Red_F","F","Foxtrot Squad"],
-["Red_F1","F1","Foxtrot One"],
-["Red_F2","F2","Foxtrot Two"],
+["Red_F","F","Foxtrot Squad",1],
+["Red_F1","F1","Foxtrot One",0],
+["Red_F2","F2","Foxtrot Two",0],
 
-["Red_G","G","Golf Squad"],
-["Red_G1","G1","Golf One"],
-["Red_G2","G2","Golf Two"],
+["Red_G","G","Golf Squad",1],
+["Red_G1","G1","Golf One",0],
+["Red_G2","G2","Golf Two",0],
 
-["Red_H","H","Hotel Squad"],
-["Red_H1","H1","Hotel One"],
-["Red_H2","H2","Hotel Two"],
-["Red_H3","H3","Hotel Three"],
-["Red_H4","H4","Hotel Four"]
+["Red_H","H","Hotel Squad",1],
+["Red_H1","H1","Hotel One",0],
+["Red_H2","H2","Hotel Two",0],
+["Red_H3","H3","Hotel Three",0],
+["Red_H4","H4","Hotel Four",0]
 
 // Always make sure there's no comma after the last entry!
 
@@ -74,5 +74,6 @@ private ["_grp"];
     if(!isNull _grp) then {
         _grp setGroupId [(_x select 1),"GroupColor0"];
 		_grp setVariable ["BC_LongName",_x select 2];
+        _grp setVariable ["bc_gps_groupSize",_x select 3];
     };
 } forEach _groups;

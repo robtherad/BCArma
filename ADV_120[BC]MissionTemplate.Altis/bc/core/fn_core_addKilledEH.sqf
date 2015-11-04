@@ -13,5 +13,5 @@ Call this file on THE SERVER from bc_init.sqf using the command below.
 if (!isServer) exitWith {};
 
 {
-	_x addMPEventHandler ["MPKilled",{_this execVM "scripts\bc_scripts\killdisplay\kd_mpkilled.sqf";}];
+	_x addMPEventHandler ["MPKilled",{_this call BC_fnc_core_mpKilled;}];
 } forEach playableUnits;

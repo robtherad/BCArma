@@ -1,3 +1,4 @@
+if (!hasInterface) exitWith {};
 _char = typeOf player;
 //Get radio and map parameters from the slot screen. If the parameters don't exist then they default to giving everybody a map and radio.
 s_loadout_radio = ["s_loadout_radio",0] call BIS_fnc_getParamValue;
@@ -37,4 +38,4 @@ switch (_char) do {
 };
 
 // Generate loadout briefing page.
-call BC_fnc_load_notes;
+call BC_fnc_loadout_notes;

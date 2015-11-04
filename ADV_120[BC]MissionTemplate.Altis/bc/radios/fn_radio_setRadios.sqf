@@ -1,4 +1,3 @@
-systemChat format["%1 - fn_radio_setRadios",diag_tickTime-bc_startTime];
 //Change channel numbers from user readable to script readable
 bc_curChan = bc_curChan - 1;
 bc_altChan = bc_altChan - 1;
@@ -61,5 +60,5 @@ if (bc_hasSW) then {
 
 
 //Everything should be setup. Let the player know.
-systemChat "[BC] - Radio nets have been setup.";
+systemChat "[BC] - If you have one, your radio should now be correctly programmed.";
 call BC_fnc_radio_cleanup;
