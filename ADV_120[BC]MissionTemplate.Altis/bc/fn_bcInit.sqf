@@ -30,7 +30,7 @@ if (isServer && isNil "bc_serverInit") then {
     _hintStr = "Mission Difficulty Setting = " + diff;
     [_hintStr,"hint",true,true] call BIS_fnc_MP;
     
-    bc_serverInit = true; //Set this to that the server stuff only runs once
+    bc_serverInit = true; //Set this so that the server stuff only runs once
 };
 
 //Attempt to eliminate AI contact reports

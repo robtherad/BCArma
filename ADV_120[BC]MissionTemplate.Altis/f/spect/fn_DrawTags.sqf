@@ -64,12 +64,12 @@ if(!f_cam_toggleTags || f_cam_mapMode == 2 ) exitWith{};
 
 } forEach allGroups;
 
-sectorControl = missionNamespace getVariable "sectorControlActive";
-if (!isNil "sectorControl") then {
-	if (sectorControl) then {
+bc_sectorControl  = missionNamespace getVariable "bc_sectorControl Active";
+if (!isNil "bc_sectorControl ") then {
+	if (bc_sectorControl ) then {
 		_iconSize = 0.5;
 		_textSize = 0.03;
-		{ //forEach triggerArray;
+		{ //forEach bc_triggerArray;
 			_distToCam = (call f_cam_GetCurrentCam) distance _x;
 			_owner = _x getVariable "lastOwner";
 			_color = switch (_owner) do {
@@ -116,6 +116,6 @@ if (!isNil "sectorControl") then {
 			if (_distToCam < _maxDist) then {
 				drawIcon3D ["\A3\ui_f\data\map\markers\military\flag_ca.paa",_color,getpos _x ,_iconSize,_iconSize,0,iconName,2,_textSize,"TahomaB"];
 			};
-		} forEach triggerArray;
+		} forEach bc_triggerArray;
 	};
 };

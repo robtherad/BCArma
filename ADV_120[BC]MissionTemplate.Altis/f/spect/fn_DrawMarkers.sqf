@@ -25,10 +25,10 @@ _fullmapWindow drawIcon ["\A3\ui_f\data\GUI\Rsc\RscDisplayMissionEditor\iconCame
 	};
 
 } foreach allunits;
-sectorControl = missionNamespace getVariable "sectorControlActive";
-if (!isNil "sectorControl") then {
-	if (sectorControl) then {
-		{ //forEach triggerArray;
+bc_sectorControl  = missionNamespace getVariable "bc_sectorControl Active";
+if (!isNil "bc_sectorControl ") then {
+	if (bc_sectorControl ) then {
+		{ //forEach bc_triggerArray;
 			_owner = _x getVariable "lastOwner";
 			_color = switch (_owner) do {
 				case 0: {f_cam_blufor_color};
@@ -47,7 +47,7 @@ if (!isNil "sectorControl") then {
 				default {iconName = str(iconName) + " - ERROR";};
 			};
 			_fullmapWindow drawIcon ["\A3\ui_f\data\map\markers\military\flag_ca.paa",_color,getpos _x ,20,20,0,iconName,2];
-		} forEach triggerArray;
+		} forEach bc_triggerArray;
 	};
 };
 
