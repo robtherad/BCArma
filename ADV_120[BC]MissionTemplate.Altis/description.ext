@@ -68,7 +68,7 @@ class Params
 		title = "GPS Deployment (Requires map):";
 		values[] = {0,1,2,3};
 		texts[] = {"All Players","Team Leaders and above (default)","Squad Leaders and above","No GPS"};
-		default = 3;
+		default = 1;
 	};
 	class mission_runtime
 	{
