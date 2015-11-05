@@ -6,12 +6,9 @@ This file will start all scripts part of the default BC template. Call this file
 
 //These scripts only execute on clients
 if (!isDedicated) then {
-    bc_startTime = diag_tickTime; //DEBUG
-    
 	bc_core_showTags = [BC_fnc_core_showTags, 0, []] call CBA_fnc_addPerFrameHandler;
     bc_radHandle1 = [BC_fnc_radio_waitGear, 0, []] call CBA_fnc_addPerFrameHandler;
     bc_end_clientWait = [BC_fnc_end_clientWait, 5, []] call CBA_fnc_addPerFrameHandler;
-	call BC_fnc_gps_init;
 };
 
 //These scripts only execute on the server and only run once
@@ -19,8 +16,14 @@ if (isServer && isNil "bc_serverInit") then {
 	bc_end_checkTime = [BC_fnc_end_checkTime, 10, []] call CBA_fnc_addPerFrameHandler;
     bc_end_checkAlive = [BC_fnc_end_checkAlive, 10, []] call CBA_fnc_addPerFrameHandler;
 	call BC_fnc_core_addKilledEH;
-	
-	//Displays a hint with the current mission's difficulty setting
+    
+    bc_serverInit = true; //Set this so that the server stuff only runs once
+};
+
+waitUntil {time > 0};
+
+if (isServer && bc_serverInit) then {
+    //Displays a hint with the current mission's difficulty setting
     switch(difficulty) do {
         case 0: {diff = "Recruit";};
         case 1: {diff = "Regular";};
@@ -30,7 +33,11 @@ if (isServer && isNil "bc_serverInit") then {
     _hintStr = "Mission Difficulty Setting = " + diff;
     [_hintStr,"hint",true,true] call BIS_fnc_MP;
     
-    bc_serverInit = true; //Set this so that the server stuff only runs once
+    bc_serverInit = false; //Make it false so that the second server function only runs once
+};
+
+if (!isDedicated) then {
+    call BC_fnc_gps_init;
 };
 
 //Attempt to eliminate AI contact reports

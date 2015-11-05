@@ -1,7 +1,3 @@
-class init {
-    file = "bc";
-    class bcInit{};
-};
 class core {
     file = "bc\core";
     class core_addKilledEH{postInit = 1;};

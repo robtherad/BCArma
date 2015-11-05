@@ -10,6 +10,6 @@ waitUntil {!isNull player};
 [] execVM "f\briefing\f_orbatNotes.sqf";
 
 //Call the safeStart
-//[] execVM "f\safeStart\f_safeStart.sqf";
+[] execVM "f\safeStart\f_safeStart.sqf";
 
-call BC_fnc_bcInit;
+[] execVM "bc\bcInit.sqf";

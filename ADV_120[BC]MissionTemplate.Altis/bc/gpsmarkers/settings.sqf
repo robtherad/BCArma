@@ -30,7 +30,7 @@
         bc_ignoreMarkerArray = [];
 */
 // 0 = armor, 1 == helicopter, 2 == plane
-_westVehArray = [[air1,1],[air2,1],[mech1,0],[t1,0]];
+_westVehArray = nil;
 _eastVehArray = nil;
 _indVehArray = nil;
-bc_ignoreMarkerArray = ["hos1"]; //if blank set to []
+bc_ignoreMarkerArray = []; //if blank set to []
