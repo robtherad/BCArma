@@ -64,9 +64,9 @@ if(!f_cam_toggleTags || f_cam_mapMode == 2 ) exitWith{};
 
 } forEach allGroups;
 
-bc_sectorControl  = missionNamespace getVariable "bc_sectorControl Active";
-if (!isNil "bc_sectorControl ") then {
-	if (bc_sectorControl ) then {
+sectorControl = missionNamespace getVariable "bc_sectorControlActive";
+if (!isNil "sectorControl") then {
+	if (sectorControl) then {
 		_iconSize = 0.5;
 		_textSize = 0.03;
 		{ //forEach bc_triggerArray;

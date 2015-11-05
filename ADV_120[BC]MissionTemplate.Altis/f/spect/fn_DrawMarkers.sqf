@@ -25,9 +25,9 @@ _fullmapWindow drawIcon ["\A3\ui_f\data\GUI\Rsc\RscDisplayMissionEditor\iconCame
 	};
 
 } foreach allunits;
-bc_sectorControl  = missionNamespace getVariable "bc_sectorControl Active";
-if (!isNil "bc_sectorControl ") then {
-	if (bc_sectorControl ) then {
+sectorControl = missionNamespace getVariable ["bc_sectorControlActive",false];
+if (!isNil "sectorControl") then {
+	if (sectorControl) then {
 		{ //forEach bc_triggerArray;
 			_owner = _x getVariable "lastOwner";
 			_color = switch (_owner) do {
