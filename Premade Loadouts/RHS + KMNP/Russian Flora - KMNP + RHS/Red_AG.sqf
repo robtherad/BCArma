@@ -17,7 +17,7 @@ player addBackpack "MNP_B_RU2_FP";
 for "_i" from 1 to 6 do {player addItemToBackpack "rhs_30Rnd_762x39mm";};
 for "_i" from 1 to 4 do {player addItemToBackpack "rhs_100Rnd_762x54mmR";};
 player addHeadgear "MNP_Helmet_RU_LT";
- 
+
 player addWeapon "rhs_weap_akm";
 removeAllPrimaryWeaponItems player;
 player addWeapon "Binocular";
@@ -30,3 +30,5 @@ player linkItem "ItemWatch";
 if (s_loadout_radio == 0) then {
     player linkItem "ItemRadio";
 };
+
+missionNamespace setVariable ["bc_loadoutAssigned",true]; //Place this at the end of the loadout script so other scripts can tell when the player's loadout has been set.

@@ -29,7 +29,7 @@ if (s_loadout_radio != 3) then {
 player addHeadgear "rhs_6b27m_ml";
 player addGoggles "G_Bandanna_khk";
 for "_i" from 1 to 4 do {player addItemToBackpack "rhs_30Rnd_545x39_AK";};
- 
+
 player addWeapon "Binocular";
 if (s_loadout_map != 3) then {
     player linkItem "ItemMap";
@@ -37,3 +37,5 @@ if (s_loadout_map != 3) then {
 };
 player linkItem "ItemCompass";
 player linkItem "ItemWatch";
+
+missionNamespace setVariable ["bc_loadoutAssigned",true]; //Place this at the end of the loadout script so other scripts can tell when the player's loadout has been set.

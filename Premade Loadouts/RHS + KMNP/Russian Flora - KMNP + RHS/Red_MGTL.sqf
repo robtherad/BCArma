@@ -25,7 +25,7 @@ if ((s_loadout_radio == 0) or (s_loadout_radio == 1)) then {
 };
 
 player addHeadgear "MNP_Helmet_RU_LT";
- 
+
 player addWeapon "rhs_weap_ak74m";
 removeAllPrimaryWeaponItems player;
 for "_i" from 1 to 4 do {player addItemToVest "rhs_30Rnd_545x39_AK";};
@@ -37,3 +37,5 @@ if ((s_loadout_map == 0) or (s_loadout_map == 1)) then {
 };
 player linkItem "ItemCompass";
 player linkItem "ItemWatch";
+
+missionNamespace setVariable ["bc_loadoutAssigned",true]; //Place this at the end of the loadout script so other scripts can tell when the player's loadout has been set.

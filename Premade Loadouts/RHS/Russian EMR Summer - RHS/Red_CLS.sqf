@@ -20,7 +20,7 @@ player addHeadgear "rhs_6b27m_green";
 player addGoggles "G_Bandanna_khk";
 player addWeapon "rhs_weap_akm";
 removeAllPrimaryWeaponItems player;
- 
+
 if (s_loadout_map == 0) then {
     player linkItem "ItemMap";
     if (s_loadout_gps == 0) then {player linkItem "ItemGPS";};
@@ -31,3 +31,5 @@ if (s_loadout_radio == 0) then {
     player linkItem "ItemRadio";
 };
 [player,"MedB"] call bis_fnc_setUnitInsignia;
+
+missionNamespace setVariable ["bc_loadoutAssigned",true]; //Place this at the end of the loadout script so other scripts can tell when the player's loadout has been set.

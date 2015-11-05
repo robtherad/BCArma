@@ -18,7 +18,7 @@ for "_i" from 1 to 1 do {player addItemToBackpack "Medikit";};
 for "_i" from 1 to 10 do {player addItemToBackpack "FirstAidKit";};
 player addHeadgear "rhsusf_lwh_helmet_marpatwd";
 player addWeapon "rhs_weap_m16a4_carryhandle";
- 
+
 if (s_loadout_map == 0) then {
     player linkItem "ItemMap";
     if (s_loadout_gps == 0) then {player linkItem "ItemGPS";};
@@ -29,3 +29,5 @@ if (s_loadout_radio == 0) then {
     player linkItem "ItemRadio";
 };
 [player,"MedB"] call bis_fnc_setUnitInsignia;
+
+missionNamespace setVariable ["bc_loadoutAssigned",true]; //Place this at the end of the loadout script so other scripts can tell when the player's loadout has been set.

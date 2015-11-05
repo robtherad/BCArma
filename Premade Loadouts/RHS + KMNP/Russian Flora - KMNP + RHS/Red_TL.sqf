@@ -31,7 +31,7 @@ for "_i" from 1 to 4 do {player addItemToBackpack "rhs_VOG25";};
 for "_i" from 1 to 4 do {player addItemToBackpack "rhs_GRD40_White";};
 for "_i" from 1 to 4 do {player addItemToBackpack "rhs_GRD40_Green";};
 player addHeadgear "MNP_Helmet_RU_LT";
- 
+
 player addWeapon "Binocular";
 if ((s_loadout_map == 0) or (s_loadout_map == 1)) then {
     player linkItem "ItemMap";
@@ -39,3 +39,5 @@ if ((s_loadout_map == 0) or (s_loadout_map == 1)) then {
 };
 player linkItem "ItemCompass";
 player linkItem "ItemWatch";
+
+missionNamespace setVariable ["bc_loadoutAssigned",true]; //Place this at the end of the loadout script so other scripts can tell when the player's loadout has been set.
