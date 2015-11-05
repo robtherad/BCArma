@@ -16,8 +16,7 @@ if(abs (f_cam_menuShownTime - time) >= 1 && f_cam_menuShown) then // disable due
 // ====================================================================================
 // if freemode.
 f_cam_camera camSetFov f_cam_fovZoom;
-if(f_cam_mode == 0) then
-{
+if(f_cam_mode == 0) then {
         cameraEffectEnableHUD true;
         _commitTime = ((1.0 - ((speed vehicle f_cam_curTarget)/65))/3) max 0.1;
         _delta = (-(2*(0.3 max f_cam_zoom)));
@@ -31,8 +30,7 @@ if(f_cam_mode == 0) then
         f_cam_camera camCommit _commitTime;
 };
 // first person
-if(f_cam_mode == 1) then
-{
+if(f_cam_mode == 1) then {
 //        player setpos (getpos cameraOn);
     if(vehicle cameraOn != cameraOn) then
     {
@@ -47,8 +45,7 @@ if(f_cam_mode == 1) then
         cameraon switchCamera "internal";
     };
 };
-if(f_cam_mode == 3) then
-{
+if(f_cam_mode == 3) then {
     _delta = (time - f_cam_timestamp)*10;
     f_cam_freecamera camSetFov f_cam_fovZoom;
     _currPos = getposASL f_cam_freecamera;
@@ -138,12 +135,12 @@ if(f_cam_mode == 3) then
     };
 
     //Max speed 50 m/s
-    _mX = _delta * ((_mX min 50) max -50); 
+    _mX = _delta * ((_mX min 50) max -50);
     _mY = _delta * ((_mY min 50) max -50);
     f_freecam_x_speed = f_freecam_x_speed * 0.5 + _mX;
     f_freecam_y_speed = f_freecam_y_speed * 0.5 + _mY;
     f_freecam_z_speed = f_freecam_z_speed * 0.5 + _mZ;
-    
+
     _x = (_currPos select 0) + (f_freecam_x_speed * (cos f_cam_angleX)) + (f_freecam_y_speed * (sin f_cam_angleX));
     _y = (_currPos select 1) - (f_freecam_x_speed * (sin f_cam_angleX)) + (f_freecam_y_speed * (cos f_cam_angleX));
     _newHeight = (getTerrainHeightASL [_x,_y]);

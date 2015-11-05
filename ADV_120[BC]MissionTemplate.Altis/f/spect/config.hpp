@@ -52,8 +52,7 @@ class RscSpectFrame {
     text = "";
 
 };
-class RscSpectMapControl
-{
+class RscSpectMapControl {
     access = 0;
     alphaFadeEndScale = 2;
     alphaFadeStartScale = 2;

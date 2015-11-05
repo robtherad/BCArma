@@ -18,14 +18,12 @@ waituntil {missionnamespace getvariable ["BIS_fnc_feedback_allowDeathScreen",tru
 
 // ====================================================================================
 
-if(!isnil "BIS_fnc_feedback_allowPP") then
-{
+if(!isnil "BIS_fnc_feedback_allowPP") then {
   // disable effects death effects
   BIS_fnc_feedback_allowPP = false;
 };
 
-if(f_cam_isJIP) then
-{
+if(f_cam_isJIP) then {
   ["F_ScreenSetup",false] call BIS_fnc_blackOut;
   systemChat "Initilizing Spectator Script";
   uiSleep 3;
@@ -33,8 +31,7 @@ if(f_cam_isJIP) then
 };
 
 // Create a Virtual Agent to act as our player to make sure we get to keep Draw3D
-if(isNil "f_cam_VirtualCreated") then
-{
+if(isNil "f_cam_VirtualCreated") then {
   createCenter sideLogic;
   _newGrp = createGroup sideLogic;
   _newUnit = _newGrp createUnit ["VirtualCurator_F", [0,0,5], [], 0, "FORM"];
@@ -138,8 +135,7 @@ f_cam_listUnits = [];
 
 f_cam_ToggleFPCamera = {
     f_cam_toggleCamera = !f_cam_toggleCamera;
-    if(f_cam_toggleCamera) then
-    {
+    if(f_cam_toggleCamera) then {
         f_cam_mode = 1; //(view)
         f_cam_camera cameraEffect ["terminate", "BACK"];
         f_cam_curTarget switchCamera "internal";
@@ -201,8 +197,7 @@ f_cam_camera camSetTarget f_cam_fakecamera;
 f_cam_camera camSetFov 1.2;
 f_cam_freecamera camSetFov 1.2;
 f_cam_zeusKey = 21;
-if( count (actionKeys "curatorInterface") > 0 ) then
-{
+if( count (actionKeys "curatorInterface") > 0 ) then {
     f_cam_zeusKey = (actionKeys "curatorInterface") select 0;
 };
 f_cam_MouseMoving = false;

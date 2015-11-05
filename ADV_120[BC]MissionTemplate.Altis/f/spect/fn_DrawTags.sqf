@@ -10,8 +10,7 @@ if(!f_cam_toggleTags || f_cam_mapMode == 2 ) exitWith{};
     {
         _distToCam = (call f_cam_GetCurrentCam) distance _x;
         if(isPlayer _x) then {_isPlayerGroup = true};
-        if(_distToCam < 250) then
-        {
+        if(_distToCam < 250) then {
             _drawUnits pushBack _x;
             if (_distToCam > 200) then {
                 _drawGroup = true;
@@ -108,7 +107,7 @@ if (!isNil "sectorControl") then {
                 };
             } else {
                 _textSize = .02;
-            };    
+            };
             //hint format ["_distToCam = %3\n_iconSize = %1\n_textSize = %2",_iconSize,_textSize,_distToCam];
             if (_distToCam > _maxDist) then {
                 drawIcon3D ["\A3\ui_f\data\map\markers\military\flag_ca.paa",_color,getpos _x,.75,.75,0,iconName,2,0.025,"TahomaB"];

@@ -7,8 +7,7 @@ terminate f_cam_updatevalues_script;
 hintSilent "Spectator system has been forcefully closed";
 {
     _var = _x getVariable ["f_cam_fired_eventid",nil];
-    if(!isNil "_var") then
-    {
+    if(!isNil "_var") then {
         _x removeEventHandler ["fired",_var];
     };
 

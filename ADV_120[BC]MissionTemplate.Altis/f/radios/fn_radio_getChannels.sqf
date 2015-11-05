@@ -1,4 +1,4 @@
-//Figure out which side the player is on. 
+//Figure out which side the player is on.
 _side = side player;
 switch (_side) do {
     case east: { bc_playerBaseChannel = bc_opforBaseChannel; };
@@ -27,8 +27,8 @@ switch (groupID (group player)) do {
     case "D2": { bc_ch2 = bc_playerBaseChannel + 4; bc_ch3 = bc_playerBaseChannel + 4.2;bc_curChan = 3; bc_altChan = 2;};
     case "D3": { bc_ch2 = bc_playerBaseChannel + 4; bc_ch3 = bc_playerBaseChannel + 4.3;bc_curChan = 3; bc_altChan = 2;};
     case "D4": { bc_ch2 = bc_playerBaseChannel + 4; bc_ch3 = bc_playerBaseChannel + 4.4;bc_curChan = 3; bc_altChan = 2;};
-    
-    
+
+
     case "HQ": {bc_ch2 = bc_playerBaseChannel + 1;  bc_ch3 = bc_playerBaseChannel + 2; bc_ch4 = bc_playerBaseChannel + 3; bc_ch5 = bc_playerBaseChannel + 4; bc_ch6 = bc_playerBaseChannel + .1; bc_curChan = 1; bc_altChan = 6;};
     case "E": { bc_ch2 = bc_playerBaseChannel + 1; bc_ch3 = bc_playerBaseChannel + 1.1; bc_ch4 = bc_playerBaseChannel + 1.2; bc_curChan = 2; bc_altChan = 1;};
     case "E1": { bc_ch2 = bc_playerBaseChannel + 1; bc_ch3 = bc_playerBaseChannel + 1.1; bc_ch4 = bc_playerBaseChannel + 1.2; bc_curChan = 3; bc_altChan = 2;};
@@ -46,9 +46,8 @@ switch (groupID (group player)) do {
     case "H4": { bc_ch2 = bc_playerBaseChannel + 4; bc_ch3 = bc_playerBaseChannel + 4.4;bc_curChan = 3; bc_altChan = 2;};
 };
 
-
+//player isn't part of any template group
 if (isNil "bc_curChan") then {
-    //player isn't part of any template group
     bc_curChan = 1;
     bc_altChan = 8;
 };
@@ -69,9 +68,57 @@ bc_radioNoteString = bc_radioNoteString + "<br/>Main Channel (left ear): <font c
 //List default frequencies for sides
 bc_radioNoteString = bc_radioNoteString + "<br/><br/>";
 if (_side == west) then {
-    bc_radioNoteString = bc_radioNoteString + "<font size='24'>Default Radio Frequency List</font><br/><br/>" + "Plt. HQ - " + str(bc_playerBaseChannel) + " MHz<br/><br/>" + "Alpha Squad - " + str(bc_playerBaseChannel + 1) + " MHz<br/>" + "Alpha One - " + str(bc_playerBaseChannel + 1.1) + " MHz<br/>" + "Alpha Two - " + str(bc_playerBaseChannel + 1.2) + " MHz<br/><br/>" + "Bravo Squad - " + str(bc_playerBaseChannel + 2) + " MHz<br/>" + "Bravo One - " + str(bc_playerBaseChannel + 2.1) + " MHz<br/>" + "Bravo Two - " + str(bc_playerBaseChannel + 2.2) + " MHz<br/><br/>" + "Charlie Squad - " + str(bc_playerBaseChannel + 3) + " MHz<br/>" +"Charlie One - " + str(bc_playerBaseChannel + 3.1) + " MHz<br/>" + "Charlie Two - " + str(bc_playerBaseChannel + 3.2) + " MHz<br/><br/>" + "Delta Squad - " + str(bc_playerBaseChannel + 4) + " MHz<br/>" +"Delta One - " + str(bc_playerBaseChannel + 4.1) + " MHz<br/>" + "Delta Two - " + str(bc_playerBaseChannel + 4.2) + " MHz<br/>" + "Delta Three - " + str(bc_playerBaseChannel + 4.3) + " MHz<br/>" + "Delta Four - " + str(bc_playerBaseChannel + 4.4) + " MHz<br/>";
+    bc_radioNoteString = (bc_radioNoteString +
+
+    "<font size='24'>Default Radio Frequency List</font><br/><br/>" +
+
+    "Plt. HQ - " + str(bc_playerBaseChannel) + " MHz<br/><br/>" +
+
+    "Alpha Squad - " + str(bc_playerBaseChannel + 1) + " MHz<br/>" +
+    "Alpha One - " + str(bc_playerBaseChannel + 1.1) + " MHz<br/>" +
+    "Alpha Two - " + str(bc_playerBaseChannel + 1.2) + " MHz<br/><br/>" +
+
+    "Bravo Squad - " + str(bc_playerBaseChannel + 2) + " MHz<br/>" +
+    "Bravo One - " + str(bc_playerBaseChannel + 2.1) + " MHz<br/>" +
+    "Bravo Two - " + str(bc_playerBaseChannel + 2.2) + " MHz<br/><br/>" +
+
+    "Charlie Squad - " + str(bc_playerBaseChannel + 3) + " MHz<br/>" +
+    "Charlie One - " + str(bc_playerBaseChannel + 3.1) + " MHz<br/>" +
+    "Charlie Two - " + str(bc_playerBaseChannel + 3.2) + " MHz<br/><br/>" +
+
+    "Delta Squad - " + str(bc_playerBaseChannel + 4) + " MHz<br/>" +
+    "Delta One - " + str(bc_playerBaseChannel + 4.1) + " MHz<br/>" +
+    "Delta Two - " + str(bc_playerBaseChannel + 4.2) + " MHz<br/>" +
+    "Delta Three - " + str(bc_playerBaseChannel + 4.3) + " MHz<br/>" +
+    "Delta Four - " + str(bc_playerBaseChannel + 4.4) + " MHz<br/>"
+
+    );//Do not delete
 } else {
-    bc_radioNoteString = bc_radioNoteString + "<font size='24'>Default Radio Frequency List</font><br/><br/>" + "Plt. HQ - " + str(bc_playerBaseChannel) + " MHz<br/><br/>" + "Echo Squad - " + str(bc_playerBaseChannel + 1) + " MHz<br/>" + "Echo One - " + str(bc_playerBaseChannel + 1.1) + " MHz<br/>" + "Echo Two - " + str(bc_playerBaseChannel + 1.2) + " MHz<br/><br/>" + "Foxtrot Squad - " + str(bc_playerBaseChannel + 2) + " MHz<br/>" + "Foxtrot One - " + str(bc_playerBaseChannel + 2.1) + " MHz<br/>" + "Foxtrot Two - " + str(bc_playerBaseChannel + 2.2) + " MHz<br/><br/>" + "Golf Squad - " + str(bc_playerBaseChannel + 3) + " MHz<br/>" + "Golf One - " + str(bc_playerBaseChannel + 3.1) + " MHz<br/>" + "Golf Two - " + str(bc_playerBaseChannel + 3.2) + " MHz<br/><br/>" + "Hotel Squad - " + str(bc_playerBaseChannel + 4) + " MHz<br/>" + "Hotel One - " + str(bc_playerBaseChannel + 4.1) + " MHz<br/>" + "Hotel Two - " + str(bc_playerBaseChannel + 4.2) + " MHz<br/>" + "Hotel Three - " + str(bc_playerBaseChannel + 4.3) + " MHz<br/>" + "Hotel Four - " + str(bc_playerBaseChannel + 4.4) + " MHz<br/>";
+    bc_radioNoteString = (bc_radioNoteString +
+
+    "<font size='24'>Default Radio Frequency List</font><br/><br/>" +
+
+    "Plt. HQ - " + str(bc_playerBaseChannel) + " MHz<br/><br/>" +
+
+    "Echo Squad - " + str(bc_playerBaseChannel + 1) + " MHz<br/>" +
+    "Echo One - " + str(bc_playerBaseChannel + 1.1) + " MHz<br/>" +
+    "Echo Two - " + str(bc_playerBaseChannel + 1.2) + " MHz<br/><br/>" +
+
+    "Foxtrot Squad - " + str(bc_playerBaseChannel + 2) + " MHz<br/>" +
+    "Foxtrot One - " + str(bc_playerBaseChannel + 2.1) + " MHz<br/>" +
+    "Foxtrot Two - " + str(bc_playerBaseChannel + 2.2) + " MHz<br/><br/>" +
+
+    "Golf Squad - " + str(bc_playerBaseChannel + 3) + " MHz<br/>" +
+    "Golf One - " + str(bc_playerBaseChannel + 3.1) + " MHz<br/>" +
+    "Golf Two - " + str(bc_playerBaseChannel + 3.2) + " MHz<br/><br/>" +
+
+    "Hotel Squad - " + str(bc_playerBaseChannel + 4) + " MHz<br/>" +
+    "Hotel One - " + str(bc_playerBaseChannel + 4.1) + " MHz<br/>" +
+    "Hotel Two - " + str(bc_playerBaseChannel + 4.2) + " MHz<br/>" +
+    "Hotel Three - " + str(bc_playerBaseChannel + 4.3) + " MHz<br/>" +
+    "Hotel Four - " + str(bc_playerBaseChannel + 4.4) + " MHz<br/>"
+
+    );//Do not delete
 };
 player createDiaryRecord ["diary", ["[BC] Radio Settings", bc_radioNoteString]];
 

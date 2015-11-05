@@ -8,8 +8,11 @@
 _groups = [
 
 // ====================================================================================
-// Automatically assigns intelligible names to groups
-// format: [group,groupID,BC_LongName]
+// - format: [group,groupID,BC_LongName,unitSize]
+// group: defined in initialization field of units in editor
+// groupID: ID given to group for use in things such as GPS, nametags, etc.
+// BC_LongName: Longer version of the groupID used in things such as the radios, etc.
+// unitSize: Number telling what level the group is. Company = 3, Platoon = 2, Squad = 1, Fireteam = 0
 
 
 // BLUFOR
@@ -23,11 +26,11 @@ _groups = [
 ["Blue_B1","B1","Bravo One",0],
 ["Blue_B2","B2","Bravo Two",0],
 
-["Blue_C","C","Charlie Squad"],
+["Blue_C","C","Charlie Squad",1],
 ["Blue_C1","C1","Charlie One",0],
 ["Blue_C2","C2","Charlie Two",0],
 
-["Blue_D","D","Delta Squad"],
+["Blue_D","D","Delta Squad",1],
 ["Blue_D1","D1","Delta One",0],
 ["Blue_D2","D2","Delta Two",0],
 ["Blue_D3","D3","Delta Three",0],
