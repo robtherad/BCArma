@@ -16,7 +16,7 @@ disabledAI = 1;
 respawn = 1;
 respawndelay = 3;
 respawnOnStart = 0;
-respawnTemplates[] = {"f_spectator", "Seagull"};
+respawnTemplates[] = {"Seagull", "f_spectator"};
 
 class cfgNotifications
 {
@@ -67,8 +67,8 @@ class Params
 	{
 		title = "GPS Deployment (Requires map):";
 		values[] = {0,1,2,3};
-		texts[] = {"All Players","Team Leaders and above (default)","Squad Leaders and above","No Maps"};
-		default = 1;
+		texts[] = {"All Players","Team Leaders and above (default)","Squad Leaders and above","No GPS"};
+		default = 3;
 	};
 	class mission_runtime
 	{
@@ -88,13 +88,13 @@ class Params
 
 class CfgRespawnTemplates
 {
-    class f_spectator
-    {
-		onPlayerRespawn = "f_fnc_CamInit";
-    };
     class Seagull
     {
 		onPlayerRespawn = "";
+    };
+    class f_spectator
+    {
+		onPlayerRespawn = "f_fnc_CamInit";
     };
 };
 

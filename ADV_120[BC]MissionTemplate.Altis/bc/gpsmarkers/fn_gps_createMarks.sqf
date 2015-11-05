@@ -6,7 +6,6 @@ fn_bc_createVehMarks={
 	{ //forEach _vehArray
         _veh = _x select 0;
         _type = (_x select 1)+1;
-        systemChat format ["GPS - %1",(count _x)];
 		_markerName = str(_veh) + "_marker";
 		_markerPos = getPos _veh;
 		_markerFaction = switch (side player) do {
