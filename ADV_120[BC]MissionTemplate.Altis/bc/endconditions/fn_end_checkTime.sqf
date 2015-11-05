@@ -28,18 +28,18 @@ fnc_sectorControl = {
 if ((_missionRuntimeMins - 15) <= (time/60) && (_alertSoon == 0)) then {
     _hintStr = "There are only 15 minutes remaining until the time limit of " + str(paramsArray select 3) + " minutes is reached.";
     call fnc_sectorControl;
-    [_hintStr,"systemChat",true,true] call BIS_fnc_MP;
+    [_hintStr,"hint",true,true] call BIS_fnc_MP;
     _alertSoon = 1;
 };
 if (_missionRuntimeMins <= (time/60) && (_alertEnd < 1)) then {
     _hintStr = "The mission time limit of " + str(paramsArray select 3) + " minutes has been reached.";
     call fnc_sectorControl;
-    [_hintStr,"systemChat",true,true] call BIS_fnc_MP;
+    [_hintStr,"hint",true,true] call BIS_fnc_MP;
     _alertEnd = _alertEnd + 1;
 };
 if ((_missionRuntimeMins + (1*_alertOver)) <= (time/60)) then {
     _hintStr = "The mission is " + str(1*_alertOver) + " minute(s) past the time limit of " + str(paramsArray select 3) + " minutes.";
     call fnc_sectorControl;
-    [_hintStr,"systemChat",true,true] call BIS_fnc_MP;
+    [_hintStr,"hint",true,true] call BIS_fnc_MP;
     _alertOver = _alertOver + 1;
 };
