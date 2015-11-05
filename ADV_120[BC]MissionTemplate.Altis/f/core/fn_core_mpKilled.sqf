@@ -65,4 +65,3 @@ if (player == _unit) then {
         systemChat format ["%1",_x];
     } forEach bc_kills2;
 };
-hint format["%1",bc_kills];
