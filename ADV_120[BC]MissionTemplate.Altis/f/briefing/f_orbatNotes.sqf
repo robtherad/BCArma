@@ -32,44 +32,44 @@ _groupIDs = [
 ["Red_H",bc_opforBaseChannel+4],["Red_H1",bc_opforBaseChannel+4.1],["Red_H2",bc_opforBaseChannel+4.2],["Red_H3",bc_opforBaseChannel+4.3],["Red_H4",bc_opforBaseChannel+4.4]
 ];
 {
-	// Add to ORBAT if side matches, group isn't already listed, and group has players
-	if ((side _x == _side) && !(_x in _groups) && ({_x in playableUnits} count units _x) > 0) then {
-		_groups pushBack _x;
-	};
+    // Add to ORBAT if side matches, group isn't already listed, and group has players
+    if ((side _x == _side) && !(_x in _groups) && ({_x in playableUnits} count units _x) > 0) then {
+        _groups pushBack _x;
+    };
 } forEach allGroups;
 
 
 // Loop through the group, print out group ID, leader name and medics if present
 {
-	// Highlight the player's group with a different color (based on the player's side)
-	_color = "#FFFFFF";
-	if (_x == group player) then {
-		_color = switch (side player) do {
-			 case west: {"#0080FF"};
-			 case east: {"#B40404"};
-			 case independent: {"#298A08"};
-			 default {"#8904B1"};
- 		};
-	};
+    // Highlight the player's group with a different color (based on the player's side)
+    _color = "#FFFFFF";
+    if (_x == group player) then {
+        _color = switch (side player) do {
+             case west: {"#0080FF"};
+             case east: {"#B40404"};
+             case independent: {"#298A08"};
+             default {"#8904B1"};
+         };
+    };
 
-	_wrkGroup = _x;
-	{
-		_grp = missionNamespace getVariable[(_x select 0),grpNull];
-		if (_grp == _wrkGroup) exitWith {freq = _x select 1;};
-	} forEach _groupIDs;
-	//Use BC_LongName but default to groupID if it's not defined
-	_longName = _x getVariable ["BC_LongName",groupID _x];
-	if (isNil "freq") then {
-		_orbatText = _orbatText + format ["<font color='%3'>(%4 men) <b>%1</b> -- %2</font>", _longName, name leader _x,_color,count (units _x)] + "<br />";
-	} else {
-		_orbatText = _orbatText + format ["<font color='%3'>(%4 men) <b>%5 MHz -- %1</b> -- %2</font>", _longName, name leader _x,_color,count (units _x),freq] + "<br />";
-	};
-	// List medics too.
-	{
-		if (getNumber (configFile >> "CfgVehicles" >> typeOf _x >> "attendant") == 1 && {_x != leader group _x}) then {
-			_orbatText = _orbatText + format["         [M] %1",name _x] + "<br />";
-		};
-	} forEach units _x;
+    _wrkGroup = _x;
+    {
+        _grp = missionNamespace getVariable[(_x select 0),grpNull];
+        if (_grp == _wrkGroup) exitWith {freq = _x select 1;};
+    } forEach _groupIDs;
+    //Use BC_LongName but default to groupID if it's not defined
+    _longName = _x getVariable ["BC_LongName",groupID _x];
+    if (isNil "freq") then {
+        _orbatText = _orbatText + format ["<font color='%3'>(%4 men) <b>%1</b> -- %2</font>", _longName, name leader _x,_color,count (units _x)] + "<br />";
+    } else {
+        _orbatText = _orbatText + format ["<font color='%3'>(%4 men) <b>%5 MHz -- %1</b> -- %2</font>", _longName, name leader _x,_color,count (units _x),freq] + "<br />";
+    };
+    // List medics too.
+    {
+        if (getNumber (configFile >> "CfgVehicles" >> typeOf _x >> "attendant") == 1 && {_x != leader group _x}) then {
+            _orbatText = _orbatText + format["         [M] %1",name _x] + "<br />";
+        };
+    } forEach units _x;
 } forEach _groups;
 
 // Insert final result into subsection ORBAT of section Notes

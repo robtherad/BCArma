@@ -16,12 +16,12 @@ for "_i" from 1 to 5 do {player addItemToVest "rhs_mag_30Rnd_556x45_M855A1_Stana
 for "_i" from 1 to 4 do {player addItemToVest "rhs_mag_m18_red";};
 
 if ((s_loadout_radio == 0) or (s_loadout_radio == 1)) then {
-	player addBackpack "tf_rt1523g_big_bwmod_tropen";
-	player addItemToBackpack "rhsusf_100Rnd_762x51";
-	player linkItem "ItemRadio";
+    player addBackpack "tf_rt1523g_big_bwmod_tropen";
+    player addItemToBackpack "rhsusf_100Rnd_762x51";
+    player linkItem "ItemRadio";
 } else {
-	player addBackpack "rhsusf_assault_eagleaiii_ucp";
-	for "_i" from 1 to 3 do {player addItemToBackpack "rhsusf_100Rnd_762x51";};
+    player addBackpack "rhsusf_assault_eagleaiii_ucp";
+    for "_i" from 1 to 3 do {player addItemToBackpack "rhsusf_100Rnd_762x51";};
 };
 player addHeadgear "rhsusf_ach_helmet_ucp";
 player addWeapon "rhs_weap_m4a1_carryhandle";
@@ -30,8 +30,8 @@ for "_i" from 1 to 4 do {player addItemToVest "rhs_mag_30Rnd_556x45_M855A1_Stana
 
 player addWeapon "Binocular";
 if ((s_loadout_map == 0) or (s_loadout_map == 1)) then {
-	player linkItem "ItemMap";
-	if ((s_loadout_gps == 0) or (s_loadout_gps == 1)) then {player linkItem "ItemGPS";};
+    player linkItem "ItemMap";
+    if ((s_loadout_gps == 0) or (s_loadout_gps == 1)) then {player linkItem "ItemGPS";};
 };
 player linkItem "ItemCompass";
 player linkItem "ItemWatch";

@@ -20,11 +20,11 @@ player addWeapon "rhs_weap_m16a4_carryhandle";
  
 player addWeapon "rhs_weap_M136";
 if (s_loadout_map == 0) then {
-	player linkItem "ItemMap";
+    player linkItem "ItemMap";
     if (s_loadout_gps == 0) then {player linkItem "ItemGPS";};
 };
 player linkItem "ItemCompass";
 player linkItem "ItemWatch";
 if (s_loadout_radio == 0) then {
-	player linkItem "ItemRadio";
+    player linkItem "ItemRadio";
 };

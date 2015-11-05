@@ -16,5 +16,5 @@ if (!isDedicated && (isNull player)) then
 // it automatically includes a file which contains the appropriate briefing data.
 
 if (serverCommandAvailable "#kick") then {
-	#include "f\briefing\f_briefing_admin.sqf"
+    #include "f\briefing\f_briefing_admin.sqf"
 };

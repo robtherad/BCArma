@@ -24,30 +24,30 @@ waitUntil {not isNil "bc_randomMarker"};
 _startMarkPos = getMarkerPos bc_randomMarker;
 
 //Make sure player is on the correct team.
-if (side player == _ranTeam) then {	
-	//Boundary marker for starting location
-	_startMark = createMarkerLocal ["startZone",_startMarkPos];
-	_startMark setMarkerShapeLocal "RECTANGLE";
-	_startMark setMarkerSizeLocal [120, 60];
-	_startMark setMarkerDirLocal (markerDir bc_randomMarker);
-	_startMark setMarkerBrushLocal "Solid";
-	_startMark setMarkerColorLocal "ColorBLUFOR";
-	//Text marker for starting location
-	_startMarkTwo = createMarkerLocal ["startZoneTwo",_startMarkPos];
-	_startMarkTwo setMarkerShapeLocal "ICON";
-	_startMarkTwo setMarkerColorLocal "ColorBlack";
-	_startMarkTwo setMarkerTypeLocal "hd_dot";
-	_startMarkTwo setMarkerDirLocal (markerDir bc_randomMarker);
-	_startMarkTwo setMarkerTextLocal "BLUFOR Starting Zone";
-	
-	//Find player distance and direction to the placement marker.
-	_dis = [player, _placeMarkerPos] call BIS_fnc_distance2D;
-	_dir = (([player, _placeMarkerPos] call BIS_fnc_dirTo) + (markerDir bc_randomMarker)) - 180;
-	
-	//Returns a position that is a specified distance and compass direction from the passed position or object.
-	_newPos = [_startMarkPos, _dis, _dir] call BIS_fnc_relPos;
-	
-	//Move player
-	player setPos [(_newPos select 0), (_newPos select 1)];
-	player setDir (markerDir bc_randomMarker);
+if (side player == _ranTeam) then {    
+    //Boundary marker for starting location
+    _startMark = createMarkerLocal ["startZone",_startMarkPos];
+    _startMark setMarkerShapeLocal "RECTANGLE";
+    _startMark setMarkerSizeLocal [120, 60];
+    _startMark setMarkerDirLocal (markerDir bc_randomMarker);
+    _startMark setMarkerBrushLocal "Solid";
+    _startMark setMarkerColorLocal "ColorBLUFOR";
+    //Text marker for starting location
+    _startMarkTwo = createMarkerLocal ["startZoneTwo",_startMarkPos];
+    _startMarkTwo setMarkerShapeLocal "ICON";
+    _startMarkTwo setMarkerColorLocal "ColorBlack";
+    _startMarkTwo setMarkerTypeLocal "hd_dot";
+    _startMarkTwo setMarkerDirLocal (markerDir bc_randomMarker);
+    _startMarkTwo setMarkerTextLocal "BLUFOR Starting Zone";
+    
+    //Find player distance and direction to the placement marker.
+    _dis = [player, _placeMarkerPos] call BIS_fnc_distance2D;
+    _dir = (([player, _placeMarkerPos] call BIS_fnc_dirTo) + (markerDir bc_randomMarker)) - 180;
+    
+    //Returns a position that is a specified distance and compass direction from the passed position or object.
+    _newPos = [_startMarkPos, _dis, _dir] call BIS_fnc_relPos;
+    
+    //Move player
+    player setPos [(_newPos select 0), (_newPos select 1)];
+    player setDir (markerDir bc_randomMarker);
 };

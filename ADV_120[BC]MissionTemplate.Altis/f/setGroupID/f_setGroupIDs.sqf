@@ -73,7 +73,7 @@ private ["_grp"];
     _grp = missionNamespace getVariable[(_x select 0),grpNull];
     if(!isNull _grp) then {
         _grp setGroupId [(_x select 1),"GroupColor0"];
-		_grp setVariable ["BC_LongName",_x select 2];
+        _grp setVariable ["BC_LongName",_x select 2];
         _grp setVariable ["bc_gps_groupSize",_x select 3];
     };
 } forEach _groups;

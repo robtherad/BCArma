@@ -19,12 +19,12 @@ player addWeapon "rhs_weap_ak74m_gp25";
 removeAllPrimaryWeaponItems player;
 
 if ((s_loadout_radio == 0) or (s_loadout_radio == 1)) then {
-	player addBackpack "tf_mr3000";
-	for "_i" from 1 to 4 do {player addItemToBackpack "rhs_30Rnd_545x39_AK";};
-	player linkItem "ItemRadio";
+    player addBackpack "tf_mr3000";
+    for "_i" from 1 to 4 do {player addItemToBackpack "rhs_30Rnd_545x39_AK";};
+    player linkItem "ItemRadio";
 } else {
-	player addBackpack "B_Kitbag_mcamo";
-	for "_i" from 1 to 12 do {player addItemToBackpack "rhs_30Rnd_545x39_AK";};
+    player addBackpack "B_Kitbag_mcamo";
+    for "_i" from 1 to 12 do {player addItemToBackpack "rhs_30Rnd_545x39_AK";};
 };
 
 for "_i" from 1 to 4 do {player addItemToBackpack "rhs_VOG25";};
@@ -34,8 +34,8 @@ player addHeadgear "rhs_6b27m_ml";
 player addGoggles "G_Bandanna_khk";
 player addWeapon "Binocular";
 if ((s_loadout_map == 0) or (s_loadout_map == 1)) then {
-	player linkItem "ItemMap";
-	if ((s_loadout_gps == 0) or (s_loadout_gps == 1)) then {player linkItem "ItemGPS";};
+    player linkItem "ItemMap";
+    if ((s_loadout_gps == 0) or (s_loadout_gps == 1)) then {player linkItem "ItemGPS";};
 };
 player linkItem "ItemCompass";
 player linkItem "ItemWatch";

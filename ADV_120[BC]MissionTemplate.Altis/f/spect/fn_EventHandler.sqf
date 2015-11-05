@@ -13,12 +13,12 @@ switch (_type) do
 case "MouseButtonDown":
 {
 
-	if(_args select 1 == 1 && f_cam_mode != 1) then
-	{
+    if(_args select 1 == 1 && f_cam_mode != 1) then
+    {
         _button = _args select 1;
         f_cam_MouseButton set [_button,true];
 
-	};
+    };
     if(_args select 1 == 1) then
     {
         if(f_cam_mode == 1) then
@@ -30,12 +30,12 @@ case "MouseButtonDown":
 };
 case "MouseButtonUp":
 {
-	if(_args select 1 == 1 && f_cam_mode != 1) then
-	{
+    if(_args select 1 == 1 && f_cam_mode != 1) then
+    {
         _button = _args select 1;
         f_cam_MouseButton set [_button,false];
          [] spawn f_fnc_HandleCamera;
-	};
+    };
     if(_args select 1 == 1) then
     {
         if(f_cam_mode == 1) then
@@ -334,7 +334,7 @@ case "KeyDown":
 
         case 35: //  H
         {
-			hint "Extra Keys\n\nPress 'F1' to see this hint again.\nPress 'U' to hide the spectator UI.\nPress 'V' to hide the remaining time UI.\nPress 'Right Arrow' to make player tags bigger.\nPress 'Left Arrow' to make player tags smaller.\nPress 'F2' to clear hints.\n";
+            hint "Extra Keys\n\nPress 'F1' to see this hint again.\nPress 'U' to hide the spectator UI.\nPress 'V' to hide the remaining time UI.\nPress 'Right Arrow' to make player tags bigger.\nPress 'Left Arrow' to make player tags smaller.\nPress 'F2' to clear hints.\n";
             ctrlShow [1315, !ctrlVisible 1315];
             ctrlShow [1310, !ctrlVisible 1310];
             ctrlShow [1300, !ctrlVisible 1300];
@@ -348,15 +348,15 @@ case "KeyDown":
              _handled = true;
         };
         case 25: // P
-		{
+        {
             f_cam_muteSpectators = !f_cam_muteSpectators;
             [player, f_cam_muteSpectators] call TFAR_fnc_forceSpectator;
-			systemChat format ["Spectators Muted = %1",!f_cam_muteSpectators];
-			if (f_cam_muteSpectators) then {
-				player setVariable ["tf_voiceVolume", 1.0, true];
-			} else {
-				player setVariable ["tf_voiceVolume", 0.0, true];
-			};
+            systemChat format ["Spectators Muted = %1",!f_cam_muteSpectators];
+            if (f_cam_muteSpectators) then {
+                player setVariable ["tf_voiceVolume", 1.0, true];
+            } else {
+                player setVariable ["tf_voiceVolume", 0.0, true];
+            };
         };
         case 29: // CTRL
         {
@@ -406,33 +406,33 @@ case "KeyDown":
             };
             _handled = true;
         };
-		case 205: //RIGHT ARROW KEY
+        case 205: //RIGHT ARROW KEY
         {
-			if (f_cam_tagTextSize < .05) then {
-				f_cam_tagTextSize = f_cam_tagTextSize + .0005;
-			} else {
-				f_cam_tagTextSize = .05;
-			};
+            if (f_cam_tagTextSize < .05) then {
+                f_cam_tagTextSize = f_cam_tagTextSize + .0005;
+            } else {
+                f_cam_tagTextSize = .05;
+            };
         };
         case 203: //LEFT ARROW KEY
         {
             if (f_cam_tagTextSize >= 0.0005) then {
-				f_cam_tagTextSize = f_cam_tagTextSize - .0005;
-			} else {
-				f_cam_tagTextSize = 0;
-			};
+                f_cam_tagTextSize = f_cam_tagTextSize - .0005;
+            } else {
+                f_cam_tagTextSize = 0;
+            };
         };
-		case 59: // F1
+        case 59: // F1
         {
-			hint "Extra Keys\n\nPress 'F1' to see this hint again.\nPress 'U' to hide the spectator UI.\nPress 'V' to hide the remaining time UI.\nPress 'Right Arrow' to make player tags bigger.\nPress 'Left Arrow' to make player tags smaller.\nPress 'F2' to clear hints.\n";
+            hint "Extra Keys\n\nPress 'F1' to see this hint again.\nPress 'U' to hide the spectator UI.\nPress 'V' to hide the remaining time UI.\nPress 'Right Arrow' to make player tags bigger.\nPress 'Left Arrow' to make player tags smaller.\nPress 'F2' to clear hints.\n";
         };
-		case 60: // F2
+        case 60: // F2
         {
-			hint "";
+            hint "";
         };
-		case 47: // V
+        case 47: // V
         {
-			bc_show_timeUI = !bc_show_timeUI;
+            bc_show_timeUI = !bc_show_timeUI;
         };
     };
     _handled

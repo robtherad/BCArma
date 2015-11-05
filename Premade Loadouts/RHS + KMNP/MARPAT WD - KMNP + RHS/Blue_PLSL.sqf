@@ -19,11 +19,11 @@ player addWeapon "rhs_weap_m4a1_carryhandle";
  
 
 if (s_loadout_radio != 3) then {
-	player addBackpack "tf_rt1523g_big_bwmod";
-	player linkItem "ItemRadio";
+    player addBackpack "tf_rt1523g_big_bwmod";
+    player linkItem "ItemRadio";
 } else {
-	player addBackpack "B_FieldPack_khk";
-	for "_i" from 1 to 6 do {player addItemToBackpack "rhs_mag_30Rnd_556x45_M855A1_Stanag";};
+    player addBackpack "B_FieldPack_khk";
+    for "_i" from 1 to 6 do {player addItemToBackpack "rhs_mag_30Rnd_556x45_M855A1_Stanag";};
 };
 
 player addHeadgear "MNP_Helmet_USMC";
@@ -31,8 +31,8 @@ for "_i" from 1 to 4 do {player addItemToBackpack "rhs_mag_30Rnd_556x45_M855A1_S
 
 player addWeapon "Binocular";
 if (s_loadout_map != 3) then {
-	player linkItem "ItemMap";
-	if (s_loadout_gps != 3) then {player linkItem "ItemGPS";};
+    player linkItem "ItemMap";
+    if (s_loadout_gps != 3) then {player linkItem "ItemGPS";};
 };
 player linkItem "ItemCompass";
 player linkItem "ItemWatch";
