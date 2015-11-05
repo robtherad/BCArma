@@ -1,5 +1,6 @@
 //Figure out which side the player is on. 
-switch (side player) do {
+_side = side player;
+switch (_side) do {
     case east: { bc_playerBaseChannel = bc_opforBaseChannel; };
     case west: { bc_playerBaseChannel = bc_bluforBaseChannel; };
 	default { titleText ["The game thinks you aren't on OPFOR or BLUFOR!","PLAIN"]; };
