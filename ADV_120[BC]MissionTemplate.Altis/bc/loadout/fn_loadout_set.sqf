@@ -3,6 +3,7 @@ _char = typeOf player;
 //Get radio and map parameters from the slot screen. If the parameters don't exist then they default to giving everybody a map and radio.
 s_loadout_radio = ["s_loadout_radio",0] call BIS_fnc_getParamValue;
 s_loadout_map = ["s_loadout_map",0] call BIS_fnc_getParamValue;
+s_loadout_gps = ["s_loadout_gps",1] call BIS_fnc_getParamValue;
 
 // Ensure script is run only once.
 if (!isNil "loadout_assigned") exitWith {};

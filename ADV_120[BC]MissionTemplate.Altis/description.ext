@@ -63,6 +63,13 @@ class Params
 		texts[] = {"All Players (default)","Team Leaders and above","Squad Leaders and above","No Maps"};
 		default = 0;
 	};
+    class s_loadout_gps
+	{
+		title = "GPS Deployment (Requires map):";
+		values[] = {0,1,2,3};
+		texts[] = {"All Players","Team Leaders and above (default)","Squad Leaders and above","No Maps"};
+		default = 1;
+	};
 	class mission_runtime
 	{
 		title = "Mission Time Limit (Doesn't include safestart time):";
