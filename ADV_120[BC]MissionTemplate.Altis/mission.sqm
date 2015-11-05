@@ -448,6 +448,43 @@ class Mission
 			text="t1";
 		};
 	};
+	class Sensors
+	{
+		items=3;
+		class Item0
+		{
+			position[]={15247.391,17.604994,16969.633};
+			interruptable=1;
+			age="UNKNOWN";
+			text="Cap 1";
+			name="cap1";
+			class Effects
+			{
+			};
+		};
+		class Item1
+		{
+			position[]={15530.876,21.01055,16552.135};
+			interruptable=1;
+			age="UNKNOWN";
+			text="Cap 2";
+			name="cap2";
+			class Effects
+			{
+			};
+		};
+		class Item2
+		{
+			position[]={14979.37,17.962008,16552.135};
+			interruptable=1;
+			age="UNKNOWN";
+			text="Cap 3";
+			name="cap3";
+			class Effects
+			{
+			};
+		};
+	};
 };
 class Intro
 {

@@ -71,7 +71,7 @@ if (!isNil "sectorControl") then {
 		_textSize = 0.03;
 		{ //forEach bc_triggerArray;
 			_distToCam = (call f_cam_GetCurrentCam) distance _x;
-			_owner = _x getVariable "lastOwner";
+			_owner = _x getVariable "bc_sec_lastOwner";
 			_color = switch (_owner) do {
 				case 0: {f_cam_blufor_color};
 				case 1: {f_cam_opfor_color};
@@ -111,7 +111,7 @@ if (!isNil "sectorControl") then {
 			};	
 			//hint format ["_distToCam = %3\n_iconSize = %1\n_textSize = %2",_iconSize,_textSize,_distToCam];
 			if (_distToCam > _maxDist) then {
-				drawIcon3D ["\A3\ui_f\data\map\markers\military\flag_ca.paa",_color,getpos _x ,.75,.75,0,iconName,2,0.025,"TahomaB"];
+				drawIcon3D ["\A3\ui_f\data\map\markers\military\flag_ca.paa",_color,getpos _x,.75,.75,0,iconName,2,0.025,"TahomaB"];
 			};
 			if (_distToCam < _maxDist) then {
 				drawIcon3D ["\A3\ui_f\data\map\markers\military\flag_ca.paa",_color,getpos _x ,_iconSize,_iconSize,0,iconName,2,_textSize,"TahomaB"];

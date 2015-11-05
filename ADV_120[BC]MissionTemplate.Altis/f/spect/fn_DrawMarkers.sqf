@@ -20,16 +20,16 @@ _fullmapWindow drawIcon ["\A3\ui_f\data\GUI\Rsc\RscDisplayMissionEditor\iconCame
 		{
 			_icon = (vehicle _x getVariable ["f_cam_icon",""]);
 			if(_icon == "") then {_icon = gettext (configfile >> "CfgVehicles" >> typeOf (vehicle _x) >> "icon");vehicle _x setVariable ["f_cam_icon",_icon]};
-			_fullmapWindow drawIcon [_icon,_color,getpos _x,19,19,getDir (vehicle _x),_name,1];
+			_fullmapWindow drawIcon [_icon,_color,getpos _x,19,19,getDir (vehicle _x),_name,1,0.04,"TahomaB"];
 		};
 	};
 
 } foreach allunits;
-sectorControl = missionNamespace getVariable ["bc_sectorControlActive",false];
+sectorControl = missionNamespace getVariable "bc_sectorControlActive";
 if (!isNil "sectorControl") then {
 	if (sectorControl) then {
 		{ //forEach bc_triggerArray;
-			_owner = _x getVariable "lastOwner";
+			_owner = _x getVariable "bc_sec_lastOwner";
 			_color = switch (_owner) do {
 				case 0: {f_cam_blufor_color};
 				case 1: {f_cam_opfor_color};
@@ -46,7 +46,7 @@ if (!isNil "sectorControl") then {
 				case 3: {iconName = str(iconName) + " - Neutral";};
 				default {iconName = str(iconName) + " - ERROR";};
 			};
-			_fullmapWindow drawIcon ["\A3\ui_f\data\map\markers\military\flag_ca.paa",_color,getpos _x ,20,20,0,iconName,2];
+			_fullmapWindow drawIcon ["\A3\ui_f\data\map\markers\military\flag_ca.paa",_color,getpos _x ,20,20,0,iconName,2,0.04,"TahomaB"];
 		} forEach bc_triggerArray;
 	};
 };
