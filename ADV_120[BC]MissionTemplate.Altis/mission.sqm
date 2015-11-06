@@ -106,7 +106,7 @@ class Mission
 				items=1;
 				class Item0
 				{
-					position[]={14535.891,17.921188,16122.034};
+					position[]={15054.331,17.917656,16547.871};
 					azimut=231.2825;
 					special="NONE";
 					id=3;
@@ -376,6 +376,8 @@ class Mission
 		class Item2
 		{
 			position[]={14979.37,17.962008,16552.135};
+			activationBy="ANY";
+			repeating=1;
 			interruptable=1;
 			age="UNKNOWN";
 			text="Cap 3";

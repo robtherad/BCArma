@@ -26,4 +26,4 @@ switch _sideArray do {
     case [1,0,1]: { _hintStr = "BLUFOR" + _fill + "INDFOR" + _fill; };
     case [1,1,1]: { _hintStr = "BLUFOR" + _fill + "OPFOR" + _fill + "INDFOR" + _fill; };
 };
-[_hintStr,"hint",true,true] call BIS_fnc_MP;
+_hintStr remoteExecCall ["hint", 0,true];

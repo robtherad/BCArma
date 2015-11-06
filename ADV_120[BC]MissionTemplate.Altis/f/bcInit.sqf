@@ -27,7 +27,7 @@ if(isServer) then {
             case 3: {_diff = "Elite";};
         };
         _hintStr = "Mission Difficulty Setting = " + _diff;
-        [_hintStr,"hint",true,true] call BIS_fnc_MP;
+        _hintStr remoteExecCall ["hint", 0];
     };
 };
 

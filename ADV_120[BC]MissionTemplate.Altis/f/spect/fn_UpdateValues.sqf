@@ -53,6 +53,7 @@ while {true} do
         if(!(_x in f_cam_listUnits) && ({alive _x} count units _x) > 0 ) then
         {
             _text = toString(toArray(groupID _x) - [45]);
+            _text = format["- %1",_text];
             _index = lbAdd [_listBox,_text];
             _x SetVariable ["f_spect_listBoxIndex",_index];
             f_cam_listUnits pushBack _x;
@@ -83,7 +84,7 @@ while {true} do
         _index = _x GetVariable ["f_spect_listBoxIndex",-1];
         if(typeName _x == "GROUP") then
         {
-            if(_index >= 0 && ({alive _x} count units _x) > 0 && {lbText [_listBox,_index] != (toString(toArray(groupID _x) - [45]))}) then
+            if(_index >= 0 && ({alive _x} count units _x) > 0 && {lbText [_listBox,_index] != format["- %1",(toString(toArray(groupID _x) - [45]))] }) then
             {
                 // there is no lbSetText, so just punt it out of the list and fix it up there..
                 lbDelete [_listBox,_index];

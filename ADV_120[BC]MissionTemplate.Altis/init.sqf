@@ -14,3 +14,5 @@
 
 //Call BC Template
 [] execVM "f\bcInit.sqf";
+
+[] execVM "scripts\sectors\server.sqf";
