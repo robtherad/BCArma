@@ -1,5 +1,4 @@
 //init.sqf - Executed when mission is started (before briefing screen)
-waitUntil {!isNull player};
 
 //Create briefing
 [] execVM "briefing.sqf";
