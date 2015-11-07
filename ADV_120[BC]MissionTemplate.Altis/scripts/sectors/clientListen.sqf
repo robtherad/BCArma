@@ -1,3 +1,4 @@
+if (!hasInterface) exitWith {};
 disableSerialization;
 //Make sure the sector control script has been running long enough
 waitUntil {if (!isNil "bc_opfText") then {true} else {sleep 5;};};
