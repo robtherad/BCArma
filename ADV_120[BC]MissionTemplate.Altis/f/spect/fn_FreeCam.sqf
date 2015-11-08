@@ -151,21 +151,6 @@ if(f_cam_mode == 3) then {
     f_cam_scrollHeight = 0;
     f_cam_timestamp = time;
 };
-//UPDATE SPECTATOR POS SO HE CAN LISTEN TO PLAYERS
-if (!f_cam_muteSpectators) then {
-    if (f_cam_freecamOn) then {
-        player setPos [(getPos f_cam_freecamera select 0),(getPos f_cam_freecamera select 1),(getPos f_cam_freecamera select 2)+10];
-        player setVelocity [0, 0, 0];
-    } else {
-        player setPos [(getPos f_cam_camera select 0),(getPos f_cam_camera select 1),(getPos f_cam_camera select 2)+10];
-        player setVelocity [0, 0, 0];
-    };
-} else {
-    if (player distance2D [0,0,0] > 20) then {
-        player setPos [0,0,5];
-        player setVelocity [0, 0, 0];
-    };
-};
 //MAKE SURE PLAYER IS HIDDEN + NOT SIMULATED
 if (simulationEnabled player) then {
     player enableSimulationGlobal false;
