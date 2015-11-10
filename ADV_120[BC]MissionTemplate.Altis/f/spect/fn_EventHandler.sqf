@@ -13,16 +13,13 @@ switch (_type) do
 case "MouseButtonDown":
 {
 
-	if(_args select 1 == 1 && f_cam_mode != 1) then
-	{
+    if(_args select 1 == 1 && f_cam_mode != 1) then {
         _button = _args select 1;
         f_cam_MouseButton set [_button,true];
 
-	};
-    if(_args select 1 == 1) then
-    {
-        if(f_cam_mode == 1) then
-        {
+    };
+    if(_args select 1 == 1) then {
+        if(f_cam_mode == 1) then {
             f_cam_ads = true;
             f_cam_curTarget switchCamera "gunner";
         }
@@ -30,16 +27,13 @@ case "MouseButtonDown":
 };
 case "MouseButtonUp":
 {
-	if(_args select 1 == 1 && f_cam_mode != 1) then
-	{
+    if(_args select 1 == 1 && f_cam_mode != 1) then {
         _button = _args select 1;
         f_cam_MouseButton set [_button,false];
          [] spawn f_fnc_HandleCamera;
-	};
-    if(_args select 1 == 1) then
-    {
-        if(f_cam_mode == 1) then
-        {
+    };
+    if(_args select 1 == 1) then {
+        if(f_cam_mode == 1) then {
             f_cam_ads = false;
             f_cam_curTarget switchCamera "internal";
         }
@@ -48,12 +42,10 @@ case "MouseButtonUp":
 case "MapZoom":
 {
     f_cam_map_zoom = f_cam_map_zoom+((_args select 1)*0.05);
-    if(f_cam_map_zoom > 0.5) then
-    {
+    if(f_cam_map_zoom > 0.5) then {
         f_cam_map_zoom = 0.5;
     };
-    if(f_cam_map_zoom < 0.05) then
-    {
+    if(f_cam_map_zoom < 0.05) then {
         f_cam_map_zoom = 0.05;
     };
     _handled = true;
@@ -68,8 +60,7 @@ case "MouseMoving":
 };
 case "MouseZChanged":
 {
-    if(!f_cam_ctrl_down) then
-    {
+    if(!f_cam_ctrl_down) then {
         switch (f_cam_mode) do {
             case 0: {
                 f_cam_zoom = ((f_cam_zoom - ((_args select 1)*f_cam_zoom/5)) max 0.1) min 650;
@@ -91,23 +82,18 @@ case "MouseZChanged":
 // handles dropboxes
 case "LBListSelChanged":
 {
-    if(count f_cam_listUnits > (_args select 1)) then
-    {
+    if(count f_cam_listUnits > (_args select 1)) then {
         _unit = f_cam_listUnits select (_args select 1);
-        if(!isnil "_unit") then
-        {
+        if(!isnil "_unit") then {
             if(typeName _unit == "GROUP") then {_unit = leader _unit};
-            if(f_cam_mode == 0 || f_cam_mode == 1) then
-            {
+            if(f_cam_mode == 0 || f_cam_mode == 1) then {
                 f_cam_curTarget = _unit;
-                if(f_cam_toggleCamera) then
-                {
+                if(f_cam_toggleCamera) then {
                   f_cam_curTarget switchCamera "INTERNAL";
                 };
                 ctrlSetText [1000,format ["Spectating:%1", name f_cam_curTarget]];
             };
-            if(f_cam_mode == 3) then
-            {
+            if(f_cam_mode == 3) then {
                 _pos = getpos _unit;
                 _x = _pos select 0;
                 _y = _pos select 1;
@@ -116,7 +102,11 @@ case "LBListSelChanged":
         };
     };
     ctrlEnable [2100, false];
+<<<<<<< HEAD
+    ctrlEnable [2100, true];
+=======
 +   ctrlEnable [2100, true];
+>>>>>>> refs/remotes/origin/master
 };
 case "LBListSelChanged_modes":
 {
@@ -127,8 +117,7 @@ case "LBListSelChanged_modes":
         case f_cam_lb_toggletiWHIndex:
         {
             f_cam_tiWHOn = !f_cam_tiWHOn;
-            if(f_cam_tiWHOn) then
-            {
+            if(f_cam_tiWHOn) then {
                 f_cam_tiBHOn = false;
                 f_cam_nvOn = false;
                 true setCamUseTi 0;
@@ -144,8 +133,7 @@ case "LBListSelChanged_modes":
         case f_cam_lb_toggletiBHIndex: // BlackHot
         {
             f_cam_tiBHOn = !f_cam_tiBHOn;
-            if(f_cam_tiBHOn) then
-            {
+            if(f_cam_tiBHOn) then {
                 camUseNVG false;
                 f_cam_tiWHOn = false;
                 f_cam_nvOn = false;
@@ -171,8 +159,7 @@ case "LBListSelChanged_modes":
         case f_cam_lb_toggletiNVIndex: // Nightvision
         {
             f_cam_nvOn = !f_cam_nvOn;
-            if(f_cam_nvOn) then
-            {
+            if(f_cam_nvOn) then {
                 false setCamUseTi 0;
                 camUseNVG true;
                 f_cam_tiWHOn = false;
@@ -208,8 +195,7 @@ case "KeyDown":
         };
         case f_cam_zeusKey:
         {
-            if(serverCommandAvailable "#kick" || !isNull (getAssignedCuratorLogic player) ) then
-            {
+            if(serverCommandAvailable "#kick" || !isNull (getAssignedCuratorLogic player) ) then {
                 // handler to check when we can return to the spectator system ( when zeus interface is closed and not remoteing controlling)
                 [] spawn {
                     _done = false;
@@ -230,8 +216,7 @@ case "KeyDown":
 
                 // black out the screen
                 ["F_ScreenSetup",false] call BIS_fnc_blackOut;
-                if(isNull (getAssignedCuratorLogic player)) then
-                {
+                if(isNull (getAssignedCuratorLogic player)) then {
                     [[player,true,playableUnits],'f_fnc_zeusInit',false] spawn BIS_fnc_MP;
                 };
                 [] spawn {
@@ -255,12 +240,9 @@ case "KeyDown":
         case 20: // T
         {
             f_cam_tracerOn = !f_cam_tracerOn;
-            if(f_cam_tracerOn) then
-            {
+            if(f_cam_tracerOn) then {
                 systemChat "Tracers on map activated.";
-            }
-            else
-            {
+            } else {
                 systemChat "Tracers on map deactivated.";
             };
             _handled = true;
@@ -312,8 +294,7 @@ case "KeyDown":
         case 57: // SPACE
         {
             f_cam_freecamOn = !f_cam_freecamOn;
-            if(f_cam_freecamOn) then
-            {
+            if(f_cam_freecamOn) then {
                 f_cam_angleY = 10;
                 [f_cam_freecamera,f_cam_angleY,0] call BIS_fnc_setPitchBank;
                 f_cam_freecamera cameraEffect ["internal", "BACK"];
@@ -321,9 +302,7 @@ case "KeyDown":
                 f_cam_freecamera setPosASL getPosASL f_cam_camera;
                 cameraEffectEnableHUD true;
                 showCinemaBorder false;
-            }
-            else
-            {
+            } else {
                 f_cam_freecamera cameraEffect ["Terminate","BACK"];
                 f_cam_angleY = 45;
                 f_cam_camera cameraEffect ["internal", "BACK"];
@@ -336,7 +315,7 @@ case "KeyDown":
 
         case 35: //  H
         {
-			hint "Extra Keys\n\nPress 'F1' to see this hint again.\nPress 'U' to hide the spectator UI.\nPress 'V' to hide the remaining time UI.\nPress 'Right Arrow' to make player tags bigger.\nPress 'Left Arrow' to make player tags smaller.\nPress 'F2' to clear hints.\n";
+            hint "Extra Keys\n\nPress 'F1' to see this hint again.\nPress 'U' to hide the spectator UI.\nPress 'V' to hide the remaining time UI.\nPress 'Right Arrow' to make player tags bigger.\nPress 'Left Arrow' to make player tags smaller.\nPress 'F2' to clear hints.\n";
             ctrlShow [1315, !ctrlVisible 1315];
             ctrlShow [1310, !ctrlVisible 1310];
             ctrlShow [1300, !ctrlVisible 1300];
@@ -350,15 +329,10 @@ case "KeyDown":
              _handled = true;
         };
         case 25: // P
-		{
+        {
             f_cam_muteSpectators = !f_cam_muteSpectators;
             [player, f_cam_muteSpectators] call TFAR_fnc_forceSpectator;
-			systemChat format ["Spectators Muted = %1",!f_cam_muteSpectators];
-			if (f_cam_muteSpectators) then {
-				player setVariable ["tf_voiceVolume", 1.0, true];
-			} else {
-				player setVariable ["tf_voiceVolume", 0.0, true];
-			};
+            systemChat format ["Spectators Muted = %1",!f_cam_muteSpectators];
         };
         case 29: // CTRL
         {
@@ -369,8 +343,7 @@ case "KeyDown":
         case 50: // M
         {
             f_cam_mapMode = f_cam_mapMode +1;
-            if(f_cam_mapMode > 2) then
-            {
+            if(f_cam_mapMode > 2) then {
                 f_cam_mapMode = 0;
             };
             switch (f_cam_mapMode) do
@@ -408,33 +381,33 @@ case "KeyDown":
             };
             _handled = true;
         };
-		case 205: //RIGHT ARROW KEY
+        case 205: //RIGHT ARROW KEY
         {
-			if (f_cam_tagTextSize < .05) then {
-				f_cam_tagTextSize = f_cam_tagTextSize + .0005;
-			} else {
-				f_cam_tagTextSize = .05;
-			};
+            if (f_cam_tagTextSize < .05) then {
+                f_cam_tagTextSize = f_cam_tagTextSize + .0005;
+            } else {
+                f_cam_tagTextSize = .05;
+            };
         };
         case 203: //LEFT ARROW KEY
         {
             if (f_cam_tagTextSize >= 0.0005) then {
-				f_cam_tagTextSize = f_cam_tagTextSize - .0005;
-			} else {
-				f_cam_tagTextSize = 0;
-			};
+                f_cam_tagTextSize = f_cam_tagTextSize - .0005;
+            } else {
+                f_cam_tagTextSize = 0;
+            };
         };
-		case 59: // F1
+        case 59: // F1
         {
-			hint "Extra Keys\n\nPress 'F1' to see this hint again.\nPress 'U' to hide the spectator UI.\nPress 'V' to hide the remaining time UI.\nPress 'Right Arrow' to make player tags bigger.\nPress 'Left Arrow' to make player tags smaller.\nPress 'F2' to clear hints.\n";
+            hint "Extra Keys\n\nPress 'F1' to see this hint again.\nPress 'U' to hide the spectator UI.\nPress 'V' to hide the remaining time UI.\nPress 'Right Arrow' to make player tags bigger.\nPress 'Left Arrow' to make player tags smaller.\nPress 'F2' to clear hints.\n";
         };
-		case 60: // F2
+        case 60: // F2
         {
-			hint "";
+            hint "";
         };
-		case 47: // V
+        case 47: // V
         {
-			bc_show_timeUI = !bc_show_timeUI;
+            bc_show_timeUI = !bc_show_timeUI;
         };
     };
     _handled
@@ -537,4 +510,3 @@ case "KeyUp":
 };
 _handled
 };
-

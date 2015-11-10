@@ -1,1 +1,0 @@
-To enable the random starting point script you need to run the client.sqf file on all clients and the server.sqf file on the server only. The instructions for setting each of these files up are found in the comments at the top of the files themselves.

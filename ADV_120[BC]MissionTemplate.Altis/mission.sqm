@@ -42,16 +42,15 @@ class Mission
 	randomSeed=1726574;
 	class Intel
 	{
+		resistanceEast=1;
+		timeOfChanges=28800;
 		startWeather=0.34999999;
-		startWind=0.25;
+		startWind=0;
 		startWaves=0.099999994;
-		startGust=0.25;
 		forecastWeather=0.34999999;
-		forecastWind=0.25;
+		forecastWind=0;
 		forecastWaves=0.099999994;
 		forecastLightnings=0.099999994;
-		forecastGust=0.25;
-		windForced=1;
 		year=2009;
 		month=8;
 		day=9;
@@ -2590,7 +2589,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=20;
+		items=19;
 		class Item0
 		{
 			position[]={657.0835,-0.00015549548,4050.9336};
@@ -2625,15 +2624,15 @@ class Mission
 		{
 			position[]={2128.1787,0.0015364824,1193.1921};
 			name="rob";
-			text="Mission area with restricted borders. Will warn then kill when people exit.";
-			type="mil_warning";
+			text="Mission area with restricted borders. Inner trigger warns, outer trigger kills.";
+			type="Empty";
 		};
 		class Item4
 		{
 			position[]={652.4502,-0.00087998871,3620.8384};
 			name="rob_1";
 			text="Objective trigger. Will display hint and change marker name when objective is destroyed.";
-			type="mil_warning";
+			type="Empty";
 		};
 		class Item5
 		{
@@ -2648,7 +2647,7 @@ class Mission
 			position[]={652.4502,-0.0044945218,5325.6465};
 			name="rob_2";
 			text="Objective WITHOUT trigger. Does the same as below but is only destroyable by satchels. Doesn't work with all objects.";
-			type="mil_warning";
+			type="Empty";
 		};
 		class Item7
 		{
@@ -2663,7 +2662,7 @@ class Mission
 			position[]={688.48682,0.0032288176,6536.7227};
 			name="rob_3";
 			text="Same as Objective #1 except this will spawn where it is placed or at any of the markers that are grouped with it.";
-			type="mil_warning";
+			type="Empty";
 		};
 		class Item9
 		{
@@ -2718,20 +2717,13 @@ class Mission
 			position[]={688.49023,0.0023828112,6250.3018};
 			name="rob_3_1";
 			text="It's marker will follow it due to the code in the objective's init field.";
-			type="mil_warning";
+			type="Empty";
 		};
 		class Item18
 		{
-			position[]={2133.3223,0.067286946,1131.9104};
-			name="rob_4";
-			text="If you are using an ellipse shaped AO you should put down a marker to mark the boundary.";
-			type="Empty";
-		};
-		class Item19
-		{
-			position[]={2130.4917,-0.059267372,1063.7128};
-			name="rob_5";
-			text="If you are using a rectangular shaped AO you don't need to add a border. It will be generated for you.";
+			position[]={2143.395,-0.21234867,890.72754};
+			name="border_rob";
+			text="Place a rectangular/ellipse marker with Fill set to BORDER to and align it with the edges of the inner trigger.";
 			type="Empty";
 		};
 	};
