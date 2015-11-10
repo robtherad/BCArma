@@ -102,7 +102,11 @@ case "LBListSelChanged":
         };
     };
     ctrlEnable [2100, false];
+<<<<<<< HEAD
     ctrlEnable [2100, true];
+=======
++   ctrlEnable [2100, true];
+>>>>>>> refs/remotes/origin/master
 };
 case "LBListSelChanged_modes":
 {

@@ -13,6 +13,7 @@ Call this script on THE SERVER in initServer.sqf with the line
 
 [] execVM "scripts\sectors\server.sqf";
 */
+[] execVM "scripts\sectors\clientListen.sqf";
 if (!isServer) exitWith {};
 
 
@@ -28,7 +29,10 @@ bc_sec_playing = 1;
 bc_sec_pointsCounter = 1;
 bc_sectorControl = true;
 missionNamespace setVariable ["bc_sectorControlActive", true, true]; //Used to check if sector control module is running or not
+<<<<<<< HEAD
 [[],"scripts\sectors\clientListen.sqf"] remoteExecCall ["BIS_fnc_execVM", 0];
+=======
+>>>>>>> refs/remotes/origin/master
 
 if (isNil "bc_sec_quickestTime") then {
     //Time in minutes it would take to win if one team owned all points uncontested
