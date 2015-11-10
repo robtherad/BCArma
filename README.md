@@ -27,7 +27,7 @@ This script has two parts. The first part is `server.sqf` which has the server r
 
 The second part is `client.sqf` which actually places a player at the spot randomly selected by the server. The player's position relative to a marker called `placemark` will be saved and the player will be placed in the same position relative to the randomly selected marker and then set to face the same direction as that marker. Call this script on all clients in `init.sqf` or `initPlayerLocal.sqf` with the following command:
 
-	[] execVM "scripts\randomstart\server.sqf";
+	[] execVM "scripts\randomstart\client.sqf";
 
 ##### Making it work in your mission
 
@@ -44,7 +44,7 @@ That's it! Test it out a few times to make sure it works.
 
 ## sectors
 
-This script has two parts but only one part needs to be called. Call only `server.sqf` to run on the server using the following command in the `init.sqf` or `initServer.sqf` files:
+This script has three parts but only one part needs to be called. Call only `server.sqf` to run on the server using the following command in the `init.sqf` or `initServer.sqf` files:
 
 	[] execVM "scripts\sectors\server.sqf";
 
