@@ -2,15 +2,15 @@
 
 _sideArray = [0,0,0];
 if (_bluforEliminatedMessage) then {
-    _aliveB = {faction _x == "BLU_F"} count allUnits;
+    _aliveB = {side _x == west} count allUnits;
     if (_aliveB == 0) then {_sideArray set [0,1];} else {_sideArray set [0,0];};
 };
 if (_redforEliminatedMessage) then {
-    _aliveR = {faction _x == "OPF_F"} count allUnits;
+    _aliveR = {side _x == east} count allUnits;
     if (_aliveR == 0) then {_sideArray set [1,1];} else {_sideArray set [1,0];};
 };
 if (_greenforEliminatedMessage) then {
-    _aliveG = {faction _x == "IND_F"} count allUnits;
+    _aliveG = {side _x == independent} count allUnits;
     if (_aliveG == 0) then {_sideArray set [2,1];} else {_sideArray set [2,0];};
 };
 
@@ -26,4 +26,6 @@ switch _sideArray do {
     case [1,0,1]: { _hintStr = "BLUFOR" + _fill + "INDFOR" + _fill; };
     case [1,1,1]: { _hintStr = "BLUFOR" + _fill + "OPFOR" + _fill + "INDFOR" + _fill; };
 };
-_hintStr remoteExecCall ["hint", 0,true];
+if !(_sideArray isEqualTo [0,0,0]) then {
+    _hintStr remoteExecCall ["hint", 0,true];
+};

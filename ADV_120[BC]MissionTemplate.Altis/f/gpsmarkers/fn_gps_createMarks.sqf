@@ -10,8 +10,8 @@ fn_bc_createVehMarks={
         _markerPos = getPos _veh;
         _markerFaction = switch (side player) do {
             case west: { ["ColorBLUFOR","b_armor","b_air","b_plane","b_unknown"] };
-            case east: { ["ColorOPFOR","o_armor","o_air","o_plane","o_unknown"] };
-            case independent: { ["ColorINDFOR","n_armor","n_air","n_plane","n_unknown"] };
+            case east: { ["ColorOPFOR","b_armor","b_air","b_plane","b_unknown"] };
+            case independent: { ["ColorINDFOR","b_armor","b_air","b_plane","b_unknown"] };
             default { ["ColorCivilian","c_car","c_air","c_plane","c_unknown"] };
         };
         _marker = createMarkerLocal [_markerName,_markerPos];
@@ -30,7 +30,7 @@ fn_bc_createVehMarks={
     } forEach _vehArray;
 };
 
-_sizeMarkOptions = ["group_0","group_2","group_3","group_4"];
+_sizeMarkOptions = ["group_0","group_2","group_3","group_4","Empty"]; //Creates NATO pips above unit markers. If the unit's size isn't set it displays no pip
 bc_gps_iteration = 0;
 
 //CREATE NEW MARKERS
@@ -38,13 +38,13 @@ bc_gps_iteration = 0;
 { //forEach allGroups
     if (!((groupID _x) in bc_ignoreMarkerArray)) then {
         _markerName = str(bc_gps_iteration) + "_marker";
-        _groupSize = _x getVariable ["bc_gps_groupSize",0];
+        _groupSize = _x getVariable ["bc_gps_groupSize",4];
         _x setVariable ["bc_gps_markerName",_markerName];
         _markerPos = getPos (leader _x);
         _markerFaction = switch (side player) do {
             case west: { ["ColorBLUFOR","b_inf","b_hq"] };
-            case east: { ["ColorOPFOR","o_inf","o_hq"] };
-            case independent: { ["ColorGUER","n_inf","n_hq"] };
+            case east: { ["ColorOPFOR","b_inf","b_hq"] };
+            case independent: { ["ColorGUER","b_inf","b_hq"] };
             default { ["ColorCivilian","mil_box","mil_triangle"] };
         };
         _marker = createMarkerLocal [_markerName,_markerPos];

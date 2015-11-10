@@ -27,7 +27,7 @@ if (isNil {bc_kills}) then {
 //Player has killed.
 if (vehicle player == _killer) then {
     //Check for friendly fire
-    if (faction player == faction _unit) then {
+    if (side player == side _unit) then {
         bc_friendly = " - [FRIENDLY]";
         if (player == _unit) then {
             bc_friendly = " - [SELF]";
@@ -46,7 +46,7 @@ if (vehicle player == _killer) then {
 //Player has died.
 if (player == _unit) then {
     //Check for friendly fire
-    if (faction player == faction _killer) then {
+    if (side player == side _killer) then {
         bc_friendly = " - [FRIENDLY]";
         if (player == _killer) then {
             bc_friendly = " - [SELF]";
