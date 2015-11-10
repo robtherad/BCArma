@@ -4,7 +4,7 @@ The master branch will always be the most up to date and stable version of the t
 
 ---
 
-## [Click Here to download the latest version (v15c)](https://github.com/robtherad/BCArma/archive/v15c.zip)
+## [Click Here to download the latest version (v16)](https://github.com/robtherad/BCArma/archive/v16.zip)
 
 ---
 
