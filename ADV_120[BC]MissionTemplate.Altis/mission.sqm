@@ -71,7 +71,6 @@ class Mission
 				class Item0
 				{
 					position[]={12.000045,-0.0063187638,9.9998779};
-					azimut=-88.207802;
 					class args
 					{
 						items=7;
@@ -283,7 +282,7 @@ class Mission
 				items=2;
 				class Item0
 				{
-					position[]={116.48181,-0.007445435,83.966431};
+					position[]={707.65741,-0.28911632,2607.8704};
 					class args
 					{
 						items=15;
@@ -389,7 +388,7 @@ class Mission
 				};
 				class Item1
 				{
-					position[]={184.14249,-0.0099150538,84.118774};
+					position[]={775.3183,-0.11407547,2608.0227};
 					id=6;
 					side="LOGIC";
 					vehicle="LocationArea_F";
@@ -407,7 +406,7 @@ class Mission
 				items=3;
 				class Item0
 				{
-					position[]={148.46281,-0.0081170602,45.679688};
+					position[]={739.63849,-0.022876225,2569.5835};
 					id=7;
 					side="LOGIC";
 					vehicle="ModuleMPTypeSectorControl_F";
@@ -419,7 +418,7 @@ class Mission
 				};
 				class Item1
 				{
-					position[]={113.76947,-0.010050572,13.628052};
+					position[]={704.94513,-0.093977101,2537.532};
 					id=8;
 					side="LOGIC";
 					vehicle="SideBLUFOR_F";
@@ -429,7 +428,7 @@ class Mission
 				};
 				class Item2
 				{
-					position[]={181.8342,-0.0054243398,13.508911};
+					position[]={773.00995,0.006998226,2537.4128};
 					id=9;
 					side="LOGIC";
 					vehicle="SideOPFOR_F";
@@ -2589,7 +2588,7 @@ class Mission
 	};
 	class Markers
 	{
-		items=19;
+		items=22;
 		class Item0
 		{
 			position[]={657.0835,-0.00015549548,4050.9336};
@@ -2726,13 +2725,34 @@ class Mission
 			text="Place a rectangular/ellipse marker with Fill set to BORDER to and align it with the edges of the inner trigger.";
 			type="Empty";
 		};
+		class Item19
+		{
+			position[]={687.66827,-0.019350288,6895.4624};
+			name="rob_3_1_1";
+			text="WARNING: Objective 3 may not work with all vehicle types.";
+			type="Empty";
+		};
+		class Item20
+		{
+			position[]={741.53766,-0.19190434,2716.2983};
+			name="sector";
+			text="Simple Sector objective";
+			type="Empty";
+		};
+		class Item21
+		{
+			position[]={742.14954,-185.97,2485.3804};
+			name="sector_1";
+			text="If you are using multiple sectors delete or edit the EXPRESSION statement in the SECTOR module to make the hints specific to the objective they are attacched to.";
+			type="Empty";
+		};
 	};
 	class Sensors
 	{
 		items=5;
 		class Item0
 		{
-			position[]={149.92882,-0.0035849721,150.13953};
+			position[]={741.10455,-0.10462915,2674.0432};
 			interruptable=1;
 			age="UNKNOWN";
 			class Effects
