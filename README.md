@@ -9,20 +9,9 @@ The master branch will always be the most up to date and stable version of the t
 ---
 
 # Using the Template
+First you'll need to download the template using the link above. Once it's done, drag the folder called `ADV_120[BC]MissionTemplate.Altis` into your Arma 3 mission folder. Your Arma 3 mission folder which should be a path similar to `C:\Users\Rob\Documents\Arma 3 - Other Profiles\robtherad\missions`.
 
-Download as zip from GitHub using the link above and then [follow this guide.](https://github.com/robtherad/BCArma/wiki/Creating-a-Mission-with-the-Template)
-
-##### STEP BY STEP CHECKLIST
-1. Download the template and place the template mission into your mission folder
-* Change the suffix on the template mission to the suffix of whichever island you want your mission on
-* Move the AO to the area you want your mission to take place
-* Move the teams to the areas you want them to start
-* Place an objective somewhere in your mission for players to fight over (sector, destroyable objective, etc.)
-* Place ellipse markers to mark the team's starting areas
-* Delete unnecessary markers, triggers, and objectives
-* In the `description.ext` file edit lines 8-10 to match your mission's info
-* (OPTIONAL) Replace the default loadouts with RHS loadouts. You can use the premade loadouts if you wish.
-* Test your mission!
+[Once you are done, follow this guide.](https://github.com/robtherad/BCArma/wiki/Creating-a-Mission-with-the-Template)
 
 ---
 
