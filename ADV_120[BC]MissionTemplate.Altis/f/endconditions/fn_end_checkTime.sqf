@@ -1,11 +1,4 @@
 //Get parameters from slotting screen.
-_missionSafeTime = ["f_param_mission_timer",0] call BIS_fnc_getParamValue; //Default - 0 minute safestart
-_missionRunTime = ["mission_runtime",45] call BIS_fnc_getParamValue; //Default - 45 minute battle phase
-_missionRuntimeMins = _missionRuntime + _missionSafeTime;
-_alertOver = 1; // Time elapsed warning
-_alertEnd = 0; // Time elapsed warning
-_alertSoon = 0; // 15 minute warning
-
 bc_sectorControl = missionNamespace getVariable "bc_sectorControlActive";
 if (isNil "bc_sectorControl") then {    //Check to see if the sector control script is running.
     bc_sectorControl = false;
@@ -25,21 +18,21 @@ fnc_sectorControl = {
 };
 
 //Time Limits
-if ((_missionRuntimeMins - 15) <= (time/60) && (_alertSoon == 0)) then {
-    _hintStr = "There are only 15 minutes remaining until the time limit of " + str(_missionRunTime) + " minutes is reached.";
+if ((bc_missionRuntimeMins - 15) <= (time/60) && (bc_alertSoon == 0)) then {
+    _hintStr = "There are only 15 minutes remaining until the time limit of " + str(bc_missionRunTime) + " minutes is reached.";
     call fnc_sectorControl;
     _hintStr remoteExecCall ["hint", 0];
-    _alertSoon = 1;
+    bc_alertSoon = 1;
 };
-if (_missionRuntimeMins <= (time/60) && (_alertEnd < 1)) then {
-    _hintStr = "The mission time limit of " + str(_missionRunTime) + " minutes has been reached.";
+if (bc_missionRuntimeMins <= (time/60) && (bc_alertEnd < 1)) then {
+    _hintStr = "The mission time limit of " + str(bc_missionRunTime) + " minutes has been reached.";
     call fnc_sectorControl;
     _hintStr remoteExecCall ["hint", 0];
-    _alertEnd = _alertEnd + 1;
+    bc_alertEnd = bc_alertEnd + 1;
 };
-if ((_missionRuntimeMins + (1*_alertOver)) <= (time/60)) then {
-    _hintStr = "The mission is " + str(1*_alertOver) + " minute(s) past the time limit of " + str(_missionRunTime) + " minutes.";
+if ((bc_missionRuntimeMins + (1*bc_alertOver)) <= (time/60)) then {
+    _hintStr = "The mission is " + str(1*bc_alertOver) + " minute(s) past the time limit of " + str(bc_missionRunTime) + " minutes.";
     call fnc_sectorControl;
     _hintStr remoteExecCall ["hint", 0];
-    _alertOver = _alertOver + 1;
+    bc_alertOver = bc_alertOver + 1;
 };
