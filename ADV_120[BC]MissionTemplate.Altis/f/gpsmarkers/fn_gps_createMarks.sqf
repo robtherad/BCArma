@@ -11,7 +11,7 @@ fn_bc_createVehMarks={
         _markerFaction = switch (side player) do {
             case west: { ["ColorBLUFOR","b_armor","b_air","b_plane","b_unknown"] };
             case east: { ["ColorOPFOR","b_armor","b_air","b_plane","b_unknown"] };
-            case independent: { ["ColorINDFOR","b_armor","b_air","b_plane","b_unknown"] };
+            case independent: { ["ColorGUER","b_armor","b_air","b_plane","b_unknown"] };
             default { ["ColorCivilian","c_car","c_air","c_plane","c_unknown"] };
         };
         _marker = createMarkerLocal [_markerName,_markerPos];
