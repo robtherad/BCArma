@@ -1,7 +1,7 @@
 //Get parameters from slotting screen.
 _missionSafeTime = ["f_param_mission_timer",0] call BIS_fnc_getParamValue; //Default - 0 minute safestart
-_missionRunTimeMins = ["mission_runtime",45] call BIS_fnc_getParamValue; //Default - 45 minute battle phase
-_missionRuntimeMins = _missionRuntimeMins + _missionSafeTime;
+_missionRunTime = ["mission_runtime",45] call BIS_fnc_getParamValue; //Default - 45 minute battle phase
+_missionRuntimeMins = _missionRuntime + _missionSafeTime;
 _alertOver = 1; // Time elapsed warning
 _alertEnd = 0; // Time elapsed warning
 _alertSoon = 0; // 15 minute warning
@@ -26,19 +26,19 @@ fnc_sectorControl = {
 
 //Time Limits
 if ((_missionRuntimeMins - 15) <= (time/60) && (_alertSoon == 0)) then {
-    _hintStr = "There are only 15 minutes remaining until the time limit of " + str(paramsArray select 3) + " minutes is reached.";
+    _hintStr = "There are only 15 minutes remaining until the time limit of " + str(_missionRunTime) + " minutes is reached.";
     call fnc_sectorControl;
     _hintStr remoteExecCall ["hint", 0];
     _alertSoon = 1;
 };
 if (_missionRuntimeMins <= (time/60) && (_alertEnd < 1)) then {
-    _hintStr = "The mission time limit of " + str(paramsArray select 3) + " minutes has been reached.";
+    _hintStr = "The mission time limit of " + str(_missionRunTime) + " minutes has been reached.";
     call fnc_sectorControl;
     _hintStr remoteExecCall ["hint", 0];
     _alertEnd = _alertEnd + 1;
 };
 if ((_missionRuntimeMins + (1*_alertOver)) <= (time/60)) then {
-    _hintStr = "The mission is " + str(1*_alertOver) + " minute(s) past the time limit of " + str(paramsArray select 3) + " minutes.";
+    _hintStr = "The mission is " + str(1*_alertOver) + " minute(s) past the time limit of " + str(_missionRunTime) + " minutes.";
     call fnc_sectorControl;
     _hintStr remoteExecCall ["hint", 0];
     _alertOver = _alertOver + 1;
