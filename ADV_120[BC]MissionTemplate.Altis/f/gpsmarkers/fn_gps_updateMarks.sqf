@@ -30,8 +30,8 @@ fn_bc_updateVehMarks={
         _marker = _group getVariable "bc_gps_markerName";
         _marker2 = _marker + "Size";
         if("ItemGPS" in (assignedItems player)) then { //Check if player has GPS
-            if ((faction player) == (faction (leader _x))) then { //Check if player is on same faction as the group
-                _marker setMarkerAlphaLocal 1; //If player has GPS and same faction, show marker
+            if ((side player) == (side (leader _x))) then { //Check if player is on same side as the group
+                _marker setMarkerAlphaLocal 1; //If player has GPS and same side, show marker
                 _marker2 setMarkerAlphaLocal 1;
                 
                 { //forEach allUnits in _group
