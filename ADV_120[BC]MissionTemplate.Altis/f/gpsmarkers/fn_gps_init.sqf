@@ -46,10 +46,12 @@ switch (side player) do {
     case independent: { if (!isNil "_indVehArray") then {bc_sideVehArray = _indVehArray;} else {bc_sideVehArray = nil;}; };
     default { bc_sideVehArray = nil; };
 };
-bc_sideVehArray2 = [];
-{
-    _veh = _x select 0;
-    _ident = _x select 1;
-    bc_sideVehArray2 pushBack _veh;
-} forEach bc_sideVehArray;
+if (!isNil "bc_sideVehArray") then {
+    bc_sideVehArray2 = [];
+    {
+        _veh = _x select 0;
+        _ident = _x select 1;
+        bc_sideVehArray2 pushBack _veh;
+    } forEach bc_sideVehArray;
+};
 call BC_fnc_gps_createMarks;
