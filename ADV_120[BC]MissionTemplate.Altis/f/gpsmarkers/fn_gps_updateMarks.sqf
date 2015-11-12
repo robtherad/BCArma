@@ -61,7 +61,7 @@ fn_bc_updateVehMarks={
                                 (vehicle _unit) setVariable ["bc_LastInside",groupID _group];
                             };
                             if (!isNil "bc_sideVehArray") then {
-                                if (vehicle _unit in bc_sideVehArray) then {
+                                if (vehicle _unit in bc_sideVehArray2) then {
                                     _marker setMarkerAlphaLocal 0; //Hide marker when unit is in a vehicle that has a marker
                                     _marker2 setMarkerAlphaLocal 0;
                                 } else {
