@@ -16,7 +16,7 @@ _groups = [
 
 
 // BLUFOR
-["Blue_HQ","HQ","Headquarters",2],
+["Blue_HQ","BLU HQ","Headquarters",2],
 
 ["Blue_A","A","Alpha Squad",1],
 ["Blue_A1","A1","Alpha One",0],
@@ -38,7 +38,7 @@ _groups = [
 
 
 // REDFOR
-["Red_HQ","HQ","Headquarters",2],
+["Red_HQ","RED HQ","Headquarters",2],
 
 ["Red_E","E","Echo Squad",1],
 ["Red_E1","E1","Echo One",0],
@@ -56,7 +56,28 @@ _groups = [
 ["Red_H1","H1","Hotel One",0],
 ["Red_H2","H2","Hotel Two",0],
 ["Red_H3","H3","Hotel Three",0],
-["Red_H4","H4","Hotel Four",0]
+["Red_H4","H4","Hotel Four",0],
+
+// INDFOR
+["Green_HQ","IND HQ","Headquarters",2],
+
+["Green_I","I","India Squad",1],
+["Green_I1","I1","India One",0],
+["Green_I2","I2","India Two",0],
+
+["Green_J","J","Juliet Squad",1],
+["Green_J1","J1","Juliet One",0],
+["Green_J2","J2","Juliet Two",0],
+
+["Green_K","K","Kilo Squad",1],
+["Green_K1","K1","Kilo One",0],
+["Green_K2","K2","Kilo Two",0],
+
+["Green_L","L","Lima Squad",1],
+["Green_L1","L1","Lima One",0],
+["Green_L2","L2","Lima Two",0],
+["Green_L3","L3","Lima Three",0],
+["Green_L4","L4","Lima Four",0]
 
 // Always make sure there's no comma after the last entry!
 

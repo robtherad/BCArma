@@ -4,6 +4,7 @@ if (bc_writtenORBAT) then {
 
     bc_opforBaseChannel = nil;
     bc_bluforBaseChannel = nil;
+    bc_indforBaseChannel = nil;
 
     bc_hasSWitem = nil;
     bc_hasLRitem = nil;
