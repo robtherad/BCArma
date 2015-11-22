@@ -1,14 +1,15 @@
 //_this select 0 params [bc_ignoreMarkerArray];
 //FUNCTIONS
 fn_bc_createVehMarks={
-    private ["_vehArray","_markerName","_markerPos","_markerFaction","_marker","_markerString"];
+    private ["_vehArray","_markerName","_markerPos","_markerFaction","_marker","_markerString","_vehSide","_veh","_type"];
     _vehArray = _this select 0;
     { //forEach _vehArray
         _veh = _x select 0;
         _type = (_x select 1)+1;
         _markerName = str(_veh) + "_marker";
         _markerPos = getPos _veh;
-        _markerFaction = switch (side player) do {
+        _vehSide = _x getVariable ["bc_vehSide",(side player)];
+        _markerFaction = switch (_vehSide) do {
             case west: { ["ColorBLUFOR","b_armor","b_air","b_plane","b_unknown"] };
             case east: { ["ColorOPFOR","b_armor","b_air","b_plane","b_unknown"] };
             case independent: { ["ColorGUER","b_armor","b_air","b_plane","b_unknown"] };
@@ -41,7 +42,7 @@ bc_gps_iteration = 0;
         _groupSize = _x getVariable ["bc_gps_groupSize",4];
         _x setVariable ["bc_gps_markerName",_markerName];
         _markerPos = getPos (leader _x);
-        _markerFaction = switch (side player) do {
+        _markerFaction = switch (side (leader _x)) do {
             case west: { ["ColorBLUFOR","b_inf","b_hq"] };
             case east: { ["ColorOPFOR","b_inf","b_hq"] };
             case independent: { ["ColorGUER","b_inf","b_hq"] };

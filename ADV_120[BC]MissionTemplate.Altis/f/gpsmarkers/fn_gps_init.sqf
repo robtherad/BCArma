@@ -54,4 +54,13 @@ if (!isNil "bc_sideVehArray") then {
         bc_sideVehArray2 pushBack _veh;
     } forEach bc_sideVehArray;
 };
+if (!isNil "_sidesVisibleToWest" && !isNil "_sidesVisibleToEast" && !isNil "_sidesVisibleToGuer") then {
+    //Set a variable that contains every side who's markers the player should be able to see
+    switch (side player) do {
+        case west: { bc_sidesVisibleToPlayer = _sidesVisibleToWest; };
+        case east: { bc_sidesVisibleToPlayer = _sidesVisibleToEast; };
+        case independent: { bc_sidesVisibleToPlayer = _sidesVisibleToGuer; };
+        default { bc_sidesVisibleToPlayer = (side (leader _x)); };
+    };
+};
 call BC_fnc_gps_createMarks;

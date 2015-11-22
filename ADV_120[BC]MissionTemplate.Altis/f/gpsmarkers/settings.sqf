@@ -23,14 +23,35 @@
         
         For example, if I wanted to exclude groups with the groupIDs "P", "AV", "BV", "CV" and "DV" from having markers created I would set bc_ignoreMarkerArray to:
 
-        bc_ignoreMarkerArray = ["P","AV","BV","CV","DV"];
+            bc_ignoreMarkerArray = ["P","AV","BV","CV","DV"];
         
         To make sure all groups have markers set bc_ignoreMarkerArray to be an empty array. If you have just downloaded the template off GITHUB then this should be the default setting. To do this use the following line:
     
-        bc_ignoreMarkerArray = [];
+            bc_ignoreMarkerArray = [];
+        
+    Letting players see infantry GPS icons that belong to multiple sides
+        By default there are three variables for this, one each for BLUFOR, OPFOR, and INDFOR. These variables are "_sidesVisibleToWest", "_sidesVisibleToEast", and "_sidesVisibleToGuer". Each variable contains an array of sides which will be visible to the side that uses that variable. By default these variables contain only the side of the side they belong to so that no side can see any other side's markers.
+        
+        For example if you want BLUFOR to be able to see INDFOR's GPS markers as well as their own but have INDFOR only able to see their own markers and not BLUFOR's with OPFOR also only being able to see their own markers you would do...
+        
+            _sidesVisibleToWest = [west, independent]; //BLUFOR
+            _sidesVisibleToEast = [east]; //OPFOR
+            _sidesVisibleToGuer = [independent]; //INDFOR
+        
+        This will only set up the default settings for the markers. You can change the way markers are displayed mid-mission by setting the variable "bc_sidesVisibleToPlayer" to an array of sides. Let's assume two sides, BLUFOR and INDFOR, are friendly with each other and are able to see each others markers. The situation changes and they are no longer friendly so you want to have them only able to see their own team's markers. You could do this by executing the following code:
+        
+            {
+                if(side player == west) then {bc_sidesVisibleToPlayer = [west];};
+                if(side player == independent) then {bc_sidesVisibleToPlayer = [independent];};
+            } forEach allPlayers;
+            
+        This system should allow for more in depth missions featuring three sides.
 */
 // 0 = armor, 1 == helicopter, 2 == plane
 _westVehArray = nil;
 _eastVehArray = nil;
 _indVehArray = nil;
 bc_ignoreMarkerArray = []; //if blank set to []
+_sidesVisibleToWest = [west,east]; //BLUFOR (west)
+_sidesVisibleToEast = [east]; //OPFOR (east)
+_sidesVisibleToGuer = [independent]; //INDEPENDENT (independent)
