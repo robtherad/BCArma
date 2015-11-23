@@ -4,14 +4,14 @@ The master branch will always be the most up to date and stable version of the t
 
 ---
 
-## [Click Here to download the latest version (v17)](https://github.com/robtherad/BCArma/releases/tag/v17)
+# [Click Here to download the latest version (v17)](https://github.com/robtherad/BCArma/archive/master.zip)
 
 ---
 
 # Using the Template
 First you'll need to download the template using the link above. Once it's done, drag the folder called `ADV_120[BC]MissionTemplate.Altis` into your Arma 3 mission folder. Your Arma 3 mission folder which should be a path similar to `C:\Users\Rob\Documents\Arma 3 - Other Profiles\robtherad\missions`.
 
-[Once you are done, follow this guide.](https://github.com/robtherad/BCArma/wiki/Creating-a-Mission-with-the-Template)
+##[Once you are done, follow this guide.](https://github.com/robtherad/BCArma/wiki/Creating-a-Mission-with-the-Template)
 
 ---
 
