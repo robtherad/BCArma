@@ -52,6 +52,6 @@ _westVehArray = nil;
 _eastVehArray = nil;
 _indVehArray = nil;
 bc_ignoreMarkerArray = []; //if blank set to []
-_sidesVisibleToWest = [west,east]; //BLUFOR (west)
+_sidesVisibleToWest = [west]; //BLUFOR (west)
 _sidesVisibleToEast = [east]; //OPFOR (east)
 _sidesVisibleToGuer = [independent]; //INDEPENDENT (independent)
