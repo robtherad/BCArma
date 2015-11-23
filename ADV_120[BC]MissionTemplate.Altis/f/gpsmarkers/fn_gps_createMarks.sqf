@@ -8,7 +8,7 @@ fn_bc_createVehMarks={
         _type = (_x select 1)+1;
         _markerName = str(_veh) + "_marker";
         _markerPos = getPos _veh;
-        _vehSide = _x getVariable ["bc_vehSide",(side player)];
+        _vehSide = _veh getVariable ["bc_vehSide",(side player)];
         _markerFaction = switch (_vehSide) do {
             case west: { ["ColorBLUFOR","b_armor","b_air","b_plane","b_unknown"] };
             case east: { ["ColorOPFOR","b_armor","b_air","b_plane","b_unknown"] };
