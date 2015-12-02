@@ -7,24 +7,28 @@ removeBackpack player;
 removeHeadgear player;
 removeGoggles player;
 
-player forceAddUniform "U_O_CombatUniform_ocamo";
+player forceAddUniform "MNP_CombatUniform_Wood_A";
 for "_i" from 1 to 2 do {player addItemToUniform "FirstAidKit";};
-for "_i" from 1 to 4 do {player addItemToUniform "SmokeShell";};
-player addVest "V_TacVest_khk";
-for "_i" from 1 to 5 do {player addItemToVest "30Rnd_65x39_caseless_green_mag_Tracer";};
-for "_i" from 1 to 4 do {player addItemToVest "SmokeShellGreen";};
-for "_i" from 1 to 2 do {player addItemToVest "HandGrenade";};
+for "_i" from 1 to 4 do {player addItemToUniform "rhs_mag_an_m8hc";};
+player addVest "MNP_Vest_M81";
+for "_i" from 1 to 5 do {player addItemToVest "rhs_30Rnd_545x39_AK_green";};
+for "_i" from 1 to 4 do {player addItemToVest "rhs_mag_m18_green";};
+for "_i" from 1 to 2 do {player addItemToVest "rhs_mag_m67";};
 
-player addWeapon "arifle_Katiba_F";
+player addWeapon "rhs_weap_ak74m";
 removeAllPrimaryWeaponItems player;
 
 if (s_loadout_radio != 3) then {
+    player addBackpack "tf_mr3000_bwmod";
     player linkItem "ItemRadio";
+} else {
+    player addBackpack "MNP_B_WD_CA";
+    for "_i" from 1 to 6 do {player addItemToBackpack "rhs_30Rnd_545x39_AK";};
 };
 
-player addBackpack "B_TacticalPack_ocamo";
-for "_i" from 1 to 10 do {player addItemToBackpack "30Rnd_65x39_caseless_green";};
-player addHeadgear "H_HelmetO_ocamo";
+player addHeadgear "MNP_Helmet_RU_LT";
+
+for "_i" from 1 to 4 do {player addItemToBackpack "rhs_30Rnd_545x39_AK";};
 
 player addWeapon "Binocular";
 if (s_loadout_map != 3) then {

@@ -7,17 +7,18 @@ removeBackpack player;
 removeHeadgear player;
 removeGoggles player;
 
-player forceAddUniform "U_O_CombatUniform_ocamo";
-for "_i" from 1 to 2 do {player addItemToUniform "FirstAidKit";};
-for "_i" from 1 to 4 do {player addItemToUniform "SmokeShell";};
-player addVest "V_TacVest_khk";
-for "_i" from 1 to 5 do {player addItemToVest "30Rnd_65x39_caseless_green";};
-for "_i" from 1 to 2 do {player addItemToVest "HandGrenade";};
-player addBackpack "B_TacticalPack_ocamo";
-for "_i" from 1 to 14 do {player addItemToBackpack "30Rnd_65x39_caseless_green";};
-player addHeadgear "H_HelmetO_ocamo";
+player forceAddUniform "MNP_CombatUniform_Wood_A";
+player addItemToUniform "FirstAidKit";
+for "_i" from 1 to 4 do {player addItemToUniform "rhs_mag_an_m8hc";};
+player addVest "MNP_Vest_M81";
+for "_i" from 1 to 9 do {player addItemToVest "rhs_30Rnd_762x39mm";};
+for "_i" from 1 to 2 do {player addItemToVest "rhs_mag_an_m8hc";};
+player addBackpack "MNP_B_WD_CA";
+for "_i" from 1 to 1 do {player addItemToBackpack "Medikit";};
+for "_i" from 1 to 10 do {player addItemToBackpack "FirstAidKit";};
+player addHeadgear "MNP_Helmet_RU_LT";
 
-player addWeapon "arifle_Katiba_F";
+player addWeapon "rhs_weap_akm";
 removeAllPrimaryWeaponItems player;
 
 if (s_loadout_map == 0) then {
@@ -29,5 +30,6 @@ player linkItem "ItemWatch";
 if (s_loadout_radio == 0) then {
     player linkItem "ItemRadio";
 };
+[player,"MedB"] call bis_fnc_setUnitInsignia;
 
 missionNamespace setVariable ["bc_loadoutAssigned",true]; //Place this at the end of the loadout script so other scripts can tell when the player's loadout has been set.
