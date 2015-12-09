@@ -15,7 +15,6 @@ for "_i" from 1 to 8 do {player addItemToVest "30Rnd_65x39_caseless_mag";};
 for "_i" from 1 to 2 do {player addItemToVest "HandGrenade";};
 player addItemToVest "130Rnd_338_Mag";
 player addBackpack "B_TacticalPack_mcamo";
-for "_i" from 1 to 2 do {player addItemToBackpack "30Rnd_65x39_caseless_mag";};
 for "_i" from 1 to 3 do {player addItemToBackpack "130Rnd_338_Mag";};
 player addHeadgear "H_HelmetSpecB_paint2";
 player addWeapon "arifle_MX_F";

@@ -14,11 +14,11 @@ player addVest "V_TacVest_khk";
 for "_i" from 1 to 9 do {player addItemToVest "30Rnd_65x39_caseless_mag";};
 for "_i" from 1 to 2 do {player addItemToVest "HandGrenade";};
 player addBackpack "B_TacticalPack_mcamo";
-for "_i" from 1 to 6 do {player addItemToBackpack "30Rnd_65x39_caseless_mag";};
+player addItemToBackpack "RPG32_F";
+for "_i" from 1 to 10 do {player addItemToBackpack "30Rnd_65x39_caseless_mag";};
 player addHeadgear "H_HelmetSpecB_paint2";
 player addWeapon "arifle_MX_F";
 
-player addItemToBackpack "RPG32_F";
 player addWeapon "launch_RPG32_F";
 if (s_loadout_map == 0) then {
     player linkItem "ItemMap";

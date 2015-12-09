@@ -9,10 +9,11 @@ removeGoggles player;
 
 player forceAddUniform "U_O_CombatUniform_ocamo";
 for "_i" from 1 to 2 do {player addItemToUniform "FirstAidKit";};
+for "_i" from 1 to 2 do {player addItemToUniform "SmokeShell";};
 player addVest "V_TacVest_khk";
 for "_i" from 1 to 2 do {player addItemToVest "150Rnd_762x54_Box";};
 player addHeadgear "H_Bandanna_cbr";
-
+player addBackpack "B_TacticalPack_ocamo";
 player addWeapon "LMG_Zafir_F";
 removeAllPrimaryWeaponItems player;
 

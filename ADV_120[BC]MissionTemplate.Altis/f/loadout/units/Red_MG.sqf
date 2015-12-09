@@ -18,7 +18,7 @@ removeAllPrimaryWeaponItems player;
 player addPrimaryWeaponItem "bipod_02_F_hex";
 
 player addItemToVest "150Rnd_93x64_Mag";
-
+player addBackpack "B_TacticalPack_ocamo";
 if (s_loadout_map == 0) then {
     player linkItem "ItemMap";
     if (s_loadout_gps == 0) then {player linkItem "ItemGPS";};

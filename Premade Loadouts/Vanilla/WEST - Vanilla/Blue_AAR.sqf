@@ -11,7 +11,7 @@ player forceAddUniform "U_B_CombatUniform_mcam";
 for "_i" from 1 to 2 do {player addItemToUniform "FirstAidKit";};
 for "_i" from 1 to 4 do {player addItemToUniform "SmokeShell";};
 player addVest "V_TacVest_khk";
-for "_i" from 1 to 11 do {player addItemToVest "30Rnd_65x39_caseless_mag";};
+for "_i" from 1 to 8 do {player addItemToVest "30Rnd_65x39_caseless_mag";};
 for "_i" from 1 to 2 do {player addItemToVest "HandGrenade";};
 player addBackpack "B_TacticalPack_mcamo";
 for "_i" from 1 to 4 do {player addItemToBackpack "100Rnd_65x39_caseless_mag";};
