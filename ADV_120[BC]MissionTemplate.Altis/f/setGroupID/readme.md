@@ -11,10 +11,12 @@ Each of the words above is explained below:
 `groupID` is a short string used to identify a group: `"A1"`
 `BC_LongName` is a longer version of `groupID` used to identify the group: `Alpha One`
 `unitSize` is a number telling what level the group is. Company = 3, Platoon = 2, Squad = 1, Fireteam = 0 (0-3)
-```
-radioSettings: Tells radio script which channels to set for group. 
-Uses the format: [altChannel,mainChannel,[channelArray]] (array)```
+
+`radioSettings`: Tells radio script which channels to set for group. 
+Uses the format: `[altChannel,mainChannel,[channelArray]]` (array)
+
 Each of the above is explained below:
+
 ```
 mainChannel: Which channel the radio will start on. (1-8)
 altChannel: Which channel the radio will have as an alternate by default (1-8)
