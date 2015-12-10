@@ -14,6 +14,7 @@ _orbatText = "<br />NOTE: The ORBAT below is only accurate at mission start.<br 
 _groups = [];
 
 waitUntil { !isNil "bc_playerBaseChannel"; };
+waitUntil { !isNil "bc_groupIDset" };
 
 {
     // Add to ORBAT if side matches, group isn't already listed, and group has players
