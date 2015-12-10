@@ -110,3 +110,5 @@ private ["_grp"];
         _grp setVariable ["bc_radioSettings",_x select 4];
     };
 } forEach _groups;
+
+bc_groupIDset = true;
