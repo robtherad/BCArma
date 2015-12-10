@@ -2,7 +2,7 @@
 This module sets up groups with various variables such as names and types (`gpsmarkers`) as well as radio frequencies (`radios`).
 
 ###Configure
-Each group is defined in a giant array at the top of the file using the following format:
+Each group is defined in a giant array at the top of the file. Each array is separated by a comma with the last array not having a comma after it. Each array uses the following format:
 
 `[group,groupID,BC_LongName,unitSize,radioSettings]`
 
