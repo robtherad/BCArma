@@ -9,7 +9,7 @@ _groups = [
 
 // ====================================================================================
 // - format: [group,groupID,BC_LongName,unitSize,radioSettings]
-// group: defined in initialization field of units in editor
+// group: defined in initialization field of units in editor. ex: Red_HQ = group this;
 // groupID: ID given to group for use in things such as GPS, nametags, etc. (string)
 // BC_LongName: Longer version of the groupID used in things such as the radios, etc. (string)
 // unitSize: Number telling what level the group is. Company = 3, Platoon = 2, Squad = 1, Fireteam = 0 (0-3)
@@ -21,7 +21,6 @@ _groups = [
 //        Try to keep offsets single digit or the channel may not be set if playerBaseChannel is a high number.
 //        Frequencies can only have one decimal place.
 //     ex: [1,6,[1,2,3,4]] - mainChannel is ch1, altChannel is ch6, ch2 is 1 unit MHz higher than ch1, etc.
-//, [2, 2, [4, 4.1, 4.2, 4.3, 4.4] ]
 
 // BLUFOR
 ["Blue_HQ","BLU HQ","Headquarters",2, [1, 6, [1, 2, 3, 4, .1]] ],
