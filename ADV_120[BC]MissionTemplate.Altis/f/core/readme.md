@@ -5,7 +5,7 @@ This module consists of a few smaller scripts that are too simple for their own 
 ***
 
 ###killdisplay
-Adds an event handler to every player which triggers another script that keeps track of every kill. Once a player is killed the information is displayed in their chat box as well as their post game screen.
+Adds an event handler to every player which triggers another script (`fn_core_mpKilled`)that keeps track of every kill. Once a player is killed the information collected by the second script is displayed in their chat box as well as their post game screen.
 #####Configure
 No configuration required.
 #####Disable
