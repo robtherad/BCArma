@@ -74,6 +74,7 @@ sleep 1;
 while{bc_sec_playing == 1} do {
     bc_sec_iteration = 0;
     {//forEach bc_triggerArray
+        private ["_sidePastOwned","_sideLastOwned","_textMarkerName","_bgMarkerName","_westCount","_eastCount","_sideCurOwned"];
         //Get owner of the cap from the last time it was checked
         _sidePastOwned = _x getVariable "bc_sec_curOwner";
         _sideLastOwned = _x getVariable "bc_sec_lastOwner";
@@ -88,39 +89,39 @@ while{bc_sec_playing == 1} do {
 
         //Western Controlled - 0
         if(_westCount > _eastCount) then {
-            bc_sideCurOwned = 0;
-            if (bc_sideCurOwned == _sidePastOwned) then {
+            _sideCurOwned = 0;
+            if (_sideCurOwned == _sidePastOwned) then {
                 bc_westPoints = bc_westPoints + (1*(count bc_triggerArray));
             } else {
                 _textMarkerName setMarkerText (triggerText _x + " - BLUFOR Controlled");
                 _bgMarkerName setMarkerColor "ColorBLUFOR";
-                _x setVariable ["bc_sec_lastOwner",bc_sideCurOwned,true];
+                _x setVariable ["bc_sec_lastOwner",_sideCurOwned,true];
             };
         };
 
         //Eastern Controlled - 1
         if(_eastCount > _westCount) then {
-            bc_sideCurOwned = 1;
-            if (bc_sideCurOwned == _sidePastOwned) then {
+            _sideCurOwned = 1;
+            if (_sideCurOwned == _sidePastOwned) then {
                 bc_eastPoints = bc_eastPoints + (1*(count bc_triggerArray));
             } else {
                 _textMarkerName setMarkerText (triggerText _x + " - OPFOR Controlled");
                 _bgMarkerName setMarkerColor "ColorOPFOR";
-                _x setVariable ["bc_sec_lastOwner",bc_sideCurOwned,true];
+                _x setVariable ["bc_sec_lastOwner",_sideCurOwned,true];
             };
         };
 
         //Contested Objective - 2
         if((_westCount == _eastCount) && (_westCount != 0)) then {
-            bc_sideCurOwned = 2;
+            _sideCurOwned = 2;
             _textMarkerName setMarkerText (triggerText _x + " - CONTESTED");
             _bgMarkerName setMarkerColor "ColorBlack";
-            _x setVariable ["bc_sec_lastOwner",bc_sideCurOwned,true];
+            _x setVariable ["bc_sec_lastOwner",_sideCurOwned,true];
         };
 
         //Neutral Objective - 3
         if((_westCount == _eastCount) && (_westCount == 0)) then {
-            bc_sideCurOwned = 3;
+            _sideCurOwned = 3;
             //For objectives that a side controls but no longer occupies
             if (_sideLastOwned == 0) then {
                 bc_westPoints = bc_westPoints + (1*(count bc_triggerArray));
@@ -131,11 +132,11 @@ while{bc_sec_playing == 1} do {
         };
 
         //Set current owner
-        _x setVariable ["bc_sec_curOwner",bc_sideCurOwned];
+        _x setVariable ["bc_sec_curOwner",_sideCurOwned];
 
         //Sector has changed sides
-        if ((bc_sideCurOwned != _sideLastOwned) && (bc_sideCurOwned != 3)) then {
-            [[bc_sideCurOwned, _x],"scripts\sectors\client.sqf"] remoteExecCall ["BIS_fnc_execVM", 0];
+        if ((_sideCurOwned != _sideLastOwned) && (_sideCurOwned != 3)) then {
+            [[_sideCurOwned, _x],"scripts\sectors\client.sqf"] remoteExecCall ["BIS_fnc_execVM", 0];
         };
         //++ for marker names
         bc_sec_iteration = bc_sec_iteration + 1;
@@ -156,19 +157,19 @@ while{bc_sec_playing == 1} do {
 
     //Throw a reminder hint at key point values
     if ((bc_westPoints >= ((bc_endPoints / 4) * bc_sec_pointsCounter)) || (bc_eastPoints >= ((bc_endPoints / 8) * bc_sec_pointsCounter))) then {
-        bc_sideCurOwned = 4;
-        [[bc_sideCurOwned,bc_sec_pointsCounter,bc_westPoints,bc_eastPoints,bc_endPoints],"scripts\sectors\client.sqf"] remoteExecCall ["BIS_fnc_execVM", 0];
+        _currentState = 4;
+        [[_currentState,bc_sec_pointsCounter,bc_westPoints,bc_eastPoints,bc_endPoints],"scripts\sectors\client.sqf"] remoteExecCall ["BIS_fnc_execVM", 0];
         bc_sec_pointsCounter = bc_sec_pointsCounter + 1;
     };
     //Ending conditions
     if (bc_westPoints >= bc_endPoints) then {
-        bc_sideCurOwned = 5;
-        [[bc_sideCurOwned,bc_sec_pointsCounter,bc_westPoints,bc_eastPoints,bc_endPoints],"scripts\sectors\client.sqf"] remoteExecCall ["BIS_fnc_execVM", 0];
+        _currentState = 5;
+        [[_currentState,bc_sec_pointsCounter,bc_westPoints,bc_eastPoints,bc_endPoints],"scripts\sectors\client.sqf"] remoteExecCall ["BIS_fnc_execVM", 0];
         bc_sec_playing = 0;
     };
     if (bc_eastPoints >= bc_endPoints) then {
-        bc_sideCurOwned = 6;
-        [[bc_sideCurOwned,bc_sec_pointsCounter,bc_westPoints,bc_eastPoints,bc_endPoints],"scripts\sectors\client.sqf"] remoteExecCall ["BIS_fnc_execVM", 0];
+        _currentState = 6;
+        [[_currentState,bc_sec_pointsCounter,bc_westPoints,bc_eastPoints,bc_endPoints],"scripts\sectors\client.sqf"] remoteExecCall ["BIS_fnc_execVM", 0];
         bc_sec_playing = 0;
     };
 };

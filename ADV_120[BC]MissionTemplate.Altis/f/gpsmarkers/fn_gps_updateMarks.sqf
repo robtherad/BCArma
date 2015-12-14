@@ -4,7 +4,7 @@ fn_bc_updateVehMarks={
     {
         _veh = _x select 0;
         _marker = str(_veh) + "_marker";
-        if("ItemGPS" in (assignedItems player)) then {
+        if ("ItemGPS" in (assignedItems player)) then {
             _unitInside = _veh getVariable "bc_UnitInside";
             //Check to see if any units with markers attached are in a vehicle with a marker. If so attach their name to the vehicle marker.
             if (!isNil "_unitInside") then {
@@ -30,7 +30,7 @@ private ["_group","_marker","_marker2","_unit","_senior","_unitInside","_lastIns
         _group = _x;
         _marker = _group getVariable "bc_gps_markerName";
         _marker2 = _marker + "Size";
-        if("ItemGPS" in (assignedItems player)) then { //Check if player has GPS
+        if ("ItemGPS" in (assignedItems player)) then { //Check if player has GPS
             if ((side (leader _x)) in bc_sidesVisibleToPlayer) then { //Check if player is supposed to be able to see this group
                 _marker setMarkerAlphaLocal 1; //If player has GPS and same side, show marker
                 _marker2 setMarkerAlphaLocal 1;
