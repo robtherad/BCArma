@@ -2,15 +2,10 @@
 if (bc_writtenORBAT) then {
     [bc_radHandle3] call CBA_fnc_removePerFrameHandler;
 
-    bc_opforBaseChannel = nil;
-    bc_bluforBaseChannel = nil;
-    bc_indforBaseChannel = nil;
-
     bc_hasSWitem = nil;
     bc_hasLRitem = nil;
     bc_radHandle1 = nil;
 
-    bc_playerBaseChannel = nil;
     bc_curChan = nil;
     bc_altChan = nil;
     bc_ch1 = nil;
