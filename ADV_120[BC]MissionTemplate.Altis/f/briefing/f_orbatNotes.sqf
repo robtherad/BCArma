@@ -13,27 +13,12 @@ _orbatText = "<br />NOTE: The ORBAT below is only accurate at mission start.<br 
 <font size='18'>GROUP LEADERS + MEDICS</font><br /><br />";
 _groups = [];
 
-waitUntil { !isNil "bc_opforBaseChannel"; };
-waitUntil { !isNil "bc_bluforBaseChannel"; };
+waitUntil { !isNil "bc_playerBaseChannel"; };
+waitUntil { !isNil "bc_groupIDset" };
 
-_groupIDs = [
-// BLUFOR
-["Blue_HQ",bc_bluforBaseChannel],
-["Blue_A",bc_bluforBaseChannel+1],["Blue_A1",bc_bluforBaseChannel+1.1],["Blue_A2",bc_bluforBaseChannel+1.2],
-["Blue_B",bc_bluforBaseChannel+2],["Blue_B1",bc_bluforBaseChannel+2.1],["Blue_B2",bc_bluforBaseChannel+2.2],
-["Blue_C",bc_bluforBaseChannel+3],["Blue_C1",bc_bluforBaseChannel+3.1],["Blue_C2",bc_bluforBaseChannel+3.2],
-["Blue_D",bc_bluforBaseChannel+4],["Blue_D1",bc_bluforBaseChannel+4.1],["Blue_D2",bc_bluforBaseChannel+4.2],["Blue_D3",bc_bluforBaseChannel+4.3],["Blue_D4",bc_bluforBaseChannel+4.4],
-
-// REDFOR
-["Red_HQ",bc_opforBaseChannel],
-["Red_E",bc_opforBaseChannel+1],["Red_E1",bc_opforBaseChannel+1.1],["Red_E2",bc_opforBaseChannel+1.2],
-["Red_F",bc_opforBaseChannel+2],["Red_F1",bc_opforBaseChannel+2.1],["Red_F2",bc_opforBaseChannel+2.2],
-["Red_G",bc_opforBaseChannel+3],["Red_G1",bc_opforBaseChannel+3.1],["Red_G2",bc_opforBaseChannel+3.2],
-["Red_H",bc_opforBaseChannel+4],["Red_H1",bc_opforBaseChannel+4.1],["Red_H2",bc_opforBaseChannel+4.2],["Red_H3",bc_opforBaseChannel+4.3],["Red_H4",bc_opforBaseChannel+4.4]
-];
 {
     // Add to ORBAT if side matches, group isn't already listed, and group has players
-    if ((side _x == _side) && !(_x in _groups) && ({_x in playableUnits} count units _x) > 0) then {
+    if ((side _x == _side) && !(_x in _groups) && ({_x in (switchableUnits + playableUnits)} count units _x) > 0) then {
         _groups pushBack _x;
     };
 } forEach allGroups;
@@ -52,17 +37,23 @@ _groupIDs = [
          };
     };
 
-    _wrkGroup = _x;
-    {
-        _grp = missionNamespace getVariable[(_x select 0),grpNull];
-        if (_grp == _wrkGroup) exitWith {freq = _x select 1;};
-    } forEach _groupIDs;
+    _freq = _x getVariable ["bc_radioSettings",nil];
+    if (isNil "_freq") then {
+        _freq = "UNK";
+    } else {
+        _chNum = _freq select 0;
+        _chNum = _chNum - 1; //Minus one since array starts at 0
+        _chArray = _freq select 2;
+        _freq = _chArray select _chNum; //Get group's main channel from freq list
+        _freq = _freq + bc_playerBaseChannel;
+    };
+    
     //Use BC_LongName but default to groupID if it's not defined
     _longName = _x getVariable ["BC_LongName",groupID _x];
-    if (isNil "freq") then {
+    if (isNil "_freq") then {
         _orbatText = _orbatText + format ["<font color='%3'>(%4 men) <b>%1</b> -- %2</font>", _longName, name leader _x,_color,count (units _x)] + "<br />";
     } else {
-        _orbatText = _orbatText + format ["<font color='%3'>(%4 men) <b>%5 MHz -- %1</b> -- %2</font>", _longName, name leader _x,_color,count (units _x),freq] + "<br />";
+        _orbatText = _orbatText + format ["<font color='%3'>(%4 men) <b>%5 MHz -- %1</b> -- %2</font>", _longName, name leader _x,_color,count (units _x),_freq] + "<br />";
     };
     // List medics too.
     {

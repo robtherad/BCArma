@@ -14,6 +14,8 @@ DO NOT FORGET TO CALL THE SERVER SIDE OF THIS SCRIPT FROM INIT.SQF!
 [] execVM "scripts\randomstart\server.sqf";
 */
 if (isDedicated) exitWith {};
+private ["_ranTeam","_placeMarkerPos","_startMarkerPos","_startMark","_startMarkTwo","_text","_color","_dis","_dir","_newPos"];
+
 //Set team to be placed at the randomly selected marker.
 _ranTeam = west;
 //Get the position of the placement marker. Place this nearby the team that is being moved.
@@ -23,14 +25,22 @@ _placeMarkerPos = getMarkerPos "placemark";
 waitUntil {not isNil "bc_randomMarker"};
 _startMarkPos = getMarkerPos bc_randomMarker;
 
+//Set up correct info based on team
+switch (_ranTeam) do {
+    case east: { _text = "BLUFOR Starting Zone"; _color = "ColorBLUFOR";};
+    case west: { _text = "OPFOR Starting Zone"; _color = "ColorOPFOR";};
+    case independent: { _text = "INDFOR Starting Zone"; _color = "ColorGUER";};
+    default { systemChat "[BC] randomstart - Invalid entry for _ranTeam."; _text = "ERROR - Invalid Team"; _color = "ColorCivilian";};
+};
+
 //Make sure player is on the correct team.
 if (side player == _ranTeam) then {    
     //Boundary marker for starting location
     _startMark = createMarkerLocal ["startZone",_startMarkPos];
     _startMark setMarkerShapeLocal "RECTANGLE";
-    _startMark setMarkerSizeLocal [120, 60];
+    _startMark setMarkerSizeLocal [100, 50];
     _startMark setMarkerDirLocal (markerDir bc_randomMarker);
-    _startMark setMarkerBrushLocal "Solid";
+    _startMark setMarkerBrushLocal "SolidBorder";
     _startMark setMarkerColorLocal "ColorBLUFOR";
     //Text marker for starting location
     _startMarkTwo = createMarkerLocal ["startZoneTwo",_startMarkPos];
@@ -38,7 +48,7 @@ if (side player == _ranTeam) then {
     _startMarkTwo setMarkerColorLocal "ColorBlack";
     _startMarkTwo setMarkerTypeLocal "hd_dot";
     _startMarkTwo setMarkerDirLocal (markerDir bc_randomMarker);
-    _startMarkTwo setMarkerTextLocal "BLUFOR Starting Zone";
+    _startMarkTwo setMarkerTextLocal _text;
     
     //Find player distance and direction to the placement marker.
     _dis = [player, _placeMarkerPos] call BIS_fnc_distance2D;

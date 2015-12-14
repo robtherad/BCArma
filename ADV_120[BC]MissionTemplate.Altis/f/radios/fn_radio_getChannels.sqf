@@ -11,58 +11,25 @@ if(isNil "bc_playerBaseChannel") exitWith {titleText ["Error! Default radio chan
 
 bc_ch1 = bc_playerBaseChannel; //All players will be able to switch to channel 1 to get on platoon net.
 
-//Use player's groupID to find out what element he's in. Use that to set up his default radio channels.
-switch (groupID (group player)) do {
-    case "BLU HQ": {bc_ch2 = bc_playerBaseChannel + 1;  bc_ch3 = bc_playerBaseChannel + 2; bc_ch4 = bc_playerBaseChannel + 3; bc_ch5 = bc_playerBaseChannel + 4; bc_ch6 = bc_playerBaseChannel + .1; bc_curChan = 1; bc_altChan = 6;};
-    case "A": { bc_ch2 = bc_playerBaseChannel + 1; bc_ch3 = bc_playerBaseChannel + 1.1; bc_ch4 = bc_playerBaseChannel + 1.2; bc_curChan = 2; bc_altChan = 1;};
-    case "A1": { bc_ch2 = bc_playerBaseChannel + 1; bc_ch3 = bc_playerBaseChannel + 1.1; bc_ch4 = bc_playerBaseChannel + 1.2; bc_curChan = 3; bc_altChan = 2;};
-    case "A2": { bc_ch2 = bc_playerBaseChannel + 1; bc_ch3 = bc_playerBaseChannel + 1.1; bc_ch4 = bc_playerBaseChannel + 1.2; bc_curChan = 4; bc_altChan = 2;};
-    case "B": {bc_ch2 = bc_playerBaseChannel + 2; bc_ch3 = bc_playerBaseChannel + 2.1; bc_ch4 = bc_playerBaseChannel + 2.2; bc_curChan = 2; bc_altChan = 1;};
-    case "B1": { bc_ch2 = bc_playerBaseChannel + 2; bc_ch3 = bc_playerBaseChannel + 2.1; bc_ch4 = bc_playerBaseChannel + 2.2; bc_curChan = 3; bc_altChan = 2;};
-    case "B2": { bc_ch2 = bc_playerBaseChannel + 2; bc_ch3 = bc_playerBaseChannel + 2.1; bc_ch4 = bc_playerBaseChannel + 2.2; bc_curChan = 4; bc_altChan = 2;};
-    case "C": { bc_ch2 = bc_playerBaseChannel + 3; bc_ch3 = bc_playerBaseChannel + 3.1; bc_ch4 = bc_playerBaseChannel + 3.2; bc_curChan = 2; bc_altChan = 1;};
-    case "C1": { bc_ch2 = bc_playerBaseChannel + 3; bc_ch3 = bc_playerBaseChannel + 3.1; bc_ch4 = bc_playerBaseChannel + 3.2; bc_curChan = 3; bc_altChan = 2;};
-    case "C2": { bc_ch2 = bc_playerBaseChannel + 3; bc_ch3 = bc_playerBaseChannel + 3.1; bc_ch4 = bc_playerBaseChannel + 3.2; bc_curChan = 4; bc_altChan = 2;};
-    case "D": { bc_ch2 = bc_playerBaseChannel + 4; bc_ch3 = bc_playerBaseChannel + 4.1; bc_ch4 = bc_playerBaseChannel + 4.2; bc_curChan = 2; bc_altChan = 1;};
-    case "D1": { bc_ch2 = bc_playerBaseChannel + 4; bc_ch3 = bc_playerBaseChannel + 4.1;bc_curChan = 3; bc_altChan = 2;};
-    case "D2": { bc_ch2 = bc_playerBaseChannel + 4; bc_ch3 = bc_playerBaseChannel + 4.2;bc_curChan = 3; bc_altChan = 2;};
-    case "D3": { bc_ch2 = bc_playerBaseChannel + 4; bc_ch3 = bc_playerBaseChannel + 4.3;bc_curChan = 3; bc_altChan = 2;};
-    case "D4": { bc_ch2 = bc_playerBaseChannel + 4; bc_ch3 = bc_playerBaseChannel + 4.4;bc_curChan = 3; bc_altChan = 2;};
-
-
-    case "RED HQ": {bc_ch2 = bc_playerBaseChannel + 1;  bc_ch3 = bc_playerBaseChannel + 2; bc_ch4 = bc_playerBaseChannel + 3; bc_ch5 = bc_playerBaseChannel + 4; bc_ch6 = bc_playerBaseChannel + .1; bc_curChan = 1; bc_altChan = 6;};
-    case "E": { bc_ch2 = bc_playerBaseChannel + 1; bc_ch3 = bc_playerBaseChannel + 1.1; bc_ch4 = bc_playerBaseChannel + 1.2; bc_curChan = 2; bc_altChan = 1;};
-    case "E1": { bc_ch2 = bc_playerBaseChannel + 1; bc_ch3 = bc_playerBaseChannel + 1.1; bc_ch4 = bc_playerBaseChannel + 1.2; bc_curChan = 3; bc_altChan = 2;};
-    case "E2": { bc_ch2 = bc_playerBaseChannel + 1; bc_ch3 = bc_playerBaseChannel + 1.1; bc_ch4 = bc_playerBaseChannel + 1.2; bc_curChan = 4; bc_altChan = 2;};
-    case "F": {bc_ch2 = bc_playerBaseChannel + 2; bc_ch3 = bc_playerBaseChannel + 2.1; bc_ch4 = bc_playerBaseChannel + 2.2; bc_curChan = 2; bc_altChan = 1;};
-    case "F1": { bc_ch2 = bc_playerBaseChannel + 2; bc_ch3 = bc_playerBaseChannel + 2.1; bc_ch4 = bc_playerBaseChannel + 2.2; bc_curChan = 3; bc_altChan = 2;};
-    case "F2": { bc_ch2 = bc_playerBaseChannel + 2; bc_ch3 = bc_playerBaseChannel + 2.1; bc_ch4 = bc_playerBaseChannel + 2.2; bc_curChan = 4; bc_altChan = 2;};
-    case "G": { bc_ch2 = bc_playerBaseChannel + 3; bc_ch3 = bc_playerBaseChannel + 3.1; bc_ch4 = bc_playerBaseChannel + 3.2; bc_curChan = 2; bc_altChan = 1;};
-    case "G1": { bc_ch2 = bc_playerBaseChannel + 3; bc_ch3 = bc_playerBaseChannel + 3.1; bc_ch4 = bc_playerBaseChannel + 3.2; bc_curChan = 3; bc_altChan = 2;};
-    case "G2": { bc_ch2 = bc_playerBaseChannel + 3; bc_ch3 = bc_playerBaseChannel + 3.1; bc_ch4 = bc_playerBaseChannel + 3.2; bc_curChan = 4; bc_altChan = 2;};
-    case "H": { bc_ch2 = bc_playerBaseChannel + 4; bc_ch3 = bc_playerBaseChannel + 4.1; bc_ch4 = bc_playerBaseChannel + 4.2; bc_curChan = 2; bc_altChan = 1;};
-    case "H1": { bc_ch2 = bc_playerBaseChannel + 4; bc_ch3 = bc_playerBaseChannel + 4.1;bc_curChan = 3; bc_altChan = 2;};
-    case "H2": { bc_ch2 = bc_playerBaseChannel + 4; bc_ch3 = bc_playerBaseChannel + 4.2;bc_curChan = 3; bc_altChan = 2;};
-    case "H3": { bc_ch2 = bc_playerBaseChannel + 4; bc_ch3 = bc_playerBaseChannel + 4.3;bc_curChan = 3; bc_altChan = 2;};
-    case "H4": { bc_ch2 = bc_playerBaseChannel + 4; bc_ch3 = bc_playerBaseChannel + 4.4;bc_curChan = 3; bc_altChan = 2;};
-    
-    //INDFOR
-    case "IND HQ": {bc_ch2 = bc_playerBaseChannel + 1;  bc_ch3 = bc_playerBaseChannel + 2; bc_ch4 = bc_playerBaseChannel + 3; bc_ch5 = bc_playerBaseChannel + 4; bc_ch6 = bc_playerBaseChannel + .1; bc_curChan = 1; bc_altChan = 6;};
-    case "I": { bc_ch2 = bc_playerBaseChannel + 1; bc_ch3 = bc_playerBaseChannel + 1.1; bc_ch4 = bc_playerBaseChannel + 1.2; bc_curChan = 2; bc_altChan = 1;};
-    case "I1": { bc_ch2 = bc_playerBaseChannel + 1; bc_ch3 = bc_playerBaseChannel + 1.1; bc_ch4 = bc_playerBaseChannel + 1.2; bc_curChan = 3; bc_altChan = 2;};
-    case "I2": { bc_ch2 = bc_playerBaseChannel + 1; bc_ch3 = bc_playerBaseChannel + 1.1; bc_ch4 = bc_playerBaseChannel + 1.2; bc_curChan = 4; bc_altChan = 2;};
-    case "J": {bc_ch2 = bc_playerBaseChannel + 2; bc_ch3 = bc_playerBaseChannel + 2.1; bc_ch4 = bc_playerBaseChannel + 2.2; bc_curChan = 2; bc_altChan = 1;};
-    case "J1": { bc_ch2 = bc_playerBaseChannel + 2; bc_ch3 = bc_playerBaseChannel + 2.1; bc_ch4 = bc_playerBaseChannel + 2.2; bc_curChan = 3; bc_altChan = 2;};
-    case "J2": { bc_ch2 = bc_playerBaseChannel + 2; bc_ch3 = bc_playerBaseChannel + 2.1; bc_ch4 = bc_playerBaseChannel + 2.2; bc_curChan = 4; bc_altChan = 2;};
-    case "K": { bc_ch2 = bc_playerBaseChannel + 3; bc_ch3 = bc_playerBaseChannel + 3.1; bc_ch4 = bc_playerBaseChannel + 3.2; bc_curChan = 2; bc_altChan = 1;};
-    case "K1": { bc_ch2 = bc_playerBaseChannel + 3; bc_ch3 = bc_playerBaseChannel + 3.1; bc_ch4 = bc_playerBaseChannel + 3.2; bc_curChan = 3; bc_altChan = 2;};
-    case "K2": { bc_ch2 = bc_playerBaseChannel + 3; bc_ch3 = bc_playerBaseChannel + 3.1; bc_ch4 = bc_playerBaseChannel + 3.2; bc_curChan = 4; bc_altChan = 2;};
-    case "L": { bc_ch2 = bc_playerBaseChannel + 4; bc_ch3 = bc_playerBaseChannel + 4.1; bc_ch4 = bc_playerBaseChannel + 4.2; bc_curChan = 2; bc_altChan = 1;};
-    case "L1": { bc_ch2 = bc_playerBaseChannel + 4; bc_ch3 = bc_playerBaseChannel + 4.1;bc_curChan = 3; bc_altChan = 2;};
-    case "L2": { bc_ch2 = bc_playerBaseChannel + 4; bc_ch3 = bc_playerBaseChannel + 4.2;bc_curChan = 3; bc_altChan = 2;};
-    case "L3": { bc_ch2 = bc_playerBaseChannel + 4; bc_ch3 = bc_playerBaseChannel + 4.3;bc_curChan = 3; bc_altChan = 2;};
-    case "L4": { bc_ch2 = bc_playerBaseChannel + 4; bc_ch3 = bc_playerBaseChannel + 4.4;bc_curChan = 3; bc_altChan = 2;};
-};
+// bc_radioSettings: Tells radio script which channels to set for group. [altChannel,mainChannel,[channelArray]] (array)
+//     mainChannel: Which channel the radio will start on. (1-8)
+//     altChannel: Which channel the radio will have as an alternate by default (1-8)
+//     [channelArray]: An array of channels to set on the radio. (float)
+//        channelArray is expressed as numbers which are added to playerBaseChannel (ch1) to determine which channel the radio will be on. 
+//        Try to keep offsets single digit or the channel may not be set if playerBaseChannel is a high number.
+//        Frequencies can only have one decimal place.
+//     ex: [1,6,[1,2,3,4]] - mainChannel is ch1, altChannel is ch6, ch2 is 1 unit MHz higher than ch1, etc.
+_radioSettings = (group player) getVariable ["bc_radioSettings",[0,1,[0]];
+bc_curChan = _radioSettings select 0;
+bc_altChan = _radioSettings select 1;
+_channelArray = _radioSettings select 2;
+if (!isNil {_channelArray select 0}) then {bc_ch2 = _channelArray select 0};
+if (!isNil {_channelArray select 1}) then {bc_ch3 = _channelArray select 1};
+if (!isNil {_channelArray select 2}) then {bc_ch4 = _channelArray select 2};
+if (!isNil {_channelArray select 3}) then {bc_ch5 = _channelArray select 3};
+if (!isNil {_channelArray select 4}) then {bc_ch6 = _channelArray select 4};
+if (!isNil {_channelArray select 5}) then {bc_ch7 = _channelArray select 5};
+if (!isNil {_channelArray select 6}) then {bc_ch8 = _channelArray select 6};
 
 //player isn't part of any template group
 if (isNil "bc_curChan") then {
@@ -83,92 +50,7 @@ if (!isNil "bc_ch9") then {bc_radioNoteString = bc_radioNoteString + "Channel 9:
 
 //Let player know what channels he starts on.
 bc_radioNoteString = bc_radioNoteString + "<br/>Main Channel (left ear): <font color='#90ee90'>CH " + str(bc_curChan) + "</font><br/>Alt. Channel (right ear): <font color='#90ee90'>CH " + str(bc_altChan) + "</font>";
-//List default frequencies for sides
-bc_radioNoteString = bc_radioNoteString + "<br/><br/>";
-switch (_side) do {
-    case west: {
-        bc_radioNoteString = (bc_radioNoteString +
-
-        "<font size='24'>Default Radio Frequency List</font><br/><br/>" +
-
-        "Plt. HQ - " + str(bc_playerBaseChannel) + " MHz<br/><br/>" +
-
-        "Alpha Squad - " + str(bc_playerBaseChannel + 1) + " MHz<br/>" +
-        "Alpha One - " + str(bc_playerBaseChannel + 1.1) + " MHz<br/>" +
-        "Alpha Two - " + str(bc_playerBaseChannel + 1.2) + " MHz<br/><br/>" +
-
-        "Bravo Squad - " + str(bc_playerBaseChannel + 2) + " MHz<br/>" +
-        "Bravo One - " + str(bc_playerBaseChannel + 2.1) + " MHz<br/>" +
-        "Bravo Two - " + str(bc_playerBaseChannel + 2.2) + " MHz<br/><br/>" +
-
-        "Charlie Squad - " + str(bc_playerBaseChannel + 3) + " MHz<br/>" +
-        "Charlie One - " + str(bc_playerBaseChannel + 3.1) + " MHz<br/>" +
-        "Charlie Two - " + str(bc_playerBaseChannel + 3.2) + " MHz<br/><br/>" +
-
-        "Delta Squad - " + str(bc_playerBaseChannel + 4) + " MHz<br/>" +
-        "Delta One - " + str(bc_playerBaseChannel + 4.1) + " MHz<br/>" +
-        "Delta Two - " + str(bc_playerBaseChannel + 4.2) + " MHz<br/>" +
-        "Delta Three - " + str(bc_playerBaseChannel + 4.3) + " MHz<br/>" +
-        "Delta Four - " + str(bc_playerBaseChannel + 4.4) + " MHz<br/>"
-
-        );//Do not delete
-    };
-    case east: {
-        bc_radioNoteString = (bc_radioNoteString +
-
-        "<font size='24'>Default Radio Frequency List</font><br/><br/>" +
-
-        "Plt. HQ - " + str(bc_playerBaseChannel) + " MHz<br/><br/>" +
-
-        "Echo Squad - " + str(bc_playerBaseChannel + 1) + " MHz<br/>" +
-        "Echo One - " + str(bc_playerBaseChannel + 1.1) + " MHz<br/>" +
-        "Echo Two - " + str(bc_playerBaseChannel + 1.2) + " MHz<br/><br/>" +
-
-        "Foxtrot Squad - " + str(bc_playerBaseChannel + 2) + " MHz<br/>" +
-        "Foxtrot One - " + str(bc_playerBaseChannel + 2.1) + " MHz<br/>" +
-        "Foxtrot Two - " + str(bc_playerBaseChannel + 2.2) + " MHz<br/><br/>" +
-
-        "Golf Squad - " + str(bc_playerBaseChannel + 3) + " MHz<br/>" +
-        "Golf One - " + str(bc_playerBaseChannel + 3.1) + " MHz<br/>" +
-        "Golf Two - " + str(bc_playerBaseChannel + 3.2) + " MHz<br/><br/>" +
-
-        "Hotel Squad - " + str(bc_playerBaseChannel + 4) + " MHz<br/>" +
-        "Hotel One - " + str(bc_playerBaseChannel + 4.1) + " MHz<br/>" +
-        "Hotel Two - " + str(bc_playerBaseChannel + 4.2) + " MHz<br/>" +
-        "Hotel Three - " + str(bc_playerBaseChannel + 4.3) + " MHz<br/>" +
-        "Hotel Four - " + str(bc_playerBaseChannel + 4.4) + " MHz<br/>"
-
-        );//Do not delete
-    };
-    case independent: {
-        bc_radioNoteString = (bc_radioNoteString +
-
-        "<font size='24'>Default Radio Frequency List</font><br/><br/>" +
-
-        "Plt. HQ - " + str(bc_playerBaseChannel) + " MHz<br/><br/>" +
-
-        "India Squad - " + str(bc_playerBaseChannel + 1) + " MHz<br/>" +
-        "India One - " + str(bc_playerBaseChannel + 1.1) + " MHz<br/>" +
-        "India Two - " + str(bc_playerBaseChannel + 1.2) + " MHz<br/><br/>" +
-
-        "Juliet Squad - " + str(bc_playerBaseChannel + 2) + " MHz<br/>" +
-        "Juliet One - " + str(bc_playerBaseChannel + 2.1) + " MHz<br/>" +
-        "Juliet Two - " + str(bc_playerBaseChannel + 2.2) + " MHz<br/><br/>" +
-
-        "Kilo Squad - " + str(bc_playerBaseChannel + 3) + " MHz<br/>" +
-        "Kilo One - " + str(bc_playerBaseChannel + 3.1) + " MHz<br/>" +
-        "Kilo Two - " + str(bc_playerBaseChannel + 3.2) + " MHz<br/><br/>" +
-
-        "Lima Squad - " + str(bc_playerBaseChannel + 4) + " MHz<br/>" +
-        "Lima One - " + str(bc_playerBaseChannel + 4.1) + " MHz<br/>" +
-        "Lima Two - " + str(bc_playerBaseChannel + 4.2) + " MHz<br/>" +
-        "Lima Three - " + str(bc_playerBaseChannel + 4.3) + " MHz<br/>" +
-        "Lima Four - " + str(bc_playerBaseChannel + 4.4) + " MHz<br/>"
-
-        );//Do not delete
-    };
-};
-player createDiaryRecord ["diary", ["[BC] Radio Settings", bc_radioNoteString]];
+player createDiaryRecord ["diary", ["Radio Settings", bc_radioNoteString]];
 
 //Next step
 bc_radHandle2 = [BC_fnc_radio_waitRadios, 0, []] call CBA_fnc_addPerFrameHandler;
