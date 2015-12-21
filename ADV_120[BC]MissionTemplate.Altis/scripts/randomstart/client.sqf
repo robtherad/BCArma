@@ -27,8 +27,8 @@ _startMarkPos = getMarkerPos bc_randomMarker;
 
 //Set up correct info based on team
 switch (_ranTeam) do {
-    case east: { _text = "BLUFOR Starting Zone"; _color = "ColorBLUFOR";};
-    case west: { _text = "OPFOR Starting Zone"; _color = "ColorOPFOR";};
+    case west: { _text = "BLUFOR Starting Zone"; _color = "ColorBLUFOR";};
+    case east: { _text = "OPFOR Starting Zone"; _color = "ColorOPFOR";};
     case independent: { _text = "INDFOR Starting Zone"; _color = "ColorGUER";};
     default { systemChat "[BC] randomstart - Invalid entry for _ranTeam."; _text = "ERROR - Invalid Team"; _color = "ColorCivilian";};
 };
