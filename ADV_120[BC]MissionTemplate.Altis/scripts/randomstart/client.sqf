@@ -41,7 +41,7 @@ if (side player == _ranTeam) then {
     _startMark setMarkerSizeLocal [100, 50];
     _startMark setMarkerDirLocal (markerDir bc_randomMarker);
     _startMark setMarkerBrushLocal "SolidBorder";
-    _startMark setMarkerColorLocal "ColorBLUFOR";
+    _startMark setMarkerColorLocal _color;
     //Text marker for starting location
     _startMarkTwo = createMarkerLocal ["startZoneTwo",_startMarkPos];
     _startMarkTwo setMarkerShapeLocal "ICON";
