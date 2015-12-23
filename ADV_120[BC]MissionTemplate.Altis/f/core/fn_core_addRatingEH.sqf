@@ -1,3 +1,3 @@
 {
     _x addEventHandler ["HandleRating",{1}];
-} forEach playableUnits;
+} forEach (playableUnits + switchableUnits);

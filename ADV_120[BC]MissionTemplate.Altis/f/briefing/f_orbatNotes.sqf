@@ -6,7 +6,7 @@
 // This script will automatically generate an ORBAT page.
 
 // Define needed variables
-private ["_orbatText", "_groups", "_precompileGroups","_maxSlots","_freeSlots","_side"];
+private ["_orbatText", "_groups", "_precompileGroups","_maxSlots","_freeSlots","_side","_freq","_chNum","_chArray","_color"];
 _side = side group player;
 _orbatText = "<br />NOTE: The ORBAT below is only accurate at mission start.<br />
 <br />
@@ -14,7 +14,6 @@ _orbatText = "<br />NOTE: The ORBAT below is only accurate at mission start.<br 
 _groups = [];
 
 waitUntil { !isNil "bc_playerBaseChannel"; };
-waitUntil { !isNil "bc_groupIDset" };
 
 {
     // Add to ORBAT if side matches, group isn't already listed, and group has players
@@ -36,19 +35,26 @@ waitUntil { !isNil "bc_groupIDset" };
              default {"#8904B1"};
          };
     };
-
+    
+    //Get group's radio frequency
     _freq = _x getVariable ["bc_radioSettings",nil];
     if (isNil "_freq") then {
         _freq = "UNK";
     } else {
         _chNum = _freq select 0;
-        _chNum = _chNum - 1; //Minus one since array starts at 0
+        _chNum = _chNum - 2; //Minus one since array starts at 0
         _chArray = _freq select 2;
-        _freq = _chArray select _chNum; //Get group's main channel from freq list
+        if (_chNum < 0) then {
+            if (_chNum == -1) then {
+                _freq = 0;
+            };
+        } else {
+            _freq = _chArray select _chNum; //Get group's main channel from freq list
+        };
         _freq = _freq + bc_playerBaseChannel;
     };
     
-    //Use BC_LongName but default to groupID if it's not defined
+    //Add group to the ORBAT
     _longName = _x getVariable ["BC_LongName",groupID _x];
     if (isNil "_freq") then {
         _orbatText = _orbatText + format ["<font color='%3'>(%4 men) <b>%1</b> -- %2</font>", _longName, name leader _x,_color,count (units _x)] + "<br />";

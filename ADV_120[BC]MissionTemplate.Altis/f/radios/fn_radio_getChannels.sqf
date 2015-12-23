@@ -23,13 +23,14 @@ _radioSettings = (group player) getVariable ["bc_radioSettings",[0,1,[0]]];
 bc_curChan = _radioSettings select 0;
 bc_altChan = _radioSettings select 1;
 _channelArray = _radioSettings select 2;
-if (!isNil {_channelArray select 0}) then {bc_ch2 = _channelArray select 0};
-if (!isNil {_channelArray select 1}) then {bc_ch3 = _channelArray select 1};
-if (!isNil {_channelArray select 2}) then {bc_ch4 = _channelArray select 2};
-if (!isNil {_channelArray select 3}) then {bc_ch5 = _channelArray select 3};
-if (!isNil {_channelArray select 4}) then {bc_ch6 = _channelArray select 4};
-if (!isNil {_channelArray select 5}) then {bc_ch7 = _channelArray select 5};
-if (!isNil {_channelArray select 6}) then {bc_ch8 = _channelArray select 6};
+if (count _channelArray >= 0) then {bc_ch2 = bc_playerBaseChannel + (_channelArray select 0)};
+if (count _channelArray >= 1) then {bc_ch3 = bc_playerBaseChannel + (_channelArray select 1)};
+if (count _channelArray >= 2) then {bc_ch4 = bc_playerBaseChannel + (_channelArray select 2)};
+if (count _channelArray >= 3) then {bc_ch5 = bc_playerBaseChannel + (_channelArray select 3)};
+if (count _channelArray >= 4) then {bc_ch6 = bc_playerBaseChannel + (_channelArray select 4)};
+if (count _channelArray >= 5) then {bc_ch7 = bc_playerBaseChannel + (_channelArray select 5)};
+if (count _channelArray >= 6) then {bc_ch8 = bc_playerBaseChannel + (_channelArray select 6)};
+if (count _channelArray >= 7) then {bc_ch9 = bc_playerBaseChannel + (_channelArray select 7)};
 
 //player isn't part of any template group
 if (isNil "bc_curChan") then {
@@ -50,7 +51,7 @@ if (!isNil "bc_ch9") then {bc_radioNoteString = bc_radioNoteString + "Channel 9:
 
 //Let player know what channels he starts on.
 bc_radioNoteString = bc_radioNoteString + "<br/>Main Channel (left ear): <font color='#90ee90'>CH " + str(bc_curChan) + "</font><br/>Alt. Channel (right ear): <font color='#90ee90'>CH " + str(bc_altChan) + "</font>";
-player createDiaryRecord ["diary", ["Radio Settings", bc_radioNoteString]];
+player createDiaryRecord ["diary", ["[BC] Radio Settings", bc_radioNoteString]];
 
 //Next step
 bc_radHandle2 = [BC_fnc_radio_waitRadios, 0, []] call CBA_fnc_addPerFrameHandler;
