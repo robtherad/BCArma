@@ -60,5 +60,5 @@ if (bc_hasSW) then {
 
 
 //Everything should be setup. Let the player know.
-systemChat "[BC] - If you have one, your radio should now be correctly programmed.";
+systemChat "Radios preset.";
 call BC_fnc_radio_cleanup;

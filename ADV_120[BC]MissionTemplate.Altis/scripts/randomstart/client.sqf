@@ -37,8 +37,8 @@ switch (_ranTeam) do {
 if (side player == _ranTeam) then {    
     //Boundary marker for starting location
     _startMark = createMarkerLocal ["startZone",_startMarkPos];
-    _startMark setMarkerShapeLocal "RECTANGLE";
-    _startMark setMarkerSizeLocal [100, 50];
+    _startMark setMarkerShapeLocal "ELLIPSE";
+    _startMark setMarkerSizeLocal [50, 50];
     _startMark setMarkerDirLocal (markerDir bc_randomMarker);
     _startMark setMarkerBrushLocal "SolidBorder";
     _startMark setMarkerColorLocal _color;
