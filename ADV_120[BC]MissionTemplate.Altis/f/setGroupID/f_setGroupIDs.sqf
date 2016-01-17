@@ -1,6 +1,10 @@
 // F3 Set Group IDs
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 // This script has been modified from it's original form.
+//
+// IF YOU GET A MESSAGE SIMILAR TO:
+// [setGroupIDs] No radio freq found for group - '%1'
+// SEE THE README.MD FILE IN THIS FILE'S FOLDER
 // ====================================================================================
 
 // OPEN THE ARRAY CONTAING ALL GROUPS
