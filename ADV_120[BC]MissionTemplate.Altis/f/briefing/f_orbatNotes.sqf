@@ -50,8 +50,15 @@ waitUntil { !isNil "bc_playerBaseChannel"; };
             };
         } else {
             _freq = _chArray select _chNum; //Get group's main channel from freq list
+            if (isNil "_freq") then { //Check if frequency is out of range.
+                _freq = "UNK";
+                _str = format["[setGroupIDs] No radio freq found for group - '%1'",groupID _x];
+                systemChat _str;
+            };
         };
-        _freq = _freq + bc_playerBaseChannel;
+        if (!(_freq isEqualTo "UNK")) then {
+            _freq = _freq + bc_playerBaseChannel;
+        };
     };
     
     //Add group to the ORBAT
