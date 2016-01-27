@@ -11,10 +11,11 @@ loadout_assigned = false;
 
 switch (_char) do {
  //Red - CSAT/EAST - OPF_F
+ case "O_officer_F": {[] call compile preprocessFileLineNumbers "f\loadout\units\Red_PL.sqf"};
  case "O_Soldier_AR_F": {[] call compile preprocessFileLineNumbers "f\loadout\units\Red_AR.sqf"};
  case "O_medic_F": {[] call compile preprocessFileLineNumbers "f\loadout\units\Red_CLS.sqf"};
  case "O_Soldier_A_F": {[] call compile preprocessFileLineNumbers "f\loadout\units\Red_AAR.sqf"};
- case "O_Soldier_SL_F": {[] call compile preprocessFileLineNumbers "f\loadout\units\Red_PLSL.sqf"};
+ case "O_Soldier_SL_F": {[] call compile preprocessFileLineNumbers "f\loadout\units\Red_SL.sqf"};
  case "O_Soldier_F": {[] call compile preprocessFileLineNumbers "f\loadout\units\Red_R.sqf"};
  case "O_Soldier_TL_F": {[] call compile preprocessFileLineNumbers "f\loadout\units\Red_TL.sqf"};
  case "O_engineer_F": {[] call compile preprocessFileLineNumbers "f\loadout\units\Red_CE.sqf"};
@@ -23,10 +24,11 @@ switch (_char) do {
  case "O_Soldier_LAT_F": {[] call compile preprocessFileLineNumbers "f\loadout\units\Red_RAT.sqf"};
  case "o_soldier_unarmed_f": {[] call compile preprocessFileLineNumbers "f\loadout\units\Red_AM.sqf"};
  //Blue - NATO/WEST - BLU_F
+ case "B_officer_F": {[] call compile preprocessFileLineNumbers "f\loadout\units\Blue_PL.sqf"};
  case "B_soldier_AR_F": {[] call compile preprocessFileLineNumbers "f\loadout\units\Blue_AR.sqf"};
  case "B_medic_F": {[] call compile preprocessFileLineNumbers "f\loadout\units\Blue_CLS.sqf"};
  case "B_Soldier_A_F": {[] call compile preprocessFileLineNumbers "f\loadout\units\Blue_AAR.sqf"};
- case "B_Soldier_SL_F": {[] call compile preprocessFileLineNumbers "f\loadout\units\Blue_PLSL.sqf"};
+ case "B_Soldier_SL_F": {[] call compile preprocessFileLineNumbers "f\loadout\units\Blue_SL.sqf"};
  case "B_Soldier_F": {[] call compile preprocessFileLineNumbers "f\loadout\units\Blue_R.sqf"};
  case "B_Soldier_TL_F": {[] call compile preprocessFileLineNumbers "f\loadout\units\Blue_TL.sqf"};
  case "B_HeavyGunner_F": {[] call compile preprocessFileLineNumbers "f\loadout\units\Blue_MG.sqf"};
