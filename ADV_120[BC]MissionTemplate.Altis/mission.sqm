@@ -19,8 +19,8 @@ class Mission
 		"A3_Missions_F_Curator",
 		"A3_Characters_F_Mark",
 		"A3_Data_F_Curator_Characters",
-		"aia_misc3_config",
-		"A3_Modules_F_Curator_Misc"
+		"A3_Modules_F_Curator_Misc",
+		"A3_Weapons_F_Bootcamp_Ammoboxes"
 	};
 	addOnsAuto[]=
 	{
@@ -36,7 +36,7 @@ class Mission
 		"A3_Data_F_Curator_Characters",
 		"A3_Characters_F_OPFOR",
 		"A3_Modules_F_Curator_Misc",
-		"aia_misc3_config",
+		"A3_Weapons_F_Bootcamp_Ammoboxes",
 		"a3_map_altis"
 	};
 	randomSeed=1726574;
@@ -2547,9 +2547,10 @@ class Mission
 			azimut=-1.07058;
 			id=132;
 			side="EMPTY";
-			vehicle="PowGen_Big";
+			vehicle="Box_FIA_Ammo_F";
 			skill=0.60000002;
 			text="obj1";
+			init="clearWeaponCargoGlobal this;clearMagazineCargoGlobal this;clearBackpackCargoGlobal this;clearItemCargoGlobal this;";
 			description="C2 CE";
 		};
 		class Item1
@@ -2558,10 +2559,10 @@ class Mission
 			azimut=-1.07058;
 			id=133;
 			side="EMPTY";
-			vehicle="PowGen_Big";
+			vehicle="Box_FIA_Ammo_F";
 			skill=0.60000002;
 			text="obj2";
-			init="obj2 addEventHandler[""handleDamage"",{ if (_this select 4 == ""SatchelCharge_Remote_Ammo"") then{1;[""Objective #2 destroyed!"",""hint"",true,true] call BIS_fnc_MP;""obj_2mark"" setMarkerText ""Objective #2 *DESTROYED*"";} else{0} }]; ";
+			init="obj2 addEventHandler[""handleDamage"",{ if (_this select 4 == ""SatchelCharge_Remote_Ammo"") then{1;[""Objective #2 destroyed!"",""hint"",true,true] call BIS_fnc_MP;""obj_2mark"" setMarkerText ""Objective #2 *DESTROYED*"";} else{0} }]; clearWeaponCargoGlobal this;clearMagazineCargoGlobal this;clearBackpackCargoGlobal this;clearItemCargoGlobal this;";
 		};
 		class Item2
 		{
@@ -2569,21 +2570,21 @@ class Mission
 			azimut=-1.07058;
 			id=134;
 			side="EMPTY";
-			vehicle="PowGen_Big";
+			vehicle="Box_FIA_Ammo_F";
 			skill=0.60000002;
 			text="obj3";
 			markers[]=
 			{
 				"rand_6",
 				"rand_1",
-				"rand_2",
 				"rand_4",
 				"rand_7",
 				"rand_5",
 				"rand_3",
-				"rand"
+				"rand",
+				"rand_2"
 			};
-			init="""obj_3mark"" setMarkerPos (getPos obj3);";
+			init="""obj_3mark"" setMarkerPos (getPos obj3);clearWeaponCargoGlobal this;clearMagazineCargoGlobal this;clearBackpackCargoGlobal this;clearItemCargoGlobal this;";
 		};
 	};
 	class Markers
@@ -2764,6 +2765,8 @@ class Mission
 		class Item1
 		{
 			position[]={755.2749,-0.0042263353,3993.3672};
+			a=0;
+			b=0;
 			interruptable=1;
 			age="UNKNOWN";
 			name="obj1trig";
@@ -2776,14 +2779,14 @@ class Mission
 		class Item2
 		{
 			position[]={2125.1045,0.004580481,1188.5858};
-			a=900;
-			b=800;
+			a=810;
+			b=710;
 			rectangular=1;
 			activationBy="ANY";
 			repeating=1;
-			timeoutMin=5;
-			timeoutMid=5;
-			timeoutMax=5;
+			timeoutMin=10;
+			timeoutMid=10;
+			timeoutMax=10;
 			interruptable=1;
 			age="UNKNOWN";
 			expCond="!((vehicle player) in thisList) && ((typeof player != ""seagull"") || (typeof player != ""VirtualCurator_F"")) && (((getPos player) select 0 >= 20) && ((getPos player) select 1 >= 20)) && (alive player) && (isNil ""f_cam_VirtualCreated"")";
@@ -2802,21 +2805,21 @@ class Mission
 			rectangular=1;
 			activationBy="ANY";
 			repeating=1;
-			timeoutMin=1;
-			timeoutMid=1;
-			timeoutMax=1;
 			interruptable=1;
 			age="UNKNOWN";
 			name="missionarea";
 			expCond="!((vehicle player) in thisList) && ((typeof player != ""seagull"") || (typeof player != ""VirtualCurator_F"")) && (((getPos player) select 0 >= 20) && ((getPos player) select 1 >= 20)) && (alive player) && (isNil ""f_cam_VirtualCreated"")";
 			expActiv="titleText [""You are leaving the play area. Turn back now.\n\nIf you continue on you WILL BE KILLED."", ""PLAIN""];";
+			expDesactiv="titleText ["""",""PLAIN""];";
 			class Effects
 			{
 			};
 		};
 		class Item4
 		{
-			position[]={785.07715,-0.0043809405,6681.6943};
+			position[]={785.07715,-0.0097314361,6681.6943};
+			a=0;
+			b=0;
 			interruptable=1;
 			age="UNKNOWN";
 			name="obj3trig";
