@@ -7,18 +7,20 @@ removeBackpack player;
 removeHeadgear player;
 removeGoggles player;
 
-player forceAddUniform "U_O_CombatUniform_ocamo";
-for "_i" from 1 to 2 do {player addItemToUniform "FirstAidKit";};
-player addVest "V_TacVest_khk";
-player addItemToVest "150Rnd_93x64_Mag";
-player addHeadgear "H_Bandanna_cbr";
+player forceAddUniform "rhs_uniform_flora_patchless_alt";
+player addItemToUniform "FirstAidKit";
+for "_i" from 1 to 2 do {player addItemToUniform "HandGrenade";};
+for "_i" from 1 to 2 do {player addItemToUniform "SmokeShell";};
+player addVest "rhs_6b23_ML_6sh92";
+for "_i" from 1 to 2 do {player addItemToVest "rhs_100Rnd_762x54mmR";};
+player addBackpack "B_FieldPack_khk";
+for "_i" from 1 to 4 do {player addItemToBackpack "rhs_100Rnd_762x54mmR";};
+player addHeadgear "rhs_6b27m_ml";
+player addGoggles "G_Bandanna_khk";
 
-player addWeapon "MMG_01_hex_F";
+player addWeapon "rhs_weap_pkm";
 removeAllPrimaryWeaponItems player;
-player addPrimaryWeaponItem "bipod_02_F_hex";
 
-player addItemToVest "150Rnd_93x64_Mag";
-player addBackpack "B_TacticalPack_ocamo";
 if (s_loadout_map == 0) then {
     player linkItem "ItemMap";
     if (s_loadout_gps == 0) then {player linkItem "ItemGPS";};

@@ -7,25 +7,26 @@ removeBackpack player;
 removeHeadgear player;
 removeGoggles player;
 
-player forceAddUniform "MNP_CombatUniform_Ranger_A";
+player forceAddUniform "U_O_CombatUniform_ocamo";
 for "_i" from 1 to 2 do {player addItemToUniform "FirstAidKit";};
 for "_i" from 1 to 4 do {player addItemToUniform "SmokeShell";};
-player addVest "V_PlateCarrier2_rgr";
+player addVest "V_TacVest_khk";
+for "_i" from 1 to 8 do {player addItemToVest "30Rnd_65x39_caseless_green";};
 for "_i" from 1 to 2 do {player addItemToVest "HandGrenade";};
-for "_i" from 1 to 8 do {player addItemToVest "rhs_mag_30Rnd_556x45_Mk318_Stanag";};
-player addBackpack "B_Kitbag_rgr";
-for "_i" from 1 to 2 do {player addItemToBackpack "SatchelCharge_Remote_Mag";};
-for "_i" from 1 to 5 do {player addItemToBackpack "rhs_mag_30Rnd_556x45_Mk318_Stanag";};
-player addHeadgear "H_HelmetB";
-player addWeapon "rhs_weap_m4a1_carryhandle";
+player addBackpack "B_TacticalPack_ocamo";
+for "_i" from 1 to 3 do {player addItemToBackpack "150Rnd_93x64_Mag";};
+player addHeadgear "H_HelmetO_ocamo";
 
-if (s_loadout_map == 0) then {
+player addWeapon "arifle_Katiba_C_F";
+removeAllPrimaryWeaponItems player;
+player addWeapon "Binocular";
+if ((s_loadout_map == 0) or (s_loadout_map == 1)) then {
     player linkItem "ItemMap";
-    if (s_loadout_gps == 0) then {player linkItem "ItemGPS";};
+    if ((s_loadout_gps == 0) or (s_loadout_gps == 1)) then {player linkItem "ItemGPS";};
 };
 player linkItem "ItemCompass";
 player linkItem "ItemWatch";
-if (s_loadout_radio == 0) then {
+if ((s_loadout_radio == 0) or (s_loadout_radio == 1))  then {
     player linkItem "ItemRadio";
 };
 
