@@ -451,7 +451,7 @@ class Mission
 					special="NONE";
 					id=10;
 					side="WEST";
-					vehicle="B_Soldier_SL_F";
+					vehicle="B_officer_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.60000002;
@@ -466,7 +466,7 @@ class Mission
 					special="NONE";
 					id=11;
 					side="WEST";
-					vehicle="B_Soldier_SL_F";
+					vehicle="B_officer_F";
 					player="PLAY CDG";
 					skill=0.60000002;
 					init="Blue_HQ = group this;";
@@ -1482,7 +1482,7 @@ class Mission
 					special="NONE";
 					id=70;
 					side="EAST";
-					vehicle="O_Soldier_SL_F";
+					vehicle="O_officer_F";
 					player="PLAY CDG";
 					leader=1;
 					skill=0.40000001;
@@ -1497,7 +1497,7 @@ class Mission
 					special="NONE";
 					id=71;
 					side="EAST";
-					vehicle="O_Soldier_SL_F";
+					vehicle="O_officer_F";
 					player="PLAY CDG";
 					skill=0.60000002;
 					init="Red_HQ = group this;";
