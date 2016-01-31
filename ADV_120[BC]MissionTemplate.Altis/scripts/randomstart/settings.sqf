@@ -24,4 +24,4 @@
 
 _ranTeam = west; // WEST, EAST, INDEPENDENT
 _markerArray = ["randomstart"];
-_objectArray = [blueChop,testTwo]; //If empty make equal to nil.
+_objectArray = nil; //If empty make equal to nil.
