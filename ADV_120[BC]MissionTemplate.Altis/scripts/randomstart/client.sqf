@@ -16,8 +16,7 @@ DO NOT FORGET TO CALL THE SERVER SIDE OF THIS SCRIPT FROM INIT.SQF!
 if (isDedicated) exitWith {};
 private ["_ranTeam","_placeMarkerPos","_startMarkerPos","_startMark","_startMarkTwo","_text","_color","_dis","_dir","_newPos"];
 
-//Set team to be placed at the randomly selected marker.
-_ranTeam = west;
+#include "settings.sqf";
 //Get the position of the placement marker. Place this nearby the team that is being moved.
 _placeMarkerPos = getMarkerPos "placemark";
 

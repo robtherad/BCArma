@@ -15,10 +15,33 @@ DO NOT FORGET TO CALL THE CLIENT SIDE OF THIS SCRIPT FROM INIT.SQF!
 */
 if (!isServer) exitWith {};
 //Fill this array with the names of all markers you want to be considered for the randomized start.
-_markerArray = ["randomstart", "randomstart_1", "randomstart_2", "randomstart_3", "randomstart_4", "randomstart_5", "randomstart_6", "randomstart_7"];
+#include "settings.sqf";
 
 //Select a marker from the array at random.
 bc_randomMarker = _markerArray call BIS_fnc_selectRandom;
 
 //Broadcast the selected marker to all clients on the server.
 publicVariable "bc_randomMarker";
+
+//Move any objects which are defined in _objectArray
+if (!isNil "_objectArray") then {
+    _startMarkPos = getMarkerPos bc_randomMarker;
+    _placeMarkerPos = getMarkerPos "placemark";
+    {
+        if (isNil {_objectArray select _forEachIndex}) then {
+            _str = "[randomstart] ERROR - Tried to move non-existent object."; 
+            _str remoteExecCall ["systemChat", 0];
+        } else { 
+            //Find object distance and direction to the placement marker.
+            _dis = [_x, _placeMarkerPos] call BIS_fnc_distance2D;
+            _dir = (([_x, _placeMarkerPos] call BIS_fnc_dirTo) + (markerDir bc_randomMarker)) - 180;
+            
+            //Returns a position that is a specified distance and compass direction from the passed position or object.
+            _newPos = [_startMarkPos, _dis, _dir] call BIS_fnc_relPos;
+            
+            //Move object
+            _x setPos [(_newPos select 0), (_newPos select 1)];
+            _x setDir ((markerDir bc_randomMarker) + (getDir _x));
+        };
+    } forEach _objectArray;
+};
