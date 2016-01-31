@@ -15,8 +15,9 @@
 ==============================    
     _objectArray - An array of objects to be moved with the random team. Objects are any 'unit' you can place in the editor. Vehicles, players, boxes, etc. If you don't want to move any extra objects then set it to nil as shown in the example below.
     
-        ex 1: _objectArray = [blueHelicopter,blueBox,greenHostage];      //MOVES PLAYERS ON _ranTeam AND OBJECTS NAMED 'blueHelicopter', 'blueBox' AND 'greenHostage'
-        ex 2: _objectArray = nil;                           //MOVES NOTHING BUT THE PLAYERS ON _ranTeam
+        ex 1: _objectArray = [blueHelicopter,blueBox,greenHostage];    //MOVES PLAYERS ON _ranTeam AND OBJECTS NAMED 'blueHelicopter', 'blueBox' AND 'greenHostage'
+        ex 2: _objectArray = [bluHelicopter];                          //MOVES PLAYERS ON _ranTeam AND OBJECT NAMED 'blueHelicopter'
+        ex 3: _objectArray = nil;                                      //MOVES NOTHING BUT THE PLAYERS ON _ranTeam
     
     
 ==============================
