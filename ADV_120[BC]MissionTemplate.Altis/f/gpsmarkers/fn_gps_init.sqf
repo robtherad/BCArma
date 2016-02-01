@@ -60,7 +60,7 @@ if (!isNil "_sidesVisibleToWest" && !isNil "_sidesVisibleToEast" && !isNil "_sid
         case west: { bc_sidesVisibleToPlayer = _sidesVisibleToWest; };
         case east: { bc_sidesVisibleToPlayer = _sidesVisibleToEast; };
         case independent: { bc_sidesVisibleToPlayer = _sidesVisibleToGuer; };
-        default { bc_sidesVisibleToPlayer = (side (leader _x)); };
+        default { bc_sidesVisibleToPlayer = "None"; };
     };
 };
 call BC_fnc_gps_createMarks;
