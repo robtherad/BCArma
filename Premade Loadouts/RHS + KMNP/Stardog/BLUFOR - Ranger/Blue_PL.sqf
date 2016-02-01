@@ -10,27 +10,26 @@ removeGoggles player;
 player forceAddUniform "MNP_CombatUniform_Ranger_A";
 for "_i" from 1 to 2 do {player addItemToUniform "FirstAidKit";};
 for "_i" from 1 to 4 do {player addItemToUniform "SmokeShell";};
-player addVest "V_PlateCarrier2_rgr";
+player addVest "V_PlateCarrier1_rgr";
 for "_i" from 1 to 2 do {player addItemToVest "HandGrenade";};
-for "_i" from 1 to 4 do {player addItemToVest "SmokeShellRed";};
 for "_i" from 1 to 5 do {player addItemToVest "rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red";};
-for "_i" from 1 to 4 do {player addItemToVest "1Rnd_HE_Grenade_shell";};
-for "_i" from 1 to 4 do {player addItemToVest "1Rnd_SmokeRed_Grenade_shell";};
-for "_i" from 1 to 4 do {player addItemToVest "1Rnd_Smoke_Grenade_shell";};
+for "_i" from 1 to 4 do {player addItemToVest "SmokeShellRed";};
 
-player addWeapon "rhs_weap_m4a1_carryhandle_m203";
+player addWeapon "rhs_weap_m4a1_carryhandle";
 
-if ((s_loadout_radio == 0) or (s_loadout_radio == 1)) then {
+if (s_loadout_radio != 3) then {
     player linkItem "ItemRadio";
 };
 player addBackpack "B_AssaultPack_rgr";
-for "_i" from 1 to 12 do {player addItemToBackpack "rhs_mag_30Rnd_556x45_Mk318_Stanag";};
+for "_i" from 1 to 6 do {player addItemToBackpack "rhs_mag_30Rnd_556x45_Mk318_Stanag";};
 
 player addHeadgear "H_HelmetB";
+for "_i" from 1 to 4 do {player addItemToBackpack "rhs_mag_30Rnd_556x45_Mk318_Stanag";};
+
 player addWeapon "Binocular";
-if ((s_loadout_map == 0) or (s_loadout_map == 1)) then {
+if (s_loadout_map != 3) then {
     player linkItem "ItemMap";
-    if ((s_loadout_gps == 0) or (s_loadout_gps == 1)) then {player linkItem "ItemGPS";};
+    if (s_loadout_gps != 3) then {player linkItem "ItemGPS";};
 };
 player linkItem "ItemCompass";
 player linkItem "ItemWatch";
