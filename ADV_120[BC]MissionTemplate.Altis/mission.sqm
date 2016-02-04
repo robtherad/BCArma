@@ -452,7 +452,7 @@ class Mission
 					id=10;
 					side="WEST";
 					vehicle="B_officer_F";
-					player="PLAY CDG";
+					player="PLAYER COMMANDER";
 					leader=1;
 					skill=0.60000002;
 					init="Blue_HQ = group this;";
