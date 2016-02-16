@@ -39,7 +39,7 @@ _objectArrayWest = []; // If empty make equal to [].
 
 // EAST (REDFOR)
 _randomizeEast = false; // true OR false - use randomstart script with this team
-_placeMarkerEast = "redPlacemark"; // Name of the marker to be used as the 'placemark' for REDFOR
+_placeMarkerEast = "placemarkRed"; // Name of the marker to be used as the 'placemark' for REDFOR
 _markerArrayEast = [];
 _objectArrayEast = []; // If empty make equal to []
 
