@@ -25,6 +25,12 @@ waitUntil { !isNil "bc_playerBaseChannel"; };
 
 // Loop through the group, print out group ID, leader name and medics if present
 {
+    switch (_x getVariable ["bc_gps_groupSize",0]) do {
+        case 0: {_orbatText = _orbatText + " ~ "};
+        case 1: {_orbatText = _orbatText + "<br />"};
+        case 2: {_orbatText = _orbatText + "<br /><br />"};
+        case 3: {_orbatText = _orbatText + "<br /><br /><br />"};
+    };
     // Highlight the player's group with a different color (based on the player's side)
     _color = "#FFFFFF";
     if (_x == group player) then {
@@ -69,9 +75,19 @@ waitUntil { !isNil "bc_playerBaseChannel"; };
         _orbatText = _orbatText + format ["<font color='%3'>(%4 men) <b>%5 MHz -- %1</b> -- %2</font>", _longName, name leader _x,_color,count (units _x),_freq] + "<br />";
     };
     // List medics too.
+    _cnt = count units _x;
+    _orbatIter = 0;
     {
         if (getNumber (configFile >> "CfgVehicles" >> typeOf _x >> "attendant") == 1 && {_x != leader group _x}) then {
-            _orbatText = _orbatText + format["         [M] %1",name _x] + "<br />";
+            _orbatText = _orbatText + format["      [M] %1",name _x] + "<br />";
+        } else {
+            if (_x != leader group _x) then {
+                //_orbatText = _orbatText + format[" %1",name _x];
+            };
+        };
+        _orbatIter = _orbatIter + 1;
+        if ((_orbatIter != _cnt) && (_orbatIter > 1)) then {
+            //_orbatText = _orbatText + ",";
         };
     } forEach units _x;
 } forEach _groups;
