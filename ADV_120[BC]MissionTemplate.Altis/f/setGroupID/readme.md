@@ -17,7 +17,7 @@ Each of the words above is explained below:
 `unitSize` is a number telling what level the group is. Company = 3, Platoon = 2, Squad = 1, Fireteam = 0 (0-3)
 
 `radioSettings`: Tells radio script which channels to set for group. 
-Uses the format: `[altChannel,mainChannel,[channelArray]]` (array)
+Uses the format: `[mainChannel,altchannel,[channelArray]]` (array)
 
 Each of the above is explained below:
 
