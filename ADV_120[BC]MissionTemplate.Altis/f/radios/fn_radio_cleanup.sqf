@@ -1,7 +1,5 @@
 //If ORBAT is written, destroy all global variables that aren't in use anymore
 if (bc_writtenORBAT) then {
-    [bc_radHandle3] call CBA_fnc_removePerFrameHandler;
-
     bc_hasSWitem = nil;
     bc_hasLRitem = nil;
     bc_radHandle1 = nil;
@@ -26,6 +24,4 @@ if (bc_writtenORBAT) then {
     bc_SWsetup = nil;
 
     bc_curSettings = nil;
-
-    bc_radHandle3 = nil;
 };
