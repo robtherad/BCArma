@@ -20,20 +20,20 @@ if (!isServer) exitWith {};
 _randomTeamArray = []; //
 
 //Select a marker from each array at random then broadcast to all clients
-if (count _markerArrayWest > 0) then { 
+if (_randomizeWest && (count _markerArrayWest > 0)) then { 
     bc_randomMarkerWest = _markerArrayWest call BIS_fnc_selectRandom; 
     publicVariable "bc_randomMarkerWest";
-    _randomTeamArray pushBack [_randomMarkerWest, bc_randomMarkerWest, _objectArrayWest , "WEST"];
+    _randomTeamArray pushBack [_placeMarkerWest, bc_randomMarkerWest, _objectArrayWest , "WEST"];
 };
-if (count _markerArrayEast > 0) then { 
+if (_randomizeEast && (count _markerArrayEast > 0)) then { 
     bc_randomMarkerEast = _markerArrayEast call BIS_fnc_selectRandom; 
     publicVariable "bc_randomMarkerEast";
-    _randomTeamArray pushBack [_randomMarkerEast, bc_randomMarkerEast, _objectArrayEast, "EAST"];
+    _randomTeamArray pushBack [_placeMarkerEast, bc_randomMarkerEast, _objectArrayEast, "EAST"];
 };
-if (count _markerArrayIndependent > 0) then { 
+if (_randomizeIndependent && (count _markerArrayIndependent > 0)) then { 
     bc_randomMarkerIndependent = _markerArrayIndependent call BIS_fnc_selectRandom; 
     publicVariable "bc_randomMarkerIndependent";
-    _randomTeamArray pushBack [_randomMarkerIndependent, bc_randomMarkerIndependent, _objectArrayIndependent, "INDEPENDENT"];
+    _randomTeamArray pushBack [_placeMarkerIndependent, bc_randomMarkerIndependent, _objectArrayIndependent, "INDEPENDENT"];
 };
 
 { //forEach _randomTeamArray

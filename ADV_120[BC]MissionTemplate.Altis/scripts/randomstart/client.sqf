@@ -14,7 +14,7 @@ DO NOT FORGET TO CALL THE SERVER SIDE OF THIS SCRIPT FROM INIT.SQF!
 [] execVM "scripts\randomstart\server.sqf";
 */
 if (isDedicated) exitWith {};
-private ["randomizeTeam","_randomMarkVar","_placemark","_text","_color","_placeMarkerPos","_randomMarker","_startMarkerPos","_startMark","_startMarkTwo","_dis","_dir","_newPos"];
+private ["_randomizeTeam","_randomMarkVar","_placemark","_text","_color","_placeMarkerPos","_randomMarker","_startMarkerPos","_startMark","_startMarkTwo","_dis","_dir","_newPos"];
 
 #include "settings.sqf";
 
@@ -22,21 +22,18 @@ private ["randomizeTeam","_randomMarkVar","_placemark","_text","_color","_placeM
 switch (side player) do {
     case west: {
         _randomizeTeam = _randomizeWest;
-        _randomMarkVar = (bc_randomMarkerWest);
         _placemark = _placeMarkerWest;
         _text = "BLUFOR Starting Zone"; 
         _color = "ColorBLUFOR";
     };
     case east: {
         _randomizeTeam = _randomizeEast;
-        _randomMarkVar = (bc_randomMarkerEast);
         _placemark = _placeMarkerEast;
         _text = "OPFOR Starting Zone"; 
         _color = "ColorOPFOR";
     };
     case independent: {
         _randomizeTeam = _randomizeIndependent;
-        _randomMarkVar = str(bc_randomMarkerIndependent);
         _placemark = _placeMarkerIndependent;
         _text = "INDFOR Starting Zone"; 
         _color = "ColorGUER";
@@ -50,9 +47,16 @@ if (_randomizeTeam) then {
     _placeMarkerPos = getMarkerPos _placemark;
 
     //Wait for server to select a marker from the list.
-    waitUntil {!isNil _randomMarkVar};
-    _randomMarker = missionNamespace getVariable [_randomMarkVar,nil];
-    if (isNil "_randomMarker") exitWith {diag_log "Randomstart Error - nil _randomMark";}; // just in case
+    waitUntil {
+        if (isNil "_randomMarker") then {
+            switch (side player) do {
+            case west: {_randomMarker = missionNamespace getVariable ["bc_randomMarkerWest",nil];};
+            case east: {_randomMarker = missionNamespace getVariable ["bc_randomMarkerEast",nil];};
+            case independent: {_randomMarker = missionNamespace getVariable ["bc_randomMarkerIndependent",nil];};
+            };
+            false
+        } else {true};
+    };
     _startMarkPos = getMarkerPos _randomMarker;
 
     //Boundary marker for starting location
@@ -80,4 +84,10 @@ if (_randomizeTeam) then {
     //Move player
     player setPos [(_newPos select 0), (_newPos select 1)];
     player setDir (markerDir _randomMarker);
+    
+    waitUntil {time > 0;};
+    titleText ["Your team has been started in a location unknown to the enemy.\n\nDO NOT fire your weapon during safe start or the enemy will know where you are.","PLAIN DOWN", 1.5];
+    if (!isNil "bc_randomMarkerWest") then {diag_log format["[randomstart] BLUFOR started at = %1",bc_randomMarkerWest];};
+    if (!isNil "bc_randomMarkerEast") then {diag_log format["[randomstart] REDFOR started at = %1",bc_randomMarkerEast];};
+    if (!isNil "bc_randomMarkerIndependent") then {diag_log format["[randomstart] GREENFOR started at = %1",bc_randomMarkerIndependent];};
 };
