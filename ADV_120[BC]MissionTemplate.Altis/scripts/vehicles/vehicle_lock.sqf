@@ -80,16 +80,21 @@ if (count _lockArray > 0) then {
                                 titleText [_lckMsgs,"PLAIN DOWN",0.5];
                             };
                         } else {
-                            if ((!(typeOf _unit in _lckClss) || !(_unit in _lckPlyr)) && (_pos in _lckPosn)) then {
-                                moveOut _unit;
-                                titleText [_lckMsgs,"PLAIN DOWN",0.5];
+                            if !(_unit in _lckPlyr) then {
+                                if ((!(typeOf _unit in _lckClss)) && (_pos in _lckPosn)) then {
+                                    //systemChat "Player not in list of players!";
+                                    moveOut _unit;
+                                    titleText [_lckMsgs,"PLAIN DOWN",0.5];
+                                };
                             };
                         };
                     } else {
-                        // LOCK BY CLASS ONLY
-                        if ((!(typeOf _unit in _lckClss) || !(_unit in _lckPlyr)) && (_pos in _lckPosn)) then {
-                            moveOut _unit;
-                            titleText [_lckMsgs,"PLAIN DOWN",0.5];
+                        // LOCK BY CLASS/PLAYER ONLY
+                        if !(_unit in _lckPlyr) then {
+                            if (!(typeOf _unit in _lckClss) && (_pos in _lckPosn)) then {
+                                moveOut _unit;
+                                titleText [_lckMsgs,"PLAIN DOWN",0.5];
+                            };
                         };
                     };
                 };
@@ -122,22 +127,26 @@ if (count _lockArray > 0) then {
                             };
                         } else {
                             // Unit on correct side
-                            if ((!(typeOf _unit in _lckClss) || !(_unit in _lckPlyr)) && (_pos in _lckPosn)) then {
-                                // But incorrect role for the position it's in
+                            if !(_unit in _lckPlyr) then {
+                                if (!(typeOf _unit in _lckClss) && (_pos in _lckPosn)) then {
+                                    // But incorrect role for the position it's in
+                                    moveOut _unit;
+                                    _unit assignAsCargo _veh;
+                                    _unit moveInCargo _veh;
+                                    titleText [_lckMsgs,"PLAIN DOWN",0.5];
+                                };
+                            };
+                        };
+                    } else {
+                        // LOCK BY CLASS/PLAYER ONLY
+                        if !(_unit in _lckPlyr) then {
+                            if (!(typeOf _unit in _lckClss) && (_pos in _lckPosn)) then {
+                                // Unit is in position it shouldn't be
                                 moveOut _unit;
                                 _unit assignAsCargo _veh;
                                 _unit moveInCargo _veh;
                                 titleText [_lckMsgs,"PLAIN DOWN",0.5];
                             };
-                        };
-                    } else {
-                        // LOCK BY CLASS ONLY
-                        if ((!(typeOf _unit in _lckClss) || !(_unit in _lckPlyr)) && (_pos in _lckPosn)) then {
-                            // Unit is in position it shouldn't be
-                            moveOut _unit;
-                            _unit assignAsCargo _veh;
-                            _unit moveInCargo _veh;
-                            titleText [_lckMsgs,"PLAIN DOWN",0.5];
                         };
                     };
                 };
