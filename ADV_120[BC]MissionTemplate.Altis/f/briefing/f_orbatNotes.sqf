@@ -82,7 +82,7 @@ waitUntil { !isNil "bc_playerBaseChannel"; };
     // List medics too.
     {
         if (getNumber (configFile >> "CfgVehicles" >> typeOf _x >> "attendant") == 1 && {_x != leader group _x}) then {
-            _orbatText = _orbatText + format["      + [M] %1",name _x] + "<br />";
+            _orbatText = _orbatText + format["      [M] %1",name _x] + "<br />";
         };
     } forEach units _x;
 } forEach _groups;
