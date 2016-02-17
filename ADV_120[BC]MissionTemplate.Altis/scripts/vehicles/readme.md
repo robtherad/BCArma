@@ -13,7 +13,7 @@ By default all vehicles that are managed by the locking script have their cargo 
 The way you allow vehicles to be controlled by the locking script is to enter them into the array `_lockArray` in `settings.sqf` in the vehicles folder. 
 
 ```
-    All entries should be in the following format:
+        All entries should be in the following format:
     [Vehicle, [Sides], [Positions], [Classes], "Message"]
     
 ----------
@@ -63,6 +63,12 @@ The way you allow vehicles to be controlled by the locking script is to enter th
     ex2: [opforAPC, [east], [0,1,1,0], ["O_crew_F"]]   // Only OPFOR can be passengers. Only OPFOR crew can drive/gun/command. Default lock message.
     ex3: [bluforAPC, [], [1,1,1,0], ["B_crew_F"]]   // Anyone can be a passenger, but only BLUFOR crewmen can drive, gun, or command
     ex4: [indforTruck, [independent], [0,0,0,0], []]   // Only INDFOR can enter the truck. No position restrictions for them. 
+    ex5: // separate entries by a comma and then a line break as shown below
+        [bluforAPC1, [west], [1,1,1,0], ["B_crew_F"], "Only Warthog 1 can crew this."],
+        [bluforAPC2, [west], [1,1,1,0], ["B_crew_F"], "Only Warthog 2 can crew this."], 
+        [bluforAPC3, [west], [1,1,1,0], ["B_crew_F"], "Only Warthog 3 can crew this."]
 
+        
+    Syntax:
     [ Vehicle, [Sides], [Driver, Commander, Gunner, Cargo], [Classes], "Message"]
 ```
