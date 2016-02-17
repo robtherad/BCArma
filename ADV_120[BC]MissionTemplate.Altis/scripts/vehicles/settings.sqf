@@ -3,7 +3,7 @@ _lockArray = [
 // ====================================================================================
 /*
     All entries should be in the following format:
-    [Vehicle, [Sides], [Positions], [Classes], "Message"]
+    [Vehicle, [Sides], [Positions], [Classes], [Players], "Message"]
     
 ----------
     Vehicle: The name of the vehicle that you want to lock.
@@ -39,6 +39,14 @@ _lockArray = [
             ex2. ["B_officer_F"]                    - Only BLUFOR officers can enter the locked positions of the vehicle.
             ex3. []                                 - Nobody can enter the locked positions of the vehicle.
 ----------
+    Players: The names given to playable characters in the editor. These characters will be able to enter locked slots in the vehicle regardless of their side or class.
+        
+        You can have as many or as few names as you want.
+            
+            ex1. [bluforPilot1, bluforPilot2]           - These two characters will be able to enter the locked positions of the vehicle.
+            ex2. []                                     - Nobody specific characters will be able to enter the locked positions of the vehicle. Players with the correct class and side will still be able to however.
+            ex3. [bluforCrewman]                        - This one character can enter locked positions of the vehicle.
+----------
     Message: A custom message to display when a player isn't able to enter a locked vehicle or switch seats to a locked position.
 
         This is an optional message in case you want to give more information about why the player is unable to enter the vehicle for whatever reason. By default a message will pop up saying "Your class/side isn't able to access this vehicle/role.".
@@ -46,23 +54,24 @@ _lockArray = [
         ex1. "Only BLUFOR are allowed to access this vehicle."
 ----------
     Syntax: 
-    [Vehicle, [Sides], [Driver, Commander, Gunner, Cargo], [Classes], "Message"]
+    [Vehicle, [Sides], [Driver, Commander, Gunner, Cargo], [Classes], [Players], "Message"]
     
-    ex1: [bluforAPC, [west], [1,1,1,0], ["B_crew_F"], "Non-Default Lock message."]   // Only BLUFOR can be passengers. Only BLUFOR crew can drive/gun/command. Non default lock message.
-    ex2: [opforAPC, [east], [0,1,1,0], ["O_crew_F"]]   // Only OPFOR can be passengers. Only OPFOR crew can drive/gun/command. Default lock message.
-    ex3: [bluforAPC, [], [1,1,1,0], ["B_crew_F"]]   // Anyone can be a passenger, but only BLUFOR crewmen can drive, gun, or command
-    ex4: [indforTruck, [independent], [0,0,0,0], []]   // Only INDFOR can enter the truck. No position restrictions for them. 
+    ex1: [bluforAPC, [west], [1,1,1,0], ["B_crew_F"], [], "Non-Default Lock message."]   // Only BLUFOR can be passengers. Only BLUFOR crew can drive/gun/command. Non default lock message.
+    ex2: [opforAPC, [east], [0,1,1,0], ["O_crew_F"], []]   // Only OPFOR can be passengers. Only OPFOR crew can drive/gun/command. Default lock message.
+    ex3: [bluforAPC, [], [1,1,1,0], ["B_crew_F"], [opforSmarty]]   // Anyone can be a passenger, but only BLUFOR crewmen can drive, gun, or command. The player named opforSmarty can also drive/gun/command the vehicle.
+    ex4: [indforTruck, [independent], [0,0,0,0], [], [opforLeader]   // Only INDFOR can enter the truck. No position restrictions for them. The player named opforLeader can also enter the truck without any restrictions.
     ex5: // Separate entries by a comma and then a line break as shown below
-        [bluforAPC1, [west], [1,1,1,0], ["B_crew_F"], "Only Warthog 1 can crew this."],
-        [bluforAPC2, [west], [1,1,1,0], ["B_crew_F"], "Only Warthog 2 can crew this."], 
-        [bluforAPC3, [west], [1,1,1,0], ["B_crew_F"], "Only Warthog 3 can crew this."]
+        [bluforAPC1, [west], [1,1,1,0], ["B_crew_F"], [], "Only Warthog 1 can crew this."],
+        [bluforAPC2, [west], [1,1,1,0], ["B_crew_F"], [], "Only Warthog 2 can crew this."], 
+        [bluforAPC3, [west], [1,1,1,0], ["B_crew_F"], [], "Only Warthog 3 can crew this."]
 
         
     Syntax:
-    [ Vehicle, [Sides], [Driver, Commander, Gunner, Cargo], [Classes], "Message"]
+    [ Vehicle, [Sides], [Driver, Commander, Gunner, Cargo], [Classes], [Players], "Message"]
 */
 
 // Separate entries with a comma and a line break!
+
 
 
 // Always make sure there's no comma after the last entry!
