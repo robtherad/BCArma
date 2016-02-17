@@ -69,8 +69,7 @@ _lockArray = [
     Syntax:
     [ Vehicle, [Sides], [Driver, Commander, Gunner, Cargo], [Classes], [Players], "Message"]
 */
-
-// Separate entries with a comma and a line break!
+// Place entries below. Make sure to separate entries with a comma and a line break!
 
 
 
