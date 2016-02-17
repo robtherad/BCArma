@@ -69,3 +69,6 @@ _lockArray = [
 ];
 
 // ====================================================================================
+
+// When true, clears the cargo of all vehicles that are handled by the locking script.
+_clearVehicleCargo = true; // true OR false

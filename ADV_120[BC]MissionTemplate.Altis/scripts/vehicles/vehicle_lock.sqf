@@ -2,8 +2,7 @@
 
 if (count _lockArray > 0) then {
     { // forEach lockArray
-        // [ Vehicle, Sides able to enter whole vehicle, Positions to lock, Classes able to enter locked positions, Message to display if locked (OPTIONAL)];
-
+        // Unpack variables
         _vehicle = _x select 0;
         _lockedSides = _x select 1;
         _lockedPositions = _x select 2;
@@ -11,6 +10,15 @@ if (count _lockArray > 0) then {
         _lockedMessage = "Your class/side isn't able to access this vehicle/role.";
         if (count _x > 4) then {_lockedMessage = _x select 4;};
         
+        // Clear cargo
+        if (_clearVehicleCargo) then {
+            clearWeaponCargoGlobal _vehicle;
+            clearMagazineCargoGlobal _vehicle;
+            clearBackpackCargoGlobal _vehicle;
+            clearItemCargoGlobal _vehicle;
+        };
+        
+        // Convert array to text
         switch (_lockedPositions) do {
             //DRIVER, GUNNER, COMMANDER, CARGO
             case [0,0,0,0]: { _lockedPositions = []; };
@@ -35,20 +43,13 @@ if (count _lockArray > 0) then {
             case [1,1,1,1]: { _lockedPositions = ["driver","gunner","commander","cargo"]; };
         };
         
-        
         // ==================================================
         // Set variables to vehicle
         _vehicle setVariable ["bc_lockedSides", _lockedSides];
         _vehicle setVariable ["bc_lockedPositions", _lockedPositions];
         _vehicle setVariable ["bc_lockedClasses", _lockedClasses];
         _vehicle setVariable ["bc_lockedMessage", _lockedMessage];
-        
-        
-        
-        
         // ==================================================
-        
-        
         
         if (!isNil "_vehicle") then {
             
@@ -130,9 +131,6 @@ if (count _lockArray > 0) then {
                     };
                 };
             }]; //End addEventHandler
-            
-            
-            
         };
     } forEach _lockArray;
 };
