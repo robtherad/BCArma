@@ -52,7 +52,7 @@ _lockArray = [
     ex2: [opforAPC, [east], [0,1,1,0], ["O_crew_F"]]   // Only OPFOR can be passengers. Only OPFOR crew can drive/gun/command. Default lock message.
     ex3: [bluforAPC, [], [1,1,1,0], ["B_crew_F"]]   // Anyone can be a passenger, but only BLUFOR crewmen can drive, gun, or command
     ex4: [indforTruck, [independent], [0,0,0,0], []]   // Only INDFOR can enter the truck. No position restrictions for them. 
-    ex5: // separate entries by a comma and then a line break as shown below
+    ex5: // Separate entries by a comma and then a line break as shown below
         [bluforAPC1, [west], [1,1,1,0], ["B_crew_F"], "Only Warthog 1 can crew this."],
         [bluforAPC2, [west], [1,1,1,0], ["B_crew_F"], "Only Warthog 2 can crew this."], 
         [bluforAPC3, [west], [1,1,1,0], ["B_crew_F"], "Only Warthog 3 can crew this."]
@@ -62,6 +62,7 @@ _lockArray = [
     [ Vehicle, [Sides], [Driver, Commander, Gunner, Cargo], [Classes], "Message"]
 */
 
+// Separate entries with a comma and a line break!
 
 
 // Always make sure there's no comma after the last entry!
