@@ -1,7 +1,7 @@
 ### Vehicle Locking
 This script allows mission makers to easily manage permissions for vehicles in their scenario. 
 
-The mission maker can restrict entry to vehicles based on player side and/or player class. Entry to the vehicle overall can be determined by player side and then entry to specific positions in the vehicle such as the driver or gunner seat can be restricted by player class. This allows a mission designer to create scenarios where only a limited number of players are able to use assets
+The mission maker can restrict entry to vehicles based on any combination player side, player class, or player role. The restriction of entry by side can be combined with restriction of entry by specific classes to make sure vehicles such as APCs and helicopters are able to carry infantry but infantry are unable to control those vehicles. The restriction of entry by side can also be used to ensure one team is unable to capture another team's assets and use them which is useful in scenarios where one side would not be trained in the operation of another side's assets.
 
 ### To enable
 Add the following line to the `init.sqf` file in the root of the mission folder:
