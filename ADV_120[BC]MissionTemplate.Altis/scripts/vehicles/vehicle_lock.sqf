@@ -1,5 +1,20 @@
 #include "settings.sqf";
 
+// Clear cargo if setting is active
+if (isServer) then {
+    if (_clearVehicleCargo) then {
+        { 
+            _vehicleC = _x select 0;
+            clearWeaponCargoGlobal _vehicleC;
+            clearMagazineCargoGlobal _vehicleC;
+            clearBackpackCargoGlobal _vehicleC;
+            clearItemCargoGlobal _vehicleC;
+        } forEach _lockArray;
+    };
+};
+
+if (isDedicated) exitWith {};
+
 if (count _lockArray > 0) then {
     { // forEach lockArray
         // Unpack variables
@@ -10,14 +25,6 @@ if (count _lockArray > 0) then {
         _lockedPlayers = _x select 4;
         _lockedMessage = "Your class/side isn't able to access this vehicle/role.";
         if (count _x > 5) then {_lockedMessage = _x select 5;};
-        
-        // Clear cargo
-        if (_clearVehicleCargo) then {
-            clearWeaponCargoGlobal _vehicle;
-            clearMagazineCargoGlobal _vehicle;
-            clearBackpackCargoGlobal _vehicle;
-            clearItemCargoGlobal _vehicle;
-        };
         
         // Convert array to text
         switch (_lockedPositions) do {
