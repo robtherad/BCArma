@@ -17,31 +17,53 @@ if (!isServer) exitWith {};
 //Fill this array with the names of all markers you want to be considered for the randomized start.
 #include "settings.sqf";
 
-//Select a marker from the array at random.
-bc_randomMarker = _markerArray call BIS_fnc_selectRandom;
+_randomTeamArray = []; //
 
-//Broadcast the selected marker to all clients on the server.
-publicVariable "bc_randomMarker";
-
-//Move any objects which are defined in _objectArray
-if (!isNil "_objectArray") then {
-    _startMarkPos = getMarkerPos bc_randomMarker;
-    _placeMarkerPos = getMarkerPos "placemark";
-    {
-        if (isNil {_objectArray select _forEachIndex}) then {
-            _str = "[randomstart] ERROR - Tried to move non-existent object."; 
-            _str remoteExecCall ["systemChat", 0];
-        } else { 
-            //Find object distance and direction to the placement marker.
-            _dis = [_x, _placeMarkerPos] call BIS_fnc_distance2D;
-            _dir = (([_x, _placeMarkerPos] call BIS_fnc_dirTo) + (markerDir bc_randomMarker)) - 180;
-            
-            //Returns a position that is a specified distance and compass direction from the passed position or object.
-            _newPos = [_startMarkPos, _dis, _dir] call BIS_fnc_relPos;
-            
-            //Move object
-            _x setPos [(_newPos select 0), (_newPos select 1)];
-            _x setDir ((markerDir bc_randomMarker) + (getDir _x));
-        };
-    } forEach _objectArray;
+//Select a marker from each array at random then broadcast to all clients
+if (_randomizeWest && (count _markerArrayWest > 0)) then { 
+    bc_randomMarkerWest = _markerArrayWest call BIS_fnc_selectRandom; 
+    publicVariable "bc_randomMarkerWest";
+    _randomTeamArray pushBack [_placeMarkerWest, bc_randomMarkerWest, _objectArrayWest , "WEST"];
 };
+if (_randomizeEast && (count _markerArrayEast > 0)) then { 
+    bc_randomMarkerEast = _markerArrayEast call BIS_fnc_selectRandom; 
+    publicVariable "bc_randomMarkerEast";
+    _randomTeamArray pushBack [_placeMarkerEast, bc_randomMarkerEast, _objectArrayEast, "EAST"];
+};
+if (_randomizeIndependent && (count _markerArrayIndependent > 0)) then { 
+    bc_randomMarkerIndependent = _markerArrayIndependent call BIS_fnc_selectRandom; 
+    publicVariable "bc_randomMarkerIndependent";
+    _randomTeamArray pushBack [_placeMarkerIndependent, bc_randomMarkerIndependent, _objectArrayIndependent, "INDEPENDENT"];
+};
+
+{ //forEach _randomTeamArray
+
+    // Unpack variables
+    _placeMark = _x select 0;
+    _randomMark = _x select 1;
+    _objectArray = _x select 2;
+    _teamName = _x select 3;
+    
+    //Move any objects which are defined in _objectArray
+    if (count _objectArray > 0) then {
+        _startMarkPos = getMarkerPos _randomMark;
+        _placeMarkerPos = getMarkerPos _placeMark;
+        {
+            if (isNil {_objectArray select _forEachIndex}) then {
+                _str = "[randomstart] ERROR - Tried to move non-existent object for team: " + _teamName; 
+                _str remoteExecCall ["systemChat", 0];
+            } else { 
+                //Find object distance and direction to the placement marker.
+                _dis = _x distance2D _placeMarkerPos;
+                _dir = ((_x getDir _placeMarkerPos) + (markerDir _randomMark)) - 180;
+                
+                //Returns a position that is a specified distance and compass direction from the passed position or object.
+                _newPos = _startMarkPos getPos [_dis, _dir];
+                
+                //Move object
+                _x setPos [(_newPos select 0), (_newPos select 1)];
+                _x setDir ((markerDir _randomMark) + (getDir _x));
+            };
+        } forEach _objectArray;
+    };
+} forEach _randomTeamArray;

@@ -27,7 +27,7 @@ _groups = [
 //     ex: [1,6,[1,2,3,4]] - mainChannel is ch1, altChannel is ch6, ch2 is 1 unit MHz higher than ch1, etc.
 
 // BLUFOR
-["Blue_HQ","BLU HQ","Headquarters",2, [1, 6, [1, 2, 3, 4, .1]] ],
+["Blue_HQ","BLU CMD","Command",2, [1, 6, [1, 2, 3, 4, .1]] ],
 
 ["Blue_A","A","Alpha Squad",1, [2, 1, [1, 1.1, 1.2]] ],
 ["Blue_A1","A1","Alpha One",0, [3, 2, [1, 1.1, 1.2]] ],
@@ -49,7 +49,7 @@ _groups = [
 
 
 // REDFOR
-["Red_HQ","RED HQ","Headquarters",2, [1, 6, [1, 2, 3, 4, .1]] ],
+["Red_HQ","RED CMD","Command",2, [1, 6, [1, 2, 3, 4, .1]] ],
 
 ["Red_E","E","Echo Squad",1, [2, 1, [1, 1.1, 1.2]] ],
 ["Red_E1","E1","Echo One",0, [3, 2, [1, 1.1, 1.2]] ],
@@ -70,7 +70,7 @@ _groups = [
 ["Red_H4","H4","Hotel Four",0, [6, 2, [4, 4.1, 4.2, 4.3, 4.4]] ],
 
 // INDFOR
-["Green_HQ","IND HQ","Headquarters",2, [1, 6, [1, 2, 3, 4, .1]] ],
+["Green_HQ","IND CMD","Command",2, [1, 6, [1, 2, 3, 4, .1]] ],
 
 ["Green_I","I","India Squad",1, [2, 1, [1, 1.1, 1.2]] ],
 ["Green_I1","I1","India One",0, [3, 2, [1, 1.1, 1.2]] ],

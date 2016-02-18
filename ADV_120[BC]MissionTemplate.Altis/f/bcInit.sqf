@@ -47,7 +47,7 @@ disableRemoteSensors true;
 //====================================================================================================
 //Pre Briefing Client Scripts
 if (!isDedicated) then {
-    bc_core_showTags = [BC_fnc_core_showTags, 0.05, []] call CBA_fnc_addPerFrameHandler;
+    bc_core_showTags = [BC_fnc_core_showTags, 0, []] call CBA_fnc_addPerFrameHandler;
     bc_radHandle1 = [BC_fnc_radio_waitGear, 0.1, []] call CBA_fnc_addPerFrameHandler;
     bc_end_clientWait = [BC_fnc_end_clientWait, 5, []] call CBA_fnc_addPerFrameHandler;
 };

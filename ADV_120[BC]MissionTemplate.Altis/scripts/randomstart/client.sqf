@@ -14,31 +14,56 @@ DO NOT FORGET TO CALL THE SERVER SIDE OF THIS SCRIPT FROM INIT.SQF!
 [] execVM "scripts\randomstart\server.sqf";
 */
 if (isDedicated) exitWith {};
-private ["_ranTeam","_placeMarkerPos","_startMarkerPos","_startMark","_startMarkTwo","_text","_color","_dis","_dir","_newPos"];
+private ["_randomizeTeam","_randomMarkVar","_placemark","_text","_color","_placeMarkerPos","_randomMarker","_startMarkerPos","_startMark","_startMarkTwo","_dis","_dir","_newPos"];
 
 #include "settings.sqf";
-//Get the position of the placement marker. Place this nearby the team that is being moved.
-_placeMarkerPos = getMarkerPos "placemark";
 
-//Wait for server to select a marker from the list.
-waitUntil {not isNil "bc_randomMarker"};
-_startMarkPos = getMarkerPos bc_randomMarker;
-
-//Set up correct info based on team
-switch (_ranTeam) do {
-    case west: { _text = "BLUFOR Starting Zone"; _color = "ColorBLUFOR";};
-    case east: { _text = "OPFOR Starting Zone"; _color = "ColorOPFOR";};
-    case independent: { _text = "INDFOR Starting Zone"; _color = "ColorGUER";};
-    default { systemChat "[BC] randomstart - Invalid entry for _ranTeam."; _text = "ERROR - Invalid Team"; _color = "ColorCivilian";};
+// Get correct settings for player side
+switch (side player) do {
+    case west: {
+        _randomizeTeam = _randomizeWest;
+        _placemark = _placeMarkerWest;
+        _text = "BLUFOR Starting Zone"; 
+        _color = "ColorBLUFOR";
+    };
+    case east: {
+        _randomizeTeam = _randomizeEast;
+        _placemark = _placeMarkerEast;
+        _text = "OPFOR Starting Zone"; 
+        _color = "ColorOPFOR";
+    };
+    case independent: {
+        _randomizeTeam = _randomizeIndependent;
+        _placemark = _placeMarkerIndependent;
+        _text = "INDFOR Starting Zone"; 
+        _color = "ColorGUER";
+    };
+    default {_randomizeTeam = false;};
 };
 
-//Make sure player is on the correct team.
-if (side player == _ranTeam) then {    
+// Ensure player is supposed to be randomly placed
+if (_randomizeTeam) then {
+    //Get the position of the placement marker.
+    _placeMarkerPos = getMarkerPos _placemark;
+
+    //Wait for server to select a marker from the list.
+    waitUntil {
+        if (isNil "_randomMarker") then {
+            switch (side player) do {
+            case west: {_randomMarker = missionNamespace getVariable ["bc_randomMarkerWest",nil];};
+            case east: {_randomMarker = missionNamespace getVariable ["bc_randomMarkerEast",nil];};
+            case independent: {_randomMarker = missionNamespace getVariable ["bc_randomMarkerIndependent",nil];};
+            };
+            false
+        } else {true};
+    };
+    _startMarkPos = getMarkerPos _randomMarker;
+
     //Boundary marker for starting location
     _startMark = createMarkerLocal ["startZone",_startMarkPos];
     _startMark setMarkerShapeLocal "ELLIPSE";
     _startMark setMarkerSizeLocal [50, 50];
-    _startMark setMarkerDirLocal (markerDir bc_randomMarker);
+    _startMark setMarkerDirLocal (markerDir _randomMarker);
     _startMark setMarkerBrushLocal "SolidBorder";
     _startMark setMarkerColorLocal _color;
     //Text marker for starting location
@@ -46,17 +71,23 @@ if (side player == _ranTeam) then {
     _startMarkTwo setMarkerShapeLocal "ICON";
     _startMarkTwo setMarkerColorLocal "ColorBlack";
     _startMarkTwo setMarkerTypeLocal "hd_dot";
-    _startMarkTwo setMarkerDirLocal (markerDir bc_randomMarker);
+    _startMarkTwo setMarkerDirLocal (markerDir _randomMarker);
     _startMarkTwo setMarkerTextLocal _text;
     
     //Find player distance and direction to the placement marker.
-    _dis = [player, _placeMarkerPos] call BIS_fnc_distance2D;
-    _dir = (([player, _placeMarkerPos] call BIS_fnc_dirTo) + (markerDir bc_randomMarker)) - 180;
+    _dis = player distance2D _placeMarkerPos;
+    _dir = ((player getDir _placeMarkerPos) + (markerDir _randomMarker)) - 180;
     
     //Returns a position that is a specified distance and compass direction from the passed position or object.
-    _newPos = [_startMarkPos, _dis, _dir] call BIS_fnc_relPos;
+    _newPos = _startMarkPos getPos [_dis, _dir];
     
     //Move player
     player setPos [(_newPos select 0), (_newPos select 1)];
-    player setDir (markerDir bc_randomMarker);
+    player setDir (markerDir _randomMarker);
+    
+    waitUntil {time > 0;};
+    titleText ["Your team has been started in a location unknown to the enemy.\n\nDO NOT fire your weapon during safe start or the enemy will know where you are.","PLAIN DOWN", 1.5];
+    if (!isNil "bc_randomMarkerWest") then {diag_log format["[randomstart] BLUFOR started at = %1",bc_randomMarkerWest];};
+    if (!isNil "bc_randomMarkerEast") then {diag_log format["[randomstart] REDFOR started at = %1",bc_randomMarkerEast];};
+    if (!isNil "bc_randomMarkerIndependent") then {diag_log format["[randomstart] GREENFOR started at = %1",bc_randomMarkerIndependent];};
 };
