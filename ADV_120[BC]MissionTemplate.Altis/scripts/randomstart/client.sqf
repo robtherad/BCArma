@@ -75,8 +75,8 @@ if (_randomizeTeam) then {
     _startMarkTwo setMarkerTextLocal _text;
     
     //Find player distance and direction to the placement marker.
-    _dis = [player, _placeMarkerPos] call BIS_fnc_distance2D;
-    _dir = (([player, _placeMarkerPos] call BIS_fnc_dirTo) + (markerDir _randomMarker)) - 180;
+    _dis = player distance2D _placeMarkerPos;
+    _dir = ((player getDir _placeMarkerPos) + (markerDir _randomMarker)) - 180;
     
     //Returns a position that is a specified distance and compass direction from the passed position or object.
     _newPos = [_startMarkPos, _dis, _dir] call BIS_fnc_relPos;

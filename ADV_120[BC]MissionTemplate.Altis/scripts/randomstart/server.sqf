@@ -54,8 +54,8 @@ if (_randomizeIndependent && (count _markerArrayIndependent > 0)) then {
                 _str remoteExecCall ["systemChat", 0];
             } else { 
                 //Find object distance and direction to the placement marker.
-                _dis = [_x, _placeMarkerPos] call BIS_fnc_distance2D;
-                _dir = (([_x, _placeMarkerPos] call BIS_fnc_dirTo) + (markerDir _randomMark)) - 180;
+                _dis = _x distance2D _placeMarkerPos;
+                _dir = ((_x getDir _placeMarkerPos) + (markerDir _randomMark)) - 180;
                 
                 //Returns a position that is a specified distance and compass direction from the passed position or object.
                 _newPos = [_startMarkPos, _dis, _dir] call BIS_fnc_relPos;
