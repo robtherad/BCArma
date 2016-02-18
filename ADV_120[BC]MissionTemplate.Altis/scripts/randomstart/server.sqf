@@ -58,7 +58,7 @@ if (_randomizeIndependent && (count _markerArrayIndependent > 0)) then {
                 _dir = ((_x getDir _placeMarkerPos) + (markerDir _randomMark)) - 180;
                 
                 //Returns a position that is a specified distance and compass direction from the passed position or object.
-                _newPos = [_startMarkPos, _dis, _dir] call BIS_fnc_relPos;
+                _newPos = _startMarkPos getPos [_dis, _dir];
                 
                 //Move object
                 _x setPos [(_newPos select 0), (_newPos select 1)];
