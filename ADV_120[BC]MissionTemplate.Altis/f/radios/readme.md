@@ -18,3 +18,5 @@ All radio settings are determined by the definitions in the `setGroupIDs` module
 
 ###Disable
 In `'f\bcInit.sqf'` remove the line `bc_radHandle1 = [BC_fnc_radio_waitGear, 0.1, []] call CBA_fnc_addPerFrameHandler;`.
+
+You will also need to edit a line in the `'f\briefing'` folder. See the readme file in that folder for more information.
