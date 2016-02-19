@@ -19,7 +19,7 @@ bc_ch1 = bc_playerBaseChannel; //All players will be able to switch to channel 1
 //        Try to keep offsets single digit or the channel may not be set if playerBaseChannel is a high number.
 //        Frequencies can only have one decimal place.
 //     ex: [1,6,[1,2,3,4]] - mainChannel is ch1, altChannel is ch6, ch2 is 1 unit MHz higher than ch1, etc.
-_radioSettings = (group player) getVariable ["bc_radioSettings",[0,1,[0]]];
+_radioSettings = (group player) getVariable ["bc_radioSettings",[1,2,[0]]];
 bc_curChan = _radioSettings select 0;
 bc_altChan = _radioSettings select 1;
 _channelArray = _radioSettings select 2;
