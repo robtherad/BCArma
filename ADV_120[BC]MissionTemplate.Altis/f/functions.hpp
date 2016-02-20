@@ -4,6 +4,7 @@ class core {
     class core_mpKilled{};
     class core_showTags{};
     class core_addRatingEH{postInit = 1;};
+    class core_playerBoundsCheck{};
 };
 class radios {
     file = "f\radios";
