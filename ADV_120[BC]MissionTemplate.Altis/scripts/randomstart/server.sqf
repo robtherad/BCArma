@@ -21,17 +21,17 @@ _randomTeamArray = []; //
 
 //Select a marker from each array at random then broadcast to all clients
 if (_randomizeWest && (count _markerArrayWest > 0)) then { 
-    bc_randomMarkerWest = _markerArrayWest call BIS_fnc_selectRandom; 
+    bc_randomMarkerWest = selectRandom _markerArrayWest; 
     publicVariable "bc_randomMarkerWest";
     _randomTeamArray pushBack [_placeMarkerWest, bc_randomMarkerWest, _objectArrayWest , "WEST"];
 };
 if (_randomizeEast && (count _markerArrayEast > 0)) then { 
-    bc_randomMarkerEast = _markerArrayEast call BIS_fnc_selectRandom; 
+    bc_randomMarkerEast = selectRandom _markerArrayEast; 
     publicVariable "bc_randomMarkerEast";
     _randomTeamArray pushBack [_placeMarkerEast, bc_randomMarkerEast, _objectArrayEast, "EAST"];
 };
 if (_randomizeIndependent && (count _markerArrayIndependent > 0)) then { 
-    bc_randomMarkerIndependent = _markerArrayIndependent call BIS_fnc_selectRandom; 
+    bc_randomMarkerIndependent = selectRandom _markerArrayIndependent; 
     publicVariable "bc_randomMarkerIndependent";
     _randomTeamArray pushBack [_placeMarkerIndependent, bc_randomMarkerIndependent, _objectArrayIndependent, "INDEPENDENT"];
 };
