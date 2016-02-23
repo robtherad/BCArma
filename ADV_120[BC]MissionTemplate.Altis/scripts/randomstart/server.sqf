@@ -20,23 +20,57 @@ if (!isServer) exitWith {};
 _randomTeamArray = []; //
 
 //Select a marker from each array at random then broadcast to all clients
+// BLUFOR
 if (_randomizeWest && (count _markerArrayWest > 0)) then { 
     bc_randomMarkerWest = selectRandom _markerArrayWest; 
     publicVariable "bc_randomMarkerWest";
     _randomTeamArray pushBack [_placeMarkerWest, bc_randomMarkerWest, _objectArrayWest , "WEST"];
 };
+// OPFOR
 if (_randomizeEast && (count _markerArrayEast > 0)) then { 
     bc_randomMarkerEast = selectRandom _markerArrayEast; 
-    while {bc_randomMarkerEast == bc_randomMarkerWest || bc_randomMarkerEast == nil} do {
-        bc_randomMarkerEast = selectRandom _markerArrayEast; 
+    _overlapWest = true;
+    while {_overlapWest} do {
+        if (!isNil "bc_randomMarkerWest") then {
+            if (bc_randomMarkerWest == bc_randomMarkerEast) then {
+                bc_randomMarkerEast = selectRandom _markerArrayEast; 
+                _overlapWest = true;
+            } else {
+                _overlapWest = false;
+            };
+        } else {
+            _overlapWest = false;
+        };
     };
     publicVariable "bc_randomMarkerEast";
     _randomTeamArray pushBack [_placeMarkerEast, bc_randomMarkerEast, _objectArrayEast, "EAST"];
 };
+// INDFOR
 if (_randomizeIndependent && (count _markerArrayIndependent > 0)) then { 
     bc_randomMarkerIndependent = selectRandom _markerArrayIndependent; 
-    while {bc_randomMarkerIndependent == bc_randomMarkerWest || bc_randomMarkerIndependent == bc_randomMarkerEast || bc_randomMarkerIndependent == nil} do {
-        bc_randomMarkerIndependent = selectRandom _markerArrayIndependent; 
+    _overlapWest = true;
+    _overlapEast = true;
+    while {_overlapWest || _overlapEast} do {
+        if (!isNil "bc_randomMarkerWest") then {
+            if (bc_randomMarkerWest == bc_randomMarkerIndependent) then {
+                bc_randomMarkerIndependent = selectRandom _markerArrayIndependent;  
+                _overlapWest = true;
+            } else {
+                _overlapWest = false;
+            };
+        } else {
+            _overlapWest = false;
+        };
+        if (!isNil "bc_randomMarkerEast") then {
+            if (bc_randomMarkerEast == bc_randomMarkerIndependent) then {
+                bc_randomMarkerIndependent = selectRandom _markerArrayIndependent;  
+                _overlapEast = true;
+            } else {
+                _overlapEast = false;
+            };
+        } else {
+            _overlapEast = false;
+        };
     };
     publicVariable "bc_randomMarkerIndependent";
     _randomTeamArray pushBack [_placeMarkerIndependent, bc_randomMarkerIndependent, _objectArrayIndependent, "INDEPENDENT"];
