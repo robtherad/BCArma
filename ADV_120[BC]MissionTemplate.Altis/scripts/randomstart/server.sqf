@@ -26,6 +26,7 @@ if (_randomizeWest && (count _markerArrayWest > 0)) then {
     _randomTeamArray pushBack [_placeMarkerWest, bc_randomMarkerWest, _objectArrayWest , "WEST"];
 };
 if (_randomizeEast && (count _markerArrayEast > 0)) then { 
+    bc_randomMarkerEast = selectRandom _markerArrayEast; 
     while {bc_randomMarkerEast == bc_randomMarkerWest || bc_randomMarkerEast == nil} do {
         bc_randomMarkerEast = selectRandom _markerArrayEast; 
     };
@@ -33,6 +34,7 @@ if (_randomizeEast && (count _markerArrayEast > 0)) then {
     _randomTeamArray pushBack [_placeMarkerEast, bc_randomMarkerEast, _objectArrayEast, "EAST"];
 };
 if (_randomizeIndependent && (count _markerArrayIndependent > 0)) then { 
+    bc_randomMarkerIndependent = selectRandom _markerArrayIndependent; 
     while {bc_randomMarkerIndependent == bc_randomMarkerWest || bc_randomMarkerIndependent == bc_randomMarkerEast || bc_randomMarkerIndependent == nil} do {
         bc_randomMarkerIndependent = selectRandom _markerArrayIndependent; 
     };
