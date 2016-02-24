@@ -87,7 +87,7 @@ if (_randomizeTeam) then {
 
     waitUntil {time > 0;};
     titleText ["Your team has been started in a location unknown to the enemy.\n\nDO NOT fire your weapon during safe start or the enemy will know where you are.","PLAIN DOWN", 1.5];
-    if (!isNil "bc_rs_WestMark") then {diag_log format["[randomstart] BLUFOR started at = %1",bc_rs_WestMark];};
-    if (!isNil "bc_rs_EastMark") then {diag_log format["[randomstart] REDFOR started at = %1",bc_rs_EastMark];};
-    if (!isNil "bc_rs_GuerMark") then {diag_log format["[randomstart] GREENFOR started at = %1",bc_rs_GuerMark];};
 };
+if (!isNil "bc_rs_WestMark") then {diag_log format["[randomstart] BLUFOR started at = %1",bc_rs_WestMark];};
+if (!isNil "bc_rs_EastMark") then {diag_log format["[randomstart] REDFOR started at = %1",bc_rs_EastMark];};
+if (!isNil "bc_rs_GuerMark") then {diag_log format["[randomstart] GREENFOR started at = %1",bc_rs_GuerMark];};
