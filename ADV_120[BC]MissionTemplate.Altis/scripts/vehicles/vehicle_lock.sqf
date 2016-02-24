@@ -3,7 +3,7 @@
 // Clear cargo if setting is active
 if (isServer) then {
     if (_clearVehicleCargo) then {
-        { 
+        {
             _vehicleC = _x select 0;
             clearWeaponCargoGlobal _vehicleC;
             clearMagazineCargoGlobal _vehicleC;
@@ -25,7 +25,7 @@ if (count _lockArray > 0) then {
         _lockedPlayers = _x select 4;
         _lockedMessage = "Your class/side isn't able to access this vehicle/role.";
         if (count _x > 5) then {_lockedMessage = _x select 5;};
-        
+
         // Convert array to text
         switch (_lockedPositions) do {
             //DRIVER, GUNNER, COMMANDER, CARGO
@@ -50,32 +50,32 @@ if (count _lockArray > 0) then {
             //4
             case [1,1,1,1]: { _lockedPositions = ["driver","gunner","commander","cargo"]; };
         };
-        
+
         // ==================================================
         // Set variables to vehicle
-        _vehicle setVariable ["bc_lockedSides", _lockedSides];
-        _vehicle setVariable ["bc_lockedPositions", _lockedPositions];
-        _vehicle setVariable ["bc_lockedClasses", _lockedClasses];
-        _vehicle setVariable ["bc_lockedPlayers", _lockedPlayers];
-        _vehicle setVariable ["bc_lockedMessage", _lockedMessage];
+        _vehicle setVariable ["bc_lck_Sides", _lockedSides];
+        _vehicle setVariable ["bc_lck_Positions", _lockedPositions];
+        _vehicle setVariable ["bc_lck_Classes", _lockedClasses];
+        _vehicle setVariable ["bc_lck_Players", _lockedPlayers];
+        _vehicle setVariable ["bc_lck_Message", _lockedMessage];
         // ==================================================
-        
+
         if (!isNil "_vehicle") then {
-            
+
             //Add getIn eventHandler
             _vehicle addEventHandler ["GetIn", {
                 private ["_unit", "_veh", "_pos", "_lckClss", "_lckSide", "_lckPosn", "_lckPlyr", "_lckMsgs"];
                 _unit = _this select 2;
                 if (_unit == player) then {
-                
+
                     _veh = _this select 0;
                     _pos = _this select 1;
-                    
-                    _lckClss = _veh getVariable ["bc_lockedClasses", []]; // array
-                    _lckSide = _veh getVariable ["bc_lockedSides",[]]; // array
-                    _lckPosn = _veh getVariable ["bc_lockedPositions",[]]; // array
-                    _lckPlyr = _veh getVariable ["bc_lockedPlayers",[]];
-                    _lckMsgs = _veh getVariable ["bc_lockedMessage",""]; // string
+
+                    _lckClss = _veh getVariable ["bc_lck_Classes", []]; // array
+                    _lckSide = _veh getVariable ["bc_lck_Sides",[]]; // array
+                    _lckPosn = _veh getVariable ["bc_lck_Positions",[]]; // array
+                    _lckPlyr = _veh getVariable ["bc_lck_Players",[]];
+                    _lckMsgs = _veh getVariable ["bc_lck_Message",""]; // string
 
                     if (count _lckSide > 0) then {
                         // LOCK BY SIDE
@@ -106,7 +106,7 @@ if (count _lockArray > 0) then {
                     };
                 };
             }]; //End addEventHandler
-            
+
             //Add switch eventHandler
             _vehicle addEventHandler ["SeatSwitched", {
                 private ["_unit", "_veh", "_pos", "_lckClss", "_lckSide", "_lckPosn", "_lckPlyr", "_lckMsgs"];
@@ -115,13 +115,13 @@ if (count _lockArray > 0) then {
                     _veh = _this select 0;
                     _pos = assignedVehicleRole _unit;
                     _pos = _pos select 0;
-                    
-                    _lckClss = _veh getVariable ["bc_lockedClasses", []]; // array
-                    _lckSide = _veh getVariable ["bc_lockedSides",[]]; // array
-                    _lckPosn = _veh getVariable ["bc_lockedPositions",[]]; // array
-                    _lckPlyr = _veh getVariable ["bc_lockedPlayers",[]];
-                    _lckMsgs = _veh getVariable ["bc_lockedMessage",""]; // string
-                    
+
+                    _lckClss = _veh getVariable ["bc_lck_Classes", []]; // array
+                    _lckSide = _veh getVariable ["bc_lck_Sides",[]]; // array
+                    _lckPosn = _veh getVariable ["bc_lck_Positions",[]]; // array
+                    _lckPlyr = _veh getVariable ["bc_lck_Players",[]];
+                    _lckMsgs = _veh getVariable ["bc_lck_Message",""]; // string
+
                     if (_pos == "Turret") then {_pos = "gunner"};
                     if (count _lckSide > 0) then {
                         // LOCK BY SIDE

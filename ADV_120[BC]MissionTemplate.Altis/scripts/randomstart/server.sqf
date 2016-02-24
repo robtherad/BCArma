@@ -1,5 +1,5 @@
 /*
-This script will allow a team to be randomly placed at one of any predetermined markers. 
+This script will allow a team to be randomly placed at one of any predetermined markers.
 
 For this script to be effective you will need at least three markers. One marker must be called 'placemark' and must be placed near the team that you wish to be moved. The other two markers can be called anything you want but they must be defined in the server.sqf file in the _markerArray on line 18. If you wish to change the team being moved, change the _ranTeam variable on line 18 in the client.sqf file.
 
@@ -21,19 +21,19 @@ _randomTeamArray = []; //
 
 //Select a marker from each array at random then broadcast to all clients
 // BLUFOR
-if (_randomizeWest && (count _markerArrayWest > 0)) then { 
-    bc_randomMarkerWest = selectRandom _markerArrayWest; 
-    publicVariable "bc_randomMarkerWest";
-    _randomTeamArray pushBack [_placeMarkerWest, bc_randomMarkerWest, _objectArrayWest , "WEST"];
+if (_randomizeWest && (count _markerArrayWest > 0)) then {
+    bc_rs_WestMark = selectRandom _markerArrayWest;
+    publicVariable "bc_rs_WestMark";
+    _randomTeamArray pushBack [_placeMarkerWest, bc_rs_WestMark, _objectArrayWest , "WEST"];
 };
 // OPFOR
-if (_randomizeEast && (count _markerArrayEast > 0)) then { 
-    bc_randomMarkerEast = selectRandom _markerArrayEast; 
+if (_randomizeEast && (count _markerArrayEast > 0)) then {
+    bc_rs_EastMark = selectRandom _markerArrayEast;
     _overlapWest = true;
     while {_overlapWest} do {
-        if (!isNil "bc_randomMarkerWest") then {
-            if (bc_randomMarkerWest == bc_randomMarkerEast) then {
-                bc_randomMarkerEast = selectRandom _markerArrayEast; 
+        if (!isNil "bc_rs_WestMark") then {
+            if (bc_rs_WestMark == bc_rs_EastMark) then {
+                bc_rs_EastMark = selectRandom _markerArrayEast;
                 _overlapWest = true;
             } else {
                 _overlapWest = false;
@@ -42,18 +42,18 @@ if (_randomizeEast && (count _markerArrayEast > 0)) then {
             _overlapWest = false;
         };
     };
-    publicVariable "bc_randomMarkerEast";
-    _randomTeamArray pushBack [_placeMarkerEast, bc_randomMarkerEast, _objectArrayEast, "EAST"];
+    publicVariable "bc_rs_EastMark";
+    _randomTeamArray pushBack [_placeMarkerEast, bc_rs_EastMark, _objectArrayEast, "EAST"];
 };
 // INDFOR
-if (_randomizeIndependent && (count _markerArrayIndependent > 0)) then { 
-    bc_randomMarkerIndependent = selectRandom _markerArrayIndependent; 
+if (_randomizeIndependent && (count _markerArrayIndependent > 0)) then {
+    bc_rs_GuerMark = selectRandom _markerArrayIndependent;
     _overlapWest = true;
     _overlapEast = true;
     while {_overlapWest || _overlapEast} do {
-        if (!isNil "bc_randomMarkerWest") then {
-            if (bc_randomMarkerWest == bc_randomMarkerIndependent) then {
-                bc_randomMarkerIndependent = selectRandom _markerArrayIndependent;  
+        if (!isNil "bc_rs_WestMark") then {
+            if (bc_rs_WestMark == bc_rs_GuerMark) then {
+                bc_rs_GuerMark = selectRandom _markerArrayIndependent;
                 _overlapWest = true;
             } else {
                 _overlapWest = false;
@@ -61,9 +61,9 @@ if (_randomizeIndependent && (count _markerArrayIndependent > 0)) then {
         } else {
             _overlapWest = false;
         };
-        if (!isNil "bc_randomMarkerEast") then {
-            if (bc_randomMarkerEast == bc_randomMarkerIndependent) then {
-                bc_randomMarkerIndependent = selectRandom _markerArrayIndependent;  
+        if (!isNil "bc_rs_EastMark") then {
+            if (bc_rs_EastMark == bc_rs_GuerMark) then {
+                bc_rs_GuerMark = selectRandom _markerArrayIndependent;
                 _overlapEast = true;
             } else {
                 _overlapEast = false;
@@ -72,8 +72,8 @@ if (_randomizeIndependent && (count _markerArrayIndependent > 0)) then {
             _overlapEast = false;
         };
     };
-    publicVariable "bc_randomMarkerIndependent";
-    _randomTeamArray pushBack [_placeMarkerIndependent, bc_randomMarkerIndependent, _objectArrayIndependent, "INDEPENDENT"];
+    publicVariable "bc_rs_GuerMark";
+    _randomTeamArray pushBack [_placeMarkerIndependent, bc_rs_GuerMark, _objectArrayIndependent, "INDEPENDENT"];
 };
 
 { //forEach _randomTeamArray
@@ -83,23 +83,23 @@ if (_randomizeIndependent && (count _markerArrayIndependent > 0)) then {
     _randomMark = _x select 1;
     _objectArray = _x select 2;
     _teamName = _x select 3;
-    
+
     //Move any objects which are defined in _objectArray
     if (count _objectArray > 0) then {
         _startMarkPos = getMarkerPos _randomMark;
         _placeMarkerPos = getMarkerPos _placeMark;
         {
             if (isNil {_objectArray select _forEachIndex}) then {
-                _str = "[randomstart] ERROR - Tried to move non-existent object for team: " + _teamName; 
+                _str = "[randomstart] ERROR - Tried to move non-existent object for team: " + _teamName;
                 _str remoteExecCall ["systemChat", 0];
-            } else { 
+            } else {
                 //Find object distance and direction to the placement marker.
                 _dis = _x distance2D _placeMarkerPos;
                 _dir = ((_x getDir _placeMarkerPos) + (markerDir _randomMark)) - 180;
-                
+
                 //Returns a position that is a specified distance and compass direction from the passed position or object.
                 _newPos = _startMarkPos getPos [_dis, _dir];
-                
+
                 //Move object
                 _x setPos [(_newPos select 0), (_newPos select 1)];
                 _x setDir ((markerDir _randomMark) + (getDir _x));
