@@ -3,7 +3,11 @@ _cargoArray = [
 // ====================================================================================
 /*
     All entries should be in the following format:
-    [Vehicle, [Sides], [Positions], [Classes], [Players], "Message"]
+    [ [Vehicles],
+    [Weapons],
+    [Magazines],
+    [Items],
+    [Backpacks] ]
 
 ----------
     Vehicles: The name(s) of the vehicle(s) that you want to handle the cargo for.
@@ -100,8 +104,3 @@ _cargoArray = [
 // END OF THE ARRAY CONTAING ALL VEHICLE LOCKING INFORMATION
 // Do not comment or delete this line!
 ];
-
-// ====================================================================================
-
-// When true, clears the cargo of all vehicles that are handled by the locking script.
-_clearVehicleCargo = true; // true OR false
