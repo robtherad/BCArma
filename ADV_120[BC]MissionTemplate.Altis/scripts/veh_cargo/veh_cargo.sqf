@@ -4,6 +4,7 @@ if (!isServer) exitWith {};
 
 if (count _cargoArray > 0) then {
     { // forEach cargoArray
+        // Unpack variables from array
         _vehicleArray = _x select 0;
         _weapons = _x select 1;
         _magazines = _x select 2;
@@ -11,8 +12,14 @@ if (count _cargoArray > 0) then {
         _backpacks = _x select 4;
 
         { //forEach _vehicle in _vehicleArray
-            // Unpack variables
+            
             _vehicle = _x;
+
+            // Clear Cargo
+            clearWeaponCargoGlobal _vehicle;
+            clearMagazineCargoGlobal _vehicle;
+            clearBackpackCargoGlobal _vehicle;
+            clearItemCargoGlobal _vehicle;
 
             //Weapons
             if (count _weapons > 0) then {
