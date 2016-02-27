@@ -2908,7 +2908,7 @@ class Mission
 					{
 						skill=0.40000001;
 						init="Red_E2 = group this;";
-						description="Echo - Two - RiflemanRifleman RPG";
+						description="Echo - Two - Rifleman RPG";
 						isPlayable=1;
 					};
 					id=136;
@@ -3088,7 +3088,7 @@ class Mission
 					{
 						skill=0.40000001;
 						init="Red_F1 = group this;";
-						description="Foxtrot - One - RiflemanRifleman RPG";
+						description="Foxtrot - One - Rifleman RPG";
 						isPlayable=1;
 					};
 					id=146;
@@ -3217,7 +3217,7 @@ class Mission
 					{
 						skill=0.40000001;
 						init="Red_F2 = group this;";
-						description="Foxtrot - Two - RiflemanRifleman RPG";
+						description="Foxtrot - Two - Rifleman RPG";
 						isPlayable=1;
 					};
 					id=153;
@@ -3397,7 +3397,7 @@ class Mission
 					{
 						skill=0.40000001;
 						init="Red_G1 = group this;";
-						description="Golf - One - RiflemanRifleman RPG";
+						description="Golf - One - Rifleman RPG";
 						isPlayable=1;
 					};
 					id=163;
@@ -3526,7 +3526,7 @@ class Mission
 					{
 						skill=0.40000001;
 						init="Red_G2 = group this;";
-						description="Golf - Two - RiflemanRifleman RPG";
+						description="Golf - Two - Rifleman RPG";
 						isPlayable=1;
 					};
 					id=170;
