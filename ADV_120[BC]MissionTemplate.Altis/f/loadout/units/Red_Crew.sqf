@@ -7,22 +7,22 @@ removeBackpack player;
 removeHeadgear player;
 removeGoggles player;
 
-player forceAddUniform "MNP_CombatUniform_Ranger_A";
+player forceAddUniform "rhs_uniform_flora_patchless_alt";
 for "_i" from 1 to 2 do {player addItemToUniform "FirstAidKit";};
-for "_i" from 1 to 4 do {player addItemToUniform "SmokeShell";};
-player addVest "V_PlateCarrier2_rgr";
-for "_i" from 1 to 15 do {player addItemToVest "rhs_mag_30Rnd_556x45_Mk318_Stanag";};
+player addVest "rhs_6b23_ML_6sh92";
+for "_i" from 1 to 7 do {player addItemToVest "rhs_30Rnd_762x39mm";};
 for "_i" from 1 to 2 do {player addItemToVest "HandGrenade";};
-player addBackpack "B_AssaultPack_rgr";
-for "_i" from 1 to 10 do {player addItemToBackpack "rhs_mag_30Rnd_556x45_Mk318_Stanag";};
-player addHeadgear "H_HelmetB";
-player addWeapon "rhs_weap_m4a1_carryhandle";
-player addPrimaryWeaponItem "acc_flashlight";
+for "_i" from 1 to 2 do {player addItemToVest "SmokeShell";};
+player addHeadgear "rhs_6b27m_ml_ess";
+player addGoggles "G_Bandanna_khk";
 
-player addWeapon "rhs_weap_M136";
+player addWeapon "rhs_weap_akms";
+removeAllPrimaryWeaponItems player;
+player addPrimaryWeaponItem "rhs_acc_2dpZenit";
+
 if (s_loadout_map == 0) then {
     player linkItem "ItemMap";
-    if (s_loadout_gps == 0) then {player linkItem "ItemGPS";};
+	if (s_loadout_gps == 0) then {player linkItem "ItemGPS";};
 };
 player linkItem "ItemCompass";
 player linkItem "ItemWatch";

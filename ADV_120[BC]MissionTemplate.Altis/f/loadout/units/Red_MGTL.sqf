@@ -17,6 +17,7 @@ for "_i" from 1 to 5 do {player addItemToVest "rhs_30Rnd_762x39mm";};
 
 player addWeapon "rhs_weap_akm_gp25";
 removeAllPrimaryWeaponItems player;
+player addPrimaryWeaponItem "rhs_acc_2dpZenit";
 
 if ((s_loadout_radio == 0) or (s_loadout_radio == 1)) then {
     player linkItem "ItemRadio";

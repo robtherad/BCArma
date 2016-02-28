@@ -8,7 +8,7 @@ removeHeadgear player;
 removeGoggles player;
 
 player forceAddUniform "MNP_CombatUniform_Ranger_A";
-player addItemToUniform "FirstAidKit";
+for "_i" from 1 to 2 do {player addItemToUniform "FirstAidKit";};
 for "_i" from 1 to 2 do {player addItemToUniform "HandGrenade";};
 for "_i" from 1 to 2 do {player addItemToUniform "SmokeShell";};
 player addVest "V_PlateCarrier2_rgr";

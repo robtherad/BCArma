@@ -17,6 +17,7 @@ for "_i" from 1 to 2 do {player addItemToVest "HandGrenade";};
 
 player addWeapon "rhs_weap_akm";
 removeAllPrimaryWeaponItems player;
+player addPrimaryWeaponItem "rhs_acc_2dpZenit";
 
 if (s_loadout_radio != 3) then {
     player linkItem "ItemRadio";
