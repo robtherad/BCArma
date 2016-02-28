@@ -20,6 +20,7 @@ player addGoggles "G_Bandanna_khk";
 
 player addWeapon "rhs_weap_akm";
 removeAllPrimaryWeaponItems player;
+player addPrimaryWeaponItem "rhs_acc_2dpZenit";
 
 for "_i" from 1 to 3 do {player addItemToBackpack "rhs_rpg7_PG7VL_mag";};
 player addWeapon "rhs_weap_rpg7";

@@ -18,6 +18,7 @@ for "_i" from 1 to 3 do {player addItemToBackpack "rhs_200rnd_556x45_M_SAW";};
 player addHeadgear "H_HelmetB";
 player addWeapon "rhs_weap_m249_pip_S";
 player addPrimaryWeaponItem "bipod_01_F_blk";
+player addPrimaryWeaponItem "acc_flashlight";
 if (s_loadout_map == 0) then {
     player linkItem "ItemMap";
     if (s_loadout_gps == 0) then {player linkItem "ItemGPS";};

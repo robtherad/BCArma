@@ -19,6 +19,7 @@ for "_i" from 1 to 6 do {player addItemToBackpack "rhs_mag_30Rnd_556x45_Mk318_St
 for "_i" from 1 to 2 do {player addItemToBackpack "rhsusf_100Rnd_762x51";};
 player addHeadgear "H_HelmetB";
 player addWeapon "rhs_weap_m4a1_carryhandle";
+player addPrimaryWeaponItem "acc_flashlight";
 
 if (s_loadout_map == 0) then {
     player linkItem "ItemMap";

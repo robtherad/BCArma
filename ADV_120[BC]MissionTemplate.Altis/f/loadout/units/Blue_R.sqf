@@ -17,6 +17,7 @@ player addBackpack "B_AssaultPack_rgr";
 for "_i" from 1 to 10 do {player addItemToBackpack "rhs_mag_30Rnd_556x45_Mk318_Stanag";};
 player addHeadgear "H_HelmetB";
 player addWeapon "rhs_weap_m4a1_carryhandle";
+player addPrimaryWeaponItem "acc_flashlight";
 
 if (s_loadout_map == 0) then {
     player linkItem "ItemMap";

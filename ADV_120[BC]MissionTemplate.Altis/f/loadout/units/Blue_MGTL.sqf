@@ -19,6 +19,7 @@ for "_i" from 1 to 4 do {player addItemToVest "1Rnd_SmokeRed_Grenade_shell";};
 for "_i" from 1 to 4 do {player addItemToVest "1Rnd_Smoke_Grenade_shell";};
 
 player addWeapon "rhs_weap_m4a1_carryhandle_m203";
+player addPrimaryWeaponItem "acc_flashlight";
 
 if ((s_loadout_radio == 0) or (s_loadout_radio == 1)) then {
     player linkItem "ItemRadio";

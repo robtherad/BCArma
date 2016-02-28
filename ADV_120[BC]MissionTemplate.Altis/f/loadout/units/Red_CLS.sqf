@@ -19,6 +19,7 @@ player addGoggles "G_Bandanna_khk";
 
 player addWeapon "rhs_weap_akm";
 removeAllPrimaryWeaponItems player;
+player addPrimaryWeaponItem "rhs_acc_2dpZenit";
 
 if (s_loadout_map == 0) then {
     player linkItem "ItemMap";

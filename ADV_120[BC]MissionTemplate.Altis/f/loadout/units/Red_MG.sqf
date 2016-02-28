@@ -8,7 +8,7 @@ removeHeadgear player;
 removeGoggles player;
 
 player forceAddUniform "rhs_uniform_flora_patchless_alt";
-player addItemToUniform "FirstAidKit";
+for "_i" from 1 to 2 do {player addItemToUniform "FirstAidKit";};
 for "_i" from 1 to 2 do {player addItemToUniform "HandGrenade";};
 for "_i" from 1 to 2 do {player addItemToUniform "SmokeShell";};
 player addVest "rhs_6b23_ML_6sh92";
