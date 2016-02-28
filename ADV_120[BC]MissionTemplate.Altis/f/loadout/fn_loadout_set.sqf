@@ -1,6 +1,6 @@
 if (!hasInterface) exitWith {};
 
-if (!didJIP) then {
+if (!(time > 0)) then {
 _char = typeOf player;
 //Get radio and map parameters from the slot screen. If the parameters don't exist then they default to giving everybody a map and radio.
 s_loadout_radio = ["s_loadout_radio",0] call BIS_fnc_getParamValue;
