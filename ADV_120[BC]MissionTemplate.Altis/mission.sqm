@@ -5,7 +5,7 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=129;
+	toggles=1;
 	class ItemIDProvider
 	{
 		nextID=345;
@@ -53,24 +53,6 @@ class CustomAttributes
 		name="Multiplayer";
 		class Attribute0
 		{
-			property="RespawnTemplates";
-			expression="true";
-			class Value
-			{
-				class data
-				{
-					class type
-					{
-						type[]=
-						{
-							"ARRAY"
-						};
-					};
-				};
-			};
-		};
-		class Attribute1
-		{
 			property="RespawnButton";
 			expression="true";
 			class Value
@@ -85,6 +67,24 @@ class CustomAttributes
 						};
 					};
 					value=1;
+				};
+			};
+		};
+		class Attribute1
+		{
+			property="RespawnTemplates";
+			expression="true";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"ARRAY"
+						};
+					};
 				};
 			};
 		};
@@ -138,7 +138,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=64;
+		items=63;
 		class Item0
 		{
 			dataType="Marker";
@@ -347,7 +347,6 @@ class Mission
 			{
 				name="bc_missionAreaTrig";
 				text="Don't change the trigger name!";
-				condition="true";
 				sizeA=800;
 				sizeB=700;
 				interuptable=1;
@@ -385,7 +384,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="clearWeaponCargoGlobal this;clearMagazineCargoGlobal this;clearBackpackCargoGlobal this;clearItemCargoGlobal this;";
+				init="[this] call bc_fnc__clearContainer;";
 				name="obj1";
 				description="C2 CE";
 			};
@@ -415,7 +414,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="clearWeaponCargoGlobal this;clearMagazineCargoGlobal this;clearBackpackCargoGlobal this;clearItemCargoGlobal this;";
+				init="""obj_3mark"" setMarkerPos (getPos obj3);[this] call bc_fnc__clearContainer;";
 				name="obj3";
 			};
 			id=29;
@@ -3642,23 +3641,6 @@ class Mission
 			{
 			};
 			id=340;
-		};
-		class Item63
-		{
-			dataType="Trigger";
-			position[]={741.25299,-185.97,6690.623};
-			class Attributes
-			{
-				name="obj3trig2";
-				text="Sets the marker to the  location of the objective.";
-				condition="isServer";
-				onActivation="""obj_3mark"" setMarkerPos (getPos obj3);";
-				sizeA=0;
-				sizeB=0;
-				interuptable=1;
-			};
-			id=344;
-			type="EmptyDetector";
 		};
 	};
 	class Connections
