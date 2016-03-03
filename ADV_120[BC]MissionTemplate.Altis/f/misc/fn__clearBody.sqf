@@ -1,5 +1,7 @@
-// Remotely remove all posessions from a unit;
+// Remotely (from server) remove all posessions from a unit;
 params ["_unit"];
+
+if (!isServer) exitWith {};
 
 // Emulate removeAllWeapons
 removeAllWeapons _unit;
