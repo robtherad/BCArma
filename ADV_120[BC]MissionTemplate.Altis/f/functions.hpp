@@ -33,3 +33,8 @@ class endConditions {
     class end_checkTime{};
     class end_checkAlive{};
 };
+class misc {
+    file = "f\misc";
+    class _clearBody{};
+    class _clearContainer{};
+};
