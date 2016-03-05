@@ -9,7 +9,6 @@ Examples:
         [player] call BC_fnc__clearBody;
     (end)
 ---------------------------------------------------------------------------- */
-// Remotely (from server) remove all posessions from a unit;
 params ["_unit"];
 if (!isServer) exitWith {};
 
