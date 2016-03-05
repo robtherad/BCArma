@@ -37,4 +37,5 @@ class misc {
     file = "f\misc";
     class _clearBody{};
     class _clearContainer{};
+    class _hintThenClear{};
 };

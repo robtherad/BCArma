@@ -1,6 +1,15 @@
-// Remotely (from server) remove all posessions from a unit;
+/* ----------------------------------------------------------------------------
+Function: BC_fnc__clearBody
+Description:
+    Remotely (from server) remove all posessions from a unit
+Parameters:
+    _unit - the unit <OBJECT>
+Examples:
+    (begin example)
+        [player] call BC_fnc__clearBody;
+    (end)
+---------------------------------------------------------------------------- */
 params ["_unit"];
-
 if (!isServer) exitWith {};
 
 // Emulate removeAllWeapons
@@ -12,7 +21,6 @@ removeAllWeapons _unit;
 {
     _unit removeItem _x;
 } forEach items _unit;
-
 // Emulate removeAllAssignedItems
 {
     _unit unassignItem _x;
