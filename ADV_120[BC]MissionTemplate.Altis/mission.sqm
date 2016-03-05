@@ -414,7 +414,7 @@ class Mission
 			class Attributes
 			{
 				skill=0.60000002;
-				init="""obj_3mark"" setMarkerPos (getPos obj3);[this] call bc_fnc__clearContainer;";
+				init="if (isServer) then {""obj_3mark"" setMarkerPos (getPos obj3);[this] call bc_fnc__clearContainer;};";
 				name="obj3";
 			};
 			id=29;
