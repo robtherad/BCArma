@@ -1,6 +1,15 @@
-// Remotely (from server) remove all items from an object
+/* ----------------------------------------------------------------------------
+Function: BC_fnc__clearContainer
+Description:
+    Remotely (from server) remove all items from an object
+Parameters:
+    _object - the object <OBJECT>
+Examples:
+    (begin example)
+        [_crate] call BC_fnc__clearContainer;
+    (end)
+---------------------------------------------------------------------------- */
 params ["_object"];
-
 if (!isServer) exitWith {};
 
 clearWeaponCargoGlobal _object;
