@@ -36,7 +36,7 @@ if(isServer) then {
             case 3: {_diff = "Elite";};
         };
         _hintStr = "Mission Difficulty Setting = " + _diff;
-        _hintStr remoteExecCall ["hint", 0];
+        [_hintStr,15] remoteExecCall ["bc_fnc__hintThenClear", 0];
     };
 };
 
