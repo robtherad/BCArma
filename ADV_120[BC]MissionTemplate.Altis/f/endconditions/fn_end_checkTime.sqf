@@ -21,18 +21,18 @@ fnc_sectorControl = {
 if ((bc_missionRuntimeMins - 15) <= (time/60) && (bc_alertSoon == 0)) then {
     _hintStr = "15 minutes remaining.";
     call fnc_sectorControl;
-    _hintStr remoteExecCall ["hint", 0];
+    _hintStr remoteExecCall ["bc_fnc__hintThenClear", 0];
     bc_alertSoon = 1;
 };
 if (bc_missionRuntimeMins <= (time/60) && (bc_alertEnd < 1)) then {
     _hintStr = "The mission time limit has been reached.";
     call fnc_sectorControl;
-    _hintStr remoteExecCall ["hint", 0];
+    _hintStr remoteExecCall ["bc_fnc__hintThenClear", 0];
     bc_alertEnd = bc_alertEnd + 1;
 };
 if ((bc_missionRuntimeMins + (1*bc_alertOver)) <= (time/60)) then {
     _hintStr = str(1*bc_alertOver) + " minute(s) since limit.";
     call fnc_sectorControl;
-    _hintStr remoteExecCall ["hint", 0];
+    _hintStr remoteExecCall ["bc_fnc__hintThenClear", 0];
     bc_alertOver = bc_alertOver + 1;
 };
