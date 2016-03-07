@@ -332,7 +332,7 @@ class Mission
 			{
 				name="obj1trig";
 				condition="isServer && !alive obj1";
-				onActivation="""Objective #1 destroyed!"" remoteExec [""hint""];""obj_1mark"" setMarkerText ""Objective #1 *DESTROYED*"";";
+				onActivation="""Objective #1 destroyed!"" remoteExec [""bc_fnc__hintThenClear""];""obj_1mark"" setMarkerText ""Objective #1 *DESTROYED*"";";
 				sizeA=0;
 				sizeB=0;
 				interuptable=1;
@@ -365,7 +365,7 @@ class Mission
 				name="obj3trig";
 				text="Lets players know the objective has been destroyed";
 				condition="isServer && !alive obj3";
-				onActivation="""Objective #3 destroyed!"" remoteExec [""hint""];""obj_3mark"" setMarkerText ""Objective #3 *DESTROYED*"";";
+				onActivation="""Objective #3 destroyed!"" remoteExec [""bc_fnc__hintThenClear""];""obj_3mark"" setMarkerText ""Objective #3 *DESTROYED*"";";
 				sizeA=0;
 				sizeB=0;
 				interuptable=1;
