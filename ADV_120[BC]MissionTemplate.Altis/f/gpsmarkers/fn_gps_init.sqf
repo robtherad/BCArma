@@ -14,7 +14,7 @@ _vehArrays = [[west,_westVehArray],[east,_eastVehArray],[independent,_indVehArra
 
 // Add GPS markers to all groups except those blacklisted in settings file
 {
-    if !( (groupID _x || _x) in  _ignoreMarkerArray) then {
+    if !( (groupID _x in  _ignoreMarkerArray) || (_x in _ignoreMarkerArray) ) then {
         [_x,side _x] call bc_gpsMarkers_fnc_addMarker;
     };
 } forEach allGroups;
