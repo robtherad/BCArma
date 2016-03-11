@@ -80,18 +80,16 @@ class CfgRespawnTemplates {
         onPlayerRespawn = "";
     };
     class f_spectator {
-        onPlayerRespawn = "f_fnc_CamInit";
+        onPlayerRespawn = "bc_spectator_fnc_CamInit";
     };
 };
 
-#include "f\spect\config.hpp"
 class CfgFunctions {
     class F {
         class safeStart {
             file = "f\safeStart";
             class safety{};
         };
-        #include "f\spect\functions.hpp"
     };
     class BC {
         #include "f\functions.hpp"
