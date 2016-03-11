@@ -23,8 +23,6 @@ class loadout {
 class gpsmarkers {
     file = "f\gpsmarkers";
     class gps_init{};
-    class gps_createMarks{};
-    class gps_updateMarks{};
 };
 class endConditions {
     file = "f\endconditions";
