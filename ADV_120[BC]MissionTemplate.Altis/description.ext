@@ -1,112 +1,12 @@
-class Header {
-    gameType = TDM;
-    minPlayers = 1;
-    maxPlayers = 122;
-};
-
 author = "Bravo Company";
 onLoadName = "MissionNameHere";
 OnLoadMission = "LoadingScreenMessageHere";
 loadScreen =  "images\intro.jpg";
-Saving = 0;
-enableItemsDropping = 0;
-disabledAI = 1;
-enableDebugConsole = 1;
 
-respawn = 1;
-respawndelay = 3;
-respawnOnStart = 0;
-respawnTemplates[] = {"Seagull", "f_spectator"};
-
-class cfgNotifications {
-    class SafeStart {
-        title = "SAFE START";
-        description = "%1";
-        iconPicture="\A3\UI_F\data\IGUI\Cfg\Actions\settimer_ca.paa";
-        duration = 10;
-        priority = 0;
-    };
-    class SafeStartMissionStarting {
-        title = "SAFE START";
-        description = "%1";
-        iconPicture="\A3\UI_F\data\IGUI\Cfg\Actions\settimer_ca.paa";
-        duration = 3;
-        priority = 1;
-    };
-};
-
-class Params {
-    class f_param_mission_timer {
-        title = "Safe Start (Minutes)";
-        values[] = {0,1,2,3,4,5,6,7,8,9,10,15};
-        texts[] = {"Off","1","2","3","4","5","6","7","8","9","10","15"};
-        default = 10;
-        code = "f_param_mission_timer = %1";
-    };
-    class s_loadout_radio {
-        title = "Radio Deployment:";
-        values[] = {0,1,2,3};
-        texts[] = {"All Players (default)","Team Leaders and above","Squad Leaders and above","No Radios"};
-        default = 0;
-    };
-    class s_loadout_map {
-        title = "Map Deployment:";
-        values[] = {0,1,2,3};
-        texts[] = {"All Players (default)","Team Leaders and above","Squad Leaders and above","No Maps"};
-        default = 0;
-    };
-    class s_loadout_gps {
-        title = "GPS Deployment (Requires map):";
-        values[] = {0,1,2,3};
-        texts[] = {"All Players (default)","Team Leaders and above","Squad Leaders and above","No GPS"};
-        default = 0;
-    };
-    class mission_runtime {
-        title = "Mission Time Limit (Doesn't include safestart time):";
-        values[] = {15,30,45,60};
-        texts[] = {"15 minutes","30 minutes","45 minutes (default)","60 minutes"};
-        default = 45;
-    };
-    class s_gps_markers {
-        title = "GPS Map Markers:";
-        values[] = {0,1};
-        texts[] = {"Disabled","Enabled (default)"};
-        default = 1;
-    };
-};
-
-class CfgRespawnTemplates {
-    class Seagull {
-        onPlayerRespawn = "";
-    };
-    class f_spectator {
-        onPlayerRespawn = "bc_spectator_fnc_CamInit";
-    };
-};
-
-class CfgFunctions {
-    class F {
-        class safeStart {
-            file = "f\safeStart";
-            class safety{};
-        };
-    };
-    class BC {
-        #include "f\functions.hpp"
-    };
-};
-class CfgDebriefingSections {
-    class Kills {
-        title = "Kills";
-        variable = "bc_killsStruct";
-    };
-};
-#include "f\display.hpp"
-class Extended_InitPost_EventHandlers {
-    class CAManBase {
-        class JIPFix {
-            clientInit = "call compile preprocessFileLineNumbers 'f\misc\JIPfix.sqf'";
-        };
-    };
-};
-disableChannels[]={0,2,3,4,5,6};
+#include "description\definitions.hpp"
+#include "description\cfgNotifications.hpp"
+#include "description\cfgParams.hpp"
+#include "description\cfgRespawnTemplates.hpp"
+#include "description\cfgFunctions.hpp"
+#include "description\cfgDebriefingSections.hpp"
+#include "description\cfgEventHandlers.hpp"
