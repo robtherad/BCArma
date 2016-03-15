@@ -5,7 +5,7 @@ This file will start all scripts part of the default BC template. Call this file
 
 */
 //====================================================================================================
-//Initialize Variables - End conditions
+// Initialize Variables - End conditions
 bc_missionSafeTime = ["f_param_mission_timer",0] call BIS_fnc_getParamValue; //Default - 0 minute safestart
 bc_missionRunTime = ["mission_runtime",45] call BIS_fnc_getParamValue; //Default - 45 minute battle phase
 bc_missionRuntimeMins = bc_missionRunTime + bc_missionSafeTime;
@@ -15,8 +15,8 @@ bc_alertSoon = 0; // 15 minute warning
 
 
 //====================================================================================================
-//Spawn this in it's own thread or it stops everything called after it
-//Disables Group Leader HUD
+// Spawn this in it's own thread or it stops everything called after it
+// Disables Group Leader HUD
 if (hasInterface) then {
     [] spawn {
         showHUD [true, true, true, true, true, true, false, true];
@@ -24,56 +24,37 @@ if (hasInterface) then {
 };
 
 //====================================================================================================
-//difficulty Message
-if(isServer) then {
-    [] spawn {
-        sleep 1;
-        _diff = "Undefined";
-        switch(difficulty) do {
-            case 0: {_diff = "Recruit";};
-            case 1: {_diff = "Regular";};
-            case 2: {_diff = "Veteran";};
-            case 3: {_diff = "Elite";};
-        };
-        _hintStr = "Mission Difficulty Setting = " + _diff;
-        [_hintStr,15] remoteExecCall ["bc_fnc__hintThenClear", 0];
-    };
-};
-
-//====================================================================================================
-//Cancel unneeded calculations
+// Cancel unneeded calculations
 disableRemoteSensors true;
 
 //====================================================================================================
 //Pre Briefing Client Scripts
 if (!isDedicated) then {
-    bc_core_showTags = [BC_fnc_core_showTags, 0, []] call CBA_fnc_addPerFrameHandler;
     bc_radHandle1 = [BC_fnc_radio_waitGear, 0.1, []] call CBA_fnc_addPerFrameHandler;
     bc_end_clientWait = [BC_fnc_end_clientWait, 5, []] call CBA_fnc_addPerFrameHandler;
-    bc_playerBoundsCheck_PFH = [BC_fnc_core_playerBoundsCheck, 5, []] call CBA_fnc_addPerFrameHandler;
+    [] call bc_nametags_fnc_showTags;
 };
 
 //====================================================================================================
-//Pre Briefing Server Scripts
+// Pre Briefing Server Scripts
 if (isServer && isNil "bc_serverInit") then {
     bc_end_checkTime = [BC_fnc_end_checkTime, 10, []] call CBA_fnc_addPerFrameHandler;
     bc_end_checkAlive = [BC_fnc_end_checkAlive, 10, []] call CBA_fnc_addPerFrameHandler;
-
-    bc_serverInit = true; //Set this so that the server stuff only runs once
+    bc_serverInit = true;
 };
 
 //====================================================================================================
-//Wait for mission to start
+// Wait for mission to start
 waitUntil {time > 0};
 
 //====================================================================================================
-//Post Briefing Client Scripts
+// Post Briefing Client Scripts
 if (!isDedicated) then {
-    call BC_fnc_gps_init;
+    call BC_fnc_gps_init; // Adds GPS markers to all groups except those blacklisted in gpsmarker's settings file
 };
 
 //====================================================================================================
-//Disable AI contact reports
+// Disable AI contact reports
 player setspeaker "NoVoice";
 showSubtitles false;
 enableSentences false;
