@@ -7,7 +7,7 @@ Examples:
         call BC_fnc_gps_init;
     (end)
 ---------------------------------------------------------------------------- */
-private ["_vehArrays","_westVehArray","_eastVehArray","_indVehArray","_ignoreMarkerArray"];
+private ["_missionParam","_vehArrays","_westVehArray","_eastVehArray","_indVehArray","_ignoreMarkerArray"];
 #include "settings.sqf"
 
 _missionParam = ["s_gps_markers",1] call BIS_fnc_getParamValue;
