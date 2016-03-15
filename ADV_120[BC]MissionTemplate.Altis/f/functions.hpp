@@ -2,9 +2,7 @@ class core {
     file = "f\core";
     class core_addKilledEH{postInit = 1;};
     class core_mpKilled{};
-    class core_showTags{};
     class core_addRatingEH{postInit = 1;};
-    class core_playerBoundsCheck{};
 };
 class radios {
     file = "f\radios";
@@ -30,10 +28,4 @@ class endConditions {
     class end_clientTime{};
     class end_checkTime{};
     class end_checkAlive{};
-};
-class misc {
-    file = "f\misc";
-    class _clearBody{};
-    class _clearContainer{};
-    class _hintThenClear{};
 };

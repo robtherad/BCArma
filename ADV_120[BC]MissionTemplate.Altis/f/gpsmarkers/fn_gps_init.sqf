@@ -10,6 +10,9 @@ Examples:
 private ["_vehArrays","_westVehArray","_eastVehArray","_indVehArray","_ignoreMarkerArray"];
 #include "settings.sqf"
 
+_missionParam = ["s_gps_markers",1] call BIS_fnc_getParamValue;
+if !(_missionParam isEqualTo 1) exitWith {};
+
 _vehArrays = [[west,_westVehArray],[east,_eastVehArray],[independent,_indVehArray]];
 
 // Add GPS markers to all groups except those blacklisted in settings file
