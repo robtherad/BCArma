@@ -7,18 +7,26 @@ removeBackpack player;
 removeHeadgear player;
 removeGoggles player;
 
-player forceAddUniform "U_B_CombatUniform_mcam";
+player forceAddUniform "MNP_CombatUniform_Ranger_A";
 for "_i" from 1 to 2 do {player addItemToUniform "FirstAidKit";};
 for "_i" from 1 to 4 do {player addItemToUniform "SmokeShell";};
-player addVest "V_TacVest_khk";
-for "_i" from 1 to 8 do {player addItemToVest "30Rnd_65x39_caseless_mag";};
+player addVest "V_PlateCarrier2_rgr";
 for "_i" from 1 to 2 do {player addItemToVest "HandGrenade";};
-player addItemToVest "130Rnd_338_Mag";
-player addBackpack "B_TacticalPack_mcamo";
-for "_i" from 1 to 2 do {player addItemToBackpack "30Rnd_65x39_caseless_mag";};
-for "_i" from 1 to 3 do {player addItemToBackpack "130Rnd_338_Mag";};
-player addHeadgear "H_HelmetSpecB_paint2";
-player addWeapon "arifle_MX_F";
+for "_i" from 1 to 4 do {player addItemToVest "SmokeShellRed";};
+for "_i" from 1 to 5 do {player addItemToVest "rhs_mag_30Rnd_556x45_M855A1_Stanag_Tracer_Red";};
+for "_i" from 1 to 4 do {player addItemToVest "1Rnd_HE_Grenade_shell";};
+for "_i" from 1 to 4 do {player addItemToVest "1Rnd_SmokeRed_Grenade_shell";};
+for "_i" from 1 to 4 do {player addItemToVest "1Rnd_Smoke_Grenade_shell";};
+
+player addWeapon "rhs_weap_m4a1_carryhandle_m203";
+
+if ((s_loadout_radio == 0) or (s_loadout_radio == 1)) then {
+    player linkItem "ItemRadio";
+};
+player addBackpack "B_AssaultPack_rgr";
+for "_i" from 1 to 12 do {player addItemToBackpack "rhs_mag_30Rnd_556x45_Mk318_Stanag";};
+
+player addHeadgear "H_HelmetB";
 player addWeapon "Binocular";
 if ((s_loadout_map == 0) or (s_loadout_map == 1)) then {
     player linkItem "ItemMap";
@@ -26,8 +34,5 @@ if ((s_loadout_map == 0) or (s_loadout_map == 1)) then {
 };
 player linkItem "ItemCompass";
 player linkItem "ItemWatch";
-if ((s_loadout_radio == 0) or (s_loadout_radio == 1)) then {
-    player linkItem "ItemRadio";
-};
 
 missionNamespace setVariable ["bc_loadoutAssigned",true]; //Place this at the end of the loadout script so other scripts can tell when the player's loadout has been set.
