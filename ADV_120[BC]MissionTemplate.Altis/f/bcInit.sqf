@@ -9,6 +9,7 @@ This file will start all scripts part of the default BC template. Call this file
 bc_missionSafeTime = ["f_param_mission_timer",0] call BIS_fnc_getParamValue; //Default - 0 minute safestart
 bc_missionRunTime = ["mission_runtime",45] call BIS_fnc_getParamValue; //Default - 45 minute battle phase
 bc_missionRuntimeMins = bc_missionRunTime + bc_missionSafeTime;
+bc_withdrawTime = (bc_missionSafeTime*60)*10);
 bc_alertOver = 1; // Time elapsed warning
 bc_alertEnd = 0; // Time elapsed warning
 bc_alertSoon = 0; // 15 minute warning
