@@ -43,3 +43,5 @@ _handle = [bc_fnc_points_checkPlayers, 10, []] call CBA_fnc_addPerFrameHandler;
 bc_ptsPFHandles pushBack _handle;
 _handle = [bc_fnc_points_checkTime, 10, []] call CBA_fnc_addPerFrameHandler;
 bc_ptsPFHandles pushBack _handle;
+_handle = [bc_fnc_points_checkObjectives, 10, []] call CBA_fnc_addPerFrameHandler;
+bc_ptsPFHandles pushBack _handle;

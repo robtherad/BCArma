@@ -24,9 +24,9 @@ bc_endStatsArray = [];
     // Start casualtyArray
     _aliveEnd = {side _x isEqualTo _side} count allUnits;
     _casualties = _aliveStart - _aliveEnd;
-    _withDrawn = 0; // TODO: Implement withdrawing - Use teamString with addition ex: BLUFORwithDrawMark count inArea
+    _withdrawn = {side _x isEqualTo _side && ["bluforWithdrawMark", _x] call BIS_fnc_inTrigger} count allUnits;; // TODO: Implement withdrawing - Use teamString with addition ex: BLUFORwithDrawMark count inArea
     // StartCount, AliveCount, DeadCount, Withdrawn
-    _casualtyArray = [_aliveStart, _aliveEnd, _casualties, _withDrawn];
+    _casualtyArray = [_aliveStart, _aliveEnd, _casualties, _withdrawn];
     _statsArray pushBack _casualtyArray;
     
     // Objectives status, etc

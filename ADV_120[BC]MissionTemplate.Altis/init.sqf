@@ -1,6 +1,6 @@
 //init.sqf - Executed when mission is started (before briefing screen)
 // Restrict playable area for all sides to `missionArea` trigger
-["DefaultArea", [], missionArea] call bc_areaBoundary_fnc_addArea;
+["DefaultArea", [], bc_missionAreaTrig] call bc_areaBoundary_fnc_addArea;
 // Create briefing
 [] execVM "briefing.sqf";
 // Set the group IDs

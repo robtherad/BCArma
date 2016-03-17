@@ -1,3 +1,13 @@
+class CfgSettings {
+    class CBA {
+        class Caching {
+            compile = 0;
+            xeh = 0;
+            functions = 0;
+        };
+    };
+};
+
 author = "Bravo Company";
 onLoadName = "MissionNameHere";
 OnLoadMission = "LoadingScreenMessageHere";
@@ -7,6 +17,18 @@ loadScreen =  "images\intro.jpg";
 #include "description\cfgNotifications.hpp"
 #include "description\cfgParams.hpp"
 #include "description\cfgRespawnTemplates.hpp"
-#include "description\cfgFunctions.hpp"
 #include "description\cfgDebriefingSections.hpp"
 #include "description\cfgEventHandlers.hpp"
+
+class CfgFunctions {
+    class F {
+        class safeStart {
+            file = "f\safeStart";
+            class safety{};
+        };
+    };
+    class BC {
+        #include "f\functions.hpp"
+    };
+};
+#include "f\display.hpp"

@@ -29,3 +29,21 @@ class endConditions {
     class end_checkTime{};
     class end_checkAlive{};
 };
+class objectives {
+    file = "f\points";
+    class addObjective{};
+    class createObjective{};
+    class createClientTask{};
+    
+    class checkObjectives{};
+    class obj_avoidCasualties{};
+    class obj_destroy{};
+    class obj_escape{};
+    class obj_secure{};
+    
+    class points_checkPlayers{};
+    class points_checkTime{};
+    class points_displayAAR{};
+    class points_init{};
+    class points_prepAAR{};
+};

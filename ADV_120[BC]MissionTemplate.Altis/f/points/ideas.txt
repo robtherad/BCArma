@@ -1,0 +1,24 @@
+Add a function for adding different types of objectives:
+    [team, type, args, opposing team, (OPTIONAL) message] call bc_fnc_addObjective;
+    
+    [west, "Kill", obj3, east, "Destroy the enemy weapon's cache."] call bc_fnc_addObjective;
+    
+    Objective Types:
+    
+        "Kill" / "Destroy" - Eliminate supplied object. - "Defend"
+        "Capture" / "Secure" - Remove all of the enemy from supplied location. - "Defend"
+        "Escape" - Get all of the team to supplied location. - "Eliminate"
+        
+It should add the objectives using the BI task system as well as create all markers and add the objectives to the points system.
+
+
+Track kills. Especially friendly fire kills. Display all friendly fire incidents in the bottom right of the player's screens.
+
+Shit mockup: http://i.imgur.com/7U7nBNF.png
+
+
+                                        > createClientTask (C)
+addObjective(S) > createObjective (S) 
+                                        > to bc_objectiveList (S)
+                                        
+checkObjectives (S) > 

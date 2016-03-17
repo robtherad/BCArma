@@ -129,4 +129,44 @@ class RscTitles {
             };
         };
     };
+    class pointsAARdisplay {
+        idd = 9912;
+        movingEnable = 0;
+        enableSimulation = 1;
+        enableDisplay = 1;
+        duration = 9999;
+        fadein = 0;
+        fadeout = 0;
+        name = "pointsAARText";
+        onLoad = "uiNamespace setVariable ['pointsAARText', _this select 0];";
+        onUnLoad = "uiNamespace setVariable ['pointsAARText', nil]";
+        class controls {
+            class structuredText2 {
+                access = 0;
+                type = 13;
+                idc = 1002;
+                style = 0x00;
+                lineSpacing = 1;
+                x = safeZoneX + safeZoneW - 0.5 * 3 / 4;
+                y = safeZoneY + safeZoneH - 0.099;
+                h = 0.036;
+                w = 0.5 * 3 / 4; //w == h
+                size = 0.020;
+                colorBackground[] = {0,0,0,0.85};
+                colorText[] = {1,1,1,1};
+                text = "";
+                font = "TahomaB";
+                class Attributes {
+                    font = "TahomaB";
+                    color = "#0064CC";
+                    align = "LEFT";
+                    valign = "bottom";
+                    shadow = true;
+                    shadowColor = "#000000";
+                    underline = false;
+                    size = "1.4";
+                };
+            };
+        };
+    };
 };

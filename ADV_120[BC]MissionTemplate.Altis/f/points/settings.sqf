@@ -6,35 +6,41 @@ _endWhenDeadTeam: Determines if the mission should end when this team is dead. U
 _canteamWithdraw: Determines if the team should be allowed to withdraw or not. Should probably be false for defending teams. <BOOLEAN>
 ---------------------------------------------------------------------------- */
 
-// ===================
-// west - BLUFOR
+// ------------------------
+// BLUFOR
 _isWestPlaying = true;
 _endWhenDeadWest = false;
 _canWestWithdraw = true;
 
-// ===================
-// east - OPFOR
+// ------------------------
+// OPFOR
 _isEastPlaying = true;
 _endWhenDeadEast = false;
 _canEastWithdraw = false;
 
-// ===================
-// independent - INDFOR
+// ------------------------
+// INDFOR
 _isGuerPlaying = false;
 _endWhenDeadGuer = false;
 _canGuerWithdraw = false;
 
 // Don't edit anything below this point
-// ===================
-
+// ------------------------
+/*
 if (isNil "bc_waitForOneTeam") then {
     _sum = 0;
+    _array = [_endWhenDeadWest, _endWhenDeadEast, _endWhenDeadGuer];
+    
     {
-        if (_x) then {_sum = _sum + 1;};
-    } forEach [_endWhenDeadWest, _endWhenDeadEast, _endWhenDeadGuer];
-    if !(_sum > 0) then {
+        if (_x) then {
+            _sum = _sum + 1;
+        };
+    } forEach _array;
+    
+    if (_sum > 0) then {
         bc_waitForOneTeam = true;
     } else {
         bc_waitForOneTeam = false;
     }:
 };
+*/
