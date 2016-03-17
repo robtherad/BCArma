@@ -1,7 +1,7 @@
 class Extended_InitPost_EventHandlers {
     class CAManBase {
         class JIPFix {
-            clientInit = "call compile preprocessFileLineNumbers 'f\misc\JIPfix.sqf'";
+            clientInit = "call compile preprocessFileLineNumbers 'f\core\JIPfix.sqf'";
         };
     };
 };
