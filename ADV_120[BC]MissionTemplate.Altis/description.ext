@@ -7,6 +7,14 @@ loadScreen =  "images\intro.jpg";
 #include "description\cfgNotifications.hpp"
 #include "description\cfgParams.hpp"
 #include "description\cfgRespawnTemplates.hpp"
-#include "description\cfgFunctions.hpp"
 #include "description\cfgDebriefingSections.hpp"
 #include "description\cfgEventHandlers.hpp"
+
+
+class CfgFunctions {
+    #include "description\cfgFunctions.hpp"
+    class BC {
+        #include "f\functions.hpp"
+    };
+};
+#include "f\display.hpp"

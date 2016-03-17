@@ -16,5 +16,3 @@ respawnOnStart = 0;
 respawnTemplates[] = {"Seagull", "f_spectator"};
 
 disableChannels[]={0,2,3,4,5,6};
-
-#include "f\display.hpp"
