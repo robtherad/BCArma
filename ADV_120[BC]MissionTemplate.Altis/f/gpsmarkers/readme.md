@@ -1,19 +1,24 @@
 #gpsmarkers
-This module creates and updates markers for every group on a side except for ones which are set to be ignored in the settings file. It can also manage markers for vehicles if they are properly configured in the settings file. 
+This folder has scripts that automatically add markers from the BC Addon's gpsMarkers module for all groups in the game
 
 ###Configure
 All configuration happens in `'f\gpsmarkers\settings.sqf'`.
 
 #####Vehicles
-To manage markers for vehicles you need to define `_westVehArray`, `_eastVehArray`, or `_indVehArray` depending on which teams should be able to see the vehicle's marker.
+To add  gpsMarkers for vehicles you need to define `_westVehArray`, `_eastVehArray`, or `_indVehArray` depending on which teams should be able to see the vehicle's marker. This script only supports one side seeing the location of vehicles. If you would like to have multiple sides able to see the marker for a vehicle you should call the command from the addon yourself.
 
-Each vehicle needs to be defined as an array containing it's object and it's type. The possible types are `0` (ground), `1` (helicopter) and `2` (plane). For example if I wanted to create a marker on a BLUFOR helicopter named `bluforHelicopter` I would use the following definition:
+Each vehicle just needs to be added to the list. For example if I wanted to create markers for four BLUFOR APCs named `APC1` to `APC4` I would use the following definition:
 
-```_westVehArray = [bluforHelicopter,1];```
+```_westVehArray = [APC1, APC2, APC3, APC4];```
 
-This will have the module create and update a marker for that vehicle. By default it will have the same name as the object (in the above case, bluforHelicopter) but you can define a variable on that object to make it have a prettier name. Before the GPS script runs (I usually use the vehicles's initialization field in the editor) use the following line, replacing `VEHICLE` and `PRETTY NAME` with a reference to the vehicle and a nicer looking name respectively.
+This will have the module create and update a marker for that vehicle. By default it will have the same name as the object (in the above case, bluforHelicopter) but you can define a variable on that object to make it have a prettier name. Before the GPS script runs (until object initialization fields are less buggy, init.sqf is a good place) use the following line, replacing `VEHICLE` and `PRETTY NAME` with a reference to the vehicle and a nicer looking name respectively.
 
-```VEHICLE setVariable ["bc_MarkerName", "PRETTY NAME"];```
+```
+VEHICLE setVariable ["bc_gpsMarkers_vehMarkerText", "PRETTY NAME"];
+
+    ex: APC1 setVariable ["bc_gpsMarkers_vehMarkerText", "Alpha APC"];
+```
+
 ***
 #####Group Markers
 By default the module will create a marker for every group present on the map. Unless the group is defined by the setGroupID module it will have a messy name like `Alpha 1-1` or something. Define the group using that module and it will use the name defined there instead.
@@ -22,10 +27,6 @@ If you want a group to have no marker created for it you can add it's groupID to
 
 ```bc_ignoreMarkerArray = ["A1", "A2", "C2"];```
 ***
-#####Allied GPS
-If you wish for teams to be able to see each other's GPS markers then you can define which teams are visible to which teams using the variables `_sidesVisibleToWest`, `_sidesVisibleToEast` and `_sidesVisibleToGuer`. Fill these variables with an array of sides (`west`,`east`,`independent`) which that team should be able to see GPS markers for. By default teams can only see their own GPS markers. This will not combine side chat channels for teams.
-
-If you wish to change this value after the mission has started you can redefine `bc_sidesVisibleToPlayer` which is a variable local to each client that is initially equal to the `_sidesVisibleToXXXX` that corresponds to the player's initial side when the script was called.
 
 ###Disable
 In `'f\bcInit.sqf'` remove the line `call BC_fnc_gps_init;`.
