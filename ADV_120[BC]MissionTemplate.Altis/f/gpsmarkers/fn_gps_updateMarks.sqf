@@ -46,7 +46,7 @@ private ["_group","_marker","_marker2","_unit","_senior","_unitInside","_lastIns
                     
                     //If _senior isn't group leader make sure group leader has no gps.
                     if (_senior != leader _group) then {
-                        if ("ItemGPS" in (assignedItems (leader _group))) then {
+                        if ("ItemGPS" in (assignedItems (leader _group)) && (alive (leader _group)) && (group (leader _group)) isEqualTo _group ) then {
                             _senior = leader _group;
                             _group setVariable ["bc_seniorGPS",(leader _group)];
                         };
