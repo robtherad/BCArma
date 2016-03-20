@@ -3,6 +3,12 @@
 // ====================================================================================
 //_this = [this,objNull,0,0,true] execVM "f\spect\fn_CamInit.sqf";
 // params
+
+if (!isNil "bc_isSpectator") exitWith {diag_log "fn_CamInit: Already ran, exiting early."};
+if (isNil "bc_isSpectator") then {
+    bc_isSpectator = true;
+};
+
 _this spawn {
 _unit = [_this, 0, player,[objNull]] call BIS_fnc_param;
 _oldUnit = [_this, 1, objNull,[objNull]] call BIS_fnc_param;
@@ -15,20 +21,21 @@ if (typeof _unit != "seagull" && !_forced || !hasInterface) ExitWith {};
 // disable this to instantly switch to the spectator script.
 waituntil {missionnamespace getvariable ["BIS_fnc_feedback_allowDeathScreen",true] || isNull (_oldUnit) || f_cam_isJIP || _forced };
 
-
 // ====================================================================================
 
 if(!isnil "BIS_fnc_feedback_allowPP") then {
   // disable effects death effects
   BIS_fnc_feedback_allowPP = false;
 };
+//diag_log "fn_camInit: Stop feedback";
 
-if(f_cam_isJIP) then {
+if(f_cam_isJIP || _forced) then {
   ["F_ScreenSetup",false] call BIS_fnc_blackOut;
   systemChat "Initializing Spectator Script";
   uiSleep 3;
   ["F_ScreenSetup"] call BIS_fnc_blackIn;
 };
+//diag_log "fn_camInit: JIP check";
 
 // Create a Virtual Agent to act as our player to make sure we get to keep Draw3D
 if(isNil "f_cam_VirtualCreated") then {
@@ -44,13 +51,24 @@ if(isNil "f_cam_VirtualCreated") then {
   deleteVehicle _unit;
   f_cam_VirtualCreated = true;
 };
+//diag_log "fn_camInit: Create virtual player";
 
+private ["_oldUnit"];
 if(isNull _oldUnit ) then {if(count playableUnits > 0) then {_oldUnit = (playableUnits select 0)} else {_oldUnit = (allUnits select 0)};};
-
+if (isNil "_oldUnit") then {
+    createCenter civilian;
+    _grp = createGroup civilian;
+    _oldUnit = _grp createUnit ["C_man_1", [0,0,5], [], 0, "FORM"];
+    //_oldUnit enableSimulationGlobal false;
+    _oldUnit disableAI "MOVE";
+    _oldUnit allowDamage false;
+};
+//diag_log "fn_camInit: Determine old unit";
 // ====================================================================================
 
 // Set spectator mode for whichever radio system is in use
 [player, true] call TFAR_fnc_forceSpectator;
+//diag_log "fn_camInit: TFAR Spect";
 // ====================================================================================
 
 _listBox = 2100;
@@ -102,7 +120,7 @@ bc_show_timeUI = true;
 
 f_cam_timestamp = time;
 f_cam_muteSpectators = true;
-
+//diag_log "fn_camInit: Define initial values";
 // ====================================================================================
 // Menu (Top left)
 f_cam_menuControls = [2111,2112,2113,2114,2101,4302];
@@ -111,6 +129,7 @@ f_cam_menuShown = true;
 f_cam_menuWorking = false;
 f_cam_sideButton = 0; // 0 = ALL, 1 = BLUFOR , 2 = OPFOR, 3 = INDFOR , 4 = Civ
 f_cam_sideNames = ["All Sides","Blufor","Opfor","Indfor","Civ"];
+//diag_log "fn_camInit: Define menu values";
 // ====================================================================================
 // Colors
 
@@ -120,7 +139,7 @@ f_cam_indep_color = [independent] call bis_fnc_sideColor;
 f_cam_civ_color = [civilian] call bis_fnc_sideColor;
 f_cam_empty_color = [sideUnknown] call bis_fnc_sideColor;
 f_cam_gray_color = [0.75,0.75,0.75,1];
-
+//diag_log "fn_camInit: Define colors";
 // ================================
 // Camera
 f_cam_angle = 360;
@@ -129,6 +148,7 @@ f_cam_height = 3;
 f_cam_fovZoom = 1.2;
 f_cam_scrollHeight = 0;
 f_cam_cameraMode = 0; // set camera mode (default)
+//diag_log "fn_camInit: Define camera values";
 // ====================================================================================
 
 f_cam_listUnits = [];
@@ -167,7 +187,7 @@ f_cam_GetCurrentCam = {
   _camera
 };
 
-
+//diag_log "fn_camInit: Set up camera functions";
 // =============================================================================
 
 // create the UI
@@ -210,12 +230,16 @@ f_cam_fired = [];
   _x setVariable ["f_cam_fired_eventid",_event];
 
 } foreach (allunits + vehicles);
+
+//diag_log "fn_camInit: Create UI";
 // ====================================================================================
 // spawn sub scripts
 call f_fnc_ReloadModes;
 lbSetCurSel [2101,0];
+//diag_log "fn_camInit: Reload modes";
 //f_cam_freeCam_script = [] spawn F_fnc_FreeCam;
 f_cam_updatevalues_script = [] spawn F_fnc_UpdateValues;
  ["f_spect_tags", "onEachFrame", {_this call F_fnc_DrawTags}] call BIS_fnc_addStackedEventHandler;
  ["f_spect_cams", "onEachFrame", {_this call F_fnc_FreeCam}] call BIS_fnc_addStackedEventHandler;
+ //diag_log "fn_camInit: Added onEachFrame handlers";
 };

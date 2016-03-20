@@ -23,31 +23,6 @@ _fullmapWindow drawIcon ["\A3\ui_f\data\GUI\Rsc\RscDisplayMissionEditor\iconCame
     };
 
 } foreach allunits;
-sectorControl = missionNamespace getVariable "bc_sectorControlActive";
-if (!isNil "sectorControl") then {
-    if (sectorControl) then {
-        { //forEach bc_triggerArray;
-            _owner = _x getVariable "bc_sec_lastOwner";
-            _color = switch (_owner) do {
-                case 0: {f_cam_blufor_color};
-                case 1: {f_cam_opfor_color};
-                case 2: {f_cam_gray_color};
-                case 3: {f_cam_gray_color};
-                default {f_cam_gray_color};
-            };
-            _color set [3,1];
-            iconName = triggerText _x;
-            switch (_owner) do {
-                case 0: {iconName = str(iconName) + " - BLUFOR";};
-                case 1: {iconName = str(iconName) + " - OPFOR";};
-                case 2: {iconName = str(iconName) + " - CONTESTED";};
-                case 3: {iconName = str(iconName) + " - Neutral";};
-                default {iconName = str(iconName) + " - ERROR";};
-            };
-            _fullmapWindow drawIcon ["\A3\ui_f\data\map\markers\military\flag_ca.paa",_color,getpos _x ,20,20,0,iconName,2,0.04,"TahomaB"];
-        } forEach bc_triggerArray;
-    };
-};
 
 f_cam_fired = f_cam_fired - [objNull];
 if(f_cam_tracerOn) then {
