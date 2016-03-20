@@ -22,7 +22,7 @@ player addPrimaryWeaponItem "rhs_acc_2dpZenit";
 
 if (s_loadout_map == 0) then {
     player linkItem "ItemMap";
-	if (s_loadout_gps == 0) then {player linkItem "ItemGPS";};
+    if (s_loadout_gps == 0) then {player linkItem "ItemGPS";};
 };
 player linkItem "ItemCompass";
 player linkItem "ItemWatch";
