@@ -36,4 +36,10 @@ class Params {
         texts[] = {"Disabled","Enabled (default)"};
         default = 1;
     };
+    class bc_param_enableRadioPreset {
+        title = "Enable Preset Radios:";
+        values[] = {true,false};
+        texts[] = {"Enabled","Disabled"};
+        default = true;
+    };
 };
