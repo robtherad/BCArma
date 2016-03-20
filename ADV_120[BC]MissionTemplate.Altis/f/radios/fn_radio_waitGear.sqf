@@ -1,4 +1,8 @@
+_enablePreset = ["bc_param_enableRadioPreset",1] call BIS_fnc_getParamValue;
+if (_enablePreset isEqualTo 0) exitWith {[bc_radHandle1] call CBA_fnc_removePerFrameHandler;};
+
 _loadout = missionNamespace getVariable ["bc_loadoutAssigned",nil];
+
 if (!isNil "_loadout" && !isNil "bc_bluforBaseChannel" && !isNil "bc_opforBaseChannel" && !isNil "bc_indforBaseChannel" && isNil "bc_hasSWitem" && !isNil "bc_groupIDset") then {
     bc_hasSWitem = false;
     bc_hasLRitem = false;
