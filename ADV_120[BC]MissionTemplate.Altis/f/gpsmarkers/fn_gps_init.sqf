@@ -11,7 +11,7 @@ private ["_missionParam","_vehArrays","_westVehArray","_eastVehArray","_indVehAr
 #include "settings.sqf"
 
 _missionParam = ["s_gps_markers",1] call BIS_fnc_getParamValue;
-if !(_missionParam isEqualTo 1) exitWith {};
+if !(_missionParam isEqualTo 1) exitWith {bc_gpsMarkers_disableGPS = true;};
 
 _vehArrays = [[west,_westVehArray],[east,_eastVehArray],[independent,_indVehArray]];
 
