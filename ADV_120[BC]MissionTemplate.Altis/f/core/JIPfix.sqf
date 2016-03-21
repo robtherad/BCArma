@@ -1,5 +1,5 @@
-if (vehicle player == (_this select 0) && time > 0) then {
-    (_this select 0) setPos [-1000,-1000,0]; // Put player off-map
-    (_this select 0) setDamage 1; // Kill JIP player to initiate respawn
-    hideBody (_this select 0); // Hide the body
+if (time > 0 && {(_this select 0) isKindOf "Man"} && {isPlayer (_this select 0)}) then {
+    (_this select 0) setPos [-1000,-1000,0];
+    _ownerID = owner (_this select 0);
+    [(_this select 0),objNull,0,0,true] remoteExec ["bc_spectator_fnc_CamInit", _ownerID];
 };
