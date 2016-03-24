@@ -22,7 +22,7 @@ if (vehicle player == (_this select 0)) then {
         if ( (bc_hasGameStarted) && (vehicle player == (_var select 0)) && (isNil "bc_didJipCheck")) then {
             bc_didJipCheck = true;
             (_var select 0) setPos [-1000,-1000,0];
-            (_var select 0) setDamage 1; 
+            [(_var select 0),objNull,0,0,true] call f_fnc_CamInit;
             hideBody (_var select 0);
             [_handle] call CBA_fnc_removePerFrameHandler;
         } else {
