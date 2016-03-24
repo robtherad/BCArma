@@ -13,19 +13,9 @@ bc_alertOver = 1; // Time elapsed warning
 bc_alertEnd = 0; // Time elapsed warning
 bc_alertSoon = 0; // 15 minute warning
 
-
-//====================================================================================================
-//Spawn this in it's own thread or it stops everything called after it
-//Disables Group Leader HUD
-if (hasInterface) then {
-    [] spawn {
-        showHUD [true, true, true, true, true, true, false, true];
-    };
-};
-
 //====================================================================================================
 //difficulty Message
-if(isServer) then {
+if (isServer) then {
     [] spawn {
         sleep 1;
         _diff = "Undefined";
@@ -46,11 +36,10 @@ disableRemoteSensors true;
 
 //====================================================================================================
 //Pre Briefing Client Scripts
-if (!isDedicated) then {
+if (hasInterface) then {
     bc_core_showTags = [BC_fnc_core_showTags, 0, []] call CBA_fnc_addPerFrameHandler;
     bc_radHandle1 = [BC_fnc_radio_waitGear, 0.1, []] call CBA_fnc_addPerFrameHandler;
     bc_end_clientWait = [BC_fnc_end_clientWait, 5, []] call CBA_fnc_addPerFrameHandler;
-    bc_playerBoundsCheck_PFH = [BC_fnc_core_playerBoundsCheck, 5, []] call CBA_fnc_addPerFrameHandler;
 };
 
 //====================================================================================================
@@ -68,7 +57,7 @@ waitUntil {time > 0};
 
 //====================================================================================================
 //Post Briefing Client Scripts
-if (!isDedicated) then {
+if (hasInterface) then {
     call BC_fnc_gps_init;
 };
 
