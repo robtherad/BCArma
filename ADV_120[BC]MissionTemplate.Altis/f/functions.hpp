@@ -3,6 +3,7 @@ class core {
     class core_addKilledEH{postInit = 1;};
     class core_mpKilled{};
     class core_addRatingEH{postInit = 1;};
+    class core_serverJIP{postInit = 1;};
 };
 class radios {
     file = "f\radios";
