@@ -1,5 +1,5 @@
 /* ----------------------------------------------------------------------------
-Function: BC_fnc__hintThenClear
+Function: BC_fnc_serverJIP
 Description:
     Sets a publicVariable with the current mission state. False for still in briefing, true for in game world.
 ---------------------------------------------------------------------------- */
