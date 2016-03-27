@@ -39,4 +39,5 @@ class misc {
     class _clearContainer{};
     class _hintThenClear{};
     class serverJIP{postInit = 1;};
+    class clientJIP{postInit = 1;};
 };
