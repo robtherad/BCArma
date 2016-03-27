@@ -13,11 +13,10 @@ if (vehicle player == (_this select 0)) then {
         };
         
         // Game started, player is JIP, put him in spectate
-        if ( (bc_hasGameStarted) && (vehicle player == (_var select 0)) && (isNil "bc_didJipCheck")) then {
+        if ( (bc_hasGameStarted) && (isNil "bc_didJipCheck")) then {
             bc_didJipCheck = true;
-            (_var select 0) setPos [-1000,-1000,0];
-            [(_var select 0),objNull,0,0,true] call f_fnc_CamInit;
-            hideBody (_var select 0);
+            player setPos [-1000,-1000,0];
+            [player,objNull,0,0,true] call f_fnc_CamInit;
             [_handle] call CBA_fnc_removePerFrameHandler;
         } else {
             diag_log format["JIP Check: Something went wrong: %1",_var];
